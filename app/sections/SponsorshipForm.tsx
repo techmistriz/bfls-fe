@@ -1,0 +1,155 @@
+"use client";
+
+import { FormEvent } from "react";
+
+export default function SponsorshipForm() {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // API / form submission yahan add kar sakte ho
+    console.log("Form submitted");
+  };
+
+  return (
+    <section className="relative min-h-[460px] w-full overflow-hidden">
+
+      {/* =================================
+          BACKGROUND IMAGE
+      ================================= */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/call_to_action_bg.png')",
+        }}
+      />
+
+      {/* =================================
+          DARK OVERLAY
+      ================================= */}
+      <div className="absolute inset-0 bg-black/70" />
+
+      {/* =================================
+          LEFT DOT PATTERN
+      ================================= */}
+      <div className="pointer-events-none absolute left-0 top-[225px] hidden h-[105px] w-[195px] opacity-60 sm:block">
+        <div className="dot-pattern" />
+      </div>
+
+      {/* =================================
+          RIGHT DOT PATTERN
+      ================================= */}
+      <div className="pointer-events-none absolute right-[8%] top-[155px] hidden h-[90px] w-[150px] opacity-60 sm:block">
+        <div className="dot-pattern" />
+      </div>
+
+      {/* =================================
+          CONTENT
+      ================================= */}
+      <div className="relative z-10 flex min-h-[460px] items-start justify-center px-5 py-[130px]">
+
+        <div className="w-full max-w-[1000px] text-center">
+
+          {/* Small Heading */}
+          <p className="mb-[10px] text-[23px] font-bold leading-tight text-[#f58216] sm:text-[30px]">
+            Showcase Yourself
+          </p>
+
+          {/* Main Heading */}
+          <h2 className="mx-auto max-w-[600px] text-[34px] font-bold leading-[1.12] text-white sm:text-[42px] lg:text-[56px] font-poppins">
+            Curate Your Own
+            <br />
+            Sponsorship Wish
+          </h2>
+
+          {/* =================================
+              FORM
+          ================================= */}
+          <form
+            onSubmit={handleSubmit}
+            className="mx-auto mt-[20px] w-full"
+          >
+
+            {/* Inputs */}
+            <div className="flex flex-col items-center justify-center gap-[15px] sm:flex-row">
+
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[12px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216]"
+              />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email Address"
+                required
+                className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[12px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216]"
+              />
+
+              <input
+                type="tel"
+                name="contact"
+                placeholder="Your Contact Number"
+                required
+                className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[12px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216]"
+              />
+
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="mt-[16px] h-[60px] min-w-[140px] rounded-[5px] bg-[#f58216] px-[28px] text-[12px] font-bold text-white transition-all duration-300 hover:bg-[#df700b] hover:shadow-lg"
+            >
+              SUBMIT
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+
+      {/* =================================
+          DOT ANIMATION CSS
+      ================================= */}
+      <style jsx>{`
+
+        .dot-pattern {
+          width: 100%;
+          height: 100%;
+
+          background-image: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.55) 2px,
+            transparent 2px
+          );
+
+          background-size: 17px 16px;
+
+          animation: dotsMove 5s ease-in-out infinite;
+        }
+
+        @keyframes dotsMove {
+          0% {
+            transform: translateY(0px);
+            opacity: 0.45;
+          }
+
+          50% {
+            transform: translateY(-10px);
+            opacity: 0.8;
+          }
+
+          100% {
+            transform: translateY(0px);
+            opacity: 0.45;
+          }
+        }
+
+      `}</style>
+
+    </section>
+  );
+}
