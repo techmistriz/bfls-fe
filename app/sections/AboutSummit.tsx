@@ -2,7 +2,21 @@ import Image from "next/image";
 
 export default function AboutSummit() {
   return (
-    <section className="relative w-full overflow-hidden bg-white py-[70px] lg:py-[50px]">
+    <section
+      className="
+        relative
+        w-full
+        overflow-hidden
+        bg-white
+        py-[70px]
+
+        lg:py-[50px]
+
+        max-md:py-[50px]
+
+        max-sm:py-[40px]
+      "
+    >
 
       {/* =========================
           BACKGROUND IMAGE
@@ -17,21 +31,64 @@ export default function AboutSummit() {
         />
       </div>
 
+
       {/* =========================
           MAIN CONTAINER
       ========================== */}
-      <div className="relative mx-auto mb-[50px] max-w-[1170px] px-5">
+      <div
+        className="
+          relative
+          mx-auto
+          mb-[10px]
+          max-w-[1170px]
+          px-5
+
+          max-md:px-6
+
+          max-sm:px-4
+        "
+      >
 
         {/* =========================
             MAIN CARD
         ========================== */}
-        <div className="relative flex flex-col lg:flex-row">
+        <div
+          className="
+            relative
+            flex
+            flex-col
+
+            lg:flex-row
+          "
+        >
 
           {/* =========================
               LEFT IMAGE
           ========================== */}
-          <div className="relative z-10 w-full lg:w-[54%]">
-            <div className="relative aspect-[0.76] w-full overflow-hidden lg:h-[714px] lg:aspect-auto">
+          <div
+            className="
+              relative
+              z-10
+              w-full
+
+              lg:w-[54%]
+            "
+          >
+            <div
+              className="
+                relative
+                aspect-[0.76]
+                w-full
+                overflow-hidden
+
+                lg:h-[100%]
+                lg:aspect-auto
+
+                max-md:aspect-[1/0.85]
+
+                max-sm:aspect-[1/0.95]
+              "
+            >
               <Image
                 src="/images/section-2-bfls.png"
                 alt="BFSI Legal Landscape 2025"
@@ -42,14 +99,27 @@ export default function AboutSummit() {
             </div>
           </div>
 
+
           {/* =========================
               RIGHT CONTENT WRAPPER
           ========================== */}
-          <div className="relative z-20 -mt-1 w-full lg:-ml-1 lg:mt-0 lg:w-[57%]">
+          <div
+            className="
+              relative
+              z-20
+              -mt-1
+              w-full
+
+              lg:-ml-1
+              lg:mt-0
+              lg:w-[57%]
+
+              max-md:mt-0
+            "
+          >
 
             {/* =========================
                 GREY BACK PANEL
-                Screenshot-style offset
             ========================== */}
             <div
               className="
@@ -60,8 +130,17 @@ export default function AboutSummit() {
                 w-full
                 rounded-[7px]
                 bg-[#dfe1e6]
+
+                max-md:-right-[10px]
+                max-md:top-[25px]
+                max-md:bottom-[35px]
+
+                max-sm:-right-[7px]
+                max-sm:top-[18px]
+                max-sm:bottom-[25px]
               "
             />
+
 
             {/* =========================
                 WHITE CONTENT CARD
@@ -73,14 +152,24 @@ export default function AboutSummit() {
                 bg-white
                 px-7
                 py-9
-                sm:px-10
-                lg:px-[40px]
-                lg:py-[28px] bg-white shadow-[30px_10px_90px_0px_rgba(0,0,0,0.1)]
+                shadow-[30px_10px_90px_0px_rgba(0,0,0,0.1)]
 
+                sm:px-10
+
+                lg:px-[40px]
+                lg:py-[28px]
+
+                max-md:px-7
+                max-md:py-8
+
+                max-sm:px-5
+                max-sm:py-7
               "
             >
 
-              {/* Heading */}
+              {/* =========================
+                  HEADING
+              ========================== */}
               <h2
                 className="
                   max-w-[430px]
@@ -89,7 +178,15 @@ export default function AboutSummit() {
                   leading-[1.28]
                   text-[#EF7F1B]
                   font-archivo
+
                   sm:text-[27px]
+
+                  max-md:max-w-full
+                  max-md:text-[24px]
+                  max-md:leading-[1.3]
+
+                  max-sm:text-[22px]
+                  max-sm:leading-[1.3]
                 "
               >
                 BFSI Legal Landscape 2025:
@@ -99,10 +196,27 @@ export default function AboutSummit() {
                 Resilience
               </h2>
 
-              {/* Orange Line */}
-              <div className="mb-[22px] mt-[12px] h-[3px] w-[120px] bg-[#EF7F1B]" />
 
-              {/* Description */}
+              {/* =========================
+                  ORANGE LINE
+              ========================== */}
+              <div
+                className="
+                  mb-[22px]
+                  mt-[12px]
+                  h-[3px]
+                  w-[120px]
+                  bg-[#EF7F1B]
+
+                  max-sm:mb-[18px]
+                  max-sm:mt-[10px]
+                "
+              />
+
+
+              {/* =========================
+                  DESCRIPTION
+              ========================== */}
               <div
                 className="
                   max-w-[490px]
@@ -111,8 +225,16 @@ export default function AboutSummit() {
                   leading-[1.58]
                   text-[#4a4a4a]
                   font-archivo
+
+                  max-md:max-w-full
+                  max-md:text-[16px]
+                  max-md:leading-[1.6]
+
+                  max-sm:text-[15px]
+                  max-sm:leading-[1.6]
                 "
               >
+
                 <p>
                   The Banking &amp; Finance Legal Summit 2025 brings together{" "}
                   <strong>
@@ -123,7 +245,7 @@ export default function AboutSummit() {
                   transformative opportunities.
                 </p>
 
-                <p>
+                <p className="mt-4">
                   This year’s agenda dives deep into{" "}
                   <strong>
                     regulatory reforms, digital lending evolution, data
@@ -135,7 +257,7 @@ export default function AboutSummit() {
                   </strong>
                 </p>
 
-                <p>
+                <p className="mt-4">
                   From{" "}
                   <strong>
                     RBI’s latest frameworks, IBC amendments,
@@ -149,7 +271,7 @@ export default function AboutSummit() {
                   actionable insights.
                 </p>
 
-                <p>
+                <p className="mt-4">
                   As{" "}
                   <strong>
                     compliance converges with growth strategy,
@@ -161,7 +283,9 @@ export default function AboutSummit() {
                   to shape the future of BFSI — where innovation thrives under
                   robust governance.
                 </p>
+
               </div>
+
 
               {/* =========================
                   SUMMIT GALLERY BUTTON
@@ -169,56 +293,60 @@ export default function AboutSummit() {
               <a
                 href="#gallery"
                 className="
-                  mt-7
-                  inline-flex
-                  h-[64px]
-                  items-center
-                  justify-center
-                  gap-2
-                  rounded-[6px]
-                  bg-[#EF7F1B]
-                  px-[27px]
-                  text-[15px]
-                  font-bold
-                  text-white
-                  font-archivo
-                  transition-all
-                  duration-300
-                  hover:bg-[#e87508]
-                  hover:shadow-lg
-                "
+    group
+    mt-7
+    inline-flex
+    h-[64px]
+    items-center
+    justify-center
+    gap-2
+    rounded-[6px]
+    border-2
+    border-[#EF7F1B]
+    bg-[#EF7F1B]
+    px-[27px]
+    text-[15px]
+    font-bold
+    text-white
+    font-archivo
+    transition-all
+    duration-300
+
+    hover:bg-transparent
+    hover:text-[#EF7F1B]
+    hover:border-[#EF7F1B]
+    hover:shadow-lg
+
+    max-md:mt-6
+    max-md:h-[58px]
+    max-md:px-6
+    max-md:text-[14px]
+
+    max-sm:mt-6
+    max-sm:h-[54px]
+    max-sm:w-full
+    max-sm:px-5
+    max-sm:text-[14px]
+  "
               >
                 {/* Gallery Icon */}
                 <svg
-                  width="19"
-                  height="19"
-                  viewBox="0 0 24 24"
-                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  width="17.778"
+                  height="16"
+                  viewBox="0 0 17.778 16"
+                  className="
+      shrink-0
+      text-white
+      transition-colors
+      duration-300
+      group-hover:text-[#EF7F1B]
+    "
                 >
-                  <rect
-                    x="3"
-                    y="4"
-                    width="18"
-                    height="16"
-                    rx="2"
-                    stroke="white"
-                    strokeWidth="2"
-                  />
-
-                  <circle
-                    cx="8"
-                    cy="9"
-                    r="1.5"
-                    fill="white"
-                  />
-
                   <path
-                    d="M4 17L9 12L13 16L16 13L20 17"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    d="M3.778,16.333V19H6.444V16.333h8.889V19H18V13.667H3.778ZM17.111,9.222h2.667v2.667H17.111ZM2,9.222H4.667v2.667H2Zm13.333,2.667H6.444V4.778A1.783,1.783,0,0,1,8.222,3h5.333a1.783,1.783,0,0,1,1.778,1.778Z"
+                    transform="translate(-2 -3)"
+                    fill="currentColor"
                   />
                 </svg>
 
@@ -229,18 +357,74 @@ export default function AboutSummit() {
           </div>
         </div>
 
+
         {/* =========================
-            SLIDER DOTS
+            BOTTOM DOTS
         ========================== */}
-        <div className="absolute -bottom-[45px] right-[-5px] flex items-center gap-[11px]">
+
+        <div
+          className="
+            mt-8
+            flex
+            justify-end
+            gap-[10px]
+            pr-2
+            animate-dots-float
+
+            max-md:mt-7
+            max-md:gap-[8px]
+
+            max-sm:mt-6
+            max-sm:gap-[7px]
+            max-sm:pr-0
+          "
+        >
           {Array.from({ length: 7 }).map((_, index) => (
             <span
               key={index}
-              className={`h-[7px] w-[7px] rounded-full ${
-                index === 0
-                  ? "bg-[#c9cdd5]"
-                  : "bg-[#e1e3e8]"
-              }`}
+              className="
+                h-[7px]
+                w-[7px]
+                rounded-full
+                bg-[#dfe2e8]
+
+                max-sm:h-[6px]
+                max-sm:w-[6px]
+              "
+            />
+          ))}
+        </div>
+
+
+        <div
+          className="
+            mt-5
+            flex
+            justify-end
+            gap-[10px]
+            pr-2
+            animate-dots-float
+
+            max-md:mt-4
+            max-md:gap-[8px]
+
+            max-sm:mt-3
+            max-sm:gap-[7px]
+            max-sm:pr-0
+          "
+        >
+          {Array.from({ length: 7 }).map((_, index) => (
+            <span
+              key={index}
+              className="
+                h-[7px]
+                w-[7px]
+                rounded-full
+                bg-[#dfe2e8]
+
+                max-sm:h-[6px]
+                max-sm:w-[6px]
+              "
             />
           ))}
         </div>

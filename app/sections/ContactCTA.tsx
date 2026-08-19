@@ -34,45 +34,32 @@ export default function ContactCTA() {
 
           {/* Button */}
           <a
-            href="#gallery"
-            className="mt-[20px] inline-flex h-[50px] items-center justify-center gap-2 rounded-[5px] bg-[#f58216] px-[23px] text-[12px] font-bold text-white uppercase transition-all duration-300 hover:bg-[#e87508] hover:shadow-lg sm:h-[51px] sm:px-[25px]"
+          href="#gallery"
+          className=" group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] text-[15px] font-bold text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
+        >
+          {/* Gallery Icon */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="17.778"
+            height="16"
+            viewBox="0 0 17.778 16"
+            className="
+      shrink-0
+      text-white
+      transition-colors
+      duration-300
+      group-hover:text-[#EF7F1B]
+    "
           >
-            {/* Gallery Icon */}
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="3"
-                y="4"
-                width="18"
-                height="16"
-                rx="2"
-                stroke="white"
-                strokeWidth="2"
-              />
+            <path
+              d="M3.778,16.333V19H6.444V16.333h8.889V19H18V13.667H3.778ZM17.111,9.222h2.667v2.667H17.111ZM2,9.222H4.667v2.667H2Zm13.333,2.667H6.444V4.778A1.783,1.783,0,0,1,8.222,3h5.333a1.783,1.783,0,0,1,1.778,1.778Z"
+              transform="translate(-2 -3)"
+              fill="currentColor"
+            />
+          </svg>
 
-              <circle
-                cx="8"
-                cy="9"
-                r="1.5"
-                fill="white"
-              />
-
-              <path
-                d="M4 17L9 12L13 16L16 13L20 17"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-
-            <span>SUMMIT GALLERY</span>
-          </a>
+          <span>SUMMIT GALLERY</span>
+        </a>
 
         </div>
       </div>

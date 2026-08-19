@@ -45,17 +45,13 @@ const agendaItems: AgendaItem[] = [
         designation:
           "Head - Legal and DPO, Paymentz - Payment Gateway Solutions",
       },
-      
     ],
-    
   },
   {
     time: "10:15 AM",
     title: (
       <>
-        <span className="text-[#f58216]">
-          REGULATE TO ACCELERATE:
-        </span>{" "}
+        <span className="text-[#f58216]">REGULATE TO ACCELERATE:</span>{" "}
         THE BALANCING ACT OF GROWTH &amp; GOVERNANCE
       </>
     ),
@@ -99,7 +95,7 @@ const agendaItems: AgendaItem[] = [
           innovation, and trust in a connected world.
         </p>
 
-        <ul className="list-disc space-y-2 pl-8 italic font-archivo">
+        <ul className="list-disc space-y-2 pl-5 sm:pl-8 italic font-archivo">
           <li>
             With DPDPA now a reality, how can banks plug data leaks and tech
             loopholes before they turn into liabilities—and where does this
@@ -130,22 +126,22 @@ const agendaItems: AgendaItem[] = [
   },
   {
     time: "11:30 AM",
-    title: (
-      <>
-        
-        NETWORKING BREAK
-      </>
-    ),
+    title: <>NETWORKING BREAK</>,
   },
   {
     time: "12:00 NOON",
     title: (
       <>
         <span className="text-[#f58216]">
-          INSURANCE, LENDING & ESG
+          INSURANCE, LENDING &amp; ESG
         </span>{" "}
         REDEFINING CREDIT AND COMPLIANCE
-        <p className="font-[14px] font-light text-[#000] mt-3 font-archivo">As the BFSI sector embraces reform and innovation, this session explores how regulation, sustainability, and technology are redefining</p>
+
+        <p className="mt-3 font-archivo text-[13px] font-normal leading-[1.5] text-[#000] sm:text-[16px]">
+          As the BFSI sector embraces reform and innovation, this session
+          explores how regulation, sustainability, and technology are
+          redefining
+        </p>
       </>
     ),
     speakers: [
@@ -188,7 +184,7 @@ const agendaItems: AgendaItem[] = [
           innovation, and trust in a connected world.
         </p>
 
-        <ul className="list-disc space-y-2 pl-8 italic font-archivo">
+        <ul className="list-disc space-y-2 pl-5 sm:pl-8 italic font-archivo">
           <li>
             With DPDPA now a reality, how can banks plug data leaks and tech
             loopholes before they turn into liabilities—and where does this
@@ -230,7 +226,10 @@ const agendaItems: AgendaItem[] = [
         </span>{" "}
         BUILDING TRUST IN A CONNECTED WORLD
 
-        <p className="font-[14px] font-light text-[#000] mt-3 font-archivo">With DPDPA, digital rails, and AI lending reshaping Banking, NBFCs & Insurance, this panel examines how to balance</p>
+        <p className="mt-3 font-archivo text-[13px] font-normal leading-[1.5] text-[#000] sm:text-[16px]">
+          With DPDPA, digital rails, and AI lending reshaping Banking, NBFCs &
+          Insurance, this panel examines how to balance
+        </p>
       </>
     ),
     speakers: [
@@ -273,7 +272,7 @@ const agendaItems: AgendaItem[] = [
           innovation, and trust in a connected world.
         </p>
 
-        <ul className="list-disc space-y-2 pl-8 italic font-archivo">
+        <ul className="list-disc space-y-2 pl-5 sm:pl-8 italic font-archivo">
           <li>
             With DPDPA now a reality, how can banks plug data leaks and tech
             loopholes before they turn into liabilities—and where does this
@@ -307,11 +306,14 @@ const agendaItems: AgendaItem[] = [
     title: (
       <>
         <span className="text-[#f58216]">
-          COMPLIANCE, GOVERNANCE & 
+          COMPLIANCE, GOVERNANCE &amp;
         </span>{" "}
         DISPUTE RESOLUTION (ADR)
 
-        <p className="font-[14px] font-light text-[#000] mt-3 font-archivo">As compliance and ADR reshape Banking, NBFCs & Insurance, this panel explores faster dispute resolution, stronger governance, and</p>
+        <p className="mt-3 font-archivo text-[13px] font-normal leading-[1.5] text-[#000] sm:text-[16px]">
+          As compliance and ADR reshape Banking, NBFCs &amp; Insurance, this
+          panel explores faster dispute resolution, stronger governance, and
+        </p>
       </>
     ),
     speakers: [
@@ -354,7 +356,7 @@ const agendaItems: AgendaItem[] = [
           innovation, and trust in a connected world.
         </p>
 
-        <ul className="list-disc space-y-2 pl-8 italic font-archivo">
+        <ul className="list-disc space-y-2 pl-5 sm:pl-8 italic font-archivo">
           <li>
             With DPDPA now a reality, how can banks plug data leaks and tech
             loopholes before they turn into liabilities—and where does this
@@ -387,13 +389,9 @@ const agendaItems: AgendaItem[] = [
     time: "04:00 PM",
     title: (
       <>
-        <span className="text-[#f58216]">
-          GALA LUCKY DRAW
-        </span>{" "}
-         & SIGNING OFF followed by 
-        <span className="text-[#f58216]">
-          'CHAI PE CHARCHA'
-        </span>{" "}
+        <span className="text-[#f58216]">GALA LUCKY DRAW</span> &amp; SIGNING
+        OFF followed by{" "}
+        <span className="text-[#f58216]">'CHAI PE CHARCHA'</span>
       </>
     ),
   },
@@ -407,7 +405,7 @@ export default function Agenda() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-white py-[55px] sm:py-[70px] lg:py-[50px]">
+    <section className="relative overflow-hidden bg-white py-[50px] sm:py-[70px] lg:py-[50px]">
 
       {/* Background Image */}
       <div className="pointer-events-none absolute left-0 top-0 w-full">
@@ -432,22 +430,6 @@ export default function Agenda() {
         />
       </div>
 
-      {/* Background Pattern */}
-      {/* <div
-        className="pointer-events-none absolute inset-0 opacity-[0.45]"
-        style={{
-          backgroundImage: `
-            linear-gradient(45deg, #eeeeee 25%, transparent 25%),
-            linear-gradient(-45deg, #eeeeee 25%, transparent 25%),
-            linear-gradient(45deg, transparent 75%, #eeeeee 75%),
-            linear-gradient(-45deg, transparent 75%, #eeeeee 75%)
-          `,
-          backgroundSize: "42px 42px",
-          backgroundPosition:
-            "0 0, 0 21px, 21px -21px, -21px 0px",
-        }}
-      /> */}
-
       {/* Decorative Elements */}
       <span className="pointer-events-none absolute left-[11%] top-[27%] hidden h-[23px] w-[23px] rounded-full border-[3px] border-[#dfe3e9] lg:block" />
 
@@ -464,38 +446,38 @@ export default function Agenda() {
       </span>
 
       {/* Main Container */}
-      <div className="relative mx-auto max-w-[1190px] px-4 sm:px-6">
+      <div className="relative mx-auto w-full max-w-[1190px] px-4 sm:px-6 lg:px-5">
 
         {/* Section Heading */}
-        <div className="mb-[45px] text-center">
+        <div className="mb-[35px] text-center sm:mb-[45px]">
 
-          <p className="mb-3 text-[25px] font-bold leading-tight text-[#EF7F1B] sm:text-[30px] font-archivo">
+          <p className="mb-3 text-[21px] font-bold leading-tight text-[#EF7F1B] sm:text-[30px] font-archivo">
             Power Packed &amp; Scintillating Discussions.
           </p>
 
-          <h2 className="mx-auto max-w-[850px] text-[35px] font-bold leading-[1.15] text-[#566A8F] sm:text-[42px] lg:text-[44px] font-poppins">
+          <h2 className="mx-auto max-w-[850px] text-[27px] font-bold leading-[1.2] text-[#566A8F] sm:text-[42px] lg:text-[44px] font-poppins">
             Panel Discussions, Focussed
-            <br />
+            <br className="hidden sm:block" />
             Presentation, Veteran Talks &amp; More
           </h2>
 
           {/* Orange Line */}
-          <div className="mx-auto mt-[22px] h-[3px] w-[120px] bg-[#EF7F1B]" />
+          <div className="mx-auto mt-[18px] h-[3px] w-[100px] bg-[#EF7F1B] sm:mt-[22px] sm:w-[120px]" />
         </div>
 
         {/* Agenda Box */}
-        <div className="relative">
+        <div className="relative w-full">
 
           {/* Summit Title */}
-          <div className="relative z-10 mx-auto flex min-h-[80px] max-w-[610px] items-center justify-center bg-[#566e99] px-5 text-center shadow-sm">
-            <p className="text-[16px] font-semibold text-white sm:text-[17px] font-archivo">
+          <div className="relative z-10 mx-auto flex min-h-[70px] w-full max-w-[610px] items-center justify-center bg-[#566e99] px-4 py-4 text-center shadow-sm sm:min-h-[80px] sm:px-5">
+            <p className="text-[14px] font-semibold leading-[1.4] text-white sm:text-[17px] font-archivo">
               The Lex Witness 8th Annual Banking &amp; Finance Legal Summit
               2025
             </p>
           </div>
 
           {/* Agenda List */}
-          <div className="border border-[#e1e7f0] bg-white">
+          <div className="w-full border border-[#e1e7f0] bg-white">
 
             {agendaItems.map((item, index) => {
               const isOpen = openIndex === index;
@@ -510,52 +492,172 @@ export default function Agenda() {
                   <button
                     type="button"
                     onClick={() => toggleItem(index)}
-                    className="group flex w-full items-start gap-13 px-6 py-[19px] text-left transition-colors duration-200 sm:px-12"
+                    className="
+                      group
+                      flex
+                      w-full
+                      items-start
+                      gap-3
+                      px-4
+                      py-[17px]
+                      text-left
+                      transition-colors
+                      duration-200
+                      sm:gap-6
+                      sm:px-8
+                      sm:py-[19px]
+                      lg:gap-13
+                      lg:px-12
+                    "
                   >
 
                     {/* Time */}
-                    <span className="w-[165px] shrink-0 text-[23px] font-bold leading-[1.3] text-[#f58216] sm:text-[24px] font-poppins">
+                    <span
+                      className="
+                        w-[92px]
+                        shrink-0
+                        text-[15px]
+                        font-bold
+                        leading-[1.4]
+                        text-[#f58216]
+                        sm:w-[125px]
+                        sm:text-[20px]
+                        lg:w-[165px]
+                        lg:text-[24px]
+                        font-poppins
+                      "
+                    >
                       {item.time}
                     </span>
 
                     {/* Title */}
-                    <span className="flex-1 pr-3 text-[20px] font-bold leading-[1.25] text-[#526b97] sm:text-[19px] font-poppins">
+                    <span
+                      className="
+                        min-w-0
+                        flex-1
+                        pr-1
+                        text-[14px]
+                        font-bold
+                        leading-[1.4]
+                        text-[#526b97]
+                        sm:pr-3
+                        sm:text-[18px]
+                        lg:text-[19px]
+                        font-poppins
+                      "
+                    >
                       {item.title}
                     </span>
 
                     {/* Plus / Minus */}
                     <span
-                      className={`mt-[3px] flex h-[31px] w-[31px] shrink-0 items-center justify-center rounded-full text-[25px] font-poppins font-light leading-none text-white transition-colors duration-200 ${isOpen
-                          ? "bg-[#f58216]"
-                          : "bg-[#566e99]"
-                        }`}
+                      className={`
+                        mt-0.5
+                        flex
+                        h-[28px]
+                        w-[28px]
+                        shrink-0
+                        items-center
+                        justify-center
+                        rounded-full
+                        text-[22px]
+                        font-light
+                        leading-none
+                        text-white
+                        transition-colors
+                        duration-200
+                        sm:h-[31px]
+                        sm:w-[31px]
+                        sm:text-[25px]
+                        font-poppins
+                        ${
+                          isOpen
+                            ? "bg-[#f58216]"
+                            : "bg-[#566e99]"
+                        }
+                      `}
                     >
                       {isOpen ? "−" : "+"}
                     </span>
+
                   </button>
 
                   {/* Open Content */}
                   <div
-                    className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen
-                        ? "grid-rows-[1fr]"
-                        : "grid-rows-[0fr]"
-                      }`}
+                    className={`
+                      grid
+                      transition-[grid-template-rows]
+                      duration-300
+                      ease-in-out
+                      ${
+                        isOpen
+                          ? "grid-rows-[1fr]"
+                          : "grid-rows-[0fr]"
+                      }
+                    `}
                   >
                     <div className="overflow-hidden">
 
-                      <div className="px-6 pb-10 pt-2 sm:px-[265px]">
+                      <div
+                        className="
+                          w-full
+                          px-4
+                          pb-8
+                          pt-1
+                          sm:px-8
+                          sm:pb-10
+                          lg:ml-[265px]
+                          lg:w-[750px]
+                          lg:px-0
+                        "
+                      >
 
                         {/* Speakers */}
                         {item.speakers && (
-                          <div className="w-[750px] mb-10 flex flex-wrap justify-self-start gap-x-0 gap-y-7">
-
+                          <div
+                            className="
+                              mb-8
+                              grid
+                              w-full
+                              grid-cols-2
+                              gap-x-4
+                              gap-y-8
+                              sm:grid-cols-3
+                              sm:gap-x-5
+                              lg:flex
+                              lg:flex-wrap
+                              lg:gap-x-0
+                              lg:gap-y-7
+                            "
+                          >
                             {item.speakers.map((speaker) => (
                               <div
                                 key={speaker.name}
-                                className="w-[105px] text-center sm:w-[150px]"
+                                className="
+                                  w-full
+                                  text-center
+                                  sm:w-auto
+                                  lg:w-[150px]
+                                  lg:mr-0
+                                "
                               >
+
                                 {/* Speaker Image */}
-                                <div className="relative mx-auto mb-2 h-[105px] w-[105px] overflow-hidden rounded-full sm:h-[115px] sm:w-[115px]">
+                                <div
+                                  className="
+                                    relative
+                                    mx-auto
+                                    mb-2
+                                    h-[85px]
+                                    w-[85px]
+                                    overflow-hidden
+                                    rounded-full
+                                    sm:h-[105px]
+                                    sm:w-[105px]
+                                    lg:h-[115px]
+                                    lg:w-[115px]
+                                  "
+                                >
                                   <Image
                                     src={speaker.image}
                                     alt={speaker.name}
@@ -565,14 +667,38 @@ export default function Agenda() {
                                 </div>
 
                                 {/* Name */}
-                                <h4 className="text-[15px] font-bold uppercase leading-[1.25] text-[#526b97] font-poppins">
+                                <h4
+                                  className="
+                                    text-[12px]
+                                    font-bold
+                                    uppercase
+                                    leading-[1.3]
+                                    text-[#526b97]
+                                    sm:text-[14px]
+                                    lg:text-[15px]
+                                    font-poppins
+                                  "
+                                >
                                   {speaker.name}
                                 </h4>
 
                                 {/* Designation */}
-                                <p className="mt-2 text-[14px] font-medium leading-[1.6] text-[#333] font-archivo">
+                                <p
+                                  className="
+                                    mt-2
+                                    text-[11px]
+                                    font-medium
+                                    leading-[1.45]
+                                    text-[#333]
+                                    sm:text-[12px]
+                                    lg:text-[14px]
+                                    lg:leading-[1.6]
+                                    font-archivo
+                                  "
+                                >
                                   {speaker.designation}
                                 </p>
+
                               </div>
                             ))}
                           </div>
@@ -580,7 +706,19 @@ export default function Agenda() {
 
                         {/* Description */}
                         {item.description && (
-                          <div className="w-[750px] text-[16px] font-medium leading-[1.65] text-[#333] font-archivo">
+                          <div
+                            className="
+                              w-full
+                              text-[13px]
+                              font-medium
+                              leading-[1.6]
+                              text-[#333]
+                              sm:text-[15px]
+                              lg:text-[16px]
+                              lg:leading-[1.65]
+                              font-archivo
+                            "
+                          >
                             {item.description}
                           </div>
                         )}
@@ -594,16 +732,6 @@ export default function Agenda() {
             })}
 
           </div>
-        </div>
-
-        {/* Bottom Dots */}
-        <div className="mt-8 flex justify-end gap-[10px] pr-2">
-          {Array.from({ length: 7 }).map((_, index) => (
-            <span
-              key={index}
-              className="h-[7px] w-[7px] rounded-full bg-[#dfe2e8]"
-            />
-          ))}
         </div>
 
       </div>

@@ -101,7 +101,7 @@ export default function SponsorshipForm() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="mt-[16px] h-[60px] min-w-[140px] rounded-[5px] bg-[#f58216] px-[28px] text-[12px] font-bold text-white transition-all duration-300 hover:bg-[#df700b] hover:shadow-lg"
+              className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[15px] font-bold text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
             >
               SUBMIT
             </button>

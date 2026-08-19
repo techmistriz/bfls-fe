@@ -9,8 +9,8 @@ const venueImages = [
     alt: "Taj Santacruz Venue",
   },
   {
-    src: "/images/Taj-Santacruz-2.jpg",
-    alt: "Taj Santacruz Venue",
+    src: "/images/Taj-Santacruz-scaled.jpg",
+    alt: "Taj-Santacruz-scaled",
   },
 ];
 

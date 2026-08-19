@@ -58,3 +58,60 @@ body {
 .audience-card div::-webkit-scrollbar-track:hover {
   background: #fff;
 }
+
+/* BFLS2025 section animation */
+
+@keyframes dotsFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-dots-float {
+  animation: dotsFloat 3s ease-in-out infinite;
+}
+
+/* BFLS2025 section animation */
+
+/* agenda section animation css */
+
+@keyframes dotsFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(80px);
+  }
+}
+
+.animate-dots-float {
+  animation: dotsFloat 15s ease-in-out infinite;
+}
+
+/* agenda section animation css */
+
+/* banner dots animation css */
+
+@keyframes dotsSlide {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(200px);
+  }
+}
+
+.animate-dots-slide {
+  animation: dotsSlide 15s ease-in-out infinite;
+}
+
+/* banner dots animation css */

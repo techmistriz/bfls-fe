@@ -65,22 +65,7 @@ export default function SubscribeSection() {
           <button
             type="submit"
             className="
-              mt-4
-              h-[55px]
-              w-[170px]
-              rounded-[5px]
-              border-0
-              bg-[#F57C16]
-              text-[14px]
-              font-bold
-              text-white
-              transition-all
-              duration-300
-              hover:-translate-y-[2px]
-              hover:bg-[#E96F08]
-              max-md:mt-[15px]
-              max-md:h-[44px]
-              max-md:w-[140px]
+              group mt-5 inline-flex h-[60px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[15px] font-bold text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]
             "
           >
             SUBSCRIBE

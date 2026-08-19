@@ -2,51 +2,60 @@
 
 import Image from "next/image";
 
+
 const speakers = [
   {
     image: "/images/ALOK-KUMAR-1.jpg",
     name: "ALOK KUMAR",
     designation: "Managing Partner, THS - The Law Firm",
+    linkedin: "https://www.linkedin.com/in/username/",
   },
   {
     image: "/images/ALOK-KUMAR-1.jpg",
     name: "ANKITA CHOUDHARY",
     designation:
       "Head - Contracts and Advisory - Legal, Nuvama Group",
+    linkedin: "https://www.linkedin.com/in/username/",
   },
   {
     image: "/images/ALOK-KUMAR-1.jpg",
     name: "APARNA RAWAT",
     designation: "Chief Legal Officer, L&T Finance",
+    linkedin: "https://www.linkedin.com/in/username/",
   },
   {
     image: "/images/ALOK-KUMAR-1.jpg",
     name: "ASHISH LAKHTAKIA",
     designation:
       "General Counsel, Chief - Regulatory Affairs & Company Secretary, Generali Central Insurance",
+    linkedin: "https://www.linkedin.com/in/username/",
   },
   {
     image: "/images/ALOK-KUMAR-1.jpg",
     name: "GARIMA NAHAR",
     designation:
       "General Counsel, Chief Compliance Officer and Head of Secretarial, JioBlackRock Asset Management Company",
+    linkedin: "https://www.linkedin.com/in/username/",
   },
   {
     image: "/images/ALOK-KUMAR-1.jpg",
     name: "GURANPREET SINGH SARNA",
     designation: "Partner, Dhir & Dhir Associates",
+    linkedin: "https://www.linkedin.com/in/username/",
   },
   {
     image: "/images/ALOK-KUMAR-1.jpg",
     name: "JYOTI KRISHNAN",
     designation:
       "General Counsel & Head – Liability Claims, Prudent Insurance Brokers Pvt Ltd.",
+    linkedin: "https://www.linkedin.com/in/username/",
   },
   {
     image: "/images/ALOK-KUMAR-1.jpg",
     name: "KULIN DAVE",
     designation:
       "Head - Legal and DPO, Paymentz - Payment Gateway Solutions",
+    linkedin: "https://www.linkedin.com/in/username/",
   },
 ];
 
@@ -138,7 +147,7 @@ export default function Speakers() {
             >
 
               {/* Profile Image */}
-              <div className="relative h-[158px] w-[158px] overflow-hidden rounded-full sm:h-[160px] sm:w-[160px] lg:h-[200px] lg:w-[200px]">
+              <div className="group relative h-[158px] w-[158px] overflow-hidden rounded-full sm:h-[160px] sm:w-[160px] lg:h-[200px] lg:w-[200px]">
                 <Image
                   src={speaker.image}
                   alt={speaker.name}
@@ -146,6 +155,19 @@ export default function Speakers() {
                   sizes="160px"
                   className="object-cover"
                 />
+
+                {/* Green Hover Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center rounded-full bg-[#5dbf7c]/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <a
+                    href={speaker.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${speaker.name} LinkedIn`}
+                    className="text-white transition-transform duration-300 group-hover:scale-110"
+                  >
+                    <i className="fa-brands fa-linkedin-in text-[32px]"></i>
+                  </a>
+                </div>
               </div>
 
               {/* Name */}
