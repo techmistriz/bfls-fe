@@ -290,34 +290,49 @@ export default function Footer() {
           <div className="flex flex-col items-start gap-[15px]">
 
             {[
-              "READ & SUBSCRIBE",
-              "OUR BRAND DECK",
-              "PRIVACY POLICY",
-              "REFUND POLICY",
-              "TERMS & CONDITIONS",
+              {
+                label: "READ & SUBSCRIBE",
+                href: "/subscribe",
+              },
+              {
+                label: "OUR BRAND DECK",
+                href: "/brand-deck",
+              },
+              {
+                label: "PRIVACY POLICY",
+                href: "/privacy-policy",
+              },
+              {
+                label: "REFUND POLICY",
+                href: "/refund-policy",
+              },
+              {
+                label: "TERMS & CONDITIONS",
+                href: "/terms-conditions",
+              },
             ].map((item) => (
               <a
-                key={item}
-                href="#"
+                key={item.label}
+                href={item.href}
                 className="
-                  flex min-h-[40px] w-[180px]
-                  items-center justify-center
-                  rounded-[4px]
-                  border border-[#f4f4f4]
-                  px-[11px]
-                  text-[14px]
-                  font-bold
-                  text-[#eeeeee]
-                  transition-all duration-200
-                  hover:border-[#f58220]
-                  hover:bg-[#f58220]
-                  hover:text-white
+      flex min-h-[40px] w-[180px]
+      items-center justify-center
+      rounded-[4px]
+      border border-[#f4f4f4]
+      px-[11px]
+      text-[14px]
+      font-bold
+      text-[#eeeeee]
+      transition-all duration-200
+      hover:border-[#f58220]
+      hover:bg-[#f58220]
+      hover:text-white
 
-                  max-sm:w-full
-                  max-sm:max-w-[250px]
-                "
+      max-sm:w-full
+      max-sm:max-w-[250px]
+    "
               >
-                {item}
+                {item.label}
               </a>
             ))}
 

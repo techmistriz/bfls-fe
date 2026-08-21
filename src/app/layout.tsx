@@ -4,8 +4,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "@/src/components/Header";
+import Footer from "@/src/components/Footer";
 
 export default function RootLayout({
   children,

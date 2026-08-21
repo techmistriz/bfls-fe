@@ -405,7 +405,7 @@ export default function Agenda() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-white py-[50px] sm:py-[70px] lg:py-[50px]">
+    <section className="relative overflow-hidden bg-white py-[50px] sm:py-[70px] lg:py-[50px]" id="agenda">
 
       {/* Background Image */}
       <div className="pointer-events-none absolute left-0 top-0 w-full">

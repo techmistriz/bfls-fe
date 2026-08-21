@@ -226,7 +226,7 @@ export default function AudienceProfile() {
   const [activeCard, setActiveCard] = useState<number | null>(2);
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-[65px] sm:py-[75px] lg:py-[80px]">
+    <section className="relative w-full overflow-hidden bg-white py-[65px] sm:py-[75px] lg:py-[80px]" id="audience-profile">
 
       {/* =========================
           HEADING
@@ -284,17 +284,20 @@ export default function AudienceProfile() {
             >
 
               {/* Hover Background Image */}
-              {isActive && (
-                <div className="pointer-events-none absolute inset-0 z-0">
-                  <img
-                    src="/images/iconbox-overlay2.png"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              )}
+              <div
+                className={`pointer-events-none absolute inset-0 z-0 overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)] ${isActive
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-full opacity-0"
+                  }`}
+              >
+                <img
+                  src="/images/iconbox-overlay2.png"
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+              </div>
 
-              
+
 
               {/* Icon */}
               <div className="relative z-10 flex h-[70px] items-center justify-center">
@@ -324,8 +327,8 @@ export default function AudienceProfile() {
               {/* Content */}
               <div
                 className={`relative z-10 mt-[20px] max-h-[105px] overflow-y-auto pr-2 text-[16px] font-medium leading-[1.65] transition-colors duration-300 ${isActive
-                    ? "text-white"
-                    : "text-[#666666]"
+                  ? "text-white"
+                  : "text-[#666666]"
                   }
               `}
               >
@@ -336,7 +339,7 @@ export default function AudienceProfile() {
                 ))}
               </div>
 
-              
+
 
             </div>
           );

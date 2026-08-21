@@ -8,7 +8,7 @@ const navItems = [
   { label: "Speakers", href: "#speakers" },
   { label: "Sponsors", href: "#sponsors" },
   { label: "Audience Profile", href: "#audience-profile" },
-  { label: "Past Editions", href: "#past-editions" },
+  { label: "Past Editions", href: "past-editions" },
   { label: "Contact Us", href: "#contact" },
 ];
 

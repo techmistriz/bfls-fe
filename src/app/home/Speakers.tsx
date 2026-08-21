@@ -61,7 +61,7 @@ const speakers = [
 
 export default function Speakers() {
   return (
-    <section className="relative w-full overflow-hidden bg-white py-[65px] sm:py-[75px] lg:py-[85px]">
+    <section className="relative w-full overflow-hidden bg-white py-[65px] sm:py-[75px] lg:py-[85px]" id="speakers">
 
       {/* =========================
           DECORATIVE ANIMATIONS

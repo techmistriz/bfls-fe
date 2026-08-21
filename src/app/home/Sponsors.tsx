@@ -64,7 +64,7 @@ const sponsors: Sponsor[] = [
 
 export default function Sponsors() {
   return (
-    <section className="relative w-full overflow-hidden bg-white py-[60px] sm:py-[75px] lg:py-[80px]">
+    <section className="relative w-full overflow-hidden bg-white py-[60px] sm:py-[75px] lg:py-[80px]" id="sponsors">
 
       {/* =========================
           DECORATIVE ELEMENTS
