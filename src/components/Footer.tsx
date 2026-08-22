@@ -296,7 +296,7 @@ export default function Footer() {
               },
               {
                 label: "OUR BRAND DECK",
-                href: "/brand-deck",
+                href: "/contact",
               },
               {
                 label: "PRIVACY POLICY",
@@ -350,8 +350,8 @@ export default function Footer() {
           flex min-h-[87px]
           items-center
           border-t border-[#777777]
-          px-[calc((100%-880px)/2)]
-
+            w-[1170px]
+            justify-center
           max-lg:h-auto
           max-lg:min-h-0
           max-lg:flex-col
@@ -367,7 +367,7 @@ export default function Footer() {
         {/* Left */}
         <div
           className="
-            flex w-[348px]
+            flex w-[390px]
             flex-col
             leading-[1.55]
 
@@ -375,11 +375,11 @@ export default function Footer() {
           "
         >
 
-          <strong className="text-[10px] text-[#eeeeee]">
+          <strong className="text-[13px] text-[#eeeeee]">
             Lex Witness – India’s 1st Magazine on Legal &amp; Corporate Affairs
           </strong>
 
-          <span className="text-[10px] text-[#dddddd]">
+          <span className="text-[13px] text-[#dddddd]">
             A Unit of SriGro Interactive Pvt Ltd. | Image Courtesy:{" "}
             <a
               href="#"
@@ -410,9 +410,9 @@ export default function Footer() {
         {/* Rights */}
         <div
           className="
-            w-[152px]
+            w-[200px]
             whitespace-nowrap
-            text-[10px]
+            text-[13px]
             font-bold
             text-[#eeeeee]
 
@@ -452,15 +452,15 @@ export default function Footer() {
         >
 
           <a
-            href="#"
-            className="text-[10px] text-[#eeeeee] hover:text-[#f58220]"
+            href="/about-witness"
+            className="text-[13px] text-[#eeeeee] hover:text-[#f58220]"
           >
             About Lex Witness
           </a>
 
           <a
-            href="#"
-            className="text-[10px] text-[#eeeeee] hover:text-[#f58220]"
+            href="/summit-secretariat"
+            className="text-[13px] text-[#eeeeee] hover:text-[#f58220]"
           >
             Summit Secretariat
           </a>

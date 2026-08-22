@@ -9,7 +9,7 @@ const navItems = [
   { label: "Sponsors", href: "#sponsors" },
   { label: "Audience Profile", href: "#audience-profile" },
   { label: "Past Editions", href: "past-editions" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "contact" },
 ];
 
 function GalleryIcon() {
