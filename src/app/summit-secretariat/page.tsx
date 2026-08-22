@@ -82,7 +82,7 @@ export default function AboutWitnessBanner() {
             </section>
 
             <section>
-                <SubscribeSection />
+                <SubscribeSection />  
             </section>
 
         </div>
