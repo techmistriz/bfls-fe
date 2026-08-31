@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import SubscribeSection from "@/src/components/ReuseSection/SubscribeSection";
 import Image from "next/image";
 
 const galleryImages = [
@@ -30,7 +31,7 @@ const galleryImages = [
   },
 ];
 
-export default function GallerySection() {
+export default function GalleryBanner() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   /* =========================
@@ -109,40 +110,209 @@ export default function GallerySection() {
   }, [selectedImage]);
 
   return (
-    <>
+    <div className="w-full overflow-hidden">
+
       {/* =====================================================
-          GALLERY SECTION
+          BANNER
       ====================================================== */}
 
-      <section className="relative w-full overflow-hidden bg-white py-12 sm:py-16 md:py-20">
+      <section
+        className="
+          relative
+          mt-[88px]
+          h-[398px]
+          w-full
+          overflow-hidden
 
-        {/* =========================
-            HEADING
-        ========================== */}
+          max-md:mt-[75px]
+          max-md:h-[340px]
 
-        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6">
+          max-sm:mt-[65px]
+          max-sm:h-[280px]
+        "
+      >
 
-          <p className="mb-2 text-[20px] font-bold text-[#f58220] sm:text-[24px] md:text-[26px]">
-            Visual Delight
-          </p>
+        <Image
+          src="/images/bg_banner.png"
+          alt="Past Editions"
+          fill
+          priority
+          sizes="100vw"
+          className="
+            object-cover
+            object-center
+          "
+        />
 
-          <h2 className="font-poppins text-[28px] font-extrabold leading-tight text-[#58709b] sm:text-[32px] md:text-[36px]">
-            Quick Glimpse @ BFLS 2025
-          </h2>
+        {/* Banner Content */}
 
-          {/* Orange underline */}
-          <div className="mx-auto mt-4 h-[2px] w-20 bg-[#f58220] sm:w-24" />
+        <div
+          className="
+            relative
+            z-10
+            mx-auto
+            flex
+            h-full
+            w-full
+            max-w-[1130px]
+            items-center
+            px-6
+            lg:px-0
+
+            max-sm:px-[20px]
+          "
+        >
+
+          <div>
+
+            <h1
+              className="
+                font-poppins
+                text-[38px]
+                font-bold
+                leading-tight
+                text-white
+
+                md:text-[52px]
+
+                max-sm:text-[30px]
+              "
+            >
+              Gallery
+            </h1>
+
+          </div>
 
         </div>
 
 
-        {/* =========================
-            GALLERY
-        ========================== */}
+        {/* =====================================================
+            BREADCRUMB
+        ====================================================== */}
 
-        <div className="mx-auto mt-7 max-w-[1170px] px-4 sm:mt-8 sm:px-6">
+        <div
+          className="
+            absolute
+            bottom-0
+            right-[7%]
+            z-20
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            md:right-[20%]
+
+            max-sm:right-0
+          "
+        >
+
+          <div
+            className="
+              flex
+              h-[56px]
+              w-[235px]
+              items-center
+              justify-center
+              gap-3
+              bg-white
+              font-archivo
+              shadow-sm
+
+              max-sm:h-[48px]
+              max-sm:w-[185px]
+              max-sm:gap-2
+            "
+          >
+
+            <span
+              className="
+                text-[13px]
+                text-[#555]
+
+                max-sm:text-[11px]
+              "
+            >
+              <a
+                href="/"
+                className="transition-colors hover:text-[#EF7F1B]"
+              >
+                Home
+              </a>
+            </span>
+
+            <span
+              className="
+                text-[13px]
+                text-[#999]
+
+                max-sm:text-[11px]
+              "
+            >
+              /
+            </span>
+
+            <span
+              className="
+                text-[13px]
+                font-medium
+                text-[#EF7F1B]
+
+                max-sm:text-[11px]
+              "
+            >
+              Gallery
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          GALLERY SECTION
+      ====================================================== */}
+
+      <section
+        className="
+          w-full
+          bg-white
+          px-5
+          py-20
+
+          max-md:px-4
+          max-md:py-16
+
+          max-sm:px-[15px]
+          max-sm:py-12
+        "
+      >
+
+        <div
+          className="
+            mx-auto
+            mt-7
+            max-w-[1170px]
+            px-4
+
+            sm:mt-8
+            sm:px-6
+
+            max-sm:mt-0
+            max-sm:px-0
+          "
+        >
+
+          <div
+            className="
+              grid
+              grid-cols-1
+              gap-4
+
+              sm:grid-cols-2
+              md:grid-cols-3
+
+              max-sm:gap-3
+            "
+          >
 
             {galleryImages.map((image, index) => (
 
@@ -165,7 +335,9 @@ export default function GallerySection() {
                 aria-label={`Open ${image.alt}`}
               >
 
-                {/* Image */}
+                {/* =========================
+                    IMAGE
+                ========================== */}
 
                 <Image
                   src={image.src}
@@ -183,6 +355,7 @@ export default function GallerySection() {
                     group-hover:scale-105
                   "
                 />
+
 
                 {/* =========================
                     HOVER OVERLAY
@@ -217,9 +390,14 @@ export default function GallerySection() {
                       opacity-0
                       transition-all
                       duration-300
+
                       group-hover:h-12
                       group-hover:w-12
                       group-hover:opacity-100
+
+                      max-sm:group-active:h-12
+                      max-sm:group-active:w-12
+                      max-sm:group-active:opacity-100
                     "
                   >
 
@@ -240,48 +418,22 @@ export default function GallerySection() {
                 </div>
 
               </button>
+
             ))}
 
           </div>
 
         </div>
 
+      </section>
 
-        {/* =========================
-            VIEW MORE BUTTON
-        ========================== */}
 
-        <div className="mt-8 flex justify-center sm:mt-10">
+      {/* =====================================================
+          SUBSCRIBE
+      ====================================================== */}
 
-          <a href="/gallery"
-          className=" group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] text-[15px] font-bold text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
-        >
-          {/* Gallery Icon */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="17.778"
-            height="16"
-            viewBox="0 0 17.778 16"
-            className="
-      shrink-0
-      text-white
-      transition-colors
-      duration-300
-      group-hover:text-[#EF7F1B]
-    "
-          >
-            <path
-              d="M3.778,16.333V19H6.444V16.333h8.889V19H18V13.667H3.778ZM17.111,9.222h2.667v2.667H17.111ZM2,9.222H4.667v2.667H2Zm13.333,2.667H6.444V4.778A1.783,1.783,0,0,1,8.222,3h5.333a1.783,1.783,0,0,1,1.778,1.778Z"
-              transform="translate(-2 -3)"
-              fill="currentColor"
-            />
-          </svg>
-
-          <span>View More</span>
-        </a>
-
-        </div>
-
+      <section>
+        <SubscribeSection />
       </section>
 
 
@@ -301,14 +453,15 @@ export default function GallerySection() {
             justify-center
             bg-black/90
             p-3
+
             sm:p-5
           "
           onClick={closePopup}
         >
 
-          {/* =========================
+          {/* =================================================
               POPUP CONTAINER
-          ========================== */}
+          ================================================== */}
 
           <div
             className="
@@ -319,15 +472,18 @@ export default function GallerySection() {
               max-w-[1100px]
               items-center
               justify-center
+
               sm:h-[82vh]
               md:h-[88vh]
+
+              max-sm:h-[78vh]
             "
             onClick={(e) => e.stopPropagation()}
           >
 
-            {/* =========================
+            {/* =================================================
                 CLOSE BUTTON
-            ========================== */}
+            ================================================== */}
 
             <button
               type="button"
@@ -353,19 +509,23 @@ export default function GallerySection() {
                 transition
                 hover:bg-[#f58220]
                 hover:text-white
+
                 sm:-right-2
                 sm:-top-2
                 sm:h-10
                 sm:w-10
+
+                max-sm:right-0
+                max-sm:top-0
               "
             >
               ×
             </button>
 
 
-            {/* =========================
+            {/* =================================================
                 PREVIOUS BUTTON
-            ========================== */}
+            ================================================== */}
 
             <button
               type="button"
@@ -391,10 +551,16 @@ export default function GallerySection() {
                 shadow-lg
                 transition
                 hover:bg-[#df7014]
+
                 sm:left-2
                 sm:h-12
                 sm:w-12
+
                 md:-left-6
+
+                max-sm:left-1
+                max-sm:h-9
+                max-sm:w-9
               "
             >
 
@@ -404,7 +570,13 @@ export default function GallerySection() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                className="h-5 w-5 sm:h-6 sm:w-6"
+                className="
+                  h-5
+                  w-5
+
+                  sm:h-6
+                  sm:w-6
+                "
               >
                 <path d="m15 18-6-6 6-6" />
               </svg>
@@ -412,9 +584,9 @@ export default function GallerySection() {
             </button>
 
 
-            {/* =========================
+            {/* =================================================
                 IMAGE
-            ========================== */}
+            ================================================== */}
 
             <div
               className="
@@ -440,9 +612,9 @@ export default function GallerySection() {
             </div>
 
 
-            {/* =========================
+            {/* =================================================
                 NEXT BUTTON
-            ========================== */}
+            ================================================== */}
 
             <button
               type="button"
@@ -468,10 +640,16 @@ export default function GallerySection() {
                 shadow-lg
                 transition
                 hover:bg-[#df7014]
+
                 sm:right-2
                 sm:h-12
                 sm:w-12
+
                 md:-right-6
+
+                max-sm:right-1
+                max-sm:h-9
+                max-sm:w-9
               "
             >
 
@@ -481,7 +659,13 @@ export default function GallerySection() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                className="h-5 w-5 sm:h-6 sm:w-6"
+                className="
+                  h-5
+                  w-5
+
+                  sm:h-6
+                  sm:w-6
+                "
               >
                 <path d="m9 18 6-6-6-6" />
               </svg>
@@ -489,9 +673,9 @@ export default function GallerySection() {
             </button>
 
 
-            {/* =========================
+            {/* =================================================
                 IMAGE COUNTER
-            ========================== */}
+            ================================================== */}
 
             <div
               className="
@@ -507,8 +691,13 @@ export default function GallerySection() {
                 text-xs
                 font-medium
                 text-white
+
                 sm:bottom-4
                 sm:text-sm
+
+                max-sm:px-3
+                max-sm:py-1
+                max-sm:text-[11px]
               "
             >
               {selectedImage + 1} / {galleryImages.length}
@@ -517,8 +706,9 @@ export default function GallerySection() {
           </div>
 
         </div>
+
       )}
 
-    </>
+    </div>
   );
 }

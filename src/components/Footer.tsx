@@ -19,19 +19,22 @@ export default function Footer() {
           max-lg:pt-[40px]
 
           max-sm:w-[calc(100%-30px)]
+          max-sm:max-w-none
           max-sm:gap-[35px]
           max-sm:pt-[35px]
         "
       >
 
         {/* ================= CONTACT ================= */}
-        <div className="max-lg:w-full">
+        <div className="w-full min-w-0">
+
           <h3 className="mb-[17px] text-[18px] font-bold leading-[1.2] text-[#f58220]">
             CONTACT
           </h3>
 
           {/* Person 1 */}
           <div className="mb-[23px] text-[15px]">
+
             <strong className="mb-[6px] block font-bold text-[#f2f2f2]">
               Bhupinder Kaur
             </strong>
@@ -42,7 +45,15 @@ export default function Footer() {
 
             <a
               href="mailto:bhupinder@witnsslive.in"
-              className="block break-words font-semibold leading-[1.55] text-white underline hover:text-[#f58220]"
+              className="
+                block
+                break-all
+                font-semibold
+                leading-[1.55]
+                text-white
+                underline
+                hover:text-[#f58220]
+              "
             >
               bhupinder@witnsslive.in
             </a>
@@ -50,10 +61,13 @@ export default function Footer() {
             <span className="block leading-[1.55]">
               +91-9654155065
             </span>
+
           </div>
+
 
           {/* Person 2 */}
           <div className="mb-[23px] text-[15px]">
+
             <strong className="mb-[6px] block font-bold text-[#f2f2f2]">
               Neelima Maheshwari
             </strong>
@@ -64,7 +78,15 @@ export default function Footer() {
 
             <a
               href="mailto:neelima_maheshwari@witnsslive.in"
-              className="block break-words font-semibold leading-[1.55] text-white underline hover:text-[#f58220]"
+              className="
+                block
+                break-all
+                font-semibold
+                leading-[1.55]
+                text-white
+                underline
+                hover:text-[#f58220]
+              "
             >
               neelima_maheshwari@witnsslive.in
             </a>
@@ -72,10 +94,13 @@ export default function Footer() {
             <span className="block leading-[1.55]">
               +91-8800841600
             </span>
+
           </div>
+
 
           {/* Address */}
           <div>
+
             <strong className="mb-[6px] block font-bold text-[#f2f2f2]">
               Address
             </strong>
@@ -85,7 +110,9 @@ export default function Footer() {
               <br />
               Delhi – 110016
             </span>
+
           </div>
+
 
           {/* ================= SOCIAL ICONS ================= */}
           <div className="mt-[12px] flex gap-[6px]">
@@ -96,6 +123,7 @@ export default function Footer() {
               aria-label="LinkedIn"
               className="
                 flex h-[32px] w-[32px]
+                shrink-0
                 items-center justify-center
                 rounded-[3px]
                 border border-[#f4f4f4]
@@ -115,12 +143,14 @@ export default function Footer() {
               </svg>
             </a>
 
+
             {/* YouTube */}
             <a
               href="#"
               aria-label="YouTube"
               className="
                 flex h-[32px] w-[32px]
+                shrink-0
                 items-center justify-center
                 rounded-[3px]
                 border border-[#f4f4f4]
@@ -140,12 +170,14 @@ export default function Footer() {
               </svg>
             </a>
 
+
             {/* Message */}
             <a
               href="#"
               aria-label="Message"
               className="
                 flex h-[32px] w-[32px]
+                shrink-0
                 items-center justify-center
                 rounded-[3px]
                 border border-[#f4f4f4]
@@ -177,19 +209,22 @@ export default function Footer() {
             </a>
 
           </div>
+
         </div>
 
 
         {/* ================= SUMMIT SHOWCASE ================= */}
-        <div className="max-lg:w-full">
+        <div className="w-full min-w-0">
 
           <h3 className="mb-[17px] text-[18px] font-bold leading-[1.2] text-[#f58220]">
             LEX WITNESS SUMMITS SHOWCASE
           </h3>
 
+
           {/* Summit 1 */}
           <div className="mb-[19px] text-[15px]">
-            <strong className="mb-[3px] block font-bold leading-[1.45] text-[#f2f2f2]">
+
+            <strong className="mb-[3px] block break-words font-bold leading-[1.45] text-[#f2f2f2]">
               The 8th Annual Banking &amp; Finance Legal Summit 2025
             </strong>
 
@@ -210,11 +245,14 @@ export default function Footer() {
                 www.bfils.in
               </a>
             </span>
+
           </div>
+
 
           {/* Summit 2 */}
           <div className="mb-[19px] text-[15px]">
-            <strong className="mb-[3px] block font-bold leading-[1.45] text-[#f2f2f2]">
+
+            <strong className="mb-[3px] block break-words font-bold leading-[1.45] text-[#f2f2f2]">
               The 11th Annual Grand Masters 2025 – Pune Edition
             </strong>
 
@@ -235,11 +273,14 @@ export default function Footer() {
                 www.grandmasters.in
               </a>
             </span>
+
           </div>
+
 
           {/* Summit 3 */}
           <div className="text-[15px]">
-            <strong className="mb-[3px] block font-bold leading-[1.45] text-[#f2f2f2]">
+
+            <strong className="mb-[3px] block break-words font-bold leading-[1.45] text-[#f2f2f2]">
               The 11th Annual Grand Masters 2025 – Chennai Edition
             </strong>
 
@@ -260,13 +301,14 @@ export default function Footer() {
                 www.grandmasters.in
               </a>
             </span>
+
           </div>
 
         </div>
 
 
         {/* ================= EXPLORE ================= */}
-        <div className="max-lg:w-full">
+        <div className="w-full min-w-0">
 
           <h3 className="mb-[17px] text-[18px] font-bold leading-[1.2] text-[#f58220]">
             EXPLORE FURTHER!
@@ -285,6 +327,7 @@ export default function Footer() {
             <br className="max-sm:hidden" />
             decks for you to know us better :)
           </p>
+
 
           {/* Buttons */}
           <div className="flex flex-col items-start gap-[15px]">
@@ -315,22 +358,24 @@ export default function Footer() {
                 key={item.label}
                 href={item.href}
                 className="
-      flex min-h-[40px] w-[180px]
-      items-center justify-center
-      rounded-[4px]
-      border border-[#f4f4f4]
-      px-[11px]
-      text-[14px]
-      font-bold
-      text-[#eeeeee]
-      transition-all duration-200
-      hover:border-[#f58220]
-      hover:bg-[#f58220]
-      hover:text-white
+                  flex min-h-[40px]
+                  w-[180px]
+                  items-center
+                  justify-center
+                  rounded-[4px]
+                  border border-[#f4f4f4]
+                  px-[11px]
+                  text-[14px]
+                  font-bold
+                  text-[#eeeeee]
+                  transition-all duration-200
+                  hover:border-[#f58220]
+                  hover:bg-[#f58220]
+                  hover:text-white
 
-      max-sm:w-full
-      max-sm:max-w-[250px]
-    "
+                  max-sm:w-full
+                  max-sm:max-w-[250px]
+                "
               >
                 {item.label}
               </a>
@@ -346,12 +391,14 @@ export default function Footer() {
       {/* ================= BOTTOM BAR ================= */}
       <div
         className="
+          mx-auto
           mt-[50px]
           flex min-h-[87px]
+          w-[1170px] max-w-[calc(100%-40px)]
           items-center
+          justify-center
           border-t border-[#777777]
-            w-[1170px]
-            justify-center
+
           max-lg:h-auto
           max-lg:min-h-0
           max-lg:flex-col
@@ -360,7 +407,9 @@ export default function Footer() {
           max-lg:px-[20px]
           max-lg:py-[25px]
 
-          max-sm:px-[15px]
+          max-sm:w-[calc(100%-30px)]
+          max-sm:max-w-none
+          max-sm:px-0
         "
       >
 
