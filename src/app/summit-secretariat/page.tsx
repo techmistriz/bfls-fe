@@ -1,87 +1,69 @@
 "use client";
 
 import { useState } from "react";
-import SubscribeSection from "@/src/components/ReuseSection/SubscribeSection";
+import SubscribeSection from "@/src/components/sections/SubscribeSection";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutWitnessBanner() {
+  const [openEdition, setOpenEdition] = useState<number | null>(0);
 
-    const [openEdition, setOpenEdition] = useState<number | null>(0);
+  const toggleEdition = (index: number) => {
+    setOpenEdition((current) => (current === index ? null : index));
+  };
 
-    const toggleEdition = (index: number) => {
-        setOpenEdition((current) =>
-            current === index ? null : index
-        );
-    };
+  return (
+    <div className="w-full">
+      {/* ================= BANNER ================= */}
 
-    return (
-        <div className="w-full">
+      <section className="relative mt-[88px] h-[398px] w-full overflow-hidden">
+        <Image
+          src="/images/bg_banner.png"
+          alt="Past Editions"
+          fill
+          priority
+          className="object-cover object-center"
+        />
 
-            {/* ================= BANNER ================= */}
+        <div className="relative z-10 mx-auto flex h-full max-w-[1130px] items-center px-6 lg:px-0">
+          <div>
+            <h1 className="font-poppins text-[38px] font-bold leading-tight text-white md:text-[52px]">
+              The Lex Witness Summit Secretariat
+            </h1>
 
-            <section className="relative mt-[88px] h-[398px] w-full overflow-hidden">
-
-                <Image
-                    src="/images/bg_banner.png"
-                    alt="Past Editions"
-                    fill
-                    priority
-                    className="object-cover object-center"
-                />
-
-                <div className="relative z-10 mx-auto flex h-full max-w-[1130px] items-center px-6 lg:px-0">
-                    <div>
-
-                        <h1 className="font-poppins text-[38px] font-bold leading-tight text-white md:text-[52px]">
-                            The Lex Witness Summit Secretariat
-                        </h1>
-
-                        {/* <p className="mt-1 font-archivo text-[16px] font-medium text-white md:text-[17px]">
+            {/* <p className="mt-1 font-archivo text-[16px] font-medium text-white md:text-[17px]">
                             Your Witness Please!
                         </p> */}
+          </div>
+        </div>
 
-                    </div>
-                </div>
+        {/* Breadcrumb */}
 
-                {/* Breadcrumb */}
+        <div className="absolute bottom-0 right-[7%] z-20 md:right-[20%]">
+          <div className="flex h-[56px] w-[235px] items-center justify-center gap-3 bg-white font-archivo shadow-sm">
+            <span className="text-[13px] text-[#555]">
+              <Link href="/" className="hover:text-[#EF7F1B]">
+                Home
+              </Link>
+            </span>
 
-                <div className="absolute bottom-0 right-[7%] z-20 md:right-[20%]">
+            <span className="text-[13px] text-[#999]">/</span>
 
-                    <div className="flex h-[56px] w-[235px] items-center justify-center gap-3 bg-white font-archivo shadow-sm">
+            <span className="text-[13px] font-medium text-[#EF7F1B]">
+              Summit Secretariat
+            </span>
+          </div>
+        </div>
+      </section>
 
-                        <span className="text-[13px] text-[#555]">
-                            <a
-                                href="/"
-                                className="hover:text-[#EF7F1B]"
-                            >
-                                Home
-                            </a>
-                        </span>
-
-                        <span className="text-[13px] text-[#999]">
-                            /
-                        </span>
-
-                        <span className="text-[13px] font-medium text-[#EF7F1B]">
-                            Summit Secretariat
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            {/* =====================================================
+      {/* =====================================================
                 SUMMIT SECRETARIAT CONTENT
             ====================================================== */}
 
-            <section className="w-full bg-white">
-
-                <div
-                    className="
+      <section className="w-full bg-white">
+        <div
+          className="
                         mx-auto
                         max-w-[1130px]
                         px-6
@@ -94,10 +76,9 @@ export default function AboutWitnessBanner() {
                         max-sm:px-[20px]
                         max-sm:py-[35px]
                     "
-                >
-
-                    <div
-                        className="
+        >
+          <div
+            className="
                             grid
                             grid-cols-[1fr_320px]
                             gap-[40px]
@@ -106,18 +87,16 @@ export default function AboutWitnessBanner() {
                             max-md:grid-cols-1
                             max-md:gap-[45px]
                         "
-                    >
-
-                        {/* =================================================
+          >
+            {/* =================================================
                             LEFT CONTENT
                         ================================================== */}
 
-                        <div className="min-w-0">
+            <div className="min-w-0">
+              {/* Intro Paragraph */}
 
-                            {/* Intro Paragraph */}
-
-                            <p
-                                className="
+              <p
+                className="
                                     mb-[15px]
                                     font-archivo
                                     text-[16px]
@@ -128,12 +107,19 @@ export default function AboutWitnessBanner() {
                                     max-sm:text-[14px]
                                     max-sm:leading-[1.7]
                                 "
-                            >
-                                Typically known as an A to A magazine – an adult to adult magazine as they say, Lex Witness has been a platform for knowledge sharing and thought leadership on various industry sectors. It is through the space of the magazine as well as the pedigree of summits which it has been organising ever since its inception that industry veterans bring into limelight various undercurrents of law in their respective chambers and corporate offices!
-                            </p>
+              >
+                Typically known as an A to A magazine – an adult to adult
+                magazine as they say, Lex Witness has been a platform for
+                knowledge sharing and thought leadership on various industry
+                sectors. It is through the space of the magazine as well as the
+                pedigree of summits which it has been organising ever since its
+                inception that industry veterans bring into limelight various
+                undercurrents of law in their respective chambers and corporate
+                offices!
+              </p>
 
-                            <p
-                                className="
+              <p
+                className="
                                     mb-[38px]
                                     font-archivo
                                     text-[16px]
@@ -144,28 +130,25 @@ export default function AboutWitnessBanner() {
                                     max-sm:text-[14px]
                                     max-sm:leading-[1.7]
                                 "
-                            >
-                                A major development here at the action packed Summit
-                                Secretariat is the extension of these services to
-                                various organizations who have started entrusting
-                                Witness with the responsibility to create, execute and
-                                conclude Summit Concepts to meet their respective
-                                purposes. Witness through its already existing
-                                ecosystem of summit management team is all set to
-                                provide these services with an added expertise of
-                                quality content through the magazine presence. You
-                                have an idea and we have a summit to showcase it! For
-                                more details on our Summit Secretariat services please
-                                contact us.
-                            </p>
+              >
+                A major development here at the action packed Summit Secretariat
+                is the extension of these services to various organizations who
+                have started entrusting Witness with the responsibility to
+                create, execute and conclude Summit Concepts to meet their
+                respective purposes. Witness through its already existing
+                ecosystem of summit management team is all set to provide these
+                services with an added expertise of quality content through the
+                magazine presence. You have an idea and we have a summit to
+                showcase it! For more details on our Summit Secretariat services
+                please contact us.
+              </p>
 
-
-                            {/* =================================================
+              {/* =================================================
                                 ORANGE HEADING
                             ================================================== */}
 
-                            <h2
-                                className="
+              <h2
+                className="
                                     mb-[18px]
                                     font-archivo
                                     text-[24px]
@@ -176,25 +159,22 @@ export default function AboutWitnessBanner() {
                                     max-sm:text-[20px]
                                     max-sm:leading-[1.4]
                                 "
-                            >
-                                Meanwhile here’s a gist of The Lex Witness Summits so far;
-                            </h2>
+              >
+                Meanwhile here’s a gist of The Lex Witness Summits so far;
+              </h2>
 
-
-                            {/* =================================================
+              {/* =================================================
                                 ACCORDION
                             ================================================== */}
 
-                            <div className="w-full">
+              <div className="w-full">
+                {/* ================= 2023 ================= */}
 
-                                {/* ================= 2023 ================= */}
-
-                                <div className="mb-[18px] w-full">
-
-                                    <button
-                                        type="button"
-                                        onClick={() => toggleEdition(0)}
-                                        className={`
+                <div className="mb-[18px] w-full">
+                  <button
+                    type="button"
+                    onClick={() => toggleEdition(0)}
+                    className={`
                                             flex
                                             min-h-[54px]
                                             w-full
@@ -211,52 +191,45 @@ export default function AboutWitnessBanner() {
                                             max-sm:px-[18px]
                                             max-sm:text-[14px]
 
-                                            ${openEdition === 0
+                                            ${
+                                              openEdition === 0
                                                 ? "bg-[#1195d0] text-white"
                                                 : "bg-[#f3f5f7] text-[#111]"
                                             }
                                         `}
-                                    >
+                  >
+                    <span>Lex Witness Summits 2023</span>
 
-                                        <span>
-                                            Lex Witness Summits 2023
-                                        </span>
+                    <span className="ml-4 shrink-0">
+                      {openEdition === 0 ? (
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="m6 15 6-6 6 6" />
+                        </svg>
+                      ) : (
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      )}
+                    </span>
+                  </button>
 
-                                        <span className="ml-4 shrink-0">
-
-                                            {openEdition === 0 ? (
-                                                <svg
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                >
-                                                    <path d="m6 15 6-6 6 6" />
-                                                </svg>
-                                            ) : (
-                                                <svg
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                >
-                                                    <path d="m6 9 6 6 6-6" />
-                                                </svg>
-                                            )}
-
-                                        </span>
-
-                                    </button>
-
-
-                                    {openEdition === 0 && (
-
-                                        <div
-                                            className="
+                  {openEdition === 0 && (
+                    <div
+                      className="
                                                 grid
                                                 grid-cols-[240px_1fr]
                                                 gap-[30px]
@@ -269,12 +242,11 @@ export default function AboutWitnessBanner() {
                                                 max-sm:px-[10px]
                                                 max-sm:py-[15px]
                                             "
-                                        >
+                    >
+                      {/* Image */}
 
-                                            {/* Image */}
-
-                                            <div
-                                                className="
+                      <div
+                        className="
                                                     flex
                                                     min-h-[215px]
                                                     items-start
@@ -284,26 +256,21 @@ export default function AboutWitnessBanner() {
 
                                                     max-sm:min-h-0
                                                 "
-                                            >
+                      >
+                        <div className="relative aspect-[1.35/1] w-full max-w-[230px] overflow-hidden">
+                          <Image
+                            src="/images/10-scaled.jpg"
+                            alt="Lex Witness Summits 2023"
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
 
-                                                <div className="relative aspect-[1.35/1] w-full max-w-[230px] overflow-hidden">
+                      {/* Content */}
 
-                                                    <Image
-                                                        src="/images/10-scaled.jpg"
-                                                        alt="Lex Witness Summits 2023"
-                                                        fill
-                                                        className="object-cover"
-                                                    />
-
-                                                </div>
-
-                                            </div>
-
-
-                                            {/* Content */}
-
-                                            <div
-                                                className="
+                      <div
+                        className="
                                                     font-archivo
                                                     text-[16px]
                                                     leading-[1.5]
@@ -312,46 +279,36 @@ export default function AboutWitnessBanner() {
                                                     max-sm:text-[14px]
                                                     max-sm:leading-[1.65]
                                                 "
-                                            >
+                      >
+                        <p>
+                          <strong>
+                            The Grand Masters 2023 – New Delhi, Mumbai &amp;
+                            Bengaluru Edition
+                          </strong>{" "}
+                          focused on certain pre identified set of topical
+                          issues and challenges that the In-House Counsel has
+                          been facing in order to ensure his role being
+                          implemented successfully. Apart from a common set of
+                          topics we had also brought in an element of fireside
+                          chats between an in-house counsel &amp; external
+                          counsel which was well received by the audience. With
+                          expert industry practitioners as speakers and a
+                          variegated audience profile, the summit proved to be
+                          one of the best learning and networking opportunities
+                          under one roof.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
-                                                <p>
-                                                    <strong>
-                                                        The Grand Masters 2023 – New Delhi,
-                                                        Mumbai &amp; Bengaluru Edition
-                                                    </strong>{" "}
-                                                    focused on certain pre identified set
-                                                    of topical issues and challenges that
-                                                    the In-House Counsel has been facing in
-                                                    order to ensure his role being
-                                                    implemented successfully. Apart from a
-                                                    common set of topics we had also brought
-                                                    in an element of fireside chats between
-                                                    an in-house counsel &amp; external counsel
-                                                    which was well received by the audience.
-                                                    With expert industry practitioners as
-                                                    speakers and a variegated audience
-                                                    profile, the summit proved to be one of
-                                                    the best learning and networking
-                                                    opportunities under one roof.
-                                                </p>
+                {/* ================= 2021 ================= */}
 
-                                            </div>
-
-                                        </div>
-
-                                    )}
-
-                                </div>
-
-
-                                {/* ================= 2021 ================= */}
-
-                                <div className="mb-[18px] w-full">
-
-                                    <button
-                                        type="button"
-                                        onClick={() => toggleEdition(1)}
-                                        className={`
+                <div className="mb-[18px] w-full">
+                  <button
+                    type="button"
+                    onClick={() => toggleEdition(1)}
+                    className={`
                                             flex
                                             min-h-[54px]
                                             w-full
@@ -370,52 +327,45 @@ export default function AboutWitnessBanner() {
                                             max-sm:min-h-[52px]
                                             max-sm:px-[18px]
                                             max-sm:text-[14px]
-                                            ${openEdition === 0
+                                            ${
+                                              openEdition === 0
                                                 ? "bg-[#1195d0] text-white"
                                                 : "bg-[#f3f5f7] text-[#111]"
                                             }
                                         `}
-                                    >
+                  >
+                    <span>Lex Witness Summits 2021</span>
 
-                                        <span>
-                                            Lex Witness Summits 2021
-                                        </span>
+                    <span className="ml-4 shrink-0">
+                      {openEdition === 1 ? (
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="m6 15 6-6 6 6" />
+                        </svg>
+                      ) : (
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      )}
+                    </span>
+                  </button>
 
-                                        <span className="ml-4 shrink-0">
-
-                                            {openEdition === 1 ? (
-                                                <svg
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                >
-                                                    <path d="m6 15 6-6 6 6" />
-                                                </svg>
-                                            ) : (
-                                                <svg
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                >
-                                                    <path d="m6 9 6 6 6-6" />
-                                                </svg>
-                                            )}
-
-                                        </span>
-
-                                    </button>
-
-
-                                    {openEdition === 1 && (
-
-                                        <div
-                                            className="
+                  {openEdition === 1 && (
+                    <div
+                      className="
                                                 grid
                                                 grid-cols-[240px_1fr]
                                                 gap-[30px]
@@ -428,12 +378,11 @@ export default function AboutWitnessBanner() {
                                                 max-sm:px-[10px]
                                                 max-sm:py-[15px]
                                             "
-                                        >
+                    >
+                      {/* Image */}
 
-                                            {/* Image */}
-
-                                            <div
-                                                className="
+                      <div
+                        className="
                                                     flex
                                                     min-h-[215px]
                                                     items-start
@@ -443,26 +392,21 @@ export default function AboutWitnessBanner() {
 
                                                     max-sm:min-h-0
                                                 "
-                                            >
+                      >
+                        <div className="relative aspect-[1.35/1] w-full max-w-[230px] overflow-hidden">
+                          <Image
+                            src="/images/10-scaled.jpg"
+                            alt="Lex Witness Summits 2023"
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
 
-                                                <div className="relative aspect-[1.35/1] w-full max-w-[230px] overflow-hidden">
+                      {/* Content */}
 
-                                                    <Image
-                                                        src="/images/10-scaled.jpg"
-                                                        alt="Lex Witness Summits 2023"
-                                                        fill
-                                                        className="object-cover"
-                                                    />
-
-                                                </div>
-
-                                            </div>
-
-
-                                            {/* Content */}
-
-                                            <div
-                                                className="
+                      <div
+                        className="
                                                     font-archivo
                                                     text-[16px]
                                                     leading-[1.5]
@@ -471,46 +415,36 @@ export default function AboutWitnessBanner() {
                                                     max-sm:text-[14px]
                                                     max-sm:leading-[1.65]
                                                 "
-                                            >
+                      >
+                        <p>
+                          <strong>
+                            The Grand Masters 2023 – New Delhi, Mumbai &amp;
+                            Bengaluru Edition
+                          </strong>{" "}
+                          focused on certain pre identified set of topical
+                          issues and challenges that the In-House Counsel has
+                          been facing in order to ensure his role being
+                          implemented successfully. Apart from a common set of
+                          topics we had also brought in an element of fireside
+                          chats between an in-house counsel &amp; external
+                          counsel which was well received by the audience. With
+                          expert industry practitioners as speakers and a
+                          variegated audience profile, the summit proved to be
+                          one of the best learning and networking opportunities
+                          under one roof.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
-                                                <p>
-                                                    <strong>
-                                                        The Grand Masters 2023 – New Delhi,
-                                                        Mumbai &amp; Bengaluru Edition
-                                                    </strong>{" "}
-                                                    focused on certain pre identified set
-                                                    of topical issues and challenges that
-                                                    the In-House Counsel has been facing in
-                                                    order to ensure his role being
-                                                    implemented successfully. Apart from a
-                                                    common set of topics we had also brought
-                                                    in an element of fireside chats between
-                                                    an in-house counsel &amp; external counsel
-                                                    which was well received by the audience.
-                                                    With expert industry practitioners as
-                                                    speakers and a variegated audience
-                                                    profile, the summit proved to be one of
-                                                    the best learning and networking
-                                                    opportunities under one roof.
-                                                </p>
+                {/* ================= 2020 ================= */}
 
-                                            </div>
-
-                                        </div>
-
-                                    )}
-
-                                </div>
-
-
-                                {/* ================= 2020 ================= */}
-
-                                <div className="mb-[18px] w-full">
-
-                                    <button
-                                        type="button"
-                                        onClick={() => toggleEdition(2)}
-                                        className="
+                <div className="mb-[18px] w-full">
+                  <button
+                    type="button"
+                    onClick={() => toggleEdition(2)}
+                    className="
                                             flex
                                             min-h-[54px]
                                             w-full
@@ -531,62 +465,50 @@ export default function AboutWitnessBanner() {
                                             max-sm:text-[14px]
                                             
                                         "
-                                    >
+                  >
+                    <span>Lex Witness Summits 2020</span>
 
-                                        <span>
-                                            Lex Witness Summits 2020
-                                        </span>
+                    <span className="ml-4 shrink-0">
+                      {openEdition === 2 ? (
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="m6 15 6-6 6 6" />
+                        </svg>
+                      ) : (
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      )}
+                    </span>
+                  </button>
 
-                                        <span className="ml-4 shrink-0">
+                  {openEdition === 2 && (
+                    <div className="bg-[#f5f5f5] p-[20px] text-[15px] text-[#555]">
+                      Lex Witness Summits 2020 details.
+                    </div>
+                  )}
+                </div>
 
-                                            {openEdition === 2 ? (
-                                                <svg
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                >
-                                                    <path d="m6 15 6-6 6 6" />
-                                                </svg>
-                                            ) : (
-                                                <svg
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                >
-                                                    <path d="m6 9 6 6 6-6" />
-                                                </svg>
-                                            )}
+                {/* ================= 2019 ================= */}
 
-                                        </span>
-
-                                    </button>
-
-
-                                    {openEdition === 2 && (
-
-                                        <div className="bg-[#f5f5f5] p-[20px] text-[15px] text-[#555]">
-                                            Lex Witness Summits 2020 details.
-                                        </div>
-
-                                    )}
-
-                                </div>
-
-
-                                {/* ================= 2019 ================= */}
-
-                                <div className="w-full">
-
-                                    <button
-                                        type="button"
-                                        onClick={() => toggleEdition(3)}
-                                        className="
+                <div className="w-full">
+                  <button
+                    type="button"
+                    onClick={() => toggleEdition(3)}
+                    className="
                                             flex
                                             min-h-[54px]
                                             w-full
@@ -606,70 +528,55 @@ export default function AboutWitnessBanner() {
                                             max-sm:px-[18px]
                                             max-sm:text-[14px]
                                         "
-                                    >
+                  >
+                    <span>Lex Witness Summits 2019</span>
 
-                                        <span>
-                                            Lex Witness Summits 2019
-                                        </span>
+                    <span className="ml-4 shrink-0">
+                      {openEdition === 3 ? (
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="m6 15 6-6 6 6" />
+                        </svg>
+                      ) : (
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      )}
+                    </span>
+                  </button>
 
-                                        <span className="ml-4 shrink-0">
+                  {openEdition === 3 && (
+                    <div className="bg-[#f5f5f5] p-[20px] text-[15px] text-[#555]">
+                      Lex Witness Summits 2019 details.
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
 
-                                            {openEdition === 3 ? (
-                                                <svg
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                >
-                                                    <path d="m6 15 6-6 6 6" />
-                                                </svg>
-                                            ) : (
-                                                <svg
-                                                    width="18"
-                                                    height="18"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                >
-                                                    <path d="m6 9 6 6 6-6" />
-                                                </svg>
-                                            )}
-
-                                        </span>
-
-                                    </button>
-
-
-                                    {openEdition === 3 && (
-
-                                        <div className="bg-[#f5f5f5] p-[20px] text-[15px] text-[#555]">
-                                            Lex Witness Summits 2019 details.
-                                        </div>
-
-                                    )}
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        {/* =================================================
+            {/* =================================================
                             RIGHT SIDEBAR
                         ================================================== */}
 
-                        <aside className="w-full">
+            <aside className="w-full">
+              {/* ================= MESSAGE 1 ================= */}
 
-                            {/* ================= MESSAGE 1 ================= */}
-
-                            <div className="pb-[28px]">
-
-                                <h3
-                                    className="
+              <div className="pb-[28px]">
+                <h3
+                  className="
                                         mb-[18px]
                                         font-archivo
                                         text-[25px]
@@ -678,235 +585,158 @@ export default function AboutWitnessBanner() {
 
                                         max-sm:text-[21px]
                                     "
-                                >
-                                    2020 Official Messages
-                                </h3>
-
-                                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
-
-                                    <p className="font-semibold text-[#666]">
-                                        Ms. Veta T. Richardson
-                                    </p>
-
-                                    <p>
-                                        President &amp; CEO, ACC
-                                    </p>
-
-                                    <a
-                                        href="#"
-                                        className="text-[#222] hover:text-[#f58220]"
-                                    >
-                                        Read More...
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-
-                            {/* Divider */}
-
-                            <div className="mb-[0px] h-px w-full " />
-
-
-                            {/* ================= MESSAGE 2 ================= */}
-
-                            <div className="pb-[28px]">
-
-                                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
-
-                                    <p className="font-semibold text-[#666]">
-                                        Ms. Manjaree Choudhary
-                                    </p>
-
-                                    <p>
-                                        General Counsel, Maruti Suzuki
-                                    </p>
-
-                                    <p>
-                                        Summit Chair, New Delhi Edition
-                                    </p>
-
-                                    <a
-                                        href="#"
-                                        className="text-[#222] hover:text-[#f58220]"
-                                    >
-                                        Read More...
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-
-                            {/* Divider */}
-
-                            <div className="mb-[34px] h-px w-full bg-[#222]" />
-
-
-                            {/* ================= MESSAGE 3 ================= */}
-
-                            <div className="pb-[28px]">
-
-                                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
-
-                                    <h3
-                                        className="
-                                        mb-[18px]
-                                        font-archivo
-                                        text-[25px]
-                                        font-bold
-                                        text-[#d71920]
-
-                                        max-sm:text-[21px]
-                                    "
-                                    >
-                                        2020 Official Messages
-                                    </h3>
-
-                                    <p className="font-semibold text-[#666]">
-                                        Ms. Debolina Partap
-                                    </p>
-
-                                    <p>
-                                        Group GC, Wockhardt Group
-                                    </p>
-
-                                    <p>
-                                        Summit Chair, Mumbai Edition
-                                    </p>
-
-                                    <a
-                                        href="#"
-                                        className="text-[#222] hover:text-[#f58220]"
-                                    >
-                                        Read More...
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-
-                            {/* Divider */}
-
-                            <div className="mb-[34px] h-px w-full bg-[#222]" />
-
-
-                            {/* ================= MESSAGE 4 ================= */}
-
-                            <div>
-
-                                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
-
-                                    <p className="font-semibold text-[#666]">
-                                        Ms. Debolina Partap
-                                    </p>
-
-                                    <p>
-                                        Group GC, Wockhardt Group
-                                    </p>
-
-                                    <p>
-                                        Summit Chair, Mumbai Edition
-                                    </p>
-
-                                    <a
-                                        href="#"
-                                        className="text-[#222] hover:text-[#f58220]"
-                                    >
-                                        Read More...
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                            {/* Divider */}
-
-                            <div className="mb-[34px] h-px w-full bg-[#222]" />
-
-
-                            {/* ================= MESSAGE 4 ================= */}
-
-                            <div>
-
-                                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
-
-                                    <p className="font-semibold text-[#666]">
-                                        Ms. Debolina Partap
-                                    </p>
-
-                                    <p>
-                                        Group GC, Wockhardt Group
-                                    </p>
-
-                                    <p>
-                                        Summit Chair, Mumbai Edition
-                                    </p>
-
-                                    <a
-                                        href="#"
-                                        className="text-[#222] hover:text-[#f58220]"
-                                    >
-                                        Read More...
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                            {/* Divider */}
-
-                            <div className="mb-[34px] h-px w-full bg-[#222]" />
-
-
-                            {/* ================= MESSAGE 4 ================= */}
-
-                            <div>
-
-                                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
-
-                                    <p className="font-semibold text-[#666]">
-                                        Ms. Debolina Partap
-                                    </p>
-
-                                    <p>
-                                        Group GC, Wockhardt Group
-                                    </p>
-
-                                    <p>
-                                        Summit Chair, Mumbai Edition
-                                    </p>
-
-                                    <a
-                                        href="#"
-                                        className="text-[#222] hover:text-[#f58220]"
-                                    >
-                                        Read More...
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                        </aside>
-
-                    </div>
-
+                >
+                  2020 Official Messages
+                </h3>
+
+                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
+                  <p className="font-semibold text-[#666]">
+                    Ms. Veta T. Richardson
+                  </p>
+
+                  <p>President &amp; CEO, ACC</p>
+
+                  <a href="#" className="text-[#222] hover:text-[#f58220]">
+                    Read More...
+                  </a>
                 </div>
+              </div>
 
-            </section>
+              {/* Divider */}
 
+              <div className="mb-[0px] h-px w-full " />
 
-            {/* =====================================================
+              {/* ================= MESSAGE 2 ================= */}
+
+              <div className="pb-[28px]">
+                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
+                  <p className="font-semibold text-[#666]">
+                    Ms. Manjaree Choudhary
+                  </p>
+
+                  <p>General Counsel, Maruti Suzuki</p>
+
+                  <p>Summit Chair, New Delhi Edition</p>
+
+                  <a href="#" className="text-[#222] hover:text-[#f58220]">
+                    Read More...
+                  </a>
+                </div>
+              </div>
+
+              {/* Divider */}
+
+              <div className="mb-[34px] h-px w-full bg-[#222]" />
+
+              {/* ================= MESSAGE 3 ================= */}
+
+              <div className="pb-[28px]">
+                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
+                  <h3
+                    className="
+                                        mb-[18px]
+                                        font-archivo
+                                        text-[25px]
+                                        font-bold
+                                        text-[#d71920]
+
+                                        max-sm:text-[21px]
+                                    "
+                  >
+                    2020 Official Messages
+                  </h3>
+
+                  <p className="font-semibold text-[#666]">
+                    Ms. Debolina Partap
+                  </p>
+
+                  <p>Group GC, Wockhardt Group</p>
+
+                  <p>Summit Chair, Mumbai Edition</p>
+
+                  <a href="#" className="text-[#222] hover:text-[#f58220]">
+                    Read More...
+                  </a>
+                </div>
+              </div>
+
+              {/* Divider */}
+
+              <div className="mb-[34px] h-px w-full bg-[#222]" />
+
+              {/* ================= MESSAGE 4 ================= */}
+
+              <div>
+                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
+                  <p className="font-semibold text-[#666]">
+                    Ms. Debolina Partap
+                  </p>
+
+                  <p>Group GC, Wockhardt Group</p>
+
+                  <p>Summit Chair, Mumbai Edition</p>
+
+                  <a href="#" className="text-[#222] hover:text-[#f58220]">
+                    Read More...
+                  </a>
+                </div>
+              </div>
+
+              {/* Divider */}
+
+              <div className="mb-[34px] h-px w-full bg-[#222]" />
+
+              {/* ================= MESSAGE 4 ================= */}
+
+              <div>
+                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
+                  <p className="font-semibold text-[#666]">
+                    Ms. Debolina Partap
+                  </p>
+
+                  <p>Group GC, Wockhardt Group</p>
+
+                  <p>Summit Chair, Mumbai Edition</p>
+
+                  <a href="#" className="text-[#222] hover:text-[#f58220]">
+                    Read More...
+                  </a>
+                </div>
+              </div>
+
+              {/* Divider */}
+
+              <div className="mb-[34px] h-px w-full bg-[#222]" />
+
+              {/* ================= MESSAGE 4 ================= */}
+
+              <div>
+                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
+                  <p className="font-semibold text-[#666]">
+                    Ms. Debolina Partap
+                  </p>
+
+                  <p>Group GC, Wockhardt Group</p>
+
+                  <p>Summit Chair, Mumbai Edition</p>
+
+                  <a href="#" className="text-[#222] hover:text-[#f58220]">
+                    Read More...
+                  </a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
                 EXISTING SUBSCRIBE SECTION
             ====================================================== */}
 
-            <section>
-                <SubscribeSection />
-            </section>
-
-        </div>
-    );
+      <section>
+        <SubscribeSection />
+      </section>
+    </div>
+  );
 }

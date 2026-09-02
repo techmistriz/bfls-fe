@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SubscribeSection from "@/src/components/ReuseSection/SubscribeSection";
+import SubscribeSection from "@/src/components/sections/SubscribeSection";
 import Image from "next/image";
+import Link from "next/link";
 
 const galleryImages = [
   {
@@ -70,10 +71,7 @@ export default function GalleryBanner() {
     setSelectedImage((current) => {
       if (current === null) return null;
 
-      return (
-        (current - 1 + galleryImages.length) %
-        galleryImages.length
-      );
+      return (current - 1 + galleryImages.length) % galleryImages.length;
     });
   };
 
@@ -111,7 +109,6 @@ export default function GalleryBanner() {
 
   return (
     <div className="w-full overflow-hidden">
-
       {/* =====================================================
           BANNER
       ====================================================== */}
@@ -131,7 +128,6 @@ export default function GalleryBanner() {
           max-sm:h-[280px]
         "
       >
-
         <Image
           src="/images/bg_banner.png"
           alt="Past Editions"
@@ -162,9 +158,7 @@ export default function GalleryBanner() {
             max-sm:px-[20px]
           "
         >
-
           <div>
-
             <h1
               className="
                 font-poppins
@@ -180,11 +174,8 @@ export default function GalleryBanner() {
             >
               Gallery
             </h1>
-
           </div>
-
         </div>
-
 
         {/* =====================================================
             BREADCRUMB
@@ -202,7 +193,6 @@ export default function GalleryBanner() {
             max-sm:right-0
           "
         >
-
           <div
             className="
               flex
@@ -220,7 +210,6 @@ export default function GalleryBanner() {
               max-sm:gap-2
             "
           >
-
             <span
               className="
                 text-[13px]
@@ -229,12 +218,9 @@ export default function GalleryBanner() {
                 max-sm:text-[11px]
               "
             >
-              <a
-                href="/"
-                className="transition-colors hover:text-[#EF7F1B]"
-              >
+              <Link href="/" className="transition-colors hover:text-[#EF7F1B]">
                 Home
-              </a>
+              </Link>
             </span>
 
             <span
@@ -259,13 +245,9 @@ export default function GalleryBanner() {
             >
               Gallery
             </span>
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           GALLERY SECTION
@@ -285,7 +267,6 @@ export default function GalleryBanner() {
           max-sm:py-12
         "
       >
-
         <div
           className="
             mx-auto
@@ -300,7 +281,6 @@ export default function GalleryBanner() {
             max-sm:px-0
           "
         >
-
           <div
             className="
               grid
@@ -313,9 +293,7 @@ export default function GalleryBanner() {
               max-sm:gap-3
             "
           >
-
             {galleryImages.map((image, index) => (
-
               <button
                 key={index}
                 type="button"
@@ -334,7 +312,6 @@ export default function GalleryBanner() {
                 "
                 aria-label={`Open ${image.alt}`}
               >
-
                 {/* =========================
                     IMAGE
                 ========================== */}
@@ -356,7 +333,6 @@ export default function GalleryBanner() {
                   "
                 />
 
-
                 {/* =========================
                     HOVER OVERLAY
                 ========================== */}
@@ -374,7 +350,6 @@ export default function GalleryBanner() {
                     group-hover:bg-[#12264f]/75
                   "
                 >
-
                   {/* Plus Button */}
 
                   <span
@@ -400,7 +375,6 @@ export default function GalleryBanner() {
                       max-sm:group-active:opacity-100
                     "
                   >
-
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -412,21 +386,13 @@ export default function GalleryBanner() {
                       <path d="M12 5v14" />
                       <path d="M5 12h14" />
                     </svg>
-
                   </span>
-
                 </div>
-
               </button>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           SUBSCRIBE
@@ -436,13 +402,11 @@ export default function GalleryBanner() {
         <SubscribeSection />
       </section>
 
-
       {/* =====================================================
           LIGHTBOX / POPUP
       ====================================================== */}
 
       {selectedImage !== null && (
-
         <div
           className="
             fixed
@@ -458,7 +422,6 @@ export default function GalleryBanner() {
           "
           onClick={closePopup}
         >
-
           {/* =================================================
               POPUP CONTAINER
           ================================================== */}
@@ -480,7 +443,6 @@ export default function GalleryBanner() {
             "
             onClick={(e) => e.stopPropagation()}
           >
-
             {/* =================================================
                 CLOSE BUTTON
             ================================================== */}
@@ -522,7 +484,6 @@ export default function GalleryBanner() {
               ×
             </button>
 
-
             {/* =================================================
                 PREVIOUS BUTTON
             ================================================== */}
@@ -563,7 +524,6 @@ export default function GalleryBanner() {
                 max-sm:w-9
               "
             >
-
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -580,9 +540,7 @@ export default function GalleryBanner() {
               >
                 <path d="m15 18-6-6 6-6" />
               </svg>
-
             </button>
-
 
             {/* =================================================
                 IMAGE
@@ -596,7 +554,6 @@ export default function GalleryBanner() {
                 overflow-hidden
               "
             >
-
               <Image
                 key={galleryImages[selectedImage].src}
                 src={galleryImages[selectedImage].src}
@@ -608,9 +565,7 @@ export default function GalleryBanner() {
                 "
                 priority
               />
-
             </div>
-
 
             {/* =================================================
                 NEXT BUTTON
@@ -652,7 +607,6 @@ export default function GalleryBanner() {
                 max-sm:w-9
               "
             >
-
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -669,9 +623,7 @@ export default function GalleryBanner() {
               >
                 <path d="m9 18 6-6-6-6" />
               </svg>
-
             </button>
-
 
             {/* =================================================
                 IMAGE COUNTER
@@ -702,13 +654,9 @@ export default function GalleryBanner() {
             >
               {selectedImage + 1} / {galleryImages.length}
             </div>
-
           </div>
-
         </div>
-
       )}
-
     </div>
   );
 }

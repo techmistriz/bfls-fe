@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import SubscribeSection from "@/src/components/ReuseSection/SubscribeSection";
+import SubscribeSection from "@/src/components/sections/SubscribeSection";
+import Link from "next/link";
 
 const inputClass = `
   h-[50px]
@@ -23,7 +24,6 @@ const inputClass = `
 export default function ContactUs() {
   return (
     <div className="w-full overflow-hidden">
-
       {/* =====================================================
           BANNER
       ====================================================== */}
@@ -40,7 +40,6 @@ export default function ContactUs() {
           max-sm:h-[300px]
         "
       >
-
         <Image
           src="/images/bg_banner_mew.jpg"
           alt="Contact Us"
@@ -71,7 +70,6 @@ export default function ContactUs() {
           "
         >
           <div className="max-sm:mt-[-20px]">
-
             <h1
               className="
                 font-poppins
@@ -107,10 +105,8 @@ export default function ContactUs() {
             >
               Let us know what we can help you with.
             </p>
-
           </div>
         </div>
-
 
         {/* Breadcrumb */}
         <div
@@ -148,8 +144,7 @@ export default function ContactUs() {
               max-sm:gap-2
             "
           >
-
-            <a
+            <Link
               href="/"
               className="
                 text-[12px]
@@ -162,7 +157,7 @@ export default function ContactUs() {
               "
             >
               Home
-            </a>
+            </Link>
 
             <span
               className="
@@ -188,12 +183,9 @@ export default function ContactUs() {
             >
               Contact Us
             </span>
-
           </div>
         </div>
-
       </section>
-
 
       {/* =====================================================
           CONTACT SECTION
@@ -208,7 +200,6 @@ export default function ContactUs() {
           max-sm:min-h-0
         "
       >
-
         {/* Background Image */}
         <div
           className="
@@ -228,7 +219,6 @@ export default function ContactUs() {
         {/* Background Overlay */}
         {/* <div className="absolute inset-0 bg-white/85" /> */}
 
-
         {/* =================================================
             BACKGROUND TEXT
         ================================================== */}
@@ -237,7 +227,6 @@ export default function ContactUs() {
             contact
           </div>
         </div> */}
-
 
         {/* =================================================
             DECORATIVE ELEMENTS
@@ -306,7 +295,6 @@ export default function ContactUs() {
           ×
         </span>
 
-
         {/* =================================================
             CONTACT CONTENT
         ================================================== */}
@@ -336,7 +324,6 @@ export default function ContactUs() {
             max-sm:pt-[60px]
           "
         >
-
           {/* Heading */}
           <div
             className="
@@ -350,7 +337,6 @@ export default function ContactUs() {
               max-sm:mb-[25px]
             "
           >
-
             <p
               className="
                 mb-[5px]
@@ -381,9 +367,7 @@ export default function ContactUs() {
             >
               Drop us a Line
             </h2>
-
           </div>
-
 
           {/* =================================================
               FORM + CONTACT INFORMATION
@@ -403,7 +387,6 @@ export default function ContactUs() {
               max-md:gap-[25px]
             "
           >
-
             {/* =================================================
                 CONTACT FORM
             ================================================== */}
@@ -424,7 +407,6 @@ export default function ContactUs() {
                 max-sm:py-[22px]
               "
             >
-
               {/* Form Heading */}
               <h3
                 className="
@@ -438,16 +420,10 @@ export default function ContactUs() {
                   max-sm:leading-[1.3]
                 "
               >
-                Your{" "}
-                <span className="text-[#f58220]">
-                  Witness
-                </span>{" "}
-                Please!
+                Your <span className="text-[#f58220]">Witness</span> Please!
               </h3>
 
-
               <form className="w-full">
-
                 {/* First Row */}
                 <div
                   className="
@@ -460,7 +436,6 @@ export default function ContactUs() {
                     sm:gap-[15px]
                   "
                 >
-
                   <input
                     type="text"
                     placeholder="Your Name*"
@@ -472,9 +447,7 @@ export default function ContactUs() {
                     placeholder="Your Email*"
                     className={inputClass}
                   />
-
                 </div>
-
 
                 {/* Second Row */}
                 <div
@@ -488,7 +461,6 @@ export default function ContactUs() {
                     sm:gap-[15px]
                   "
                 >
-
                   <input
                     type="tel"
                     placeholder="Phone Number*"
@@ -500,9 +472,7 @@ export default function ContactUs() {
                     placeholder="Company Name*"
                     className={inputClass}
                   />
-
                 </div>
-
 
                 {/* Message */}
                 <textarea
@@ -528,10 +498,8 @@ export default function ContactUs() {
                   "
                 />
 
-
                 {/* Submit Button */}
                 <div className="flex justify-center">
-
                   <button
                     type="submit"
                     className="
@@ -554,13 +522,9 @@ export default function ContactUs() {
                   >
                     Submit
                   </button>
-
                 </div>
-
               </form>
-
             </div>
-
 
             {/* =================================================
                 CONTACT INFORMATION
@@ -584,7 +548,6 @@ export default function ContactUs() {
                 max-sm:py-[5px]
               "
             >
-
               {/* Contact Person 1 */}
               <div
                 className="
@@ -600,9 +563,7 @@ export default function ContactUs() {
                   max-sm:py-5
                 "
               >
-
                 <div className="mb-[7px]">
-
                   <svg
                     width="50"
                     height="50"
@@ -622,7 +583,6 @@ export default function ContactUs() {
                     <circle cx="18" cy="8" r="2.3" />
                     <path d="M16 14c2.8.3 5 2.7 5 5.5" />
                   </svg>
-
                 </div>
 
                 <h4 className="text-[18px] font-bold max-sm:text-[17px]">
@@ -645,13 +605,10 @@ export default function ContactUs() {
                 <p className="text-[16px] max-sm:text-[14px]">
                   T: +91-9654155065
                 </p>
-
               </div>
-
 
               {/* Divider */}
               <div className="h-[1px] w-full bg-white/70" />
-
 
               {/* Contact Person 2 */}
               <div
@@ -668,9 +625,7 @@ export default function ContactUs() {
                   max-sm:py-5
                 "
               >
-
                 <div className="mb-[7px]">
-
                   <svg
                     width="50"
                     height="50"
@@ -690,7 +645,6 @@ export default function ContactUs() {
                     <circle cx="18" cy="8" r="2.3" />
                     <path d="M16 14c2.8.3 5 2.7 5 5.5" />
                   </svg>
-
                 </div>
 
                 <h4 className="text-[18px] font-bold max-sm:text-[17px]">
@@ -713,13 +667,10 @@ export default function ContactUs() {
                 <p className="text-[16px] max-sm:text-[14px]">
                   T: +91 8880846800
                 </p>
-
               </div>
-
 
               {/* Divider */}
               <div className="h-[1px] w-full bg-white/70" />
-
 
               {/* Secretariat Office */}
               <div
@@ -736,9 +687,7 @@ export default function ContactUs() {
                   max-sm:py-5
                 "
               >
-
                 <div className="mb-[7px]">
-
                   <svg
                     width="50"
                     height="50"
@@ -753,7 +702,6 @@ export default function ContactUs() {
                   >
                     <path d="M21.7 2.3 2.4 10.2c-.7.3-.6 1.3.1 1.6l7.2 2.5 2.5 7.2c.2.7 1.2.8 1.6.1l7.9-19.3c.3-.7-.4-1.4-1-1z" />
                   </svg>
-
                 </div>
 
                 <h4 className="text-[18px] font-bold max-sm:text-[17px]">
@@ -776,23 +724,16 @@ export default function ContactUs() {
                   <br />
                   Hauz Khas, New Delhi – 110016
                 </p>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           SUBSCRIBE SECTION
       ====================================================== */}
       <SubscribeSection />
-
     </div>
   );
 }
