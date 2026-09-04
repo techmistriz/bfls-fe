@@ -52,7 +52,7 @@ export default function Speakers() {
             Confirmed Speakers
           </p>
 
-          <h2 className="text-[34px] font-bold leading-[1.15] text-[#566e99] sm:text-[40px] lg:text-[38px] font-poppins">
+          <h2 className="text-[34px] font-extrabold leading-[1.15] text-[#566e99] sm:text-[40px] lg:text-[38px] font-poppins">
             Meet Our Mighty Speakers
           </h2>
 

@@ -11,11 +11,13 @@ export default function Registration() {
             <RegistrationIcon className="text-[#ed1c24]" />
           </div>
 
-          <h2 className="text-[36px] font-normal leading-[1.15] tracking-[-1.5px] text-[#333] sm:text-[42px]">
+          <h2 className="text-[42px] font-extrabold leading-[1.15] tracking-[-1.5px] text-[#566a8f] sm:text-[42px]">
             Delegate Registrations
           </h2>
 
-          <p className="mt-4 text-[14px] text-[#1769aa]">
+          <div className="mx-auto mt-[18px] h-[3px] w-[100px] bg-[#EF7F1B] sm:mt-[22px] sm:w-[120px]" />
+
+          <p className="mt-4 text-[20px] font-medium text-[#EF7F1B] mt-10">
             It&apos;s a Race Against Time. Avail Best Possible Discounts Now.
           </p>
         </div>

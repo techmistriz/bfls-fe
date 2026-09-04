@@ -114,3 +114,6 @@ body {
 }
 
 /* banner dots animation css */
+html {
+  scroll-behavior: smooth;
+}
