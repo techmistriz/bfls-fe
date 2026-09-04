@@ -10,22 +10,27 @@ const editions = [
     image: "/images/10-scaled.jpg",
     title: "The 8th Annual Banking & Finance Legal Summit 2025",
   },
+
   {
     image: "/images/65-scaled.jpg",
     title: "The 7th Annual Banking & Finance Legal Summit 2024",
   },
+
   {
     image: "/images/10-scaled.jpg",
     title: "The 6th Annual Banking & Finance Legal Summit 2019",
   },
+
   {
     image: "/images/65-scaled.jpg",
     title: "The 5th Annual Banking & Finance Legal Summit 2018",
   },
+
   {
     image: "/images/10-scaled.jpg",
     title: "The 4th Annual Banking & Finance Legal Summit 2017",
   },
+  
   {
     image: "/images/65-scaled.jpg",
     title: "The 3rd Annual Banking & Finance Legal Summit 2016",
