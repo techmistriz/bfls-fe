@@ -54,7 +54,7 @@ export default function SubscribeSection() {
           Curate Your Own Sponsorship Wish
         </p>
 
-        <h2 className="mb-[19px] text-[56px] font-bold leading-[1.1] text-[#536B98] max-md:text-[32px] max-sm:text-[29px] font-poppins">
+        <h2 className="mb-[19px] text-[56px] font-extrabold leading-[1.1] text-[#536B98] max-md:text-[32px] max-sm:text-[29px] font-poppins">
           Showcase Yourself
         </h2>
 

@@ -16,7 +16,7 @@ export default function ContactCTA() {
             Time&apos;s Ticking &amp; Discounts Drying Up
           </p>
 
-          <h2 className="text-[32px] font-bold leading-[1.15] sm:text-[40px] lg:text-[56px] font-poppins">
+          <h2 className="text-[32px] font-extrabold leading-[1.15] sm:text-[40px] lg:text-[52px] font-poppins">
             Get in Touch to Avail the Best Deal.
           </h2>
 

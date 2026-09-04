@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <>
       {/* ================= HEADER ================= */}
-      <header className="fixed left-0 right-0 top-0 z-50 max-w-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.12)]">
+      <header className="fixed left-0 right-0 top-0 z-50 max-w-full bg-white shadow-[2px_2px_10px_#CCCCCC]">
         <div className="mx-auto flex h-[88px] w-full max-w-[1140px] items-center justify-between px-4 sm:px-5 lg:px-0">
           <Link href="/" onClick={closeMenu} className="block shrink-0 lg:mr-8">
             <Image
@@ -32,7 +32,7 @@ export default function Header() {
             <ul className="flex items-center">
               {navItems.map((item) => (
                 <li key={item.label} className="flex shrink-0 items-center">
-                  <span className="mx-[10px] text-[18px] text-[#222] xl:mx-[14px] xl:text-[20px]">
+                  <span className="mx-[10px] text-[18px] text-[#222] xl:mx-[15px] xl:text-[20px]">
                     •
                   </span>
                   <Link
@@ -48,7 +48,7 @@ export default function Header() {
 
           <Link
             href="/gallery"
-            className="group ml-4 hidden h-[64px] shrink-0 items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f57c16] px-5 text-[14px] font-semibold text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-transparent hover:text-[#EF7F1B] xl:ml-5 xl:px-7 xl:text-[15px] lg:flex"
+            className="group ml-4 hidden h-[64px] shrink-0 items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f57c16] px-5 text-[14px] font-semibold text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-transparent hover:text-[#EF7F1B] xl:ml-5 xl:px-6 xl:text-[14px] lg:flex"
           >
             <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
             <span>SUMMIT GALLERY</span>

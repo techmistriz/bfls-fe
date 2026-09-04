@@ -37,7 +37,7 @@ export default function Banner() {
         ×
       </span>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1250px] flex-col items-center px-5 pt-2 text-center max-md:px-6 max-sm:px-5">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1250px] flex-col items-center px-5 pt-2 text-center max-md:px-6 max-sm:px-5 mt[32px]">
         <div className="mb-8 max-lg:mb-7 max-md:mb-6 max-sm:mb-5">
           <Image
             src="/images/BFLS_LOGO_IMAGE.png"
@@ -49,14 +49,14 @@ export default function Banner() {
           />
         </div>
 
-        <h1 className="max-w-[1180px] text-[48px] font-bold leading-[1.18] tracking-[-1px] text-white font-poppins max-lg:text-[42px] max-md:max-w-[700px] max-md:text-[36px] max-md:leading-[1.2] max-md:tracking-[-0.5px] max-sm:max-w-[100%] max-sm:text-[28px] max-sm:leading-[1.25] max-sm:tracking-[-0.3px]">
+        <h1 className="max-w-[1180px] text-[45px] font-extrabold leading-[1.18] tracking-[-1px] text-white font-poppins max-lg:text-[42px] max-md:max-w-[700px] max-md:text-[36px] max-md:leading-[1.2] max-md:tracking-[-0.5px] max-sm:max-w-[100%] max-sm:text-[28px] max-sm:leading-[1.25] max-sm:tracking-[-0.3px]">
           The Lex Witness 8th Annual Banking &amp; Finance
           <br className="max-sm:hidden" />
           <span className="sm:hidden"> </span>
           Legal Summit 2025
         </h1>
 
-        <p className="mt-8 text-[24px] font-medium uppercase leading-none text-white font-poppins max-lg:mt-7 max-lg:text-[21px] max-md:mt-6 max-md:max-w-[650px] max-md:text-[19px] max-md:leading-[1.35] max-sm:mt-5 max-sm:max-w-[330px] max-sm:text-[16px] max-sm:leading-[1.4]">
+        <p className="mt-8 text-[24px] font-bold uppercase leading-none text-white font-poppins max-lg:mt-7 max-lg:text-[21px] max-md:mt-6 max-md:max-w-[650px] max-md:text-[19px] max-md:leading-[1.35] max-sm:mt-5 max-sm:max-w-[330px] max-sm:text-[16px] max-sm:leading-[1.4]">
           21ST NOVEMBER 2025, TAJ SANTACRUZ, MUMBAI
         </p>
 

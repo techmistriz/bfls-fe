@@ -44,7 +44,7 @@ export default function AudienceStats() {
           Explore More #BFLS2025
         </p>
 
-        <h2 className="mt-3 w-full max-w-[760px] text-center text-[28px] font-bold leading-[1.2] text-[#566e99] sm:text-[37px] sm:leading-[1.15] lg:text-[44px] font-poppins">
+        <h2 className="mt-3 w-full max-w-[760px] text-center text-[28px] font-extrabold leading-[1.2] text-[#566e99] sm:text-[37px] sm:leading-[1.15] lg:text-[44px] font-poppins">
           Varied Industry Audience
           <br />
           with Even More Intense
