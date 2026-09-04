@@ -22,6 +22,8 @@ export default function Header() {
             <Image
               src="/images/main-logo.jpg"
               alt="main-logo"
+              width={180}
+              height={60}
               className="block h-auto w-[110px] object-contain sm:w-[150px] md:w-[165px] lg:w-[180px]"
             />
           </Link>

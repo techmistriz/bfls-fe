@@ -48,6 +48,8 @@ export default function AudienceProfile() {
                 <Image
                   src="/images/iconbox-overlay2.png"
                   alt=""
+                  width={500}
+                  height={500}
                   className="h-full w-full object-cover"
                 />
               </div>
