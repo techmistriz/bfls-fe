@@ -1,6 +1,7 @@
 "use client";
 
 import { contactPeople, summitShowcase, exploreLinks } from "@/src/data/footer";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -46,7 +47,7 @@ export default function Footer() {
 
           {/* ================= SOCIAL ICONS ================= */}
           <div className="mt-[12px] flex gap-[6px]">
-            <a
+            <Link
               href="#"
               aria-label="LinkedIn"
               className="flex h-[32px] w-[32px] shrink-0 items-center justify-center rounded-[3px] border border-[#f4f4f4] text-[#f58220] transition-all duration-200 hover:border-[#f58220] hover:bg-[#f58220] hover:text-white"
@@ -58,9 +59,9 @@ export default function Footer() {
               >
                 <path d="M6.94 8.5H3.56V20.5H6.94V8.5ZM5.25 3.5C4.14 3.5 3.25 4.4 3.25 5.5C3.25 6.6 4.14 7.5 5.25 7.5C6.35 7.5 7.25 6.6 7.25 5.5C7.25 4.4 6.35 3.5 5.25 3.5ZM20.5 13.77C20.5 10.16 18.58 8.18 15.94 8.18C13.8 8.18 12.84 9.36 12.44 10.19V8.5H9.06V20.5H12.44V14.56C12.44 13 12.73 11.49 14.7 11.49C16.64 11.49 16.67 13.28 16.67 14.66V20.5H20.05L20.5 13.77Z" />
               </svg>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="#"
               aria-label="YouTube"
               className="flex h-[32px] w-[32px] shrink-0 items-center justify-center rounded-[3px] border border-[#f4f4f4] text-[#f58220] transition-all duration-200 hover:border-[#f58220] hover:bg-[#f58220] hover:text-white"
@@ -72,9 +73,9 @@ export default function Footer() {
               >
                 <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.13C19.51 3.55 12 3.55 12 3.55s-7.51 0-9.38.51A3.02 3.02 0 0 0 .5 6.19C0 8.06 0 12 0 12s0 3.94.5 5.81a3.02 3.02 0 0 0 2.12 2.13c1.87.51 9.38.51 9.38.51s7.51 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.13C24 15.94 24 12 24 12s0-3.94-.5-5.81ZM9.55 15.56V8.44L15.82 12l-6.27 3.56Z" />
               </svg>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="#"
               aria-label="Message"
               className="flex h-[32px] w-[32px] shrink-0 items-center justify-center rounded-[3px] border border-[#f4f4f4] text-[#f58220] transition-all duration-200 hover:border-[#f58220] hover:bg-[#f58220] hover:text-white"
@@ -96,7 +97,7 @@ export default function Footer() {
                   strokeWidth="2.5"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -158,13 +159,13 @@ export default function Footer() {
 
           <div className="flex flex-col items-start gap-[15px]">
             {exploreLinks.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 className="flex min-h-[40px] w-[180px] items-center justify-center rounded-[4px] border border-[#f4f4f4] px-[11px] text-[14px] font-bold text-[#eeeeee] transition-all duration-200 hover:border-[#f58220] hover:bg-[#f58220] hover:text-white max-sm:w-full max-sm:max-w-[250px]"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -194,19 +195,19 @@ export default function Footer() {
         <div className="mx-[28px] h-[37px] w-px bg-[#777777] max-lg:mx-0 max-lg:h-px max-lg:w-full" />
 
         <div className="flex gap-[18px] whitespace-nowrap max-lg:flex-wrap max-lg:gap-x-[18px] max-lg:gap-y-[8px] max-lg:whitespace-normal">
-          <a
+          <Link
             href="/about-witness"
             className="text-[13px] text-[#eeeeee] hover:text-[#f58220]"
           >
             About Lex Witness
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/summit-secretariat"
             className="text-[13px] text-[#eeeeee] hover:text-[#f58220]"
           >
             Summit Secretariat
-          </a>
+          </Link>
         </div>
       </div>
 

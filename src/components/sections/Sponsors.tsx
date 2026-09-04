@@ -69,7 +69,7 @@ export default function Sponsors() {
             Welcome Aboard
           </p>
 
-          <h2 className="text-[34px] font-bold leading-[1.15] text-[#566e99] sm:text-[40px] font-poppins">
+          <h2 className="text-[34px] font-extrabold leading-[1.15] text-[#566e99] sm:text-[40px] font-poppins">
             Sponsors &amp; Partners
           </h2>
 
@@ -80,7 +80,7 @@ export default function Sponsors() {
           {sponsors.map((sponsor, index) => (
             <div
               key={`${sponsor.category}-${index}`}
-              className="sponsor-card group relative flex h-[145px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10 hover:shadow-[0_8px_25px_rgba(70,90,120,0.12)]"
+              className="group relative flex h-[145px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10 hover:shadow-[0_8px_25px_rgba(70,90,120,0.12)]"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               <p className="absolute left-0 right-0 top-[11px] text-center text-[13px] font-semibold text-[#777]">

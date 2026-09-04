@@ -51,14 +51,14 @@ export default function SponsorshipForm() {
             Showcase Yourself
           </p>
 
-          <h2 className="mx-auto max-w-[600px] text-[34px] font-bold leading-[1.12] text-white sm:text-[42px] lg:text-[56px] font-poppins">
+          <h2 className="mx-auto max-w-[600px] text-[34px] font-extrabold leading-[1.12] text-white sm:text-[42px] lg:text-[56px] font-poppins">
             Curate Your Own
             <br />
             Sponsorship Wish
           </h2>
 
           <form onSubmit={handleSubmit} className="mx-auto mt-[20px] w-full">
-            <div className="flex flex-col items-center justify-center gap-[15px] sm:flex-row">
+            <div className="flex flex-col items-center justify-center gap-[30px] sm:flex-row">
               <input
                 type="text"
                 name="name"

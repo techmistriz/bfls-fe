@@ -17,13 +17,13 @@ export default function AudienceProfile() {
         <p className="mb-[8px] text-[23px] font-bold leading-tight text-[#f58216] sm:text-[25px]">
           Network with a perfect blend of legal professionals.
         </p>
-        <h2 className="text-[34px] font-bold leading-[1.15] text-[#566e99] sm:text-[40px] font-poppins">
+        <h2 className="text-[34px] font-extrabold leading-[1.15] text-[#566e99] sm:text-[40px] font-poppins">
           Audience Profile
         </h2>
         <div className="mx-auto mt-[15px] h-[3px] w-[95px] bg-[#f58216]" />
       </div>
 
-      <div className="relative z-10 mx-auto mt-[60px] flex max-w-[1170] flex-col justify-center gap-[16px] px-5 md:flex-row md:gap-[15px]">
+      <div className="relative z-10 mx-auto mt-[60px] flex max-w-[1170] flex-col justify-center gap-[16px] px-5 md:flex-row md:gap-[20px]">
         {audienceCards.map((card, index) => {
           const isActive = activeCard === index;
 

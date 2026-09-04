@@ -19,7 +19,7 @@ export default function GallerySection() {
             Visual Delight
           </p>
 
-          <h2 className="font-poppins text-[28px] font-extrabold leading-tight text-[#58709b] sm:text-[32px] md:text-[36px]">
+          <h2 className="font-poppins text-[42px] font-extrabold leading-tight text-[#58709b] sm:text-[32px] md:text-[36px]">
             Quick Glimpse @ BFLS 2025
           </h2>
 
@@ -27,7 +27,7 @@ export default function GallerySection() {
         </div>
 
         <div className="mx-auto mt-7 max-w-[1170px] px-4 sm:mt-8 sm:px-6">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3">
             {galleryImages.map((image, index) => (
               <button
                 key={index}

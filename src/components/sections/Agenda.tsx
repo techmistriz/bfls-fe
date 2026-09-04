@@ -53,7 +53,7 @@ export default function Agenda() {
           <p className="mb-3 text-[21px] font-bold leading-tight text-[#EF7F1B] sm:text-[30px] font-archivo">
             Power Packed &amp; Scintillating Discussions.
           </p>
-          <h2 className="mx-auto max-w-[850px] text-[27px] font-bold leading-[1.2] text-[#566A8F] sm:text-[42px] lg:text-[44px] font-poppins">
+          <h2 className="mx-auto max-w-[850px] text-[27px] font-extrabold leading-[1.2] text-[#566A8F] sm:text-[42px] lg:text-[42px] font-poppins">
             Panel Discussions, Focussed
             <br className="hidden sm:block" />
             Presentation, Veteran Talks &amp; More
