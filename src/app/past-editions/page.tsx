@@ -53,7 +53,7 @@ export default function PastEditionsBanner() {
 
         <div className="relative z-10 mx-auto flex h-full max-w-[1130px] items-center px-6 lg:px-0">
           <div>
-            <h1 className="font-poppins text-[38px] font-bold leading-tight text-white md:text-[52px]">
+            <h1 className="font-poppins text-[38px] font-black leading-tight tracking-[-0.4px] text-white md:text-[48px]">
               Past Editions
             </h1>
 

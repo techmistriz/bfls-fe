@@ -19,8 +19,6 @@
   --font-poppins: var(--font-poppins);
   --font-roboto: var(--font-roboto);
   --font-archivo: var(--font-archivo);
-
-  --font-sans: var(--font-archivo);
 }
 
 @media (prefers-color-scheme: dark) {
