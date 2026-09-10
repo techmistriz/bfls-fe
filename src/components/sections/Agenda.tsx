@@ -6,15 +6,70 @@ import { agendaItems } from "@/src/data/agenda";
 
 export default function Agenda() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
   const toggleItem = (index: number) => {
     setOpenIndex((current) => (current === index ? null : index));
+  };
+
+  const decorations = [
+    {
+      src: "/images/event_memphis_01.png",
+      width: 100,
+      height: 80,
+      position: "left-[11%] top-[17%]",
+      strength: 25,
+    },
+    {
+      src: "/images/event_memphis_02.png",
+      width: 30,
+      height: 30,
+      position: "left-[4%] top-[30%]",
+      strength: 40,
+    },
+    {
+      src: "/images/event_memphis_05.png",
+      width: 40,
+      height: 40,
+      position: "right-[18%] top-[11%]",
+      strength: 30,
+    },
+    {
+      src: "/images/event_memphis_04.png",
+      width: 10,
+      height: 10,
+      position: "right-[08%] top-[22%]",
+      strength: 45,
+    },
+    {
+      src: "/images/event_memphis_03.png",
+      width: 60,
+      height: 40,
+      position: "right-[06%] top-[36%]",
+      strength: 22,
+    },
+  ];
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    // Cursor position from -0.5 to +0.5
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    setMouse({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setMouse({ x: 0, y: 0 });
   };
 
   return (
     <section
       className="relative overflow-hidden bg-white py-[50px] sm:py-[70px] lg:py-[50px]"
       id="agenda"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="pointer-events-none absolute left-0 top-0 w-full">
         <Image
@@ -27,37 +82,43 @@ export default function Agenda() {
         />
       </div>
 
-      <div className="pointer-events-none absolute left-0 top-0 w-full">
-        <Image
-          src="/images/schedule__bottom_bg.png"
-          alt=""
-          width={1920}
-          height={800}
-          className="h-auto w-full opacity-[0.3]"
-        />
-      </div>
+      {/* Cursor Animated Decorations */}
+      {decorations.map((item, index) => {
+        const moveX = mouse.x * item.strength;
+        const moveY = mouse.y * item.strength;
 
-      <span className="pointer-events-none absolute left-[11%] top-[27%] hidden h-[23px] w-[23px] rounded-full border-[3px] border-[#dfe3e9] lg:block" />
-      <span className="pointer-events-none absolute right-[10%] top-[20%] hidden text-[70px] font-thin leading-none text-[#e5e8ed] lg:block">
-        〽
-      </span>
-      <span className="pointer-events-none absolute left-[11%] top-[29%] hidden text-[70px] font-thin leading-none text-[#e5e8ed] lg:block">
-        〰
-      </span>
-      <span className="pointer-events-none absolute right-[8%] top-[63%] hidden text-[65px] font-thin leading-none text-[#e5e8ed] lg:block">
-        〰
-      </span>
+        return (
+          <div
+            key={index}
+            className={`pointer-events-none absolute hidden lg:block ${item.position}`}
+            style={{
+              transform: `translate3d(${moveX}px, ${moveY}px, 0)`,
+              transition: "transform 0.25s ease-out",
+              willChange: "transform",
+            }}
+          >
+            <Image
+              src={item.src}
+              alt=""
+              width={item.width}
+              height={item.height}
+            />
+          </div>
+        );
+      })}
 
       <div className="relative mx-auto w-full max-w-[1190px] px-4 sm:px-6 lg:px-5">
         <div className="mb-[35px] text-center sm:mb-[45px]">
           <p className="mb-3 text-[21px] font-bold leading-tight text-[#EF7F1B] sm:text-[30px] font-archivo">
             Power Packed &amp; Scintillating Discussions.
           </p>
+
           <h2 className="mx-auto max-w-[850px] text-[27px] font-extrabold leading-[1.2] text-[#566A8F] sm:text-[42px] lg:text-[42px] font-poppins">
             Panel Discussions, Focussed
             <br className="hidden sm:block" />
             Presentation, Veteran Talks &amp; More
           </h2>
+
           <div className="mx-auto mt-[18px] h-[3px] w-[100px] bg-[#EF7F1B] sm:mt-[22px] sm:w-[120px]" />
         </div>
 
@@ -86,7 +147,7 @@ export default function Agenda() {
                       {item.time}
                     </span>
 
-                    <span className="min-w-0 flex-1 pr-1 text-[14px] font-bold leading-[1.4] text-[#526b97] sm:pr-3 sm:text-[18px] lg:text-[19px] font-poppins">
+                    <span className="min-w-0 flex-1 pr-1 text-[14px] font-bold leading-[1.4] text-[#526b97] sm:pr-3 sm:text-[18px] lg:text-[20px] font-poppins">
                       {item.title}
                     </span>
 
@@ -100,7 +161,9 @@ export default function Agenda() {
                   </button>
 
                   <div
-                    className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                    className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
                   >
                     <div className="overflow-hidden">
                       <div className="w-full px-4 pb-8 pt-1 sm:px-8 sm:pb-10 lg:ml-[265px] lg:w-[750px] lg:px-0">
@@ -119,9 +182,11 @@ export default function Agenda() {
                                     className="object-cover"
                                   />
                                 </div>
+
                                 <h4 className="text-[12px] font-bold uppercase leading-[1.3] text-[#526b97] sm:text-[14px] lg:text-[15px] font-poppins">
                                   {speaker.name}
                                 </h4>
+
                                 <p className="mt-2 text-[11px] font-medium leading-[1.45] text-[#333] sm:text-[12px] lg:text-[14px] lg:leading-[1.6] font-archivo">
                                   {speaker.designation}
                                 </p>

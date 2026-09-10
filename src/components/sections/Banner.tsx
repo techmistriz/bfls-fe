@@ -37,7 +37,7 @@ export default function Banner() {
         ×
       </span>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1250px] flex-col items-center px-5 pt-2 text-center max-md:px-6 max-sm:px-5 mt[32px]">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1250px] flex-col items-center px-5 pt-2 text-center max-md:px-6 max-sm:px-5 mt-[32px]">
         <div className="mb-8 max-lg:mb-7 max-md:mb-6 max-sm:mb-5">
           <Image
             src="/images/BFLS_LOGO_IMAGE.png"

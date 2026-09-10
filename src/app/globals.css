@@ -19,8 +19,6 @@
   --font-poppins: var(--font-poppins);
   --font-roboto: var(--font-roboto);
   --font-archivo: var(--font-archivo);
-
-  --font-sans: var(--font-archivo);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -116,4 +114,19 @@ body {
 /* banner dots animation css */
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes slowBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(88px);
+  }
+}
+
+.animate-slow-bounce {
+  animation: slowBounce 8s ease-in-out infinite;
 }
