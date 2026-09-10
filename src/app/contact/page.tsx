@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 import Link from "next/link";
+import { PageBanner } from "@/src/components/layout/PageBanner";
 
 const inputClass = `
   h-[50px]
@@ -21,171 +23,34 @@ const inputClass = `
   max-sm:text-[15px]
 `;
 
+
 export default function ContactUs() {
+
+  const [scrollY, setScrollY] = useState(0);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+
   return (
     <div className="w-full overflow-hidden">
       {/* =====================================================
           BANNER
       ====================================================== */}
-      <section
-        className="
-          relative
-          mt-[88px]
-          h-[398px]
-          w-full
-          overflow-hidden
-
-          max-md:mt-[75px]
-          max-sm:mt-[65px]
-          max-sm:h-[300px]
-        "
-      >
-        <Image
-          src="/images/bg_banner_mew.jpg"
-          alt="Contact Us"
-          fill
-          priority
-          sizes="100vw"
-          className="
-            object-cover
-            object-center
-            max-sm:object-[65%_center]
-          "
-        />
-
-        {/* Banner Content */}
-        <div
-          className="
-            relative
-            z-10
-            mx-auto
-            flex
-            h-full
-            w-full
-            max-w-[1130px]
-            items-center
-            px-5
-            sm:px-6
-            lg:px-0
-          "
-        >
-          <div className="max-sm:mt-[-20px]">
-            <h1
-              className="
-                font-poppins
-                text-[32px]
-                font-bold
-                leading-tight
-                text-white
-
-                sm:text-[42px]
-                md:text-[52px]
-
-                max-sm:text-[30px]
-              "
-            >
-              Your Witness Please!
-            </h1>
-
-            <p
-              className="
-                mt-2
-                font-archivo
-                text-[14px]
-                font-medium
-                text-white
-
-                sm:text-[16px]
-                md:text-[17px]
-
-                max-sm:max-w-[280px]
-                max-sm:text-[14px]
-                max-sm:leading-[1.5]
-              "
-            >
-              Let us know what we can help you with.
-            </p>
-          </div>
-        </div>
-
-        {/* Breadcrumb */}
-        <div
-          className="
-            absolute
-            bottom-0
-            right-4
-            z-20
-
-            sm:right-[7%]
-            md:right-[12%]
-            lg:right-[20%]
-
-            max-sm:right-0
-          "
-        >
-          <div
-            className="
-              flex
-              h-[50px]
-              w-[210px]
-              items-center
-              justify-center
-              gap-3
-              bg-white
-              px-3
-              font-archivo
-              shadow-sm
-
-              sm:h-[56px]
-              sm:w-[235px]
-
-              max-sm:h-[48px]
-              max-sm:w-[185px]
-              max-sm:gap-2
-            "
-          >
-            <Link
-              href="/"
-              className="
-                text-[12px]
-                text-[#555]
-                transition-colors
-                hover:text-[#EF7F1B]
-
-                sm:text-[13px]
-                max-sm:text-[11px]
-              "
-            >
-              Home
-            </Link>
-
-            <span
-              className="
-                text-[12px]
-                text-[#999]
-
-                sm:text-[13px]
-                max-sm:text-[11px]
-              "
-            >
-              /
-            </span>
-
-            <span
-              className="
-                text-[12px]
-                font-medium
-                text-[#EF7F1B]
-
-                sm:text-[13px]
-                max-sm:text-[11px]
-              "
-            >
-              Contact Us
-            </span>
-          </div>
-        </div>
-      </section>
+      <PageBanner
+        backgroundImage="/images/bg_banner_mew.jpg"
+        title="Your Witness Please!"
+        subtitle="Let us know what we can help you with."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
+      />
 
       {/* =====================================================
           CONTACT SECTION
@@ -311,7 +176,7 @@ export default function ContactUs() {
             items-center
             px-4
             pb-[115px]
-            pt-[115px]
+            pt-[135px]
 
             sm:px-0
 
@@ -325,35 +190,63 @@ export default function ContactUs() {
           "
         >
           {/* Heading */}
-          <div
-            className="
-              relative
-              z-[5]
-              mb-[28px]
-              text-center
-
-              sm:mb-[32px]
-
-              max-sm:mb-[25px]
-            "
-          >
-            <p
-              className="
-                mb-[5px]
-                text-[30px]
-                font-bold
-                leading-none
-                text-[#f58220]
-
-                sm:text-[32px]
-
-                max-sm:text-[25px]
+          <div className="
+                relative
+                z-[5]
+                mb-[28px]
+                text-center
+                sm:mb-[32px]
+                max-sm:mb-[25px]
               "
             >
-              # Have Questions?
-            </p>
-
+            {/* Background Contact Text */}
             <h2
+              className="
+                pointer-events-none
+                absolute
+                left-1/2
+                top-[85%]
+                z-0
+                -translate-x-1/2
+                -translate-y-1/2
+                whitespace-nowrap
+                text-[48px]
+                font-extrabold
+                leading-[1.15]
+                text-[#fff]
+
+                sm:text-[158px]
+
+                max-sm:text-[38px]
+              "
+              style={{
+    transform: `translate(0%, calc(-50% - ${scrollY * 0.03}px))`,
+    transition: "transform 0.2s ease-out",
+    willChange: "transform",
+  }}
+            >
+              contact
+            </h2>
+
+            {/* Foreground Content */}
+            <div className="relative z-[2]">
+              <p
+                className="
+                  mb-[5px]
+                  text-[30px]
+                  font-bold
+                  leading-none
+                  text-[#f58220]
+
+                  sm:text-[32px]
+
+                  max-sm:text-[25px]
+                "
+              >
+                # Have Questions?
+              </p>
+
+              <h2
               className="
                 text-[48px]
                 font-bold
@@ -366,8 +259,9 @@ export default function ContactUs() {
               "
             >
               Drop us a Line
-            </h2>
-          </div>
+            </h2> 
+  </div>
+</div>
 
           {/* =================================================
               FORM + CONTACT INFORMATION

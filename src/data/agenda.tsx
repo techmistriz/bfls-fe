@@ -85,9 +85,7 @@ export const agendaItems: AgendaItem[] = [
     time: "10:00 AM",
     title: (
       <>
-        <span className="text-[#f58216]">KEYNOTE ADDRESS</span> BY NILANJAN
-        SINHA, GENERAL COUNSEL, ICICI BANK
-        <br className="hidden md:block" />– SUMMIT CHAIR
+        <span className="text-[#f58216]">KEYNOTE ADDRESS</span> BY NILANJAN SINHA, GENERAL COUNSEL, ICICI BANK – SUMMIT CHAIR
       </>
     ),
     speakers: [
@@ -103,8 +101,7 @@ export const agendaItems: AgendaItem[] = [
     time: "10:15 AM",
     title: (
       <>
-        <span className="text-[#f58216]">REGULATE TO ACCELERATE:</span> THE
-        BALANCING ACT OF GROWTH &amp; GOVERNANCE
+        <span className="text-[#f58216]">REGULATE TO ACCELERATE:</span> THE BALANCING ACT OF GROWTH & OVERSIGHT
       </>
     ),
     speakers: bfsiPanelSpeakers,
@@ -118,7 +115,7 @@ export const agendaItems: AgendaItem[] = [
     time: "12:00 NOON",
     title: (
       <>
-        <span className="text-[#f58216]">INSURANCE, LENDING &amp; ESG</span>{" "}
+        <span className="text-[#f58216]">INSURANCE, LENDING & ESG</span>{" "}
         REDEFINING CREDIT AND COMPLIANCE
         <p className="mt-3 font-archivo text-[13px] font-normal leading-[1.5] text-[#000] sm:text-[16px]">
           As the BFSI sector embraces reform and innovation, this session
@@ -154,8 +151,7 @@ export const agendaItems: AgendaItem[] = [
     time: "03:00 PM",
     title: (
       <>
-        <span className="text-[#f58216]">COMPLIANCE, GOVERNANCE &amp;</span>{" "}
-        DISPUTE RESOLUTION (ADR)
+        COMPLIANCE, GOVERNANCE & <span className="text-[#f58216]">DISPUTE RESOLUTION</span>{" "}(ADR)
         <p className="mt-3 font-archivo text-[13px] font-normal leading-[1.5] text-[#000] sm:text-[16px]">
           As compliance and ADR reshape Banking, NBFCs &amp; Insurance, this
           panel explores faster dispute resolution, stronger governance, and
@@ -169,8 +165,7 @@ export const agendaItems: AgendaItem[] = [
     time: "04:00 PM",
     title: (
       <>
-        <span className="text-[#f58216]">GALA LUCKY DRAW</span> &amp; SIGNING
-        OFF followed by <span className="text-[#f58216]">CHAI PE CHARCHA</span>
+        <span className="text-[#f58216]">GALA LUCKY DRAW</span> & SIGNING OFF followed by <span className="text-[#f58216]">'CHAI PE CHARCHA' </span>
       </>
     ),
   },

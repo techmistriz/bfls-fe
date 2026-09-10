@@ -115,3 +115,18 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes slowBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(88px);
+  }
+}
+
+.animate-slow-bounce {
+  animation: slowBounce 8s ease-in-out infinite;
+}
