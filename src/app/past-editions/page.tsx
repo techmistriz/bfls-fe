@@ -53,7 +53,7 @@ export default function PastEditionsBanner() {
 
         <div className="relative z-10 mx-auto flex h-full max-w-[1130px] items-center px-6 lg:px-0">
           <div>
-            <h1 className="font-poppins text-[38px] font-bold leading-tight text-white md:text-[52px]">
+            <h1 className="font-poppins text-[38px] font-black leading-tight tracking-[-0.4px] text-white md:text-[48px]">
               Past Editions
             </h1>
 
@@ -87,17 +87,15 @@ export default function PastEditionsBanner() {
       <section className="relative overflow-hidden bg-white py-[80px] md:py-[95px]">
         {/* Left Circle */}
 
-        <div className="absolute left-[-45px] top-[65px] hidden md:block">
-          <div className="relative h-[90px] w-[90px] animate-bounce rounded-full border-[3px] border-[#ff5b4d]">
-            <div className="absolute inset-[6px] rounded-full border-[3px] border-[#ff5b4d]" />
-
-            <div className="absolute inset-[13px] rounded-full border-[3px] border-[#ff5b4d]" />
-
-            <div className="absolute inset-[20px] rounded-full border-[3px] border-[#ff5b4d]" />
-
-            <div className="absolute inset-[27px] rounded-full border-[3px] border-[#ff5b4d]" />
-
-            <div className="absolute inset-[34px] rounded-full border-[3px] border-[#ff5b4d]" />
+        <div className="absolute left-[0px] top-[65px] hidden md:block">
+          <div className="relative  animate-slow-bounce ">
+            <Image
+          src="/images/Venue-hotel-right-icon.png"
+          alt=""
+          width={50}
+          height={50}
+          className="transition-transform duration-500 ease-out group-hover:rotate-12 group-hover:scale-110"
+        />
           </div>
         </div>
 

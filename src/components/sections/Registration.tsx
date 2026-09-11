@@ -17,7 +17,7 @@ export default function Registration() {
 
           <div className="mx-auto mt-[18px] h-[3px] w-[100px] bg-[#EF7F1B] sm:mt-[22px] sm:w-[120px]" />
 
-          <p className="mt-4 text-[20px] font-medium text-[#EF7F1B] mt-10">
+          <p className="mt-4 text-[20px] font-medium text-[#EF7F1B] mt-10 sm:text-[30px] mb-20">
             It&apos;s a Race Against Time. Avail Best Possible Discounts Now.
           </p>
         </div>
@@ -36,7 +36,7 @@ export default function Registration() {
               )}
 
               <div className="text-center">
-                <h3 className="min-h-[22px] text-[16px] font-bold leading-[22px] text-[#ed1c24]">
+                <h3 className="min-h-[22px] text-[13px] font-bold leading-[22px] text-[#ed1c24] mt-5">
                   {plan.title}
                 </h3>
 
