@@ -37,11 +37,11 @@ export default function SponsorshipForm() {
 
       <div className="absolute inset-0 bg-black/70" />
 
-      <div className="pointer-events-none absolute left-0 top-[225px] hidden h-[105px] w-[195px] opacity-60 sm:block">
+      <div className="pointer-events-none absolute left-0 top-[250px] hidden h-[180px] w-[260px] opacity-60 sm:block">
         <div className="dot-pattern" />
       </div>
 
-      <div className="pointer-events-none absolute right-[8%] top-[155px] hidden h-[90px] w-[150px] opacity-60 sm:block">
+      <div className="pointer-events-none absolute right-[8%] top-[250px] hidden h-[180px] w-[260px] opacity-60 sm:block">
         <div className="dot-pattern" />
       </div>
 
@@ -104,10 +104,10 @@ export default function SponsorshipForm() {
           height: 100%;
           background-image: radial-gradient(
             circle,
-            rgba(255, 255, 255, 0.55) 2px,
-            transparent 2px
+            rgba(255, 255, 255, 0.55) 3px,
+            transparent 3px
           );
-          background-size: 17px 16px;
+          background-size: 16px 16px;
           animation: dotsMove 5s ease-in-out infinite;
         }
         @keyframes dotsMove {
