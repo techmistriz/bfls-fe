@@ -97,7 +97,7 @@ export default function AboutSummit() {
           </div>
         </div>
 
-        <MouseParallax strength={12} className="-translate-x-[10px] w-full">
+        <MouseParallax strength={12} className="-translate-x-[100px] w-full">
           <DotsRow
             color="bg-[#dfe2e8]"
             className="mt-8 justify-end pr-2 max-md:mt-7 max-md:gap-[8px] max-sm:mt-6 max-sm:gap-[7px] max-sm:pr-0"

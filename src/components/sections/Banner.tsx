@@ -47,6 +47,27 @@ export default function Banner() {
         ×
       </MouseParallax>
 
+      {/* Rotating Triangle at Bottom-Left */}
+      <div className="absolute bottom-[18%] right-[22%] z-[2] opacity-30 animate-spin [animation-duration:12s] max-lg:right-[6%] max-md:bottom-[12%] max-md:right-[4%] max-sm:bottom-[8%] max-sm:right-[2%]">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-10 w-10 max-md:h-7 max-md:w-7"
+        >
+          <polygon
+            points="20,4 36,36 4,36"
+            stroke="white"
+            strokeWidth="2"
+            strokeOpacity="0.3"
+            fill="white"
+            fillOpacity="0.3"
+          />
+        </svg>
+      </div>
+
       <div className="relative z-10 mx-auto flex w-full max-w-[1250px] flex-col items-center px-5 pt-2 text-center max-md:px-6 max-sm:px-5 mt-[32px]">
         <div className="mb-8 max-lg:mb-7 max-md:mb-6 max-sm:mb-5">
           <Image
