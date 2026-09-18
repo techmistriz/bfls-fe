@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
 import { DotsRow } from "@/src/components/ui/DotsRow";
+import MouseParallax from "../ui/MouseParallax";
 
 export default function AboutSummit() {
   return (
@@ -17,7 +18,7 @@ export default function AboutSummit() {
 
       <div className="relative mx-auto mb-[10px] max-w-[1170px] px-5 max-md:px-6 max-sm:px-4">
         <div className="relative flex flex-col lg:flex-row">
-          <div className="relative z-10 w-full lg:w-[54%]">
+          <div className="relative z-10 w-full lg:w-[58%] md:w-[58%]">
             <div className="relative aspect-[0.76] w-full overflow-hidden lg:h-[100%] lg:aspect-auto max-md:aspect-[1/0.85] max-sm:aspect-[1/0.95]">
               <Image
                 src="/images/section-2-bfls.png"
@@ -96,16 +97,17 @@ export default function AboutSummit() {
           </div>
         </div>
 
-        <DotsRow
-          color="bg-[#dfe2e8]"
-          animation="float"
-          className="mt-8 justify-end pr-2 max-md:mt-7 max-md:gap-[8px] max-sm:mt-6 max-sm:gap-[7px] max-sm:pr-0"
-        />
-        <DotsRow
-          color="bg-[#dfe2e8]"
-          animation="float"
-          className="mt-5 justify-end pr-2 max-md:mt-4 max-md:gap-[8px] max-sm:mt-3 max-sm:gap-[7px] max-sm:pr-0"
-        />
+        <MouseParallax strength={12} className="-translate-x-[10px] w-full">
+          <DotsRow
+            color="bg-[#dfe2e8]"
+            className="mt-8 justify-end pr-2 max-md:mt-7 max-md:gap-[8px] max-sm:mt-6 max-sm:gap-[7px] max-sm:pr-0"
+          />
+
+          <DotsRow
+            color="bg-[#dfe2e8]"
+            className="mt-5 justify-end pr-2 max-md:mt-4 max-md:gap-[8px] max-sm:mt-3 max-sm:gap-[7px] max-sm:pr-0"
+          />
+        </MouseParallax>
       </div>
     </section>
   );

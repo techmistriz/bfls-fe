@@ -11,7 +11,7 @@ import GallerySection from "@/src/components/sections/GallerySection";
 import VenueSection from "@/src/components/sections/VenueSection";
 import VenueGallery from "@/src/components/sections/VenueGallery";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
-import Registration from "@/src/components/sections/Registration";
+// import Registration from "@/src/components/sections/Registration";
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       <Banner />
       <AboutSummit />
       <Agenda />
-      <Registration />
+      {/* <Registration /> */}
       <AudienceStats />
       <Speakers />
       <ContactCTA />

@@ -130,3 +130,18 @@ html {
 .animate-slow-bounce {
   animation: slowBounce 8s ease-in-out infinite;
 }
+
+@keyframes float-vertical {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float-vertical {
+  animation: float-vertical 2.5s ease-in-out infinite;
+}
