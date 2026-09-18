@@ -30,7 +30,7 @@ const editions = [
     image: "/images/10-scaled.jpg",
     title: "The 4th Annual Banking & Finance Legal Summit 2017",
   },
-  
+
   {
     image: "/images/65-scaled.jpg",
     title: "The 3rd Annual Banking & Finance Legal Summit 2016",
@@ -90,12 +90,12 @@ export default function PastEditionsBanner() {
         <div className="absolute left-[0px] top-[65px] hidden md:block">
           <div className="relative  animate-slow-bounce ">
             <Image
-          src="/images/Venue-hotel-right-icon.png"
-          alt=""
-          width={50}
-          height={50}
-          className="transition-transform duration-500 ease-out group-hover:rotate-12 group-hover:scale-110"
-        />
+              src="/images/Venue-hotel-right-icon.png"
+              alt=""
+              width={50}
+              height={50}
+              className="transition-transform duration-500 ease-out group-hover:rotate-12 group-hover:scale-110"
+            />
           </div>
         </div>
 

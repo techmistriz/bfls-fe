@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
-import Link from "next/link";
 import { PageBanner } from "@/src/components/layout/PageBanner";
 
 const inputClass = `
@@ -23,22 +21,20 @@ const inputClass = `
   max-sm:text-[15px]
 `;
 
-
 export default function ContactUs() {
-
   const [scrollY, setScrollY] = useState(0);
 
-useEffect(() => {
-  const handleScroll = () => {
-    setScrollY(window.scrollY);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
 
-  window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="w-full overflow-hidden">
@@ -190,7 +186,8 @@ useEffect(() => {
           "
         >
           {/* Heading */}
-          <div className="
+          <div
+            className="
                 relative
                 z-[5]
                 mb-[28px]
@@ -198,7 +195,7 @@ useEffect(() => {
                 sm:mb-[32px]
                 max-sm:mb-[25px]
               "
-            >
+          >
             {/* Background Contact Text */}
             <h2
               className="
@@ -220,10 +217,10 @@ useEffect(() => {
                 max-sm:text-[38px]
               "
               style={{
-    transform: `translate(0%, calc(-50% - ${scrollY * 0.03}px))`,
-    transition: "transform 0.2s ease-out",
-    willChange: "transform",
-  }}
+                transform: `translate(0%, calc(-50% - ${scrollY * 0.03}px))`,
+                transition: "transform 0.2s ease-out",
+                willChange: "transform",
+              }}
             >
               contact
             </h2>
@@ -247,7 +244,7 @@ useEffect(() => {
               </p>
 
               <h2
-              className="
+                className="
                 text-[48px]
                 font-bold
                 leading-[1.15]
@@ -257,11 +254,11 @@ useEffect(() => {
 
                 max-sm:text-[38px]
               "
-            >
-              Drop us a Line
-            </h2> 
-  </div>
-</div>
+              >
+                Drop us a Line
+              </h2>
+            </div>
+          </div>
 
           {/* =================================================
               FORM + CONTACT INFORMATION

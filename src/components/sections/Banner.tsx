@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { DotsRow } from "@/src/components/ui/DotsRow";
+import MouseParallax from "../ui/MouseParallax";
 
 export default function Banner() {
   return (
@@ -24,7 +25,7 @@ export default function Banner() {
         />
       </div>
 
-      <div className="absolute left-[19.3%] top-[6%] z-[1] h-[218px] w-[218px] overflow-hidden rounded-full opacity-[0.6] min-[768px]:max-[1499px]:left-[9.3%] max-lg:top-[5%] max-md:left-[40px] max-md:top-[4%] max-md:h-[150px] max-md:w-[150px] max-sm:left-[-55px] max-sm:top-[3%] max-sm:h-[130px] max-sm:w-[130px]">
+      <div className="absolute left-[12.3%] top-[6%] z-[1] h-[218px] w-[218px] overflow-hidden rounded-full opacity-[0.6] min-[768px]:max-[1499px]:left-[9.3%] max-lg:top-[5%] max-md:left-[40px] max-md:top-[4%] max-md:h-[150px] max-md:w-[150px] max-sm:left-[-55px] max-sm:top-[3%] max-sm:h-[130px] max-sm:w-[130px]">
         <Image
           src="/images/red-circle-shape-1.png"
           alt=""
@@ -33,9 +34,18 @@ export default function Banner() {
         />
       </div>
 
-      <span className="absolute left-[21.4%] top-[43%] z-[2] text-[38px] font-light text-white/40 max-lg:left-[8%] max-lg:top-[45%] max-md:left-[5%] max-md:top-[42%] max-md:text-[30px] max-sm:left-[4%] max-sm:top-[39%] max-sm:text-[26px]">
+      <MouseParallax
+        strength={30}
+        className="
+                  absolute left-[13.4%] top-[38%]
+                  z-[2] text-[48px] font-light text-white/20
+                  max-lg:left-[8%] max-lg:top-[45%]
+                  max-md:left-[5%] max-md:top-[42%] max-md:text-[30px]
+                  max-sm:left-[4%] max-sm:top-[39%] max-sm:text-[26px]
+                "
+      >
         ×
-      </span>
+      </MouseParallax>
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1250px] flex-col items-center px-5 pt-2 text-center max-md:px-6 max-sm:px-5 mt-[32px]">
         <div className="mb-8 max-lg:mb-7 max-md:mb-6 max-sm:mb-5">
@@ -77,8 +87,10 @@ export default function Banner() {
           <span>CONTACT US</span>
         </a>
 
-        <DotsRow className="mt-8 max-md:mt-7 max-sm:mt-6" />
-        <DotsRow className="mt-3 max-sm:mt-2" />
+        <div className="dots-group translate-x-[8px] sm:translate-x-[12px] md:translate-x-[55px]">
+          <DotsRow className="mt-4 max-md:mt-3 max-sm:mt-6" />
+          <DotsRow className="mt-3 max-sm:mt-2" />
+        </div>
       </div>
     </section>
   );

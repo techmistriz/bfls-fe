@@ -85,7 +85,8 @@ export const agendaItems: AgendaItem[] = [
     time: "10:00 AM",
     title: (
       <>
-        <span className="text-[#f58216]">KEYNOTE ADDRESS</span> BY NILANJAN SINHA, GENERAL COUNSEL, ICICI BANK – SUMMIT CHAIR
+        <span className="text-[#f58216]">KEYNOTE ADDRESS</span> BY NILANJAN
+        SINHA, GENERAL COUNSEL, ICICI BANK – SUMMIT CHAIR
       </>
     ),
     speakers: [
@@ -101,7 +102,8 @@ export const agendaItems: AgendaItem[] = [
     time: "10:15 AM",
     title: (
       <>
-        <span className="text-[#f58216]">REGULATE TO ACCELERATE:</span> THE BALANCING ACT OF GROWTH & OVERSIGHT
+        <span className="text-[#f58216]">REGULATE TO ACCELERATE:</span> THE
+        BALANCING ACT OF GROWTH & OVERSIGHT
       </>
     ),
     speakers: bfsiPanelSpeakers,
@@ -151,7 +153,8 @@ export const agendaItems: AgendaItem[] = [
     time: "03:00 PM",
     title: (
       <>
-        COMPLIANCE, GOVERNANCE & <span className="text-[#f58216]">DISPUTE RESOLUTION</span>{" "}(ADR)
+        COMPLIANCE, GOVERNANCE &{" "}
+        <span className="text-[#f58216]">DISPUTE RESOLUTION</span> (ADR)
         <p className="mt-3 font-archivo text-[13px] font-normal leading-[1.5] text-[#000] sm:text-[16px]">
           As compliance and ADR reshape Banking, NBFCs &amp; Insurance, this
           panel explores faster dispute resolution, stronger governance, and
@@ -165,7 +168,9 @@ export const agendaItems: AgendaItem[] = [
     time: "04:00 PM",
     title: (
       <>
-        <span className="text-[#f58216]">GALA LUCKY DRAW</span> & SIGNING OFF followed by <span className="text-[#f58216]">'CHAI PE CHARCHA' </span>
+        <span className="text-[#f58216]">GALA LUCKY DRAW</span> &amp; SIGNING
+        OFF followed by{" "}
+        <span className="text-[#f58216]">&apos;CHAI PE CHARCHA&apos;</span>
       </>
     ),
   },
