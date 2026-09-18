@@ -93,7 +93,7 @@ export default function Sponsors() {
                   alt={sponsor.category}
                   fill
                   sizes="170px"
-                  className="object-contain transition-transform duration-300 "
+                  className="object-contain transition-transform duration-300 cursor-pointer"
                 />
               </div>
             </div>
