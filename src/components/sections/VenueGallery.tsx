@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { venueImages } from "@/src/data/venue";
+import { venueImages } from "@/src/data/static/venue";
 import { useLightbox } from "@/src/hooks/useLightbox";
 
 export default function VenueGallery() {

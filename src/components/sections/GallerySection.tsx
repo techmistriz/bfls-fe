@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { galleryImages } from "@/src/data/gallery";
+import { galleryImages } from "@/src/data/static/gallery";
 import { useLightbox } from "@/src/hooks/useLightbox";
 import { Lightbox } from "@/src/components/ui/Lightbox";
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { sponsors } from "@/src/data/sponsors";
+import { sponsors } from "@/src/data/static/sponsors";
 
 export default function Sponsors() {
   return (

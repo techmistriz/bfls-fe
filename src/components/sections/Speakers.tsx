@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { speakers } from "@/src/data/speakers";
+import { speakers } from "@/src/data/static/speakers";
 
 export default function Speakers() {
   return (

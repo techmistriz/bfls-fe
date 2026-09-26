@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { navItems } from "@/src/data/menu";
+import { navItems } from "@/src/data/static/menu";
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
 import Image from "next/image";
 

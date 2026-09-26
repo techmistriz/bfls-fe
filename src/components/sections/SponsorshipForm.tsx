@@ -1,31 +1,31 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { submitSponsorshipForm } from "@/src/services/sponsorship.service";
+// import { submitSponsorshipForm } from "@/src/services/sponsorship.service";
 
 export default function SponsorshipForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: String(formData.get("name") ?? ""),
-      email: String(formData.get("email") ?? ""),
-      contact: String(formData.get("contact") ?? ""),
-    };
+    // const formData = new FormData(e.currentTarget);
+    // const data = {
+    //   name: String(formData.get("name") ?? ""),
+    //   email: String(formData.get("email") ?? ""),
+    //   contact: String(formData.get("contact") ?? ""),
+    // };
 
-    setIsSubmitting(true);
+    // setIsSubmitting(true);
 
-    try {
-      await submitSponsorshipForm(data);
-      e.currentTarget.reset();
-    } catch (error) {
-      console.error("Sponsorship form submission failed:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    // try {
+    //   await submitSponsorshipForm(data);
+    //   e.currentTarget.reset();
+    // } catch (error) {
+    //   console.error("Sponsorship form submission failed:", error);
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
   };
 
   return (

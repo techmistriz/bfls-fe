@@ -1,31 +1,31 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { subscribeToNewsletter } from "@/src/services/newsletter.service";
+// import { subscribeToNewsletter } from "@/src/services/newsletter.service";
 
 export default function SubscribeSection() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [isSubmitting] = useState(false);
+  const [status] = useState<"idle" | "success" | "error">("idle");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const email = String(formData.get("email") ?? "");
+    // const formData = new FormData(e.currentTarget);
+    // const email = String(formData.get("email") ?? "");
 
-    setIsSubmitting(true);
-    setStatus("idle");
+    // setIsSubmitting(true);
+    // setStatus("idle");
 
-    try {
-      await subscribeToNewsletter({ email });
-      setStatus("success");
-      e.currentTarget.reset();
-    } catch (error) {
-      console.error("Newsletter subscription failed:", error);
-      setStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    // try {
+    //   await subscribeToNewsletter({ email });
+    //   setStatus("success");
+    //   e.currentTarget.reset();
+    // } catch (error) {
+    //   console.error("Newsletter subscription failed:", error);
+    //   setStatus("error");
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
   };
 
   return (
