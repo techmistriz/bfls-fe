@@ -47,7 +47,7 @@ export default function Header() {
           </nav>
 
           <Link
-            href="/gallery"
+            href="#gallery"
             className="group ml-4 hidden h-[64px] shrink-0 items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f57c16] px-5 text-[14px] font-semibold text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-transparent hover:text-[#EF7F1B] xl:ml-5 xl:px-6 xl:text-[14px] lg:flex"
           >
             <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
