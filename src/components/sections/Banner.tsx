@@ -10,42 +10,24 @@ const FALLBACK_BANNER_IMAGE = "/images/pexels-ravi-roshan-14907339-scaled.jpeg";
 const FALLBACK_LOGO = "/images/BFLS_LOGO_IMAGE.png";
 
 export default function Banner() {
-  const { events, loading, error } = useEvents();
+  const { events, loading } = useEvents();
 
   const event = events?.[0];
 
-  if (loading) {
-    return (
-      <section className="relative mt-[88px] flex min-h-[664px] w-full items-center justify-center bg-black">
-        <p className="text-white">Loading...</p>
-      </section>
-    );
-  }
+  const title = event?.title || "";
 
-  if (error || !event) {
-    return null;
-  }
-
-  const title = event.title || "Banking & Finance Legal Summit";
-
-  const eventDate = event.date || "";
-  console.log(eventDate);
-
-  const venue = event.venue || "";
-
-  const city = event.city?.name || "";
+  const venue = event?.venue || "";
+  const city = event?.city?.name || "";
 
   const location = [venue, city].filter(Boolean).join(", ").toUpperCase();
 
-  const bannerImage = FALLBACK_BANNER_IMAGE;
-
   return (
     <section className="relative mt-[88px] flex min-h-[664px] w-full items-center justify-center overflow-hidden max-lg:min-h-[620px] max-md:min-h-[680px] max-md:py-[60px] max-sm:min-h-[700px] max-sm:py-[50px]">
-      {/* Background */}
+      {/* Background - loads immediately */}
       <div className="absolute inset-0">
         <Image
-          src={bannerImage}
-          alt={title}
+          src={FALLBACK_BANNER_IMAGE}
+          alt={title || "Banking & Finance Legal Summit"}
           fill
           priority
           className="object-cover object-center"
@@ -109,52 +91,137 @@ export default function Banner() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto mt-[32px] flex w-full max-w-[1250px] flex-col items-center px-5 pt-2 text-center max-md:px-6 max-sm:px-5">
-        {/* Logo */}
-        <div className="mb-8 max-lg:mb-7 max-md:mb-6 max-sm:mb-5">
+        {/* Logo - fixed position */}
+        <div
+          className="
+      mb-8 flex h-[160px] w-full shrink-0 items-center justify-center
+      max-lg:mb-7 max-lg:h-[145px]
+      max-md:mb-6 max-md:h-[125px]
+      max-sm:mb-5 max-sm:h-[105px]
+    "
+        >
           <Image
             src={FALLBACK_LOGO}
-            alt={event.event_type?.name || "Lex Witness"}
+            alt={event?.event_type?.name || "Lex Witness"}
             width={435}
             height={160}
             priority
-            className="h-auto w-[435px] max-w-full max-lg:w-[390px] max-md:w-[330px] max-sm:w-[280px]"
+            className="
+        h-auto w-[435px] max-w-full
+        max-lg:w-[390px]
+        max-md:w-[330px]
+        max-sm:w-[280px]
+      "
           />
         </div>
 
-        {/* Dynamic title */}
-        <h1 className="max-w-[1180px] font-poppins text-[45px] font-extrabold leading-[1.18] tracking-[-1px] text-white max-lg:text-[42px] max-md:max-w-[700px] max-md:text-[36px] max-md:leading-[1.2] max-md:tracking-[-0.5px] max-sm:max-w-[100%] max-sm:text-[28px] max-sm:leading-[1.25] max-sm:tracking-[-0.3px]">
-          {title}
-        </h1>
-
-        {/* Dynamic date + venue */}
-        <p className="mt-8 font-poppins text-[24px] font-bold uppercase leading-none text-white max-lg:mt-7 max-lg:text-[21px] max-md:mt-6 max-md:max-w-[650px] max-md:text-[19px] max-md:leading-[1.35] max-sm:mt-5 max-sm:max-w-[330px] max-sm:text-[16px] max-sm:leading-[1.4]">
-          {eventDate}
-          {location && `, ${location}`}
-        </p>
-
-        {/* Dynamic description */}
-        <p className="mt-12 max-w-[720px] font-archivo text-[16px] font-bold leading-[1.65] text-white max-lg:mt-10 max-md:mt-8 max-md:max-w-[650px] max-md:text-[15px] max-sm:mt-7 max-sm:max-w-[340px] max-sm:text-[14px] max-sm:leading-[1.6]">
-          The {event.year || "current"} edition was a massive success and we now
-          look forward to the next edition. In case you wish to participate in
-          future editions, please get in touch with us.
-        </p>
-
-        {/* CTA */}
-        <a
-          href="/contact"
-          className="group mt-11 inline-flex h-[66px] min-w-[178px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-7 font-archivo text-[16px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg max-lg:mt-9 max-md:mt-8 max-md:h-[58px] max-md:min-w-[165px] max-md:px-6 max-md:text-[15px] max-sm:mt-7 max-sm:h-[54px] max-sm:min-w-[155px] max-sm:px-5 max-sm:text-[14px]"
+        {/* Dynamic area - fixed/reserved height */}
+        <div
+          className="
+      flex w-full shrink-0 flex-col items-center
+      min-h-[330px]
+    "
         >
-          <i
-            aria-hidden="true"
-            className="fas fa-download text-[20px] text-white transition-colors duration-300 group-hover:text-[#EF7F1B]"
-          />
-          <span>CONTACT US</span>
-        </a>
+          {/* Title */}
+          <div className="flex h-[106px] w-full shrink-0 items-center justify-center">
+            {!loading && event && (
+              <h1
+                className="
+            max-w-[1180px]
+            font-poppins text-[45px] font-extrabold
+            leading-[1.18] tracking-[-1px] text-white
+            max-lg:text-[42px]
+            max-md:max-w-[700px] max-md:text-[36px]
+            max-md:leading-[1.2] max-md:tracking-[-0.5px]
+            max-sm:max-w-[100%] max-sm:text-[28px]
+            max-sm:leading-[1.25] max-sm:tracking-[-0.3px]
+          "
+              >
+                {event.title}
+              </h1>
+            )}
+          </div>
 
-        {/* Dots */}
-        <div className="dots-group translate-x-[8px] sm:translate-x-[12px] md:translate-x-[55px]">
-          <DotsRow className="mt-4 max-md:mt-3 max-sm:mt-6" />
-          <DotsRow className="mt-3 max-sm:mt-2" />
+          {/* Date + Venue */}
+          <div className="flex h-[62px] w-full shrink-0 items-center justify-center">
+            {!loading && event && (
+              <p
+                className="
+            mt-8 font-poppins text-[24px] font-bold
+            uppercase leading-none text-white
+            max-lg:mt-7 max-lg:text-[21px]
+            max-md:mt-6 max-md:max-w-[650px]
+            max-md:text-[19px] max-md:leading-[1.35]
+            max-sm:mt-5 max-sm:max-w-[330px]
+            max-sm:text-[16px] max-sm:leading-[1.4]
+          "
+              >
+                {event.date || ""}
+                {location && `, ${location}`}
+              </p>
+            )}
+          </div>
+
+          {/* Description */}
+          <div className="flex h-[100px] w-full shrink-0 items-center justify-center">
+            {!loading && event && (
+              <p
+                className="
+            mt-12 max-w-[720px]
+            font-archivo text-[16px] font-bold
+            leading-[1.65] text-white
+            max-lg:mt-10
+            max-md:mt-8 max-md:max-w-[650px]
+            max-md:text-[15px]
+            max-sm:mt-7 max-sm:max-w-[340px]
+            max-sm:text-[14px] max-sm:leading-[1.6]
+          "
+              >
+                The {event.year || "current"} edition was a massive success and
+                we now look forward to the next edition. In case you wish to
+                participate in future editions, please get in touch with us.
+              </p>
+            )}
+          </div>
+
+          {/* CTA */}
+          <div className="flex h-[66px] w-full shrink-0 items-center justify-center">
+            {!loading && event && (
+              <a
+                href="/contact"
+                className="
+            group mt-11 inline-flex h-[66px] min-w-[178px]
+            items-center justify-center gap-2 rounded-[6px]
+            border border-transparent bg-[#f58216] px-7
+            font-archivo text-[16px] font-bold uppercase text-white
+            shadow-sm transition-all duration-300
+            hover:border-[#EF7F1B] hover:bg-white
+            hover:text-[#EF7F1B] hover:shadow-lg
+            max-lg:mt-9
+            max-md:mt-8 max-md:h-[58px]
+            max-md:min-w-[165px] max-md:px-6 max-md:text-[15px]
+            max-sm:mt-7 max-sm:h-[54px]
+            max-sm:min-w-[155px] max-sm:px-5 max-sm:text-[14px]
+          "
+              >
+                <i
+                  aria-hidden="true"
+                  className="
+              fas fa-download text-[20px] text-white
+              transition-colors duration-300
+              group-hover:text-[#EF7F1B]
+            "
+                />
+                <span>CONTACT US</span>
+              </a>
+            )}
+          </div>
+
+          {/* Dots */}
+          <div className="dots-group mt-4 translate-x-[8px] sm:translate-x-[12px] md:translate-x-[55px]">
+            <DotsRow className="mt-4 max-md:mt-3 max-sm:mt-6" />
+            <DotsRow className="mt-3 max-sm:mt-2" />
+          </div>
         </div>
       </div>
     </section>
