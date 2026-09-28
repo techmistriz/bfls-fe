@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { stats } from "@/src/data/audienceStats";
+import { stats } from "@/src/data/static/audienceStats";
 import { useCountUp } from "@/src/hooks/useCountUp";
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
 

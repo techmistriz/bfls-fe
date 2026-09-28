@@ -98,7 +98,7 @@ export default function Banner() {
         </p>
 
         <a
-          href="#contact"
+          href="/contact"
           className="group mt-11 inline-flex h-[66px] min-w-[178px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-7 text-[16px] font-bold uppercase text-white shadow-sm font-archivo transition-all duration-300 hover:border-[#EF7F1B] hover:bg-[#fff] hover:text-[#EF7F1B] hover:shadow-lg max-lg:mt-9 max-md:mt-8 max-md:h-[58px] max-md:min-w-[165px] max-md:px-6 max-md:text-[15px] max-sm:mt-7 max-sm:h-[54px] max-sm:min-w-[155px] max-sm:px-5 max-sm:text-[14px]"
         >
           <i

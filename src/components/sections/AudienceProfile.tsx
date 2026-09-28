@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { audienceCards } from "@/src/data/audienceProfile";
+import { audienceCards } from "@/src/data/static/audienceProfile";
 import { AudienceIcon } from "@/src/components/icons/AudienceIcons";
 import Image from "next/image";
 

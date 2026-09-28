@@ -1,9 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { sponsors } from "@/src/data/sponsors";
+import { useSponsors } from "@/src/hooks/useSponsors";
+import { getSponsorImageUrl } from "@/src/utils/image";
+import SponsorsSkeleton from "../skeletons/SponsorsSkeleton";
 
 export default function Sponsors() {
+  const { sponsors, loading, error } = useSponsors();
+  console.log("useSponsor", sponsors);
   return (
     <section
       className="relative w-full overflow-hidden bg-white py-[60px] sm:py-[75px] lg:py-[80px]"
@@ -61,6 +65,7 @@ export default function Sponsors() {
       </div>
 
       <div className="sponsor-circle pointer-events-none absolute right-[9%] top-[310px] hidden h-[19px] w-[19px] rounded-full border-[2px] border-[#dfe3e9] lg:block" />
+
       <div className="sponsor-dot pointer-events-none absolute left-[6.5%] top-[235px] hidden h-[8px] w-[8px] rounded-full bg-[#dfe3e9] lg:block" />
 
       <div className="relative z-10 mx-auto max-w-[1200px] px-5">
@@ -69,68 +74,81 @@ export default function Sponsors() {
             Welcome Aboard
           </p>
 
-          <h2 className="text-[34px] font-extrabold leading-[1.15] text-[#566e99] sm:text-[40px] font-poppins">
+          <h2 className="font-poppins text-[34px] font-extrabold leading-[1.15] text-[#566e99] sm:text-[40px]">
             Sponsors &amp; Partners
           </h2>
 
           <div className="mx-auto mt-[17px] h-[3px] w-[95px] bg-[#f58216]" />
         </div>
 
-        <div className="mx-auto mt-[55px] grid max-w-[1130px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {sponsors.map((sponsor, index) => (
-            <div
-              key={`${sponsor.category}-${index}`}
-              className="group relative flex h-[145px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10 hover:shadow-[0_8px_25px_rgba(70,90,120,0.12)]"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              <p className="absolute left-0 right-0 top-[11px] text-center text-[13px] font-semibold text-[#777]">
-                {sponsor.category}
-              </p>
+        {loading && <SponsorsSkeleton />}
 
-              <div className="relative mt-[12px] h-[70px] w-[170px]">
-                <Image
-                  src={sponsor.image}
-                  alt={sponsor.category}
-                  fill
-                  sizes="170px"
-                  className="object-contain transition-transform duration-300 cursor-pointer"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+        {error && !loading && (
+          <div className="mt-[55px] text-center text-[#777]">
+            Unable to load sponsors.
+          </div>
+        )}
+
+        {!loading && !error && sponsors.length > 0 && (
+          <div className="mx-auto mt-[55px] grid max-w-[1130px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {sponsors.map((item, index) => {
+              const sponsor = item.sponsor;
+              console.log(sponsor);
+              return (
+                <div
+                  key={item.id}
+                  className="group relative flex h-[145px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10 hover:shadow-[0_8px_25px_rgba(70,90,120,0.12)]"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
+                  <p className="absolute left-0 right-0 top-[11px] text-center text-[13px] font-semibold text-[#777]">
+                    {sponsor.sponsor_type}
+                  </p>
+
+                  <div className="relative mt-[12px] h-[70px] w-[170px]">
+                    {sponsor.image && (
+                      <Image
+                        src={getSponsorImageUrl(sponsor.image)}
+                        alt={sponsor.title}
+                        fill
+                        sizes="170px"
+                        className="cursor-pointer object-contain transition-transform duration-300"
+                      />
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {!loading && !error && sponsors.length === 0 && (
+          <div className="mt-[55px] text-center text-[#777]">
+            No sponsors available.
+          </div>
+        )}
       </div>
 
       <style jsx>{`
-        .sponsor-card {
-          animation: sponsorFloat 4s ease-in-out infinite;
-        }
         .sponsor-lightning {
           animation: sponsorLightning 4s ease-in-out infinite;
         }
+
         .sponsor-wave {
           animation: sponsorWave 5s ease-in-out infinite;
         }
+
         .sponsor-wave-left {
           animation: sponsorWaveLeft 4.5s ease-in-out infinite;
         }
+
         .sponsor-circle {
           animation: sponsorCircle 4s ease-in-out infinite;
         }
+
         .sponsor-dot {
           animation: sponsorDot 3s ease-in-out infinite;
         }
-        @keyframes sponsorFloat {
-          0% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-4px);
-          }
-          100% {
-            transform: translateY(0px);
-          }
-        }
+
         @keyframes sponsorLightning {
           0% {
             transform: translateY(0px) rotate(0deg);
@@ -142,6 +160,7 @@ export default function Sponsors() {
             transform: translateY(0px) rotate(0deg);
           }
         }
+
         @keyframes sponsorWave {
           0% {
             transform: translate(0px, 0px);
@@ -153,6 +172,7 @@ export default function Sponsors() {
             transform: translate(0px, 0px);
           }
         }
+
         @keyframes sponsorWaveLeft {
           0% {
             transform: translateX(0px);
@@ -164,6 +184,7 @@ export default function Sponsors() {
             transform: translateX(0px);
           }
         }
+
         @keyframes sponsorCircle {
           0% {
             transform: scale(1);
@@ -175,6 +196,7 @@ export default function Sponsors() {
             transform: scale(1);
           }
         }
+
         @keyframes sponsorDot {
           0% {
             transform: translateY(0px);

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { registrationPlans } from "@/src/data/registration";
+import { registrationPlans } from "@/src/data/static/registration";
 import { RegistrationIcon } from "@/src/components/icons/RegistrationIcon";
 
 export default function Registration() {
