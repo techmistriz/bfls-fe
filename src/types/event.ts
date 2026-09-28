@@ -1,3 +1,4 @@
+import { Agenda } from "./agenda";
 import { City } from "./city";
 import { EventType } from "./eventType";
 import type { Speaker } from "./speaker";
@@ -12,4 +13,5 @@ export interface Event {
   date: string;
   event_type: EventType | null;
   speakers: Speaker[];
+  agendas: Agenda[];
 }

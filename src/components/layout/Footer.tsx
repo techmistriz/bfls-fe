@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  contactPeople,
-  summitShowcase,
-  exploreLinks,
-} from "@/src/data/static/footer";
+import { contactPeople, summitShowcase, exploreLinks } from "@/src/data/footer";
 import Link from "next/link";
 
 const socialClass =
