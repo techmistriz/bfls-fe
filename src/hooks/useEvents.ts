@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getEvents } from "../services/APIs/homePage";
+import { getEvents } from "../services/homePage";
 
 interface Speaker {
   id: number;

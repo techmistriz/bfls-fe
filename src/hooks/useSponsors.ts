@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getSponsors } from "../services/APIs/homePage";
+import { getSponsors } from "../services/homePage";
 
 export interface Sponsor {
   id: number;

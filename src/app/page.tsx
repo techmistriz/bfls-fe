@@ -5,7 +5,7 @@ import AudienceStats from "@/src/components/sections/AudienceStats";
 import Speakers from "@/src/components/sections/Speakers";
 import ContactCTA from "@/src/components/sections/ContactCTA";
 import Sponsors from "@/src/components/sections/Sponsors";
-import SponsorshipForm from "@/src/components/sections/SponsorshipForm";
+import SponsorshipForm from "@/src/components/sections/ShowCaseForm";
 import AudienceProfile from "@/src/components/sections/AudienceProfile";
 import GallerySection from "@/src/components/sections/GallerySection";
 import VenueSection from "@/src/components/sections/VenueSection";
