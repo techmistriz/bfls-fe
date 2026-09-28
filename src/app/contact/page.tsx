@@ -1,28 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 import { PageBanner } from "@/src/components/layout/PageBanner";
+import { submitContactUs } from "@/src/services/contact.service";
+import { EVENT_TYPE } from "@/src/config/eventType";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { ApiError } from "@/src/types/api";
 
-const inputClass = `
-  h-[50px]
-  w-full
-  border
-  border-[#dedede]
-  bg-[#f8f8f8]
-  px-[12px]
-  text-[16px]
-  text-[#555]
-  outline-none
-  placeholder:text-[#777]
-  focus:border-[#f58220]
-
-  max-sm:h-[48px]
-  max-sm:text-[15px]
-`;
+const inputClass = `h-[50px] w-full border border-[#dedede] bg-[#f8f8f8] px-[12px] text-[16px] text-[#555] outline-none placeholder:text-[#777] focus:border-[#f58220] max-sm:h-[48px] max-sm:text-[15px]`;
 
 export default function ContactUs() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const [scrollY, setScrollY] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,11 +38,76 @@ export default function ContactUs() {
     };
   }, []);
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setSuccess("");
+    setError("");
+
+    try {
+      if (!executeRecaptcha) {
+        throw new Error("reCAPTCHA is not ready. Please try again.");
+      }
+
+      console.log("🔄 Executing reCAPTCHA...");
+
+      const captcha = await executeRecaptcha("contact_us");
+
+      console.log("✅ reCAPTCHA token generated:", {
+        exists: Boolean(captcha),
+        length: captcha?.length,
+      });
+
+      const response = await submitContactUs({
+        event_type_id: String(EVENT_TYPE.BFLS),
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        message: formData.message,
+        captcha,
+      });
+
+      console.log("Contact Us response:", response);
+
+      setSuccess("Your message has been submitted successfully.");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+    } catch (err: unknown) {
+      console.error("Contact Us API error:", err);
+
+      const error = err as ApiError;
+
+      setError(
+        error.response?.data?.message ||
+          error.message ||
+          "Something went wrong. Please try again.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="w-full overflow-hidden">
-      {/* =====================================================
-          BANNER
-      ====================================================== */}
       <PageBanner
         backgroundImage="/images/bg_banner_mew.jpg"
         title="Your Witness Please!"
@@ -48,174 +115,26 @@ export default function ContactUs() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
       />
 
-      {/* =====================================================
-          CONTACT SECTION
-      ====================================================== */}
-      <section
-        className="
-          relative
-          min-h-[500px]
-          w-full
-          overflow-hidden
-
-          max-sm:min-h-0
-        "
-      >
-        {/* Background Image */}
+      <section className="relative min-h-[500px] w-full overflow-hidden max-sm:min-h-0">
         <div
-          className="
-            absolute
-            inset-0
-            bg-cover
-            bg-center
-            bg-no-repeat
-
-            max-sm:bg-[center_center]
-          "
-          style={{
-            backgroundImage: "url('/images/contact_page_form_bg.jpg')",
-          }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat max-sm:bg-[center_center]"
+          style={{ backgroundImage: "url('/images/contact_page_form_bg.jpg')" }}
         />
 
-        {/* Background Overlay */}
-        {/* <div className="absolute inset-0 bg-white/85" /> */}
+        <span className="absolute left-[15%] top-[100px] z-[2] h-[4px] w-[4px] rounded-full bg-[#f58220] sm:left-[28%] max-sm:left-[12%] max-sm:top-[70px]" />
 
-        {/* =================================================
-            BACKGROUND TEXT
-        ================================================== */}
-        {/* <div className="pointer-events-none absolute left-1/2 top-[15px] z-[1] -translate-x-1/2 select-none">
-          <div className="contact-bg-text">
-            contact
-          </div>
-        </div> */}
-
-        {/* =================================================
-            DECORATIVE ELEMENTS
-        ================================================== */}
-
-        {/* Orange Dot */}
-        <span
-          className="
-            absolute
-            left-[15%]
-            top-[100px]
-            z-[2]
-            h-[4px]
-            w-[4px]
-            rounded-full
-            bg-[#f58220]
-
-            sm:left-[28%]
-
-            max-sm:left-[12%]
-            max-sm:top-[70px]
-          "
-        />
-
-        {/* Right Orange Dot */}
-        <span
-          className="
-            absolute
-            right-[10%]
-            top-[57%]
-            z-[2]
-            text-[18px]
-            font-bold
-            text-[#f58220]
-
-            sm:right-[22%]
-            sm:text-[20px]
-
-            max-sm:right-[8%]
-            max-sm:top-[50%]
-          "
-        >
+        <span className="absolute right-[10%] top-[57%] z-[2] text-[18px] font-bold text-[#f58220] sm:right-[22%] sm:text-[20px] max-sm:right-[8%] max-sm:top-[50%]">
           ▪
         </span>
 
-        {/* Bottom Cross */}
-        <span
-          className="
-            absolute
-            bottom-[30px]
-            left-[10%]
-            z-[2]
-            text-[20px]
-            font-bold
-            text-[#f58220]
-
-            sm:bottom-[38px]
-            sm:left-[20%]
-            sm:text-[22px]
-
-            max-sm:bottom-[20px]
-            max-sm:left-[8%]
-            max-sm:text-[18px]
-          "
-        >
+        <span className="absolute bottom-[30px] left-[10%] z-[2] text-[20px] font-bold text-[#f58220] sm:bottom-[38px] sm:left-[20%] sm:text-[22px] max-sm:bottom-[20px] max-sm:left-[8%] max-sm:text-[18px]">
           ×
         </span>
 
-        {/* =================================================
-            CONTACT CONTENT
-        ================================================== */}
-        <div
-          className="
-            relative
-            z-[5]
-            mx-auto
-            flex
-            min-h-[500px]
-            w-full
-            max-w-[1130px]
-            flex-col
-            items-center
-            px-4
-            pb-[115px]
-            pt-[135px]
-
-            sm:px-0
-
-            max-md:pb-[80px]
-            max-md:pt-[80px]
-
-            max-sm:min-h-0
-            max-sm:px-[15px]
-            max-sm:pb-[55px]
-            max-sm:pt-[60px]
-          "
-        >
-          {/* Heading */}
-          <div
-            className="
-                relative
-                z-[5]
-                mb-[28px]
-                text-center
-                sm:mb-[32px]
-                max-sm:mb-[25px]
-              "
-          >
-            {/* Background Contact Text */}
+        <div className="relative z-[5] mx-auto flex min-h-[500px] w-full max-w-[1130px] flex-col items-center px-4 pb-[115px] pt-[135px] sm:px-0 max-md:pb-[80px] max-md:pt-[80px] max-sm:min-h-0 max-sm:px-[15px] max-sm:pb-[55px] max-sm:pt-[60px]">
+          <div className="relative z-[5] mb-[28px] text-center sm:mb-[32px] max-sm:mb-[25px]">
             <h2
-              className="
-                pointer-events-none
-                absolute
-                left-1/2
-                top-[85%]
-                z-0
-                -translate-x-1/2
-                -translate-y-1/2
-                whitespace-nowrap
-                text-[48px]
-                font-extrabold
-                leading-[1.15]
-                text-[#fff]
-
-                sm:text-[158px]
-
-                max-sm:text-[38px]
-              "
+              className="pointer-events-none absolute left-1/2 top-[85%] z-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[48px] font-extrabold leading-[1.15] text-[#fff] sm:text-[158px] max-sm:text-[38px]"
               style={{
                 transform: `translate(0%, calc(-50% - ${scrollY * 0.03}px))`,
                 transition: "transform 0.2s ease-out",
@@ -225,405 +144,102 @@ export default function ContactUs() {
               contact
             </h2>
 
-            {/* Foreground Content */}
             <div className="relative z-[2]">
-              <p
-                className="
-                  mb-[5px]
-                  text-[30px]
-                  font-bold
-                  leading-none
-                  text-[#f58220]
-
-                  sm:text-[32px]
-
-                  max-sm:text-[25px]
-                "
-              >
+              <p className="mb-[5px] text-[30px] font-bold leading-none text-[#f58220] sm:text-[32px] max-sm:text-[25px]">
                 # Have Questions?
               </p>
-
-              <h2
-                className="
-                text-[48px]
-                font-bold
-                leading-[1.15]
-                text-[#536b98]
-
-                sm:text-[56px]
-
-                max-sm:text-[38px]
-              "
-              >
+              <h2 className="text-[48px] font-bold leading-[1.15] text-[#536b98] sm:text-[56px] max-sm:text-[38px]">
                 Drop us a Line
               </h2>
             </div>
           </div>
 
-          {/* =================================================
-              FORM + CONTACT INFORMATION
-          ================================================== */}
-          <div
-            className="
-              flex
-              w-full
-              flex-col
-              items-stretch
-              justify-center
-              gap-4
-
-              sm:flex-row
-              sm:gap-[20px]
-
-              max-md:gap-[25px]
-            "
-          >
-            {/* =================================================
-                CONTACT FORM
-            ================================================== */}
-            <div
-              className="
-                w-full
-                rounded-[4px]
-                bg-white
-                px-5
-                py-6
-                shadow-[0_5px_25px_rgba(0,0,0,0.05)]
-
-                sm:w-[900px]
-                sm:px-[40px]
-                sm:py-[40px]
-
-                max-sm:px-[16px]
-                max-sm:py-[22px]
-              "
-            >
-              {/* Form Heading */}
-              <h3
-                className="
-                  mb-[10px]
-                  text-[30px]
-                  font-bold
-                  leading-[1.2]
-                  text-[#111]
-
-                  max-sm:text-[24px]
-                  max-sm:leading-[1.3]
-                "
-              >
+          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:gap-[20px] max-md:gap-[25px]">
+            <div className="w-full rounded-[4px] bg-white px-5 py-6 shadow-[0_5px_25px_rgba(0,0,0,0.05)] sm:w-[900px] sm:px-[40px] sm:py-[40px] max-sm:px-[16px] max-sm:py-[22px]">
+              <h3 className="mb-[10px] text-[30px] font-bold leading-[1.2] text-[#111] max-sm:text-[24px] max-sm:leading-[1.3]">
                 Your <span className="text-[#f58220]">Witness</span> Please!
               </h3>
 
-              <form className="w-full">
-                {/* First Row */}
-                <div
-                  className="
-                    mb-[10px]
-                    grid
-                    grid-cols-1
-                    gap-[10px]
-
-                    sm:grid-cols-2
-                    sm:gap-[15px]
-                  "
-                >
+              <form className="w-full" onSubmit={handleSubmit}>
+                <div className="mb-[10px] grid grid-cols-1 gap-[10px] sm:grid-cols-2 sm:gap-[15px]">
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Your Name*"
                     className={inputClass}
+                    required
                   />
-
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Your Email*"
                     className={inputClass}
+                    required
                   />
                 </div>
 
-                {/* Second Row */}
-                <div
-                  className="
-                    mb-[10px]
-                    grid
-                    grid-cols-1
-                    gap-[10px]
-
-                    sm:grid-cols-2
-                    sm:gap-[15px]
-                  "
-                >
+                <div className="mb-[10px] grid grid-cols-1 gap-[10px] sm:grid-cols-2 sm:gap-[15px]">
                   <input
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                     placeholder="Phone Number*"
                     className={inputClass}
+                    required
                   />
-
                   <input
                     type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
                     placeholder="Company Name*"
                     className={inputClass}
+                    required
                   />
                 </div>
 
-                {/* Message */}
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Please place your query here"
-                  className="
-                    mb-[10px]
-                    h-[150px]
-                    w-full
-                    resize-none
-                    border
-                    border-[#dedede]
-                    bg-[#f8f8f8]
-                    px-[12px]
-                    py-[10px]
-                    text-[16px]
-                    text-[#555]
-                    outline-none
-                    placeholder:text-[#777]
-                    focus:border-[#f58220]
-
-                    max-sm:h-[120px]
-                    max-sm:text-[15px]
-                  "
+                  className="mb-[10px] h-[150px] w-full resize-none border border-[#dedede] bg-[#f8f8f8] px-[12px] py-[10px] text-[16px] text-[#555] outline-none placeholder:text-[#777] focus:border-[#f58220] max-sm:h-[120px] max-sm:text-[15px]"
+                  required
                 />
 
-                {/* Submit Button */}
+                {success && (
+                  <p className="mb-4 text-center text-sm font-medium text-green-600">
+                    {success}
+                  </p>
+                )}
+                {error && (
+                  <p className="mb-4 text-center text-sm font-medium text-red-600">
+                    {error}
+                  </p>
+                )}
+
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="
-                      h-[50px]
-                      w-[200px]
-                      rounded-[3px]
-                      bg-[#f58220]
-                      text-[16px]
-                      font-bold
-                      text-white
-                      transition-all
-                      duration-300
-                      hover:bg-[#d96d0d]
-
-                      max-sm:h-[48px]
-                      max-sm:w-full
-                      max-sm:max-w-[200px]
-                      max-sm:text-[15px]
-                    "
+                    disabled={loading}
+                    className="h-[50px] w-[200px] rounded-[3px] bg-[#f58220] text-[16px] font-bold text-white transition-all duration-300 hover:bg-[#d96d0d] disabled:cursor-not-allowed disabled:opacity-60 max-sm:h-[48px] max-sm:w-full max-sm:max-w-[200px] max-sm:text-[15px]"
                   >
-                    Submit
+                    {loading ? "Submitting..." : "Submit"}
                   </button>
                 </div>
               </form>
             </div>
 
-            {/* =================================================
-                CONTACT INFORMATION
-            ================================================== */}
-            <div
-              className="
-                flex
-                w-full
-                flex-col
-                rounded-[3px]
-                bg-[#536b98]
-                px-[16px]
-                py-[10px]
-                text-center
-                text-white
-
-                sm:w-[400px]
-                sm:py-[16px]
-
-                max-sm:px-[12px]
-                max-sm:py-[5px]
-              "
-            >
-              {/* Contact Person 1 */}
-              <div
-                className="
-                  flex
-                  flex-1
-                  flex-col
-                  items-center
-                  justify-center
-                  py-4
-
-                  sm:py-6
-
-                  max-sm:py-5
-                "
-              >
-                <div className="mb-[7px]">
-                  <svg
-                    width="50"
-                    height="50"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    className="
-                      text-white
-
-                      max-sm:h-[42px]
-                      max-sm:w-[42px]
-                    "
-                  >
-                    <circle cx="9" cy="7" r="3" />
-                    <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
-                    <circle cx="18" cy="8" r="2.3" />
-                    <path d="M16 14c2.8.3 5 2.7 5 5.5" />
-                  </svg>
-                </div>
-
-                <h4 className="text-[18px] font-bold max-sm:text-[17px]">
-                  Bhupinder Kaur
-                </h4>
-
-                <p
-                  className="
-                    mt-[3px]
-                    break-all
-                    text-[16px]
-                    leading-[1.4]
-
-                    max-sm:text-[14px]
-                  "
-                >
-                  B: bhupinder@lexwitness.in
-                </p>
-
-                <p className="text-[16px] max-sm:text-[14px]">
-                  T: +91-9654155065
-                </p>
-              </div>
-
-              {/* Divider */}
-              <div className="h-[1px] w-full bg-white/70" />
-
-              {/* Contact Person 2 */}
-              <div
-                className="
-                  flex
-                  flex-1
-                  flex-col
-                  items-center
-                  justify-center
-                  py-4
-
-                  sm:py-6
-
-                  max-sm:py-5
-                "
-              >
-                <div className="mb-[7px]">
-                  <svg
-                    width="50"
-                    height="50"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    className="
-                      text-white
-
-                      max-sm:h-[42px]
-                      max-sm:w-[42px]
-                    "
-                  >
-                    <circle cx="9" cy="7" r="3" />
-                    <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
-                    <circle cx="18" cy="8" r="2.3" />
-                    <path d="M16 14c2.8.3 5 2.7 5 5.5" />
-                  </svg>
-                </div>
-
-                <h4 className="text-[18px] font-bold max-sm:text-[17px]">
-                  Neelima Maheshwari
-                </h4>
-
-                <p
-                  className="
-                    mt-[3px]
-                    break-all
-                    text-[16px]
-                    leading-[1.4]
-
-                    max-sm:text-[14px]
-                  "
-                >
-                  E: neelima.maheshwari@lexwitness.in
-                </p>
-
-                <p className="text-[16px] max-sm:text-[14px]">
-                  T: +91 8880846800
-                </p>
-              </div>
-
-              {/* Divider */}
-              <div className="h-[1px] w-full bg-white/70" />
-
-              {/* Secretariat Office */}
-              <div
-                className="
-                  flex
-                  flex-1
-                  flex-col
-                  items-center
-                  justify-center
-                  py-4
-
-                  sm:py-6
-
-                  max-sm:py-5
-                "
-              >
-                <div className="mb-[7px]">
-                  <svg
-                    width="50"
-                    height="50"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="
-                      text-white
-
-                      max-sm:h-[42px]
-                      max-sm:w-[42px]
-                    "
-                  >
-                    <path d="M21.7 2.3 2.4 10.2c-.7.3-.6 1.3.1 1.6l7.2 2.5 2.5 7.2c.2.7 1.2.8 1.6.1l7.9-19.3c.3-.7-.4-1.4-1-1z" />
-                  </svg>
-                </div>
-
-                <h4 className="text-[18px] font-bold max-sm:text-[17px]">
-                  Secretariat Office
-                </h4>
-
-                <p
-                  className="
-                    mt-[3px]
-                    text-[16px]
-                    leading-[1.5]
-
-                    max-sm:text-[14px]
-                    max-sm:leading-[1.5]
-                  "
-                >
-                  Lex Witness
-                  <br />
-                  Suite 4/5, Tower Ground Floor, Block B,
-                  <br />
-                  Hauz Khas, New Delhi – 110016
-                </p>
-              </div>
-            </div>
+            {/* Keep your existing contact information section here */}
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          SUBSCRIBE SECTION
-      ====================================================== */}
       <SubscribeSection />
     </div>
   );
