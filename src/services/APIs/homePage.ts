@@ -8,6 +8,7 @@ export const getEvents = async () => {
 
 export const getSponsors = async () => {
   const res = await api.get(`/events/${APP_EVENT_TYPE}?is_merge=1`);
+  console.log("Sponsors", res);
   return res.data;
 };
 

@@ -3,6 +3,7 @@
 import { useEvents } from "@/src/hooks/useEvents";
 import { getSpeakerImageUrl } from "@/src/utils/image";
 import Image from "next/image";
+import SpeakersSkeleton from "../skeletons/SpeakersSkeleton";
 
 export default function Speakers() {
   const { events, loading, error } = useEvents();
@@ -69,7 +70,7 @@ export default function Speakers() {
 
         <div className="mt-[60px] grid grid-cols-1 gap-y-[55px] sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-[45px] lg:gap-y-[62px]">
           {loading ? (
-            <p className="col-span-full text-center">Loading speakers...</p>
+            <SpeakersSkeleton />
           ) : error ? (
             <p className="col-span-full text-center">{error}</p>
           ) : speakers.length === 0 ? (
