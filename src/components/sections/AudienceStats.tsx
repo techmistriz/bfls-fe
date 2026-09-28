@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { stats } from "@/src/data/static/audienceStats";
-import { useCountUp } from "@/src/hooks/useCountUp";
+import { stats } from "@/src/data/audienceStats";
+import { useCountUp } from "@/src/data/useCountUp";
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
 
 export default function AudienceStats() {
