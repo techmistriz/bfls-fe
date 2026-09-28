@@ -145,3 +145,8 @@ html {
 .animate-float-vertical {
   animation: float-vertical 2.5s ease-in-out infinite;
 }
+
+/* Google reCAPTCHA v3 badge */
+.grecaptcha-badge {
+  z-index: 99999 !important;
+}

@@ -222,9 +222,9 @@ export default function Footer() {
       </a>
 
       {/* reCAPTCHA */}
-      <div className="fixed right-0 bottom-2 z-[98] flex size-[54px] items-center justify-center rounded-l bg-[#fafafa] shadow-[0_1px_5px_rgba(0,0,0,0.3)]">
+      {/* <div className="fixed right-0 bottom-2 z-[98] flex size-[54px] items-center justify-center rounded-l bg-[#fafafa] shadow-[0_1px_5px_rgba(0,0,0,0.3)]">
         <div className="text-3xl font-bold text-[#4285f4]">↻</div>
-      </div>
+      </div> */}
     </footer>
   );
 }

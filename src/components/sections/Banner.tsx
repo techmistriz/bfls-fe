@@ -1,20 +1,58 @@
+"use client";
+
 import Image from "next/image";
 import { DotsRow } from "@/src/components/ui/DotsRow";
 import MouseParallax from "../ui/MouseParallax";
+import { useEvents } from "@/src/hooks/useEvents";
+
+const FALLBACK_BANNER_IMAGE = "/images/pexels-ravi-roshan-14907339-scaled.jpeg";
+
+const FALLBACK_LOGO = "/images/BFLS_LOGO_IMAGE.png";
 
 export default function Banner() {
+  const { events, loading, error } = useEvents();
+
+  const event = events?.[0];
+
+  if (loading) {
+    return (
+      <section className="relative mt-[88px] flex min-h-[664px] w-full items-center justify-center bg-black">
+        <p className="text-white">Loading...</p>
+      </section>
+    );
+  }
+
+  if (error || !event) {
+    return null;
+  }
+
+  const title = event.title || "Banking & Finance Legal Summit";
+
+  const eventDate = event.date || "";
+  console.log(eventDate);
+
+  const venue = event.venue || "";
+
+  const city = event.city?.name || "";
+
+  const location = [venue, city].filter(Boolean).join(", ").toUpperCase();
+
+  const bannerImage = FALLBACK_BANNER_IMAGE;
+
   return (
     <section className="relative mt-[88px] flex min-h-[664px] w-full items-center justify-center overflow-hidden max-lg:min-h-[620px] max-md:min-h-[680px] max-md:py-[60px] max-sm:min-h-[700px] max-sm:py-[50px]">
+      {/* Background */}
       <div className="absolute inset-0">
         <Image
-          src="/images/pexels-ravi-roshan-14907339-scaled.jpeg"
-          alt="Banking and Finance Summit"
+          src={bannerImage}
+          alt={title}
           fill
           priority
           className="object-cover object-center"
         />
       </div>
 
+      {/* Overlay */}
       <div className="absolute inset-0 z-[1] opacity-[0.8]">
         <Image
           src="/images/overlay2-1.png"
@@ -25,6 +63,7 @@ export default function Banner() {
         />
       </div>
 
+      {/* Circle */}
       <div className="absolute left-[12.3%] top-[6%] z-[1] h-[218px] w-[218px] overflow-hidden rounded-full opacity-[0.6] min-[768px]:max-[1499px]:left-[9.3%] max-lg:top-[5%] max-md:left-[40px] max-md:top-[4%] max-md:h-[150px] max-md:w-[150px] max-sm:left-[-55px] max-sm:top-[3%] max-sm:h-[130px] max-sm:w-[130px]">
         <Image
           src="/images/red-circle-shape-1.png"
@@ -37,18 +76,18 @@ export default function Banner() {
       <MouseParallax
         strength={30}
         className="
-                  absolute left-[13.4%] top-[38%]
-                  z-[2] text-[48px] font-light text-white/20
-                  max-lg:left-[8%] max-lg:top-[45%]
-                  max-md:left-[5%] max-md:top-[42%] max-md:text-[30px]
-                  max-sm:left-[4%] max-sm:top-[39%] max-sm:text-[26px]
-                "
+          absolute left-[13.4%] top-[38%]
+          z-[2] text-[48px] font-light text-white/20
+          max-lg:left-[8%] max-lg:top-[45%]
+          max-md:left-[5%] max-md:top-[42%] max-md:text-[30px]
+          max-sm:left-[4%] max-sm:top-[39%] max-sm:text-[26px]
+        "
       >
         ×
       </MouseParallax>
 
-      {/* Rotating Triangle at Bottom-Left */}
-      <div className="absolute bottom-[18%] right-[22%] z-[2] opacity-30 animate-spin [animation-duration:12s] max-lg:right-[6%] max-md:bottom-[12%] max-md:right-[4%] max-sm:bottom-[8%] max-sm:right-[2%]">
+      {/* Rotating Triangle */}
+      <div className="absolute bottom-[18%] right-[22%] z-[2] animate-spin opacity-30 [animation-duration:12s] max-lg:right-[6%] max-md:bottom-[12%] max-md:right-[4%] max-sm:bottom-[8%] max-sm:right-[2%]">
         <svg
           width="40"
           height="40"
@@ -68,11 +107,13 @@ export default function Banner() {
         </svg>
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1250px] flex-col items-center px-5 pt-2 text-center max-md:px-6 max-sm:px-5 mt-[32px]">
+      {/* Content */}
+      <div className="relative z-10 mx-auto mt-[32px] flex w-full max-w-[1250px] flex-col items-center px-5 pt-2 text-center max-md:px-6 max-sm:px-5">
+        {/* Logo */}
         <div className="mb-8 max-lg:mb-7 max-md:mb-6 max-sm:mb-5">
           <Image
-            src="/images/BFLS_LOGO_IMAGE.png"
-            alt="Witness Banking and Finance"
+            src={FALLBACK_LOGO}
+            alt={event.event_type?.name || "Lex Witness"}
             width={435}
             height={160}
             priority
@@ -80,34 +121,37 @@ export default function Banner() {
           />
         </div>
 
-        <h1 className="max-w-[1180px] text-[45px] font-extrabold leading-[1.18] tracking-[-1px] text-white font-poppins max-lg:text-[42px] max-md:max-w-[700px] max-md:text-[36px] max-md:leading-[1.2] max-md:tracking-[-0.5px] max-sm:max-w-[100%] max-sm:text-[28px] max-sm:leading-[1.25] max-sm:tracking-[-0.3px]">
-          The Lex Witness 8th Annual Banking &amp; Finance
-          <br className="max-sm:hidden" />
-          <span className="sm:hidden"> </span>
-          Legal Summit 2025
+        {/* Dynamic title */}
+        <h1 className="max-w-[1180px] font-poppins text-[45px] font-extrabold leading-[1.18] tracking-[-1px] text-white max-lg:text-[42px] max-md:max-w-[700px] max-md:text-[36px] max-md:leading-[1.2] max-md:tracking-[-0.5px] max-sm:max-w-[100%] max-sm:text-[28px] max-sm:leading-[1.25] max-sm:tracking-[-0.3px]">
+          {title}
         </h1>
 
-        <p className="mt-8 text-[24px] font-bold uppercase leading-none text-white font-poppins max-lg:mt-7 max-lg:text-[21px] max-md:mt-6 max-md:max-w-[650px] max-md:text-[19px] max-md:leading-[1.35] max-sm:mt-5 max-sm:max-w-[330px] max-sm:text-[16px] max-sm:leading-[1.4]">
-          21ST NOVEMBER 2025, TAJ SANTACRUZ, MUMBAI
+        {/* Dynamic date + venue */}
+        <p className="mt-8 font-poppins text-[24px] font-bold uppercase leading-none text-white max-lg:mt-7 max-lg:text-[21px] max-md:mt-6 max-md:max-w-[650px] max-md:text-[19px] max-md:leading-[1.35] max-sm:mt-5 max-sm:max-w-[330px] max-sm:text-[16px] max-sm:leading-[1.4]">
+          {eventDate}
+          {location && `, ${location}`}
         </p>
 
-        <p className="mt-12 max-w-[720px] text-[16px] font-bold leading-[1.65] text-white font-archivo max-lg:mt-10 max-md:mt-8 max-md:max-w-[650px] max-md:text-[15px] max-sm:mt-7 max-sm:max-w-[340px] max-sm:text-[14px] max-sm:leading-[1.6]">
-          The 2025 Edition was a massive success and we now look forward to the
-          2026 Edition. In case you wish to participate in the future editions,
-          please get in touch with us.
+        {/* Dynamic description */}
+        <p className="mt-12 max-w-[720px] font-archivo text-[16px] font-bold leading-[1.65] text-white max-lg:mt-10 max-md:mt-8 max-md:max-w-[650px] max-md:text-[15px] max-sm:mt-7 max-sm:max-w-[340px] max-sm:text-[14px] max-sm:leading-[1.6]">
+          The {event.year || "current"} edition was a massive success and we now
+          look forward to the next edition. In case you wish to participate in
+          future editions, please get in touch with us.
         </p>
 
+        {/* CTA */}
         <a
           href="/contact"
-          className="group mt-11 inline-flex h-[66px] min-w-[178px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-7 text-[16px] font-bold uppercase text-white shadow-sm font-archivo transition-all duration-300 hover:border-[#EF7F1B] hover:bg-[#fff] hover:text-[#EF7F1B] hover:shadow-lg max-lg:mt-9 max-md:mt-8 max-md:h-[58px] max-md:min-w-[165px] max-md:px-6 max-md:text-[15px] max-sm:mt-7 max-sm:h-[54px] max-sm:min-w-[155px] max-sm:px-5 max-sm:text-[14px]"
+          className="group mt-11 inline-flex h-[66px] min-w-[178px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-7 font-archivo text-[16px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg max-lg:mt-9 max-md:mt-8 max-md:h-[58px] max-md:min-w-[165px] max-md:px-6 max-md:text-[15px] max-sm:mt-7 max-sm:h-[54px] max-sm:min-w-[155px] max-sm:px-5 max-sm:text-[14px]"
         >
           <i
             aria-hidden="true"
-            className="text-[20px] fas fa-download text-white transition-colors duration-300 group-hover:text-[#EF7F1B]"
+            className="fas fa-download text-[20px] text-white transition-colors duration-300 group-hover:text-[#EF7F1B]"
           />
           <span>CONTACT US</span>
         </a>
 
+        {/* Dots */}
         <div className="dots-group translate-x-[8px] sm:translate-x-[12px] md:translate-x-[55px]">
           <DotsRow className="mt-4 max-md:mt-3 max-sm:mt-6" />
           <DotsRow className="mt-3 max-sm:mt-2" />

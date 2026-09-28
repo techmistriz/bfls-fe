@@ -1,31 +1,66 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-// import { submitSponsorshipForm } from "@/src/services/sponsorship.service";
+import { useForm } from "react-hook-form";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
-export default function SponsorshipForm() {
-  const [isSubmitting] = useState(false);
+import { APP_EVENT_TYPE } from "@/src/config/event";
+import { submitShowcaseForm } from "@/src/services/showcase.service";
+import type { ShowcaseFormValues, ShowcasePayload } from "@/src/types/showcase";
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+export default function ShowCaseForm() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
-    // const formData = new FormData(e.currentTarget);
-    // const data = {
-    //   name: String(formData.get("name") ?? ""),
-    //   email: String(formData.get("email") ?? ""),
-    //   contact: String(formData.get("contact") ?? ""),
-    // };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<ShowcaseFormValues>();
 
-    // setIsSubmitting(true);
+  const onSubmit = async (data: ShowcaseFormValues) => {
+    console.log("Showcase form data:", data);
 
-    // try {
-    //   await submitSponsorshipForm(data);
-    //   e.currentTarget.reset();
-    // } catch (error) {
-    //   console.error("Sponsorship form submission failed:", error);
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
+    if (!executeRecaptcha) {
+      console.error("❌ reCAPTCHA is not ready");
+      return;
+    }
+
+    try {
+      console.log("🔄 Executing reCAPTCHA...");
+
+      const captchaToken = await executeRecaptcha("showcase");
+
+      console.log("✅ reCAPTCHA token generated:", {
+        exists: Boolean(captchaToken),
+        length: captchaToken?.length,
+      });
+
+      if (!captchaToken) {
+        console.error("❌ reCAPTCHA token is empty");
+        return;
+      }
+
+      const payload: ShowcasePayload = {
+        event_type_id: String(APP_EVENT_TYPE),
+        name: data.name,
+        email: data.email,
+        phone: data.contact,
+        captcha: captchaToken,
+      };
+
+      console.log("📤 Showcase payload:", {
+        ...payload,
+        captcha: `${captchaToken.substring(0, 10)}...`,
+      });
+
+      const response = await submitShowcaseForm(payload);
+
+      console.log("✅ Showcase API success:", response);
+
+      reset();
+    } catch (error) {
+      console.error("❌ Showcase submission failed:", error);
+    }
   };
 
   return (
@@ -51,38 +86,44 @@ export default function SponsorshipForm() {
             Showcase Yourself
           </p>
 
-          <h2 className="mx-auto max-w-[600px] text-[34px] font-extrabold leading-[1.12] text-white sm:text-[42px] lg:text-[56px] font-poppins">
+          <h2 className="mx-auto max-w-[600px] font-poppins text-[34px] font-extrabold leading-[1.12] text-white sm:text-[42px] lg:text-[56px]">
             Curate Your Own
             <br />
             Sponsorship Wish
           </h2>
 
-          <form onSubmit={handleSubmit} className="mx-auto mt-[20px] w-full">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="mx-auto mt-[20px] w-full"
+          >
             <div className="flex flex-col items-center justify-center gap-[30px] sm:flex-row">
               <input
                 type="text"
-                name="name"
                 placeholder="Your Name"
-                required
                 disabled={isSubmitting}
+                {...register("name", {
+                  required: "Name is required",
+                })}
                 className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[12px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60"
               />
 
               <input
                 type="email"
-                name="email"
                 placeholder="Your Email Address"
-                required
                 disabled={isSubmitting}
+                {...register("email", {
+                  required: "Email is required",
+                })}
                 className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[12px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60"
               />
 
               <input
                 type="tel"
-                name="contact"
                 placeholder="Your Contact Number"
-                required
                 disabled={isSubmitting}
+                {...register("contact", {
+                  required: "Contact number is required",
+                })}
                 className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[12px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60"
               />
             </div>
@@ -90,7 +131,7 @@ export default function SponsorshipForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[15px] font-bold text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
+              className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[15px] font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
             >
               {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
             </button>
@@ -110,15 +151,18 @@ export default function SponsorshipForm() {
           background-size: 16px 16px;
           animation: dotsMove 5s ease-in-out infinite;
         }
+
         @keyframes dotsMove {
           0% {
             transform: translateY(0px);
             opacity: 0.45;
           }
+
           50% {
             transform: translateY(-10px);
             opacity: 0.8;
           }
+
           100% {
             transform: translateY(0px);
             opacity: 0.45;
