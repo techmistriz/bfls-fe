@@ -90,12 +90,12 @@ export default function PastEditionsBanner() {
                 >
                   {/* Image */}
 
-                  <div className="relative h-[170px] w-full overflow-hidden">
+                  <div className="relative aspect-[350/233] w-full overflow-hidden">
                     <Image
                       src={getPastEditionImageUrl(edition.image)}
                       alt={edition.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, 250px"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 350px"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
