@@ -21,8 +21,8 @@ export default function GallerySection() {
 
   return (
     <>
-      <section 
-        id="gallery" 
+      <section
+        id="gallery"
         className="relative w-full scroll-mt-[88px] overflow-hidden bg-white py-12 sm:py-16 md:py-20"
       >
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6">
