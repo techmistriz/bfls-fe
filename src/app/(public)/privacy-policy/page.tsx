@@ -3,9 +3,6 @@
 import { PageBanner } from "@/src/components/layout/PageBanner";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 
-import Image from "next/image";
-import Link from "next/link";
-
 export default function PrivacyPolicyBanner() {
   return (
     <div className="w-full">
