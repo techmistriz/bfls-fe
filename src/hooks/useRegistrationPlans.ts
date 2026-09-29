@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getRegistrationPlans } from "@/src/services/registration.service";
-import type { RegistrationPlan } from "@/src/types/registration";
+import type { RegistrationPlan } from "@/src/types/registration.type";
 
 export const useRegistrationPlans = () => {
   const [plans, setPlans] = useState<RegistrationPlan[]>([]);

@@ -1,4 +1,4 @@
-import type { Event } from "./event";
+import type { Event } from "./event.type";
 
 export interface PastEditionYear {
   year: number;

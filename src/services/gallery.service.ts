@@ -1,5 +1,5 @@
 import api from "@/src/network/axios";
-import type { GalleryResponse } from "@/src/types/gallery";
+import type { GalleryResponse } from "@/src/types/gallery.type";
 import { APP_EVENT_TYPE } from "../config/eventType.config";
 
 export const getGallery = async (): Promise<GalleryResponse> => {

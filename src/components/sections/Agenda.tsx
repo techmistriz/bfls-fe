@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useEvents } from "@/src/hooks/useEvents";
 import { getSpeakerImageUrl } from "@/src/utils/image";
-import { agendaContent, agendaDecorations } from "@/src/data/agenda";
+import { agendaContent, agendaDecorations } from "@/src/data/agenda.data";
 
 export default function Agenda() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);

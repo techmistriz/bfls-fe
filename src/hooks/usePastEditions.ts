@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { PastEditionYear } from "@/src/types/pastEditionResponse";
+import type { PastEditionYear } from "@/src/types/pastEditionResponse.type";
 import { getPastEditions } from "../services/past-edition.service";
 
 export const usePastEditions = () => {

@@ -1,5 +1,8 @@
 import api from "@/src/network/axios";
-import type { ShowcasePayload, ShowcaseResponse } from "@/src/types/showcase";
+import type {
+  ShowcasePayload,
+  ShowcaseResponse,
+} from "@/src/types/showcase.type";
 
 export const submitShowcaseForm = async (
   payload: ShowcasePayload,

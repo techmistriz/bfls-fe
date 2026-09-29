@@ -106,13 +106,21 @@ export default function Sponsors() {
 
                   <div className="relative mt-[12px] h-[70px] w-[170px]">
                     {sponsor.image && (
-                      <Image
-                        src={getSponsorImageUrl(sponsor.image)}
-                        alt={sponsor.title}
-                        fill
-                        sizes="170px"
-                        className="cursor-pointer object-contain transition-transform duration-300"
-                      />
+                      <a
+                        href={sponsor.website_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${sponsor.title} website`}
+                        className="block h-full w-full"
+                      >
+                        <Image
+                          src={getSponsorImageUrl(sponsor.image)}
+                          alt={sponsor.title}
+                          fill
+                          sizes="170px"
+                          className="cursor-pointer object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </a>
                     )}
                   </div>
                 </div>

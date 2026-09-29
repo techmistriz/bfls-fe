@@ -1,14 +1,33 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 import { PageBanner } from "@/src/components/layout/PageBanner";
 import { submitContactUs } from "@/src/services/contact.service";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { ApiError } from "@/src/types/api";
+import { ApiError } from "@/src/types/api.type";
 import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
 
-const inputClass = `h-[50px] w-full border border-[#dedede] bg-[#f8f8f8] px-[12px] text-[16px] text-[#555] outline-none placeholder:text-[#777] focus:border-[#f58220] max-sm:h-[48px] max-sm:text-[15px]`;
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  message: string;
+}
+
+const DEFAULT_VALUES: ContactFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  company: "",
+  message: "",
+};
+
+const inputClass =
+  "h-[50px] w-full border border-[#dedede] bg-[#f8f8f8] px-[12px] text-[16px] text-[#555] outline-none placeholder:text-[#777] focus:border-[#f58220] max-sm:h-[48px] max-sm:text-[15px]";
 
 export default function ContactUs() {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -18,12 +37,8 @@ export default function ContactUs() {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    message: "",
+  const { register, handleSubmit, reset } = useForm<ContactFormData>({
+    defaultValues: DEFAULT_VALUES,
   });
 
   useEffect(() => {
@@ -38,20 +53,7 @@ export default function ContactUs() {
     };
   }, []);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const onSubmit = async (formData: ContactFormData) => {
     setLoading(true);
     setSuccess("");
     setError("");
@@ -61,16 +63,9 @@ export default function ContactUs() {
         throw new Error("reCAPTCHA is not ready. Please try again.");
       }
 
-      console.log("🔄 Executing reCAPTCHA...");
-
       const captcha = await executeRecaptcha("contact_us");
 
-      console.log("✅ reCAPTCHA token generated:", {
-        exists: Boolean(captcha),
-        length: captcha?.length,
-      });
-
-      const response = await submitContactUs({
+      await submitContactUs({
         event_type_id: String(APP_EVENT_TYPE),
         name: formData.name,
         email: formData.email,
@@ -80,25 +75,14 @@ export default function ContactUs() {
         captcha,
       });
 
-      console.log("Contact Us response:", response);
-
       setSuccess("Your message has been submitted successfully.");
-
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        message: "",
-      });
+      reset(DEFAULT_VALUES);
     } catch (err: unknown) {
-      console.error("Contact Us API error:", err);
-
-      const error = err as ApiError;
+      const apiError = err as ApiError;
 
       setError(
-        error.response?.data?.message ||
-          error.message ||
+        apiError.response?.data?.message ||
+          apiError.message ||
           "Something went wrong. Please try again.",
       );
     } finally {
@@ -118,7 +102,9 @@ export default function ContactUs() {
       <section className="relative min-h-[500px] w-full overflow-hidden max-sm:min-h-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat max-sm:bg-[center_center]"
-          style={{ backgroundImage: "url('/images/contact_page_form_bg.jpg')" }}
+          style={{
+            backgroundImage: "url('/images/contact_page_form_bg.jpg')",
+          }}
         />
 
         <span className="absolute left-[15%] top-[100px] z-[2] h-[4px] w-[4px] rounded-full bg-[#f58220] sm:left-[28%] max-sm:left-[12%] max-sm:top-[70px]" />
@@ -148,6 +134,7 @@ export default function ContactUs() {
               <p className="mb-[5px] text-[30px] font-bold leading-none text-[#f58220] sm:text-[32px] max-sm:text-[25px]">
                 # Have Questions?
               </p>
+
               <h2 className="text-[48px] font-bold leading-[1.15] text-[#536b98] sm:text-[56px] max-sm:text-[38px]">
                 Drop us a Line
               </h2>
@@ -160,56 +147,53 @@ export default function ContactUs() {
                 Your <span className="text-[#f58220]">Witness</span> Please!
               </h3>
 
-              <form className="w-full" onSubmit={handleSubmit}>
+              <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-[10px] grid grid-cols-1 gap-[10px] sm:grid-cols-2 sm:gap-[15px]">
                   <input
                     type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     placeholder="Your Name*"
                     className={inputClass}
-                    required
+                    {...register("name", {
+                      required: "Name is required",
+                    })}
                   />
+
                   <input
                     type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     placeholder="Your Email*"
                     className={inputClass}
-                    required
+                    {...register("email", {
+                      required: "Email is required",
+                    })}
                   />
                 </div>
 
                 <div className="mb-[10px] grid grid-cols-1 gap-[10px] sm:grid-cols-2 sm:gap-[15px]">
                   <input
                     type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
                     placeholder="Phone Number*"
                     className={inputClass}
-                    required
+                    {...register("phone", {
+                      required: "Phone number is required",
+                    })}
                   />
+
                   <input
                     type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
                     placeholder="Company Name*"
                     className={inputClass}
-                    required
+                    {...register("company", {
+                      required: "Company name is required",
+                    })}
                   />
                 </div>
 
                 <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
                   placeholder="Please place your query here"
                   className="mb-[10px] h-[150px] w-full resize-none border border-[#dedede] bg-[#f8f8f8] px-[12px] py-[10px] text-[16px] text-[#555] outline-none placeholder:text-[#777] focus:border-[#f58220] max-sm:h-[120px] max-sm:text-[15px]"
-                  required
+                  {...register("message", {
+                    required: "Message is required",
+                  })}
                 />
 
                 {success && (
@@ -217,6 +201,7 @@ export default function ContactUs() {
                     {success}
                   </p>
                 )}
+
                 {error && (
                   <p className="mb-4 text-center text-sm font-medium text-red-600">
                     {error}
