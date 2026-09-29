@@ -97,7 +97,7 @@ export default function Sponsors() {
               return (
                 <div
                   key={item.id}
-                  className="group relative flex h-[145px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10 hover:shadow-[0_8px_25px_rgba(70,90,120,0.12)]"
+                  className="group relative flex h-[145px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10"
                   style={{ animationDelay: `${index * 0.15}s` }}
                 >
                   <p className="absolute left-0 right-0 top-[11px] text-center text-[13px] font-semibold text-[#777]">
@@ -118,7 +118,7 @@ export default function Sponsors() {
                           alt={sponsor.title}
                           fill
                           sizes="170px"
-                          className="cursor-pointer object-contain transition-transform duration-300 group-hover:scale-105"
+                          className="cursor-pointer object-contain "
                         />
                       </a>
                     )}
