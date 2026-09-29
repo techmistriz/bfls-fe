@@ -4,9 +4,9 @@ import { FormEvent, useEffect, useState } from "react";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 import { PageBanner } from "@/src/components/layout/PageBanner";
 import { submitContactUs } from "@/src/services/contact.service";
-import { EVENT_TYPE } from "@/src/config/eventType";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { ApiError } from "@/src/types/api";
+import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
 
 const inputClass = `h-[50px] w-full border border-[#dedede] bg-[#f8f8f8] px-[12px] text-[16px] text-[#555] outline-none placeholder:text-[#777] focus:border-[#f58220] max-sm:h-[48px] max-sm:text-[15px]`;
 
@@ -71,7 +71,7 @@ export default function ContactUs() {
       });
 
       const response = await submitContactUs({
-        event_type_id: String(EVENT_TYPE.BFLS),
+        event_type_id: String(APP_EVENT_TYPE),
         name: formData.name,
         email: formData.email,
         phone: formData.phone,

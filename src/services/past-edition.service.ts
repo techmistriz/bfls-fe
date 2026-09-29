@@ -1,4 +1,4 @@
-import { APP_EVENT_TYPE } from "../config/event";
+import { APP_EVENT_TYPE } from "../config/eventType.config";
 import api from "../network/axios";
 import { PastEditionResponse } from "../types/pastEditionResponse";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { RECAPTCHA_SITE_KEYS } from "@/src/config/recaptcha";
+import { RECAPTCHA_SITE_KEYS } from "@/src/config/recaptcha.config";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 export default function RecaptchaProvider({

@@ -1,5 +1,5 @@
-import { APP_EVENT_TYPE } from "@/src/config/event";
 import api from "@/src/network/axios";
+import { APP_EVENT_TYPE } from "../config/eventType.config";
 
 export const getEvents = async () => {
   const { data } = await api.get(`/events/${APP_EVENT_TYPE}`);
