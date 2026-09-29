@@ -15,7 +15,7 @@ export default function AboutWitnessBanner() {
 
   return (
     <div className="w-full">
-      {/* ================= BANNER ================= */}
+      {/* ---------- BANNER ---------- */}
 
       <section className="relative mt-[88px] h-[398px] w-full overflow-hidden">
         <Image
@@ -57,57 +57,21 @@ export default function AboutWitnessBanner() {
         </div>
       </section>
 
-      {/* =====================================================
+      {/* -------------====
                 SUMMIT SECRETARIAT CONTENT
-            ====================================================== */}
+            -------------===== */}
 
       <section className="w-full bg-white">
-        <div
-          className="
-                        mx-auto
-                        max-w-[1130px]
-                        px-6
-                        py-[55px]
-
-                        lg:px-0
-                        lg:py-[60px]
-
-                        max-md:py-[45px]
-                        max-sm:px-[20px]
-                        max-sm:py-[35px]
-                    "
-        >
-          <div
-            className="
-                            grid
-                            grid-cols-[1fr_320px]
-                            gap-[40px]
-
-                            max-lg:grid-cols-[1fr_300px]
-                            max-md:grid-cols-1
-                            max-md:gap-[45px]
-                        "
-          >
-            {/* =================================================
+        <div className=" mx-auto max-w-[1130px] px-6 py-[55px] lg:px-0 lg:py-[60px] max-md:py-[45px] max-sm:px-[20px] max-sm:py-[35px] ">
+          <div className=" grid grid-cols-[1fr_320px] gap-[40px] max-lg:grid-cols-[1fr_300px] max-md:grid-cols-1 max-md:gap-[45px] ">
+            {/* -------------
                             LEFT CONTENT
-                        ================================================== */}
+                        -------------= */}
 
             <div className="min-w-0">
               {/* Intro Paragraph */}
 
-              <p
-                className="
-                                    mb-[15px]
-                                    font-archivo
-                                    text-[16px]
-                                    leading-[1.6]
-                                    text-[#666]
-
-                                    max-sm:mb-[30px]
-                                    max-sm:text-[14px]
-                                    max-sm:leading-[1.7]
-                                "
-              >
+              <p className=" mb-[15px] font-archivo text-[16px] leading-[1.6] text-[#666] max-sm:mb-[30px] max-sm:text-[14px] max-sm:leading-[1.7] ">
                 Typically known as an A to A magazine – an adult to adult
                 magazine as they say, Lex Witness has been a platform for
                 knowledge sharing and thought leadership on various industry
@@ -118,19 +82,7 @@ export default function AboutWitnessBanner() {
                 offices!
               </p>
 
-              <p
-                className="
-                                    mb-[38px]
-                                    font-archivo
-                                    text-[16px]
-                                    leading-[1.6]
-                                    text-[#666]
-
-                                    max-sm:mb-[30px]
-                                    max-sm:text-[14px]
-                                    max-sm:leading-[1.7]
-                                "
-              >
+              <p className=" mb-[38px] font-archivo text-[16px] leading-[1.6] text-[#666] max-sm:mb-[30px] max-sm:text-[14px] max-sm:leading-[1.7] ">
                 A major development here at the action packed Summit Secretariat
                 is the extension of these services to various organizations who
                 have started entrusting Witness with the responsibility to
@@ -143,60 +95,22 @@ export default function AboutWitnessBanner() {
                 please contact us.
               </p>
 
-              {/* =================================================
-                                ORANGE HEADING
-                            ================================================== */}
+              {/* ------------- ORANGE HEADING -------------= */}
 
-              <h2
-                className="
-                                    mb-[18px]
-                                    font-archivo
-                                    text-[24px]
-                                    font-bold
-                                    leading-[1.3]
-                                    text-[#f58220]
-
-                                    max-sm:text-[20px]
-                                    max-sm:leading-[1.4]
-                                "
-              >
+              <h2 className=" mb-[18px] font-archivo text-[24px] font-bold leading-[1.3] text-[#f58220] max-sm:text-[20px] max-sm:leading-[1.4] ">
                 Meanwhile here’s a gist of The Lex Witness Summits so far;
               </h2>
 
-              {/* =================================================
-                                ACCORDION
-                            ================================================== */}
+              {/* ------------- ACCORDION -------------= */}
 
               <div className="w-full">
-                {/* ================= 2023 ================= */}
+                {/* ---------- 2023 ---------- */}
 
                 <div className="mb-[18px] w-full">
                   <button
                     type="button"
                     onClick={() => toggleEdition(0)}
-                    className={`
-                                            flex
-                                            min-h-[54px]
-                                            w-full
-                                            items-center
-                                            justify-between
-                                            px-[30px]
-                                            text-left
-                                            font-archivo
-                                            text-[16px]
-                                            font-bold
-                                            transition-all
-
-                                            max-sm:min-h-[52px]
-                                            max-sm:px-[18px]
-                                            max-sm:text-[14px]
-
-                                            ${
-                                              openEdition === 0
-                                                ? "bg-[#1195d0] text-white"
-                                                : "bg-[#f3f5f7] text-[#111]"
-                                            }
-                                        `}
+                    className={` flex min-h-[54px] w-full items-center justify-between px-[30px] text-left font-archivo text-[16px] font-bold transition-all max-sm:min-h-[52px] max-sm:px-[18px] max-sm:text-[14px] ${openEdition === 0 ? "bg-[#1195d0] text-white" : "bg-[#f3f5f7] text-[#111]"} `}
                   >
                     <span>Lex Witness Summits 2023</span>
 
@@ -228,35 +142,9 @@ export default function AboutWitnessBanner() {
                   </button>
 
                   {openEdition === 0 && (
-                    <div
-                      className="
-                                                grid
-                                                grid-cols-[240px_1fr]
-                                                gap-[30px]
-                                                bg-[#f5f5f5]
-                                                px-[10px]
-                                                py-[20px]
-
-                                                max-sm:grid-cols-1
-                                                max-sm:gap-[18px]
-                                                max-sm:px-[10px]
-                                                max-sm:py-[15px]
-                                            "
-                    >
+                    <div className=" grid grid-cols-[240px_1fr] gap-[30px] bg-[#f5f5f5] px-[10px] py-[20px] max-sm:grid-cols-1 max-sm:gap-[18px] max-sm:px-[10px] max-sm:py-[15px] ">
                       {/* Image */}
-
-                      <div
-                        className="
-                                                    flex
-                                                    min-h-[215px]
-                                                    items-start
-                                                    justify-center
-                                                    bg-[#f1f1f1]
-                                                    p-[10px]
-
-                                                    max-sm:min-h-0
-                                                "
-                      >
+                      <div className=" flex min-h-[215px] items-start justify-center bg-[#f1f1f1] p-[10px] max-sm:min-h-0 ">
                         <div className="relative aspect-[1.35/1] w-full max-w-[230px] overflow-hidden">
                           <Image
                             src="/images/10-scaled.jpg"
@@ -269,17 +157,7 @@ export default function AboutWitnessBanner() {
 
                       {/* Content */}
 
-                      <div
-                        className="
-                                                    font-archivo
-                                                    text-[16px]
-                                                    leading-[1.5]
-                                                    text-[#222]
-
-                                                    max-sm:text-[14px]
-                                                    max-sm:leading-[1.65]
-                                                "
-                      >
+                      <div className=" font-archivo text-[16px] leading-[1.5] text-[#222] max-sm:text-[14px] max-sm:leading-[1.65] ">
                         <p>
                           <strong>
                             The Grand Masters 2023 – New Delhi, Mumbai &amp;
@@ -302,37 +180,13 @@ export default function AboutWitnessBanner() {
                   )}
                 </div>
 
-                {/* ================= 2021 ================= */}
+                {/* ---------- 2021 ---------- */}
 
                 <div className="mb-[18px] w-full">
                   <button
                     type="button"
                     onClick={() => toggleEdition(1)}
-                    className={`
-                                            flex
-                                            min-h-[54px]
-                                            w-full
-                                            items-center
-                                            justify-between
-                                            bg-[#f3f5f7]
-                                            px-[30px]
-                                            text-left
-                                            font-archivo
-                                            text-[16px]
-                                            font-bold
-                                            text-[#111]
-                                            transition-all
-                                            hover:bg-[#e9edf0]
-
-                                            max-sm:min-h-[52px]
-                                            max-sm:px-[18px]
-                                            max-sm:text-[14px]
-                                            ${
-                                              openEdition === 0
-                                                ? "bg-[#1195d0] text-white"
-                                                : "bg-[#f3f5f7] text-[#111]"
-                                            }
-                                        `}
+                    className={` flex min-h-[54px] w-full items-center justify-between bg-[#f3f5f7] px-[30px] text-left font-archivo text-[16px] font-bold text-[#111] transition-all hover:bg-[#e9edf0] max-sm:min-h-[52px] max-sm:px-[18px] max-sm:text-[14px] ${openEdition === 0 ? "bg-[#1195d0] text-white" : "bg-[#f3f5f7] text-[#111]"} `}
                   >
                     <span>Lex Witness Summits 2021</span>
 
@@ -364,35 +218,9 @@ export default function AboutWitnessBanner() {
                   </button>
 
                   {openEdition === 1 && (
-                    <div
-                      className="
-                                                grid
-                                                grid-cols-[240px_1fr]
-                                                gap-[30px]
-                                                bg-[#f5f5f5]
-                                                px-[10px]
-                                                py-[20px]
-
-                                                max-sm:grid-cols-1
-                                                max-sm:gap-[18px]
-                                                max-sm:px-[10px]
-                                                max-sm:py-[15px]
-                                            "
-                    >
+                    <div className=" grid grid-cols-[240px_1fr] gap-[30px] bg-[#f5f5f5] px-[10px] py-[20px] max-sm:grid-cols-1 max-sm:gap-[18px] max-sm:px-[10px] max-sm:py-[15px] ">
                       {/* Image */}
-
-                      <div
-                        className="
-                                                    flex
-                                                    min-h-[215px]
-                                                    items-start
-                                                    justify-center
-                                                    bg-[#f1f1f1]
-                                                    p-[10px]
-
-                                                    max-sm:min-h-0
-                                                "
-                      >
+                      <div className=" flex min-h-[215px] items-start justify-center bg-[#f1f1f1] p-[10px] max-sm:min-h-0 ">
                         <div className="relative aspect-[1.35/1] w-full max-w-[230px] overflow-hidden">
                           <Image
                             src="/images/10-scaled.jpg"
@@ -405,17 +233,7 @@ export default function AboutWitnessBanner() {
 
                       {/* Content */}
 
-                      <div
-                        className="
-                                                    font-archivo
-                                                    text-[16px]
-                                                    leading-[1.5]
-                                                    text-[#222]
-
-                                                    max-sm:text-[14px]
-                                                    max-sm:leading-[1.65]
-                                                "
-                      >
+                      <div className=" font-archivo text-[16px] leading-[1.5] text-[#222] max-sm:text-[14px] max-sm:leading-[1.65] ">
                         <p>
                           <strong>
                             The Grand Masters 2023 – New Delhi, Mumbai &amp;
@@ -438,33 +256,12 @@ export default function AboutWitnessBanner() {
                   )}
                 </div>
 
-                {/* ================= 2020 ================= */}
-
+                {/* ---------- 2020 ---------- */}
                 <div className="mb-[18px] w-full">
                   <button
                     type="button"
                     onClick={() => toggleEdition(2)}
-                    className="
-                                            flex
-                                            min-h-[54px]
-                                            w-full
-                                            items-center
-                                            justify-between
-                                            bg-[#f3f5f7]
-                                            px-[30px]
-                                            text-left
-                                            font-archivo
-                                            text-[16px]
-                                            font-bold
-                                            text-[#111]
-                                            transition-all
-                                            hover:bg-[#e9edf0]
-
-                                            max-sm:min-h-[52px]
-                                            max-sm:px-[18px]
-                                            max-sm:text-[14px]
-                                            
-                                        "
+                    className=" flex min-h-[54px] w-full items-center justify-between bg-[#f3f5f7] px-[30px] text-left font-archivo text-[16px] font-bold text-[#111] transition-all hover:bg-[#e9edf0] max-sm:min-h-[52px] max-sm:px-[18px] max-sm:text-[14px] "
                   >
                     <span>Lex Witness Summits 2020</span>
 
@@ -502,32 +299,12 @@ export default function AboutWitnessBanner() {
                   )}
                 </div>
 
-                {/* ================= 2019 ================= */}
-
+                {/* ---------- 2019 ---------- */}
                 <div className="w-full">
                   <button
                     type="button"
                     onClick={() => toggleEdition(3)}
-                    className="
-                                            flex
-                                            min-h-[54px]
-                                            w-full
-                                            items-center
-                                            justify-between
-                                            bg-[#f3f5f7]
-                                            px-[30px]
-                                            text-left
-                                            font-archivo
-                                            text-[16px]
-                                            font-bold
-                                            text-[#111]
-                                            transition-all
-                                            hover:bg-[#e9edf0]
-
-                                            max-sm:min-h-[52px]
-                                            max-sm:px-[18px]
-                                            max-sm:text-[14px]
-                                        "
+                    className=" flex min-h-[54px] w-full items-center justify-between bg-[#f3f5f7] px-[30px] text-left font-archivo text-[16px] font-bold text-[#111] transition-all hover:bg-[#e9edf0] max-sm:min-h-[52px] max-sm:px-[18px] max-sm:text-[14px] "
                   >
                     <span>Lex Witness Summits 2019</span>
 
@@ -567,35 +344,19 @@ export default function AboutWitnessBanner() {
               </div>
             </div>
 
-            {/* =================================================
-                            RIGHT SIDEBAR
-                        ================================================== */}
+            {/* ------------- RIGHT SIDEBAR -------------= */}
 
             <aside className="w-full">
-              {/* ================= MESSAGE 1 ================= */}
-
-              <div className="pb-[28px]">
-                <h3
-                  className="
-                                        mb-[18px]
-                                        font-archivo
-                                        text-[25px]
-                                        font-bold
-                                        text-[#d71920]
-
-                                        max-sm:text-[21px]
-                                    "
-                >
+              {/* ---------- MESSAGE 1 ---------- */}
+              <div className="pb-7">
+                <h3 className=" mb-4.5 font-archivo text-[25px] font-bold text-[#d71920] max-sm:text-[21px] ">
                   2020 Official Messages
                 </h3>
-
-                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
+                <div className="font-archivo text-[16px] leading-normal text-[#666]">
                   <p className="font-semibold text-[#666]">
                     Ms. Veta T. Richardson
                   </p>
-
                   <p>President &amp; CEO, ACC</p>
-
                   <a href="#" className="text-[#222] hover:text-[#f58220]">
                     Read More...
                   </a>
@@ -603,21 +364,16 @@ export default function AboutWitnessBanner() {
               </div>
 
               {/* Divider */}
+              <div className="mb-0 h-px w-full " />
 
-              <div className="mb-[0px] h-px w-full " />
-
-              {/* ================= MESSAGE 2 ================= */}
-
-              <div className="pb-[28px]">
-                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
+              {/* ---------- MESSAGE 2 ---------- */}
+              <div className="pb-7">
+                <div className="font-archivo text-[16px] leading-normal text-[#666]">
                   <p className="font-semibold text-[#666]">
                     Ms. Manjaree Choudhary
                   </p>
-
                   <p>General Counsel, Maruti Suzuki</p>
-
                   <p>Summit Chair, New Delhi Edition</p>
-
                   <a href="#" className="text-[#222] hover:text-[#f58220]">
                     Read More...
                   </a>
@@ -625,35 +381,19 @@ export default function AboutWitnessBanner() {
               </div>
 
               {/* Divider */}
+              <div className="mb-8.5 h-px w-full bg-[#222]" />
 
-              <div className="mb-[34px] h-px w-full bg-[#222]" />
-
-              {/* ================= MESSAGE 3 ================= */}
-
-              <div className="pb-[28px]">
-                <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
-                  <h3
-                    className="
-                                        mb-[18px]
-                                        font-archivo
-                                        text-[25px]
-                                        font-bold
-                                        text-[#d71920]
-
-                                        max-sm:text-[21px]
-                                    "
-                  >
+              {/* ---------- MESSAGE 3 ---------- */}
+              <div className="pb-7">
+                <div className="font-archivo text-[16px] leading-normal text-[#666]">
+                  <h3 className=" mb-4.5 font-archivo text-[25px] font-bold text-[#d71920] max-sm:text-[21px] ">
                     2020 Official Messages
                   </h3>
-
                   <p className="font-semibold text-[#666]">
                     Ms. Debolina Partap
                   </p>
-
                   <p>Group GC, Wockhardt Group</p>
-
                   <p>Summit Chair, Mumbai Edition</p>
-
                   <a href="#" className="text-[#222] hover:text-[#f58220]">
                     Read More...
                   </a>
@@ -664,18 +404,15 @@ export default function AboutWitnessBanner() {
 
               <div className="mb-[34px] h-px w-full bg-[#222]" />
 
-              {/* ================= MESSAGE 4 ================= */}
+              {/* ---------- MESSAGE 4 ---------- */}
 
               <div>
                 <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
                   <p className="font-semibold text-[#666]">
                     Ms. Debolina Partap
                   </p>
-
                   <p>Group GC, Wockhardt Group</p>
-
                   <p>Summit Chair, Mumbai Edition</p>
-
                   <a href="#" className="text-[#222] hover:text-[#f58220]">
                     Read More...
                   </a>
@@ -683,21 +420,16 @@ export default function AboutWitnessBanner() {
               </div>
 
               {/* Divider */}
-
               <div className="mb-[34px] h-px w-full bg-[#222]" />
 
-              {/* ================= MESSAGE 4 ================= */}
-
+              {/* ---------- MESSAGE 4 ---------- */}
               <div>
                 <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
                   <p className="font-semibold text-[#666]">
                     Ms. Debolina Partap
                   </p>
-
                   <p>Group GC, Wockhardt Group</p>
-
                   <p>Summit Chair, Mumbai Edition</p>
-
                   <a href="#" className="text-[#222] hover:text-[#f58220]">
                     Read More...
                   </a>
@@ -705,21 +437,15 @@ export default function AboutWitnessBanner() {
               </div>
 
               {/* Divider */}
-
               <div className="mb-[34px] h-px w-full bg-[#222]" />
-
-              {/* ================= MESSAGE 4 ================= */}
 
               <div>
                 <div className="font-archivo text-[16px] leading-[1.5] text-[#666]">
                   <p className="font-semibold text-[#666]">
                     Ms. Debolina Partap
                   </p>
-
                   <p>Group GC, Wockhardt Group</p>
-
                   <p>Summit Chair, Mumbai Edition</p>
-
                   <a href="#" className="text-[#222] hover:text-[#f58220]">
                     Read More...
                   </a>
@@ -729,11 +455,6 @@ export default function AboutWitnessBanner() {
           </div>
         </div>
       </section>
-
-      {/* =====================================================
-                EXISTING SUBSCRIBE SECTION
-            ====================================================== */}
-
       <section>
         <SubscribeSection />
       </section>
