@@ -21,7 +21,10 @@ export default function GallerySection() {
 
   return (
     <>
-      <section className="relative w-full overflow-hidden bg-white py-12 sm:py-16 md:py-20">
+      <section 
+        id="gallery" 
+        className="relative w-full scroll-mt-[88px] overflow-hidden bg-white py-12 sm:py-16 md:py-20"
+      >
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6">
           <p className="mb-2 text-[20px] font-bold text-[#f58220] sm:text-[24px] md:text-[26px]">
             Visual Delight
