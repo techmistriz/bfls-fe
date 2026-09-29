@@ -3,7 +3,6 @@
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import { usePastEditions } from "@/src/hooks/usePastEditions";
 import { getPastEditionImageUrl } from "@/src/utils/image";
@@ -83,11 +82,7 @@ export default function PastEditionsBanner() {
           ) : editions.length > 0 ? (
             <div className="grid grid-cols-1 gap-x-[21px] gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
               {editions.map((edition) => (
-                <Link
-                  key={edition.id}
-                  href={`/past-editions/${edition.slug}`}
-                  className="group"
-                >
+                <div key={edition.id} className="group">
                   {/* Image */}
 
                   <div className="relative aspect-[350/233] w-full overflow-hidden">
@@ -113,7 +108,7 @@ export default function PastEditionsBanner() {
                       </p>
                     )}
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           ) : (
