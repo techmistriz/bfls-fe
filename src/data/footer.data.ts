@@ -58,7 +58,10 @@ export const summitShowcase: SummitShowcase[] = [
 ];
 
 export const exploreLinks: ExploreLink[] = [
-  { label: "READ & SUBSCRIBE", href: "/subscribe" },
+  {
+    label: "READ & SUBSCRIBE",
+    href: "https://www.magzter.com/IN/SRIGRO-INTERACTIVE-PVT-LTD/Lex-Witness/Business/",
+  },
   { label: "OUR BRAND DECK", href: "/contact" },
   { label: "PRIVACY POLICY", href: "/privacy-policy" },
   { label: "REFUND POLICY", href: "/refund-policy" },
