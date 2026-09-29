@@ -1,49 +1,21 @@
-import Image from "next/image";
-import Link from "next/link";
 import LexWitnessSummits from "./components/LexWitnessSummits";
 import SummitSecretariatSidebar from "./components/SummitSecretariatSidebar";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
+import { PageBanner } from "@/src/components/layout/PageBanner";
 
 export default function SummitSecretriatClient() {
   return (
     <div className="w-full">
       {/* ---------- BANNER ---------- */}
-
-      <section className="relative mt-[88px] h-[398px] w-full overflow-hidden">
-        <Image
-          src="/images/schedule-banner.jpg"
-          alt="Past Editions"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-
-        <div className="relative z-10 mx-auto flex h-full max-w-[1130px] items-center px-6 lg:px-0">
-          <div>
-            <h1 className="font-poppins text-[38px] font-bold leading-tight text-white md:text-[52px]">
-              The Lex Witness Summit Secretariat
-            </h1>
-          </div>
-        </div>
-
-        {/* Breadcrumb */}
-
-        <div className="absolute bottom-0 right-[7%] z-20 md:right-[12%]">
-          <div className="flex h-[56px] w-[235px] items-center justify-center gap-3 bg-white font-archivo shadow-sm">
-            <span className="text-[13px] text-[#555]">
-              <Link href="/" className="hover:text-[#EF7F1B]">
-                Home
-              </Link>
-            </span>
-
-            <span className="text-[13px] text-[#999]">/</span>
-
-            <span className="text-[13px] font-medium text-[#EF7F1B]">
-              Summit Secretariat
-            </span>
-          </div>
-        </div>
-      </section>
+      <PageBanner
+        backgroundImage="/images/schedule-banner.jpg"
+        title="The Lex Witness Summit Secretariat"
+        subtitle=""
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Summit Secretariat" },
+        ]}
+      />
 
       {/* ---------- SUMMIT SECRETARIAT CONTENT ---------- */}
 

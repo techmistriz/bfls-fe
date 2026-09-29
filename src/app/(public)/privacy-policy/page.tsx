@@ -1,5 +1,6 @@
 "use client";
 
+import { PageBanner } from "@/src/components/layout/PageBanner";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 
 import Image from "next/image";
@@ -8,47 +9,16 @@ import Link from "next/link";
 export default function PrivacyPolicyBanner() {
   return (
     <div className="w-full">
-      {/* ================= BANNER ================= */}
-
-      <section className="relative mt-[88px] h-[398px] w-full overflow-hidden">
-        <Image
-          src="/images/bg_banner.png"
-          alt="Past Editions"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-
-        <div className="relative z-10 mx-auto flex h-full max-w-[1130px] items-center px-6 lg:px-0">
-          <div>
-            <h1 className="font-poppins text-[38px] font-bold leading-tight text-white md:text-[52px]">
-              Privacy Policy
-            </h1>
-
-            {/* <p className="mt-1 font-archivo text-[16px] font-medium text-white md:text-[17px]">
-              A sneak peek into our past success stories
-            </p> */}
-          </div>
-        </div>
-
-        {/* Breadcrumb */}
-
-        <div className="absolute bottom-0 right-[7%] z-20 md:right-[20%]">
-          <div className="flex h-[56px] w-[235px] items-center justify-center gap-3 bg-white font-archivo shadow-sm">
-            <span className="text-[13px] text-[#555]">
-              <Link href="/" className="hover:text-[#EF7F1B]">
-                Home
-              </Link>
-            </span>
-
-            <span className="text-[13px] text-[#999]">/</span>
-
-            <span className="text-[13px] font-medium text-[#EF7F1B]">
-              Privacy Policy
-            </span>
-          </div>
-        </div>
-      </section>
+      {/* -------- BANNER -------- */}
+      <PageBanner
+        backgroundImage="/images/bg_banner.png"
+        title="Privacy Policy"
+        subtitle=""
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Privacy Policy" },
+        ]}
+      />
 
       <section className="w-full bg-white px-5 py-20">
         <div className="mx-auto w-full max-w-[1120px] font-roboto">

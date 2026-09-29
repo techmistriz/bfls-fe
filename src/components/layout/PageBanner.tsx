@@ -38,7 +38,7 @@ export function PageBanner({
         </div>
       </div>
 
-      <div className="absolute bottom-0 right-[7%] z-20 md:right-[20%]">
+      <div className="absolute bottom-0 right-[7%] z-20 md:right-[12%]">
         <div className="flex h-[56px] w-[235px] items-center justify-center gap-3 bg-white font-archivo shadow-sm">
           {breadcrumbs.map((crumb, index) => (
             <span key={crumb.label} className="flex items-center gap-3">

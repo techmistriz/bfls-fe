@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 import Image from "next/image";
-import Link from "next/link";
+import { PageBanner } from "@/src/components/layout/PageBanner";
 
 const galleryImages = [
   {
@@ -99,46 +99,12 @@ export default function GalleryBanner() {
   return (
     <div className="w-full overflow-hidden">
       {/* ------ BANNER ------= */}
-      <section className=" relative mt-[88px] h-[398px] w-full overflow-hidden max-md:mt-[75px] max-md:h-[340px] max-sm:mt-[65px] max-sm:h-[280px] ">
-        <Image
-          src="/images/bg_banner.png"
-          alt="Past Editions"
-          fill
-          priority
-          sizes="100vw"
-          className=" object-cover object-center "
-        />
-
-        {/* Banner Content */}
-
-        <div className=" relative z-10 mx-auto flex h-full w-full max-w-[1130px] items-center px-6 lg:px-0 max-sm:px-[20px] ">
-          <div>
-            <h1 className=" font-poppins text-[38px] font-bold leading-tight text-white md:text-[52px] max-sm:text-[30px] ">
-              Gallery
-            </h1>
-          </div>
-        </div>
-
-        {/* ------ BREADCRUMB -----*/}
-
-        <div className=" absolute bottom-0 right-[7%] z-20 md:right-[20%] max-sm:right-0 ">
-          <div className=" flex h-[56px] w-[235px] items-center justify-center gap-3 bg-white font-archivo shadow-sm max-sm:h-[48px] max-sm:w-[185px] max-sm:gap-2 ">
-            <span className=" text-[13px] text-[#555] max-sm:text-[11px] ">
-              <Link href="/" className="transition-colors hover:text-[#EF7F1B]">
-                Home
-              </Link>
-            </span>
-
-            <span className=" text-[13px] text-[#999] max-sm:text-[11px] ">
-              /
-            </span>
-
-            <span className=" text-[13px] font-medium text-[#EF7F1B] max-sm:text-[11px] ">
-              Gallery
-            </span>
-          </div>
-        </div>
-      </section>
+      <PageBanner
+        backgroundImage="/images/bg_banner.png"
+        title="Gallery"
+        subtitle=""
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Gallery" }]}
+      />
 
       {/* ------=== GALLERY SECTION ------==== */}
       <section className=" w-full bg-white px-5 py-20 max-md:px-4 max-md:py-16 max-sm:px-[15px] max-sm:py-12 ">

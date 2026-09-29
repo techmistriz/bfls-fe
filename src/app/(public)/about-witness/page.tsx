@@ -14,7 +14,7 @@ export default function AboutWitnessPage() {
         ]}
       />
 
-      <section className="mt-20 w-full bg-white">
+      <section className=" w-full bg-white">
         <div className="mx-auto max-w-[1155px] px-5 pb-16 pt-4">
           <div className="text-center">
             <p className="text-[30px] font-semibold leading-[1.2] text-[#f58220]">

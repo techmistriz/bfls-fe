@@ -1,50 +1,18 @@
-import Image from "next/image";
-import Link from "next/link";
-
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
+import { PageBanner } from "@/src/components/layout/PageBanner";
 
 export default function RefundPolicyClient() {
   return (
     <div className="w-full">
-      {/* ================= BANNER ================= */}
+      {/* ----------- BANNER ----------- */}
+      <PageBanner
+        backgroundImage="/images/bg_banner.png"
+        title="Refund Policy"
+        subtitle=""
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Refund Policy" }]}
+      />
 
-      <section className="relative mt-[88px] h-[398px] w-full overflow-hidden">
-        <Image
-          src="/images/bg_banner.png"
-          alt="Refund Policy"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-
-        <div className="relative z-10 mx-auto flex h-full max-w-[1130px] items-center px-6 lg:px-0">
-          <div>
-            <h1 className="font-poppins text-[38px] font-bold leading-tight text-white md:text-[52px]">
-              Refund Policy
-            </h1>
-          </div>
-        </div>
-
-        {/* Breadcrumb */}
-
-        <div className="absolute bottom-0 right-[7%] z-20 md:right-[20%]">
-          <div className="flex h-[56px] w-[235px] items-center justify-center gap-3 bg-white font-archivo shadow-sm">
-            <span className="text-[13px] text-[#555]">
-              <Link href="/" className="hover:text-[#EF7F1B]">
-                Home
-              </Link>
-            </span>
-
-            <span className="text-[13px] text-[#999]">/</span>
-
-            <span className="text-[13px] font-medium text-[#EF7F1B]">
-              Refund Policy
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= REFUND POLICY CONTENT ================= */}
+      {/* ----------- REFUND POLICY CONTENT ----------- */}
 
       <section className="w-full bg-white px-5 py-20">
         <div className="mx-auto w-full max-w-[1120px] font-roboto">
@@ -177,7 +145,7 @@ export default function RefundPolicyClient() {
         </div>
       </section>
 
-      {/* ================= SUBSCRIBE ================= */}
+      {/* ----------- SUBSCRIBE ----------- */}
 
       <section>
         <SubscribeSection />

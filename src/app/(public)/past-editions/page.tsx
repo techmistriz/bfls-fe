@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import { usePastEditions } from "@/src/hooks/usePastEditions";
 import { getPastEditionImageUrl } from "@/src/utils/image";
+import { PageBanner } from "@/src/components/layout/PageBanner";
 
 export default function PastEditionsBanner() {
   const { editions: yearGroups, loading } = usePastEditions();
@@ -15,49 +16,16 @@ export default function PastEditionsBanner() {
 
   return (
     <div className="w-full">
-      {/* ================= BANNER ================= */}
+      {/* --------- BANNER --------- */}
 
-      <section className="relative mt-[88px] h-[398px] w-full overflow-hidden">
-        <Image
-          src="/images/bg_banner_mew.jpg"
-          alt="Past Editions"
-          fill
-          priority
-          className="object-cover object-center"
-        />
+      <PageBanner
+        backgroundImage="/images/bg_banner.png"
+        title="Past Editions"
+        subtitle="A sneak peek into our past success stories"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Past Editions" }]}
+      />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-[1130px] items-center px-6 lg:px-0">
-          <div>
-            <h1 className="font-poppins text-[38px] font-black leading-tight tracking-[-0.4px] text-white md:text-[48px]">
-              Past Editions
-            </h1>
-
-            <p className="mt-1 font-archivo text-[16px] font-medium text-white md:text-[17px]">
-              A sneak peek into our past success stories
-            </p>
-          </div>
-        </div>
-
-        {/* Breadcrumb */}
-
-        <div className="absolute bottom-0 right-[7%] z-20 md:right-[12%]">
-          <div className="flex h-[56px] w-[235px] items-center justify-center gap-3 bg-white font-archivo shadow-sm">
-            <span className="text-[13px] text-[#555]">
-              <Link href="/" className="hover:text-[#EF7F1B]">
-                Home
-              </Link>
-            </span>
-
-            <span className="text-[13px] text-[#999]">/</span>
-
-            <span className="text-[13px] font-medium text-[#EF7F1B]">
-              Past Editions
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= PREVIOUS EDITIONS ================= */}
+      {/* --------- PREVIOUS EDITIONS --------- */}
 
       <section className="relative overflow-hidden bg-white py-[80px] md:py-[75px]">
         {/* Left Circle */}
