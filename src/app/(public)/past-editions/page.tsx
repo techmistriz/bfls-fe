@@ -3,7 +3,6 @@
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import { usePastEditions } from "@/src/hooks/usePastEditions";
 import { getPastEditionImageUrl } from "@/src/utils/image";
