@@ -1,6 +1,6 @@
 "use client";
 
-import { venueInfo } from "@/src/data/venue";
+import { venueInfo } from "@/src/data/venue.data";
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
 
 export default function VenueSection() {

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { getEvents } from "../services/homePage";
-import type { Event } from "@/src/types/event";
-import { EventsResponse } from "../types/eventResponse";
+import type { Event } from "@/src/types/event.type";
+import { EventsResponse } from "../types/eventResponse.type";
 
 export const useEvents = () => {
   const [events, setEvents] = useState<Event[]>([]);

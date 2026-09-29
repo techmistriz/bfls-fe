@@ -4,7 +4,10 @@ import { useForm } from "react-hook-form";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 import { submitShowcaseForm } from "@/src/services/showcase.service";
-import type { ShowcaseFormValues, ShowcasePayload } from "@/src/types/showcase";
+import type {
+  ShowcaseFormValues,
+  ShowcasePayload,
+} from "@/src/types/showcase.type";
 import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
 
 export default function ShowCaseForm() {

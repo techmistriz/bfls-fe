@@ -1,7 +1,7 @@
-import { Agenda } from "./agenda";
-import { City } from "./city";
-import { EventType } from "./eventType";
-import type { Speaker } from "./speaker";
+import { Agenda } from "./agenda.type";
+import { City } from "./city.type";
+import { EventType } from "./eventType.type";
+import type { Speaker } from "./speaker.type";
 
 export interface Event {
   id: number;

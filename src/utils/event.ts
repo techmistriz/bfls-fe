@@ -1,4 +1,4 @@
-import type { Event } from "@/src/types/event";
+import type { Event } from "@/src/types/event.type";
 
 export const getEventLocation = (event: Event): string => {
   return [event.venue, event.city?.name]

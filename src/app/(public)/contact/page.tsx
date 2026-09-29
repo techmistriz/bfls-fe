@@ -7,7 +7,7 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 import { PageBanner } from "@/src/components/layout/PageBanner";
 import { submitContactUs } from "@/src/services/contact.service";
-import { ApiError } from "@/src/types/api";
+import { ApiError } from "@/src/types/api.type";
 import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
 
 interface ContactFormData {

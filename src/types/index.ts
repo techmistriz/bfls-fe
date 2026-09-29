@@ -79,4 +79,8 @@ export interface Breadcrumb {
   href?: string; // omit for the current/active page
 }
 
-export type { FormFieldProps, SelectFieldProps, SelectOption } from "./form";
+export type {
+  FormFieldProps,
+  SelectFieldProps,
+  SelectOption,
+} from "./form.type";

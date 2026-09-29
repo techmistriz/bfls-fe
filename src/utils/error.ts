@@ -1,4 +1,4 @@
-import type { ApiError } from "@/src/types/api";
+import type { ApiError } from "@/src/types/api.type";
 
 export const getErrorMessage = (
   error: unknown,

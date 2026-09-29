@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { GalleryItem } from "@/src/types/gallery";
+import type { GalleryItem } from "@/src/types/gallery.type";
 import { getGallery } from "../services/gallery.service";
 
 export const useGallery = () => {

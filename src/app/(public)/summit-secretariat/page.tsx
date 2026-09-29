@@ -40,7 +40,7 @@ export default function AboutWitnessBanner() {
 
         {/* Breadcrumb */}
 
-        <div className="absolute bottom-0 right-[7%] z-20 md:right-[20%]">
+        <div className="absolute bottom-0 right-[7%] z-20 md:right-[12%]">
           <div className="flex h-[56px] w-[235px] items-center justify-center gap-3 bg-white font-archivo shadow-sm">
             <span className="text-[13px] text-[#555]">
               <Link href="/" className="hover:text-[#EF7F1B]">
