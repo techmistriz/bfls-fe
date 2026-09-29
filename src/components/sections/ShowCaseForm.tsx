@@ -3,9 +3,9 @@
 import { useForm } from "react-hook-form";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
-import { APP_EVENT_TYPE } from "@/src/config/event";
 import { submitShowcaseForm } from "@/src/services/showcase.service";
 import type { ShowcaseFormValues, ShowcasePayload } from "@/src/types/showcase";
+import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
 
 export default function ShowCaseForm() {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -131,7 +131,7 @@ export default function ShowCaseForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[15px] font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
+              className="group mt-15 inline-flex h-[64px] cursor-pointer items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[15px] font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
             >
               {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
             </button>

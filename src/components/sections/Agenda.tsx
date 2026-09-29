@@ -113,7 +113,7 @@ export default function Agenda() {
                   <button
                     type="button"
                     onClick={() => toggleItem(index)}
-                    className="group flex w-full items-start gap-3 px-4 py-[17px] text-left transition-colors duration-200 sm:gap-6 sm:px-8 sm:py-[19px] lg:gap-13 lg:px-12"
+                    className="group flex w-full items-start gap-3 px-4 py-[17px] cursor-pointer hover:bg-gray-100 text-left transition-colors duration-200 sm:gap-6 sm:px-8 sm:py-[19px] lg:gap-13 lg:px-12"
                   >
                     <span className="w-[92px] shrink-0 font-poppins text-[15px] font-bold leading-[1.4] text-[#f58216] sm:w-[125px] sm:text-[20px] lg:w-[165px] lg:text-[24px]">
                       {item.agenda_time}
@@ -178,7 +178,11 @@ export default function Agenda() {
                         {/* Description */}
                         {item.agenda_description && (
                           <div
-                            className="w-full font-archivo text-[13px] font-medium leading-[1.6] text-[#333] sm:text-[15px] lg:text-[16px] lg:leading-[1.65]"
+                            className="w-full font-archivo text-[13px] font-medium leading-[1.6] text-[#333]
+                              sm:text-[15px] lg:text-[16px] lg:leading-[1.65]
+                              [&_ul]:list-disc [&_ul]:pl-5
+                              [&_ol]:list-decimal [&_ol]:pl-5
+                              [&_li]:mb-1"
                             dangerouslySetInnerHTML={{
                               __html: item.agenda_description,
                             }}

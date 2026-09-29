@@ -202,25 +202,45 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Floating WhatsApp */}
-      <a
-        href="#"
-        aria-label="WhatsApp"
-        className="fixed right-[17px] bottom-[78px] z-[99] flex size-[41px] items-center justify-center rounded-[10px] bg-[#25D366] text-white shadow-[0_1px_5px_rgba(0,0,0,0.35)] hover:scale-105 max-sm:right-3 max-sm:bottom-[65px] max-sm:size-10"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          className="size-[27px] fill-white"
-          aria-hidden="true"
+      {/* WhatsApp Button */}
+      <div className="fixed bottom-8 right-4 md:bottom-24 md:right-6 z-50 group">
+        {/* Tooltip */}
+        <a
+          href="https://api.whatsapp.com/send?phone=919899332111&text=Hi%2C%20I%27d%20Like%20to%20Know%20More%20About%20The%20Lex%20Witness%208th%20Annual%20Banking%20%26%20Finance%20Legal%20Summit%202025"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-roboto absolute right-16 top-1/2 -translate-y-1/2 bg-[#25D366] text-white text-[15px] font-normal leading-6 px-3 py- rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-2 transition-all duration-200 whitespace-nowrap cursor-pointer"
         >
-          <path d="M12.04 2C6.52 2 2.03 6.49 2.03 12c0 1.76.46 3.48 1.34 5L2 22l5.12-1.34A9.98 9.98 0 0 0 12.04 22C17.56 22 22 17.51 22 12S17.56 2 12.04 2Zm0 18.2c-1.53 0-3.03-.41-4.34-1.18l-.31-.18-3.04.8.81-2.96-.2-.31A8.23 8.23 0 0 1 3.8 12c0-4.55 3.69-8.25 8.24-8.25s8.2 3.7 8.2 8.25-3.65 8.2-8.2 8.2Zm4.52-6.16c-.25-.13-1.48-.73-1.71-.81-.23-.08-.4-.13-.57.13-.17.25-.65.81-.8.98-.15.17-.3.19-.55.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.52.12-.12.25-.3.38-.45.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.37-.78-1.87-.21-.5-.42-.43-.57-.44h-.49c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.09s.9 2.43 1.02 2.6c.13.17 1.77 2.7 4.3 3.79.6.26 1.07.42 1.44.54.61.19 1.17.16 1.61.1.49-.07 1.48-.61 1.69-1.2.21-.59.21-1.1.15-1.2-.06-.11-.23-.17-.48-.3Z" />
-        </svg>
-      </a>
+          Get In Touch
+        </a>
 
-      {/* reCAPTCHA */}
-      {/* <div className="fixed right-0 bottom-2 z-[98] flex size-[54px] items-center justify-center rounded-l bg-[#fafafa] shadow-[0_1px_5px_rgba(0,0,0,0.3)]">
-        <div className="text-3xl font-bold text-[#4285f4]">↻</div>
-      </div> */}
+        {/* Button */}
+        <a
+          href="https://api.whatsapp.com/send?phone=919899332111&text=Hi%2C%20I%27d%20Like%20to%20Know%20More%20About%20The%20Lex%20Witness%208th%20Annual%20Banking%20%26%20Finance%20Legal%20Summit%202025"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+              bg-gradient-to-b
+              from-[#5BF673]
+              to-[#32C131]
+              w-12 h-12 md:w-13 md:h-13
+              rounded-xl
+              flex items-center justify-center
+              shadow-[0_8px_20px_rgba(50,193,49,0.35)]
+              border border-[#74F58A]
+              transition-all duration-300
+            "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="white"
+            viewBox="0 0 24 24"
+            className="w-6 h-6 md:w-9 md:h-9"
+          >
+            <path d="M20.52 3.48A11.79 11.79 0 0012.05 0C5.49 0 .14 5.35.14 11.91c0 2.1.55 4.15 1.59 5.96L0 24l6.33-1.66a11.84 11.84 0 005.72 1.46h.01c6.56 0 11.91-5.35 11.91-11.91 0-3.18-1.24-6.17-3.45-8.41zm-8.47 18.3h-.01a9.9 9.9 0 01-5.05-1.39l-.36-.21-3.76.99 1-3.66-.24-.38a9.86 9.86 0 01-1.51-5.24c0-5.46 4.44-9.9 9.91-9.9 2.64 0 5.12 1.03 6.98 2.89a9.83 9.83 0 012.89 6.98c0 5.47-4.44 9.91-9.9 9.91zm5.43-7.39c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15s-.77.97-.95 1.17c-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.48-.88-.79-1.48-1.77-1.65-2.07-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" />
+          </svg>
+        </a>
+      </div>
     </footer>
   );
 }

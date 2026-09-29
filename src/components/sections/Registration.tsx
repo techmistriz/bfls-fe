@@ -1,8 +1,18 @@
+"use client";
+
 import Link from "next/link";
-import { registrationPlans } from "@/src/data/registration";
 import { RegistrationIcon } from "@/src/components/icons/RegistrationIcon";
+import { useRegistrationPlans } from "@/src/hooks/useRegistrationPlans";
+
+const PLAN_BACKGROUNDS = ["#b9e3df", "#ebc9ec", "#ffc79f", "#ffe6a8"];
+
+const formatPrice = (price: string) => {
+  return `₹${Number(price).toLocaleString("en-IN")}`;
+};
 
 export default function Registration() {
+  const { plans, loading, error } = useRegistrationPlans();
+
   return (
     <section className="w-full bg-[#f7f7f7] px-4 py-12 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-[1110px]">
@@ -23,49 +33,69 @@ export default function Registration() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {registrationPlans.map((plan, index) => (
-            <div
-              key={index}
-              className="relative flex min-h-[350px] flex-col rounded-[9px] px-7 pb-5 pt-9 shadow-[0_7px_10px_rgba(0,0,0,0.25)] transition-transform duration-300 hover:-translate-y-1"
-              style={{ backgroundColor: plan.bg }}
-            >
-              {plan.badge && (
-                <div className="absolute top-[-11px] left-1/2 -translate-x-1/2 rounded-[5px] bg-[#d71920] px-[11px] py-[4px] text-[14px] font-normal leading-[18px] text-white">
-                  {plan.badge}
-                </div>
-              )}
-
-              <div className="text-center">
-                <h3 className="min-h-[22px] text-[13px] font-bold leading-[22px] text-[#ed1c24] mt-5">
-                  {plan.title}
-                </h3>
-
-                <h4 className="mt-3 whitespace-nowrap text-[29px] font-bold leading-[34px] tracking-[-1.2px] text-[#222]">
-                  {plan.price} <span className="text-[25px]">Onwards</span>
-                </h4>
-
-                <div className="mt-4 space-y-2">
-                  {plan.details.map((detail, detailIndex) => (
-                    <p
-                      key={detailIndex}
-                      className="text-[15px] leading-[21px] text-[#222]"
-                    >
-                      {detail}
-                    </p>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-auto flex justify-center pt-6">
-                <Link
-                  href="/checkout"
-                  className="min-w-[129px] rounded-[4px] border border-[#ed1c24] bg-transparent px-5 py-[13px] text-center text-[14px] font-bold text-[#ed1c24] transition-all duration-300 hover:bg-[#ed1c24] hover:text-white"
-                >
-                  Book Now
-                </Link>
-              </div>
+          {loading ? (
+            [1, 2, 3, 4].map((item) => (
+              <div
+                key={item}
+                className="relative flex min-h-[350px] animate-pulse flex-col rounded-[9px] bg-gray-200 px-7 pb-5 pt-9 shadow-[0_7px_10px_rgba(0,0,0,0.25)]"
+              />
+            ))
+          ) : error ? (
+            <div className="col-span-full py-10 text-center text-red-500">
+              {error}
             </div>
-          ))}
+          ) : (
+            plans.map((plan, index) => (
+              <div
+                key={plan.id}
+                className="relative flex min-h-[350px] flex-col rounded-[9px] px-7 pb-5 pt-9 shadow-[0_7px_10px_rgba(0,0,0,0.25)] transition-transform duration-300 hover:-translate-y-1"
+                style={{
+                  backgroundColor:
+                    PLAN_BACKGROUNDS[index % PLAN_BACKGROUNDS.length],
+                }}
+              >
+                {plan.tag && (
+                  <div className="absolute top-[-11px] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-[5px] bg-[#d71920] px-[11px] py-[4px] text-[14px] font-normal leading-[18px] text-white">
+                    {plan.tag.toUpperCase()}
+                  </div>
+                )}
+
+                <div className="text-center">
+                  <h3 className="min-h-[22px] text-[13px] font-bold leading-[22px] text-[#ed1c24] mt-5">
+                    {plan.title}
+                  </h3>
+
+                  <h4 className="mt-3 whitespace-nowrap text-[29px] font-bold leading-[34px] tracking-[-1.2px] text-[#222]">
+                    {formatPrice(plan.starting_price)}{" "}
+                    <span className="text-[25px]">Onwards</span>
+                  </h4>
+
+                  <div className="mt-4 space-y-2">
+                    {plan.price_tiers.map((tier) => (
+                      <p
+                        key={tier.id}
+                        className="text-[15px] leading-[21px] text-[#222]"
+                      >
+                        {tier.min_quantity}
+                        {tier.max_quantity === null ? "" : ""} {tier.unit_type}
+                        {tier.min_quantity > 1 ? "s" : ""} –{" "}
+                        {formatPrice(tier.price_per_unit)} per {tier.unit_type}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-auto flex justify-center pt-6">
+                  <Link
+                    href={`/checkout?plan_id=${plan.id}`}
+                    className="min-w-[129px] rounded-[4px] border border-[#ed1c24] bg-transparent px-5 py-[13px] text-center text-[14px] font-bold text-[#ed1c24] transition-all duration-300 hover:bg-[#ed1c24] hover:text-white"
+                  >
+                    Book Now
+                  </Link>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </section>
