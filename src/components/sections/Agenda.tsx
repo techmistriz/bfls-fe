@@ -113,15 +113,23 @@ export default function Agenda() {
                   <button
                     type="button"
                     onClick={() => toggleItem(index)}
-                    className="group flex w-full items-start gap-3 px-4 py-[17px] cursor-pointer hover:bg-gray-100 text-left transition-colors duration-200 sm:gap-6 sm:px-8 sm:py-[19px] lg:gap-13 lg:px-12"
+                    className="group flex w-full cursor-pointer items-start gap-3 px-4 py-[17px] text-left transition-colors duration-200 hover:bg-gray-100 sm:gap-6 sm:px-8 sm:py-[19px] lg:gap-13 lg:px-12"
                   >
                     <span className="w-[92px] shrink-0 font-poppins text-[15px] font-bold leading-[1.4] text-[#f58216] sm:w-[125px] sm:text-[20px] lg:w-[165px] lg:text-[24px]">
                       {item.agenda_time}
                     </span>
 
-                    <span className="min-w-0 flex-1 pr-1 font-poppins text-[14px] font-bold leading-[1.4] text-[#526b97] sm:pr-3 sm:text-[18px] lg:text-[20px]">
-                      {item.agenda_title}
-                    </span>
+                    <div className="min-w-0 flex-1 pr-1">
+                      <span className="block font-poppins text-[14px] font-bold leading-[1.4] text-[#526b97] sm:pr-3 sm:text-[18px] lg:text-[20px]">
+                        {item.agenda_title}
+                      </span>
+
+                      {!isOpen && item.agenda_short_description && (
+                        <p className="mt-2 font-archivo text-[12px] font-medium leading-[1.5] text-[#555] sm:text-[14px] lg:text-[15px]">
+                          {item.agenda_short_description}
+                        </p>
+                      )}
+                    </div>
 
                     <span
                       className={`mt-0.5 flex h-[28px] w-[28px] shrink-0 items-center justify-center rounded-full font-poppins text-[22px] font-light leading-none text-white transition-colors duration-200 sm:h-[31px] sm:w-[31px] sm:text-[25px] ${
@@ -134,7 +142,7 @@ export default function Agenda() {
 
                   {/* Accordion Content */}
                   <div
-                    className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                    className={`grid transition-[grid-template-rows] hover:bg-gray-100 duration-300 ease-in-out ${
                       isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                     }`}
                   >
