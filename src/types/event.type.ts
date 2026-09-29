@@ -4,6 +4,7 @@ import { EventType } from "./eventType.type";
 import type { Speaker } from "./speaker.type";
 
 export interface Event {
+  agenda_short_description: string;
   id: number;
   title: string;
   slug: string;
