@@ -1,8 +1,9 @@
-// app/checkout/components/SelectField.tsx
 "use client";
 
 import { forwardRef } from "react";
+
 import type { SelectFieldProps } from "@/src/types";
+
 import { ChevronDown } from "./ChevronDown";
 
 export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
@@ -13,7 +14,7 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
       options = [],
       error,
       placeholder,
-      className,
+      className = "",
       ...props
     },
     ref,
@@ -21,8 +22,8 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
     return (
       <div className="space-y-1">
         <label
-          className="block text-[15px] font-medium leading-[14px] text-[#002b5c]"
           htmlFor={props.id || props.name}
+          className="block text-[15px] font-medium leading-[14px] text-[#002b5c]"
         >
           {label}
           {required && <span className="text-[#d9232e]"> *</span>}
@@ -31,14 +32,10 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
         <div className="relative">
           <select
             ref={ref}
-            className={`
-              h-[45px] w-full appearance-none rounded-[3px] border border-[#ccd2d9]
-              bg-white px-[9px] text-[15px] text-[#333] outline-none
-              disabled:bg-[#f3f3f3]
-              ${error ? "border-[#d9232e] focus:border-[#d9232e]" : ""}
-              ${className || ""}
-            `}
             {...props}
+            className={`h-[45px] w-full appearance-none rounded-[3px] border border-[#ccd2d9] bg-white px-[9px] text-[15px] text-[#333] outline-none focus:border-[#999] disabled:bg-[#f3f3f3] ${
+              error ? "border-[#d9232e] focus:border-[#d9232e]" : ""
+            } ${className}`}
           >
             {placeholder && (
               <option value="" disabled>

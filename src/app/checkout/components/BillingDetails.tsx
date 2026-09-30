@@ -1,9 +1,18 @@
 "use client";
 
-import { useCallback, useState, type FormEvent } from "react";
+import { useEffect, useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
+
+import {
+  getCities,
+  getCountries,
+  getStates,
+} from "@/src/services/location.service";
+import type { RegisterOrderPayload } from "@/src/types/order";
 
 import { FormField } from "./FormField";
 import { SelectField } from "./SelectField";
+import type { LocationItem } from "@/src/types/location";
 
 interface BillingFormData {
   firstName: string;
@@ -19,177 +28,178 @@ interface BillingFormData {
   pincode: string;
 }
 
-interface FormErrors {
-  [key: string]: string;
+interface BillingDetailsProps {
+  onSubmit: (data: RegisterOrderPayload) => Promise<void>;
+  loading?: boolean;
+  formId?: string;
 }
 
-const stateOptions = [
-  { value: "delhi", label: "Delhi" },
-  { value: "mumbai", label: "Mumbai" },
-  { value: "bangalore", label: "Bangalore" },
-  { value: "chennai", label: "Chennai" },
-  { value: "kolkata", label: "Kolkata" },
-  { value: "hyderabad", label: "Hyderabad" },
-];
+export function BillingDetails({
+  onSubmit,
+  loading = false,
+  formId = "billing-form",
+}: BillingDetailsProps) {
+  const [countries, setCountries] = useState<LocationItem[]>([]);
+  const [states, setStates] = useState<LocationItem[]>([]);
+  const [cities, setCities] = useState<LocationItem[]>([]);
 
-const cityOptions = [
-  { value: "new-delhi", label: "New Delhi" },
-  { value: "mumbai-city", label: "Mumbai City" },
-  { value: "bangalore-city", label: "Bangalore City" },
-  { value: "chennai-city", label: "Chennai City" },
-  { value: "kolkata-city", label: "Kolkata City" },
-  { value: "hyderabad-city", label: "Hyderabad City" },
-];
+  const [loadingCountries, setLoadingCountries] = useState(false);
+  const [loadingStates, setLoadingStates] = useState(false);
+  const [loadingCities, setLoadingCities] = useState(false);
 
-const countryOptions = [{ value: "india", label: "India" }];
-
-export function BillingDetails() {
-  const [formData, setFormData] = useState<BillingFormData>({
-    firstName: "",
-    lastName: "",
-    designation: "",
-    email: "",
-    phone: "",
-    gstNumber: "",
-    address: "",
-    country: "india",
-    state: "",
-    city: "",
-    pincode: "",
+  const {
+    register,
+    handleSubmit,
+    control,
+    setValue,
+    formState: { errors },
+  } = useForm<BillingFormData>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      designation: "",
+      email: "",
+      phone: "",
+      gstNumber: "",
+      address: "",
+      country: "",
+      state: "",
+      city: "",
+      pincode: "",
+    },
   });
 
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const selectedCountry = useWatch({
+    control,
+    name: "country",
+  });
 
-  const validateField = useCallback((name: string, value: string): string => {
-    switch (name) {
-      case "firstName":
-      case "lastName":
-      case "designation":
-      case "address":
-        return value.trim() ? "" : `${name} is required`;
+  const selectedState = useWatch({
+    control,
+    name: "state",
+  });
 
-      case "email":
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-          ? ""
-          : "Invalid email address";
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        setLoadingCountries(true);
 
-      case "phone":
-        return value.length >= 10
-          ? ""
-          : "Phone number must be at least 10 digits";
+        const response = await getCountries();
+        setCountries(response.data);
+      } catch (error) {
+        console.error("Failed to fetch countries:", error);
+        setCountries([]);
+      } finally {
+        setLoadingCountries(false);
+      }
+    };
 
-      case "pincode":
-        return /^\d{6}$/.test(value) ? "" : "Pincode must be 6 digits";
-
-      case "state":
-      case "city":
-        return value ? "" : `${name} is required`;
-
-      default:
-        return "";
-    }
+    fetchCountries();
   }, []);
 
-  const handleChange = useCallback(
-    (
-      e: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >,
-    ) => {
-      const { name, value } = e.target;
+  useEffect(() => {
+    if (!selectedCountry) {
+      return;
+    }
 
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-
-      const error = validateField(name, value);
-
-      setErrors((prev) => ({
-        ...prev,
-        [name]: error,
-      }));
-    },
-    [validateField],
-  );
-
-  const validateForm = useCallback((): boolean => {
-    const newErrors: FormErrors = {};
-    let isValid = true;
-
-    const requiredFields = [
-      "firstName",
-      "lastName",
-      "designation",
-      "email",
-      "phone",
-      "address",
-      "state",
-      "city",
-      "pincode",
-    ];
-
-    requiredFields.forEach((field) => {
-      const value = formData[field as keyof BillingFormData];
-      const error = validateField(field, value);
-
-      if (error) {
-        newErrors[field] = error;
-        isValid = false;
-      }
-    });
-
-    setErrors(newErrors);
-
-    return isValid;
-  }, [formData, validateField]);
-
-  const handleSubmit = useCallback(
-    async (e: FormEvent) => {
-      e.preventDefault();
-
-      if (!validateForm()) {
-        return;
-      }
-
-      setIsSubmitting(true);
-
+    const fetchStates = async () => {
       try {
-        // TODO: Implement API call
-        console.log("Form data:", formData);
+        setLoadingStates(true);
 
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        const response = await getStates(Number(selectedCountry));
+        setStates(response.data);
       } catch (error) {
-        console.error("Submission error:", error);
+        console.error("Failed to fetch states:", error);
+        setStates([]);
       } finally {
-        setIsSubmitting(false);
+        setLoadingStates(false);
       }
-    },
-    [formData, validateForm],
-  );
+    };
+
+    fetchStates();
+  }, [selectedCountry]);
+
+  useEffect(() => {
+    if (!selectedState) {
+      return;
+    }
+
+    const fetchCities = async () => {
+      try {
+        setLoadingCities(true);
+
+        const response = await getCities(Number(selectedState));
+        setCities(response.data);
+      } catch (error) {
+        console.error("Failed to fetch cities:", error);
+        setCities([]);
+      } finally {
+        setLoadingCities(false);
+      }
+    };
+
+    fetchCities();
+  }, [selectedState]);
+
+  const submitForm = async (data: BillingFormData) => {
+    const payload: RegisterOrderPayload = {
+      first_name: data.firstName,
+      last_name: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      designation: data.designation,
+      company_name: "",
+      address: data.address,
+      country_id: Number(data.country),
+      state_id: Number(data.state),
+      city_id: Number(data.city),
+      pincode: data.pincode,
+      gst_number: data.gstNumber,
+    };
+
+    await onSubmit(payload);
+  };
+
+  const countryOptions = countries.map(({ id, name }) => ({
+    value: String(id),
+    label: name,
+  }));
+
+  const stateOptions = states.map(({ id, name }) => ({
+    value: String(id),
+    label: name,
+  }));
+
+  const cityOptions = cities.map(({ id, name }) => ({
+    value: String(id),
+    label: name,
+  }));
 
   return (
-    <form className="space-y-[16px]" onSubmit={handleSubmit}>
+    <form
+      id={formId}
+      className="space-y-[16px]"
+      onSubmit={handleSubmit(submitForm)}
+    >
       <div className="grid grid-cols-1 gap-[16px] sm:grid-cols-2 sm:gap-[12px]">
         <FormField
           label="First name"
           required
           placeholder="Enter first name"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          error={errors.firstName}
+          {...register("firstName", {
+            required: "First name is required",
+          })}
+          error={errors.firstName?.message}
         />
 
         <FormField
           label="Last name"
           required
           placeholder="Enter last name"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          error={errors.lastName}
+          {...register("lastName", {
+            required: "Last name is required",
+          })}
+          error={errors.lastName?.message}
         />
       </div>
 
@@ -197,10 +207,10 @@ export function BillingDetails() {
         label="Designation"
         required
         placeholder="Enter designation"
-        name="designation"
-        value={formData.designation}
-        onChange={handleChange}
-        error={errors.designation}
+        {...register("designation", {
+          required: "Designation is required",
+        })}
+        error={errors.designation?.message}
       />
 
       <FormField
@@ -208,10 +218,14 @@ export function BillingDetails() {
         required
         placeholder="Enter email"
         type="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        error={errors.email}
+        {...register("email", {
+          required: "Email is required",
+          pattern: {
+            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            message: "Invalid email address",
+          },
+        })}
+        error={errors.email?.message}
       />
 
       <FormField
@@ -219,19 +233,21 @@ export function BillingDetails() {
         required
         placeholder="Enter phone number"
         type="tel"
-        name="phone"
-        value={formData.phone}
-        onChange={handleChange}
-        error={errors.phone}
+        {...register("phone", {
+          required: "Phone number is required",
+          pattern: {
+            value: /^\d{10}$/,
+            message: "Phone number must be 10 digits",
+          },
+        })}
+        error={errors.phone?.message}
       />
 
       <FormField
         label="GST Number"
         placeholder="Enter GST number"
-        name="gstNumber"
-        value={formData.gstNumber}
-        onChange={handleChange}
-        error={errors.gstNumber}
+        {...register("gstNumber")}
+        error={errors.gstNumber?.message}
       />
 
       <div>
@@ -244,70 +260,83 @@ export function BillingDetails() {
 
         <textarea
           id="address"
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
           placeholder="Enter address"
           rows={2}
-          className={`
-            block h-[75px] w-full resize-none rounded-[4px] border border-[#ccd2d9]
-            px-[10px] py-[9px] text-[10px] text-[#333] outline-none
-            placeholder:text-[15px] placeholder:text-[#9da5ae]
-            focus:border-[#999]
-            ${errors.address ? "border-[#d9232e]" : ""}
-          `}
+          {...register("address", {
+            required: "Address is required",
+          })}
+          className={`block h-[75px] w-full resize-none rounded-[4px] border border-[#ccd2d9] px-[10px] py-[9px] text-[10px] text-[#333] outline-none placeholder:text-[15px] placeholder:text-[#9da5ae] focus:border-[#999] ${
+            errors.address ? "border-[#d9232e]" : ""
+          }`}
         />
 
         {errors.address && (
-          <p className="mt-1 text-[12px] text-[#d9232e]">{errors.address}</p>
+          <p className="mt-1 text-[12px] text-[#d9232e]">
+            {errors.address.message}
+          </p>
         )}
       </div>
 
       <SelectField
         label="Country / Region"
         required
-        name="country"
-        value={formData.country}
-        onChange={handleChange}
+        {...register("country", {
+          required: "Country is required",
+          onChange: () => {
+            setValue("state", "");
+            setValue("city", "");
+            setStates([]);
+            setCities([]);
+          },
+        })}
         options={countryOptions}
-        error={errors.country}
+        error={errors.country?.message}
+        disabled={loadingCountries || loading}
       />
 
       <div className="grid grid-cols-1 gap-[16px] sm:grid-cols-3 sm:gap-[12px]">
         <SelectField
           label="State"
           required
-          placeholder="Select State"
-          name="state"
-          value={formData.state}
-          onChange={handleChange}
+          placeholder={loadingStates ? "Loading states..." : "Select State"}
+          {...register("state", {
+            required: "State is required",
+            onChange: () => {
+              setValue("city", "");
+              setCities([]);
+            },
+          })}
           options={stateOptions}
-          error={errors.state}
+          error={errors.state?.message}
+          disabled={!selectedCountry || loadingStates || loading}
         />
 
         <SelectField
           label="City"
           required
-          placeholder="Select City"
-          name="city"
-          value={formData.city}
-          onChange={handleChange}
+          placeholder={loadingCities ? "Loading cities..." : "Select City"}
+          {...register("city", {
+            required: "City is required",
+          })}
           options={cityOptions}
-          error={errors.city}
+          error={errors.city?.message}
+          disabled={!selectedState || loadingCities || loading}
         />
 
         <FormField
           label="Pincode"
           required
           placeholder="Enter pincode"
-          name="pincode"
-          value={formData.pincode}
-          onChange={handleChange}
-          error={errors.pincode}
+          {...register("pincode", {
+            required: "Pincode is required",
+            pattern: {
+              value: /^\d{6}$/,
+              message: "Pincode must be 6 digits",
+            },
+          })}
+          error={errors.pincode?.message}
         />
       </div>
-
-      <button type="submit" className="hidden" disabled={isSubmitting} />
     </form>
   );
 }

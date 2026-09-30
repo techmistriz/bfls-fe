@@ -5,6 +5,7 @@ import Header from "@/src/components/layout/Header";
 import Footer from "@/src/components/layout/Footer";
 import RecaptchaProvider from "@/src/components/providers/RecaptchaProvider";
 import SiteLoader from "../components/layout/SiteLoader";
+import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({
   children,
@@ -18,6 +19,7 @@ export default function RootLayout({
         <RecaptchaProvider>
           <Header />
           <main>{children}</main>
+          <Toaster position="top-right" />
           <Footer />
         </RecaptchaProvider>
       </body>
