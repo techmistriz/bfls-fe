@@ -1,8 +1,12 @@
 "use client";
 
-import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 import { RegistrationIcon } from "@/src/components/icons/RegistrationIcon";
 import { useRegistrationPlans } from "@/src/hooks/useRegistrationPlans";
+import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
+import { addToCart } from "@/src/services/cart.service";
 
 const PLAN_BACKGROUNDS = ["#b9e3df", "#ebc9ec", "#ffc79f", "#ffe6a8"];
 
@@ -12,6 +16,28 @@ const formatPrice = (price: string) => {
 
 export default function Registration() {
   const { plans, loading, error } = useRegistrationPlans();
+
+  const router = useRouter();
+  const [addingPlanId, setAddingPlanId] = useState<number | null>(null);
+
+  const handleBookNow = async (planId: number) => {
+    try {
+      setAddingPlanId(planId);
+
+      await addToCart({
+        event_type_id: APP_EVENT_TYPE,
+        event_id: APP_EVENT_TYPE,
+        plan_id: planId,
+        quantity: 1,
+      });
+
+      router.push("/checkout");
+    } catch (error) {
+      console.error("Failed to add plan to cart:", error);
+    } finally {
+      setAddingPlanId(null);
+    }
+  };
 
   return (
     <section className="w-full bg-[#f7f7f7] px-4 py-12 sm:px-6 lg:px-10">
@@ -27,7 +53,7 @@ export default function Registration() {
 
           <div className="mx-auto mt-[18px] h-[3px] w-[100px] bg-[#EF7F1B] sm:mt-[22px] sm:w-[120px]" />
 
-          <p className="mt-4 text-[20px] font-medium text-[#EF7F1B] mt-10 sm:text-[30px] mb-20">
+          <p className="mt-10 mb-20 text-[20px] font-medium text-[#EF7F1B] sm:text-[30px]">
             It&apos;s a Race Against Time. Avail Best Possible Discounts Now.
           </p>
         </div>
@@ -61,7 +87,7 @@ export default function Registration() {
                 )}
 
                 <div className="text-center">
-                  <h3 className="min-h-[22px] text-[13px] font-bold leading-[22px] text-[#ed1c24] mt-5">
+                  <h3 className="mt-5 min-h-[22px] text-[13px] font-bold leading-[22px] text-[#ed1c24]">
                     {plan.title}
                   </h3>
 
@@ -76,8 +102,7 @@ export default function Registration() {
                         key={tier.id}
                         className="text-[15px] leading-[21px] text-[#222]"
                       >
-                        {tier.min_quantity}
-                        {tier.max_quantity === null ? "" : ""} {tier.unit_type}
+                        {tier.min_quantity} {tier.unit_type}
                         {tier.min_quantity > 1 ? "s" : ""} –{" "}
                         {formatPrice(tier.price_per_unit)} per {tier.unit_type}
                       </p>
@@ -86,12 +111,14 @@ export default function Registration() {
                 </div>
 
                 <div className="mt-auto flex justify-center pt-6">
-                  <Link
-                    href={`/checkout?plan_id=${plan.id}`}
-                    className="min-w-[129px] rounded-[4px] border border-[#ed1c24] bg-transparent px-5 py-[13px] text-center text-[14px] font-bold text-[#ed1c24] transition-all duration-300 hover:bg-[#ed1c24] hover:text-white"
+                  <button
+                    type="button"
+                    onClick={() => handleBookNow(plan.id)}
+                    disabled={addingPlanId === plan.id}
+                    className="min-w-[129px] rounded-[4px] border border-[#ed1c24] bg-transparent px-5 py-[13px] text-center text-[14px] font-bold text-[#ed1c24] transition-all duration-300 hover:bg-[#ed1c24] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    Book Now
-                  </Link>
+                    {addingPlanId === plan.id ? "Adding..." : "Book Now"}
+                  </button>
                 </div>
               </div>
             ))

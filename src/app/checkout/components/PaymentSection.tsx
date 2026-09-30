@@ -1,25 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useState } from "react";
 
-export function PaymentSection() {
-  const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+interface PaymentSectionProps {
+  loading?: boolean;
+}
 
-  const handlePlaceOrder = useCallback(async () => {
-    setIsPlacingOrder(true);
-    try {
-      // TODO: Implement order placement logic with Razorpay
-      console.log("Placing order...");
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      // Handle successful order
-    } catch (error) {
-      console.error("Order placement error:", error);
-    } finally {
-      setIsPlacingOrder(false);
-    }
-  }, []);
-
+export function PaymentSection({ loading = false }: PaymentSectionProps) {
   return (
     <div className="mt-[20px] rounded-[5px] bg-[#ededf2] px-[15px] py-[18px] sm:px-[19px] sm:py-[20px]">
       <div className="flex items-start justify-between gap-3">
@@ -29,16 +16,14 @@ export function PaymentSection() {
           Card/NetBanking
         </div>
 
-        <div className="flex shrink-0 items-center gap-[5px] pt-[3px]">
-          <Image
-            src="/images/rzp_payment_icon.svg"
-            alt="Razorpay"
-            width={120}
-            height={40}
-            priority
-            className="h-auto w-[90px] object-contain object-center sm:w-[120px]"
-          />
-        </div>
+        <Image
+          src="/images/rzp_payment_icon.svg"
+          alt="Razorpay"
+          width={120}
+          height={40}
+          priority
+          className="h-auto w-[90px] shrink-0 object-contain object-center sm:w-[120px]"
+        />
       </div>
 
       <div className="mt-[18px] rounded-[3px] bg-[#e4e4e9] px-[12px] py-[11px] text-[12px] leading-[16px] text-[#002b5c] sm:text-[13px] sm:leading-[13px]">
@@ -57,12 +42,12 @@ export function PaymentSection() {
 
       <div className="mt-[13px] flex justify-end">
         <button
-          type="button"
-          onClick={handlePlaceOrder}
-          disabled={isPlacingOrder}
-          className="h-[45px] min-w-[115px] rounded-[5px] bg-[#d9232e] px-[20px] text-[13px] font-bold text-white transition hover:bg-[#b91c26] disabled:opacity-50 disabled:hover:bg-[#d9232e]"
+          type="submit"
+          form="billing-form"
+          disabled={loading}
+          className="h-[45px] min-w-[115px] rounded-[5px] bg-[#d9232e] px-[20px] text-[13px] font-bold text-white transition hover:bg-[#b91c26] disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {isPlacingOrder ? "Processing..." : "Place Order"}
+          {loading ? "Processing..." : "Place Order"}
         </button>
       </div>
     </div>

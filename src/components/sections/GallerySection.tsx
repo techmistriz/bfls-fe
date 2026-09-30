@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useGallery } from "@/src/hooks/useGallery";
-import { useLightbox } from "@/src/hooks/useLightbox";
-import { Lightbox } from "@/src/components/ui/Lightbox";
+
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
+import { Lightbox } from "@/src/components/ui/Lightbox";
+import { useHomeGallery } from "@/src/hooks/useHomeGallery";
+import { useLightbox } from "@/src/hooks/useLightbox";
 import { getGalleryImageUrl } from "@/src/utils/image";
 
 export default function GallerySection() {
-  const { gallery, loading } = useGallery();
+  const { gallery, loading } = useHomeGallery();
 
   const galleryImages = gallery.map((item) => ({
     src: getGalleryImageUrl(item.image),
@@ -49,11 +50,13 @@ export default function GallerySection() {
             </div>
           ) : gallery.length > 0 ? (
             <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3">
-              {gallery.map((image, index) => (
+              {gallery.map((image) => (
                 <button
                   key={image.id}
                   type="button"
-                  onClick={() => open(index)}
+                  onClick={() =>
+                    open(gallery.findIndex((item) => item.id === image.id))
+                  }
                   className="group relative aspect-[1.55/1] w-full overflow-hidden bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#f58220] focus:ring-offset-2"
                   aria-label={`Open BFLS gallery image ${image.ordering}`}
                 >
