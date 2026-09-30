@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 import type { GalleryItem } from "@/src/types/gallery.type";
-import { getGalleries } from "../services/gallery.service";
+import { getHomeGallery } from "../services/gallery.service";
 
-export const useGallery = () => {
+export const useHomeGallery = () => {
   const [gallery, setGallery] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,11 +14,11 @@ export const useGallery = () => {
       try {
         setLoading(true);
 
-        const response = await getGalleries();
+        const response = await getHomeGallery();
 
         setGallery(response.status ? (response.data ?? []) : []);
       } catch (error) {
-        console.error("Failed to fetch gallery:", error);
+        console.error("Failed to fetch home gallery:", error);
         setGallery([]);
       } finally {
         setLoading(false);
