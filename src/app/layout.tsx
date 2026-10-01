@@ -19,7 +19,7 @@ export default function RootLayout({
         <RecaptchaProvider>
           <Header />
           <main>{children}</main>
-          <Toaster position="top-right" />
+          <Toaster position="bottom-right" />
           <Footer />
         </RecaptchaProvider>
       </body>
