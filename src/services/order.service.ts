@@ -10,15 +10,11 @@ import type {
 export const registerOrder = async (
   payload: RegisterOrderPayload,
 ): Promise<RegisterOrderResponse> => {
-  console.log("📦 Register Order Payload:", payload);
-
   try {
     const res = await api.post<RegisterOrderResponse>(
       "/order/register",
       payload,
     );
-
-    console.log("✅ Register Order Response:", res.data);
 
     return res.data;
   } catch (error) {
@@ -39,15 +35,11 @@ export const registerOrder = async (
 export const verifyPayment = async (
   payload: VerifyPaymentPayload,
 ): Promise<VerifyPaymentResponse> => {
-  console.log("💳 Verify Payment Payload:", payload);
-
   try {
     const res = await api.post<VerifyPaymentResponse>(
       "/order/verify-payment",
       payload,
     );
-
-    console.log("✅ Verify Payment Response:", res.data);
 
     return res.data;
   } catch (error) {
@@ -65,14 +57,10 @@ export const verifyPayment = async (
 };
 
 export const paymentFail = async (razorpay_order_id: string) => {
-  console.log("⚠️ Payment Fail Payload:", { razorpay_order_id });
-
   try {
     const res = await api.post("/payment-fail", {
       razorpay_order_id,
     });
-
-    console.log("✅ Payment Fail Response:", res.data);
 
     return res.data;
   } catch (error) {

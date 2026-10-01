@@ -19,7 +19,7 @@ export const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
         <input
           ref={ref}
           {...props}
-          className={`h-[45px] w-full rounded-[4px] border border-[#ccd2d9] px-[10px] text-[10px] leading-[14px] text-[#333] outline-none placeholder:text-[15px] placeholder:text-[#9da5ae] focus:border-[#999] disabled:bg-[#f3f3f3] ${
+          className={`h-[45px] w-full rounded-[4px] border border-[#ccd2d9] px-[10px] text-[14px] leading-[14px] text-[#333] outline-none placeholder:text-[15px] placeholder:text-[#9da5ae] focus:border-[#999] disabled:bg-[#f3f3f3] ${
             error ? "border-[#d9232e] focus:border-[#d9232e]" : ""
           } ${className}`}
         />

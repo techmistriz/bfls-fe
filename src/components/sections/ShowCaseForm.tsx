@@ -21,22 +21,13 @@ export default function ShowCaseForm() {
   } = useForm<ShowcaseFormValues>();
 
   const onSubmit = async (data: ShowcaseFormValues) => {
-    console.log("Showcase form data:", data);
-
     if (!executeRecaptcha) {
       console.error("❌ reCAPTCHA is not ready");
       return;
     }
 
     try {
-      console.log("🔄 Executing reCAPTCHA...");
-
       const captchaToken = await executeRecaptcha("showcase");
-
-      console.log("✅ reCAPTCHA token generated:", {
-        exists: Boolean(captchaToken),
-        length: captchaToken?.length,
-      });
 
       if (!captchaToken) {
         console.error("❌ reCAPTCHA token is empty");
@@ -51,14 +42,7 @@ export default function ShowCaseForm() {
         captcha: captchaToken,
       };
 
-      console.log("📤 Showcase payload:", {
-        ...payload,
-        captcha: `${captchaToken.substring(0, 10)}...`,
-      });
-
-      const response = await submitShowcaseForm(payload);
-
-      console.log("✅ Showcase API success:", response);
+      await submitShowcaseForm(payload);
 
       reset();
     } catch (error) {

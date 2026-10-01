@@ -7,7 +7,6 @@ import SponsorsSkeleton from "../skeletons/SponsorsSkeleton";
 
 export default function Sponsors() {
   const { sponsors, loading, error } = useSponsors();
-  console.log("useSponsor", sponsors);
   return (
     <section
       className="relative w-full overflow-hidden bg-white py-[60px] sm:py-[75px] lg:py-[80px]"
@@ -93,7 +92,6 @@ export default function Sponsors() {
           <div className="mx-auto mt-[55px] grid max-w-[1130px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {sponsors.map((item, index) => {
               const sponsor = item.sponsor;
-              console.log(sponsor);
               return (
                 <div
                   key={item.id}

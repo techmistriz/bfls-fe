@@ -265,7 +265,7 @@ export function BillingDetails({
           {...register("address", {
             required: "Address is required",
           })}
-          className={`block h-[75px] w-full resize-none rounded-[4px] border border-[#ccd2d9] px-[10px] py-[9px] text-[10px] text-[#333] outline-none placeholder:text-[15px] placeholder:text-[#9da5ae] focus:border-[#999] ${
+          className={`block h-[75px] w-full resize-none rounded-[4px] border border-[#ccd2d9] px-[10px] py-[9px] text-[14px] text-[#333] outline-none placeholder:text-[15px] placeholder:text-[#9da5ae] focus:border-[#999] ${
             errors.address ? "border-[#d9232e]" : ""
           }`}
         />

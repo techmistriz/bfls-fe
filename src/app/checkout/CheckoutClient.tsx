@@ -25,10 +25,11 @@ export default function CheckoutClient() {
 
   const {
     cart,
-    loading,
+    // loading,
     error,
     couponError,
     updating,
+    couponUpdating,
     updateCart,
     removeItem,
     undoRemoveItem,
@@ -159,15 +160,15 @@ export default function CheckoutClient() {
     [handlePaymentFailure, router],
   );
 
-  if (loading) {
-    return (
-      <main className="mt-20 min-h-screen bg-white">
-        <div className="mx-auto w-full max-w-290 px-4 py-10 sm:py-[50px] lg:py-[60px]">
-          Loading cart...
-        </div>
-      </main>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <main className="mt-20 min-h-screen bg-white">
+  //       <div className="mx-auto w-full max-w-290 px-4 py-10 sm:py-[50px] lg:py-[60px]">
+  //         Loading cart...
+  //       </div>
+  //     </main>
+  //   );
+  // }
 
   if (error) {
     return (
@@ -211,7 +212,7 @@ export default function CheckoutClient() {
               </div>
             )}
 
-            <div className="mb-[26px] rounded-[5px] border border-[#f3b8bc] bg-[#fffafa]">
+            <div className="relative mb-[26px] rounded-[5px] border border-[#f3b8bc] bg-[#fffafa]">
               {cart?.items.length ? (
                 cart.items.map((item) => (
                   <div
@@ -227,7 +228,7 @@ export default function CheckoutClient() {
                         }}
                         disabled={updating}
                         aria-label={`Remove ${item.plan_name}`}
-                        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[#d9232e] transition-colors hover:bg-[#d9232e] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full  text-[22px] leading-none font-medium text-[#d9232e] transition-colors  disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         ×
                       </button>
@@ -247,26 +248,31 @@ export default function CheckoutClient() {
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
-                        disabled={updating || item.quantity <= 1}
+                        disabled={updating || Number(item.quantity) <= 1}
                         onClick={() =>
-                          updateCart(item.plan_id, item.quantity - 1)
+                          updateCart(item.plan_id, Number(item.quantity) - 1)
                         }
-                        className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
                       >
                         -
                       </button>
 
-                      <span className="min-w-[20px] text-center font-medium">
-                        {item.quantity}
+                      {/* Quantity / Spinner */}
+                      <span className="flex h-8 w-8 items-center justify-center">
+                        {updating ? (
+                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#d9232e] border-t-transparent" />
+                        ) : (
+                          <span className="font-medium">{item.quantity}</span>
+                        )}
                       </span>
 
                       <button
                         type="button"
                         disabled={updating}
                         onClick={() =>
-                          updateCart(item.plan_id, item.quantity + 1)
+                          updateCart(item.plan_id, Number(item.quantity) + 1)
                         }
-                        className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
                       >
                         +
                       </button>
@@ -288,7 +294,7 @@ export default function CheckoutClient() {
               isOpen={couponOpen}
               onToggle={toggleCoupon}
               couponCode={cart?.coupon?.code ?? null}
-              updating={updating}
+              updating={couponUpdating}
               error={couponError}
               onApply={applyCoupon}
               onRemove={removeCoupon}

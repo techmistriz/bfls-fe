@@ -5,16 +5,18 @@ import { useEffect, useState } from "react";
 import type { GalleryItem } from "@/src/types/gallery.type";
 import { getHomeGallery } from "../services/gallery.service";
 
-export const useHomeGallery = () => {
+export const useHomeGallery = (eventId?: number) => {
   const [gallery, setGallery] = useState<GalleryItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (!eventId) return;
+
     const fetchGallery = async () => {
       try {
         setLoading(true);
 
-        const response = await getHomeGallery();
+        const response = await getHomeGallery(eventId);
 
         setGallery(response.status ? (response.data ?? []) : []);
       } catch (error) {
@@ -26,7 +28,7 @@ export const useHomeGallery = () => {
     };
 
     fetchGallery();
-  }, []);
+  }, [eventId]);
 
   return { gallery, loading };
 };

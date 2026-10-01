@@ -45,7 +45,7 @@ export function PaymentSection({ loading = false }: PaymentSectionProps) {
           type="submit"
           form="billing-form"
           disabled={loading}
-          className="h-[45px] min-w-[115px] rounded-[5px] bg-[#d9232e] px-[20px] text-[13px] font-bold text-white transition hover:bg-[#b91c26] disabled:cursor-not-allowed disabled:opacity-50"
+          className="h-[45px] min-w-[115px] rounded-[5px] bg-[#d9232e] px-[20px] text-[13px] font-bold text-white transition hover:bg-[#b91c26] disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
         >
           {loading ? "Processing..." : "Place Order"}
         </button>

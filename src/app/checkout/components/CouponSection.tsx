@@ -59,7 +59,7 @@ export function CouponSection({
           <button
             type="button"
             onClick={onToggle}
-            className="text-left text-[#d9232e] underline underline-offset-2 hover:opacity-80"
+            className="text-left text-[#d9232e] underline underline-offset-2 hover:opacity-80 cursor-pointer"
             aria-expanded={isOpen}
           >
             Click here to enter your code
@@ -84,7 +84,7 @@ export function CouponSection({
               type="button"
               onClick={handleApply}
               disabled={updating || !code.trim()}
-              className="h-[40px] rounded bg-[#d9232e] px-5 text-[13px] font-semibold text-white transition hover:bg-[#b91c26] disabled:opacity-50"
+              className="h-[40px] cursor-pointer rounded bg-[#d9232e] px-5 text-[13px] font-semibold text-white transition hover:bg-[#b91c26] disabled:cursor-not-allowed disabled:opacity-50"
             >
               {updating ? "Applying..." : "Apply"}
             </button>
@@ -104,7 +104,7 @@ export function CouponSection({
             type="button"
             onClick={handleRemove}
             disabled={updating}
-            className="text-[13px] font-semibold text-[#d9232e] hover:underline disabled:opacity-50"
+            className="text-[13px] font-semibold text-[#d9232e] hover:underline disabled:opacity-50 cursor-pointer"
           >
             {updating ? "Removing..." : "Remove"}
           </button>
