@@ -90,7 +90,7 @@ export default function Banner() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto mt-[32px] flex w-full max-w-[1250px] flex-col items-center px-5 pt-2 text-center max-md:px-6 max-sm:px-5">
+      <div className="relative z-10 mx-auto mt-[32px] flex w-full max-w-[1170px] flex-col items-center px-2 pt-2 text-center max-md:px-3 max-sm:px-3">
         {/* Logo - fixed position */}
         <div
           className="
