@@ -95,14 +95,14 @@ export default function Sponsors() {
               return (
                 <div
                   key={item.id}
-                  className="group relative flex h-[145px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10"
+                  className="group relative flex h-[156px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10"
                   style={{ animationDelay: `${index * 0.15}s` }}
                 >
-                  <p className="absolute left-0 right-0 top-[11px] text-center text-[13px] font-semibold text-[#777]">
+                  <p className="absolute left-0 right-0 top-[11px] text-center text-[16px] font-semibold text-[#777]">
                     {sponsor.sponsor_type}
                   </p>
 
-                  <div className="relative mt-[12px] h-[70px] w-[170px]">
+                  <div className="relative mt-[12px] h-[75px] w-[180px]">
                     {sponsor.image && (
                       <a
                         href={sponsor.website_url}
