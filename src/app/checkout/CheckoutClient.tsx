@@ -22,6 +22,7 @@ export default function CheckoutClient() {
   const [couponOpen, setCouponOpen] = useState(false);
   const [removedItemName, setRemovedItemName] = useState("");
   const [paymentProcessing, setPaymentProcessing] = useState(false);
+  const [paymentVerifying, setPaymentVerifying] = useState(false);
 
   const {
     cart,
@@ -92,6 +93,8 @@ export default function CheckoutClient() {
 
           handler: async (response) => {
             try {
+              setPaymentVerifying(true);
+
               const verifyResponse = await verifyPayment({
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,
@@ -123,12 +126,12 @@ export default function CheckoutClient() {
                 JSON.stringify(thankYouData),
               );
 
-              toast.success("Payment Successful");
               router.push("/thank-you");
             } catch (error) {
               console.error("Payment verification failed:", error);
               toast.error("Payment verification failed.");
             } finally {
+              setPaymentVerifying(false);
               setPaymentProcessing(false);
             }
           },
@@ -181,153 +184,174 @@ export default function CheckoutClient() {
   }
 
   return (
-    <main className="mt-20 min-h-screen bg-white">
-      <div className="mx-auto w-full max-w-290 px-4 py-10 sm:py-[50px] lg:py-[60px]">
-        <div className="grid grid-cols-1 items-start gap-[35px] lg:grid-cols-[minmax(0,760px)_340px]">
-          <section className="min-w-0">
-            <h2 className="mb-[13px] text-[24px] font-bold uppercase text-[#d9232e]">
-              YOUR TICKET
+    <>
+      {paymentVerifying && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 px-4">
+          <div className="w-full max-w-sm rounded-xl bg-white p-8 text-center shadow-2xl">
+            <div className="mx-auto mb-5 h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-[#d9232e]" />
+
+            <h2 className="text-xl font-semibold text-gray-900">
+              Payment Verifying
             </h2>
 
-            {removedItemName && (
-              <div className="mb-[26px] flex items-center justify-between rounded-[5px] border border-[#e0e3e7] bg-[#f5f5f5] px-4 py-3 text-[14px] text-[#333]">
-                <span>
-                  <strong>{removedItemName}</strong> removed.
-                </span>
+            <p className="mt-2 text-sm leading-6 text-gray-500">
+              Please wait while we verify your payment.
+              <br />
+              Do not close or refresh this page.
+            </p>
+          </div>
+        </div>
+      )}
 
-                <button
-                  type="button"
-                  onClick={async () => {
-                    const success = await undoRemoveItem();
+      <main className="mt-20 min-h-screen bg-white">
+        <div className="mx-auto w-full max-w-290 px-4 py-10 sm:py-[50px] lg:py-[60px]">
+          <div className="grid grid-cols-1 items-start gap-[35px] lg:grid-cols-[minmax(0,760px)_340px]">
+            <section className="min-w-0">
+              <h2 className="mb-[13px] text-[24px] font-bold uppercase text-[#d9232e]">
+                YOUR TICKET
+              </h2>
 
-                    if (success) {
-                      setRemovedItemName("");
-                    }
-                  }}
-                  disabled={updating}
-                  className="font-semibold text-[#d9232e] underline underline-offset-2 hover:opacity-80 disabled:opacity-50"
-                >
-                  {updating ? "Restoring..." : "Undo?"}
-                </button>
-              </div>
-            )}
+              {removedItemName && (
+                <div className="mb-[26px] flex items-center justify-between rounded-[5px] border border-[#e0e3e7] bg-[#f5f5f5] px-4 py-3 text-[14px] text-[#333]">
+                  <span>
+                    <strong>{removedItemName}</strong> removed.
+                  </span>
 
-            <div className="relative mb-[26px] rounded-[5px] border border-[#f3b8bc] bg-[#fffafa]">
-              {cart?.items.length ? (
-                cart.items.map((item) => (
-                  <div
-                    key={item.plan_id}
-                    className="flex items-center justify-between px-4 py-3 text-[#333]"
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      const success = await undoRemoveItem();
+
+                      if (success) {
+                        setRemovedItemName("");
+                      }
+                    }}
+                    disabled={updating}
+                    className="font-semibold text-[#d9232e] underline underline-offset-2 hover:opacity-80 disabled:opacity-50"
                   >
-                    <div className="flex items-center gap-3">
-                      <button
-                        type="button"
-                        onClick={async () => {
-                          setRemovedItemName(item.plan_name);
-                          await removeItem(item.plan_id);
-                        }}
-                        disabled={updating}
-                        aria-label={`Remove ${item.plan_name}`}
-                        className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full  text-[22px] leading-none font-medium text-[#d9232e] transition-colors  disabled:cursor-not-allowed disabled:opacity-50"
-                      >
-                        ×
-                      </button>
+                    {updating ? "Restoring..." : "Undo?"}
+                  </button>
+                </div>
+              )}
 
-                      <div>
-                        <p className="font-semibold text-[#333]">
-                          {item.plan_name}
-                        </p>
+              <div className="relative mb-[26px] rounded-[5px] border border-[#f3b8bc] bg-[#fffafa]">
+                {cart?.items.length ? (
+                  cart.items.map((item) => (
+                    <div
+                      key={item.plan_id}
+                      className="flex items-center justify-between px-4 py-3 text-[#333]"
+                    >
+                      <div className="flex items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={async () => {
+                            setRemovedItemName(item.plan_name);
+                            await removeItem(item.plan_id);
+                          }}
+                          disabled={updating}
+                          aria-label={`Remove ${item.plan_name}`}
+                          className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full  text-[22px] leading-none font-medium text-[#d9232e] transition-colors  disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                          ×
+                        </button>
 
-                        <p className="text-sm text-gray-500">
-                          ₹{item.price.toLocaleString("en-IN")} ×{" "}
-                          {item.quantity}
+                        <div>
+                          <p className="font-semibold text-[#333]">
+                            {item.plan_name}
+                          </p>
+
+                          <p className="text-sm text-gray-500">
+                            ₹{item.price.toLocaleString("en-IN")} ×{" "}
+                            {item.quantity}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3">
+                        <button
+                          type="button"
+                          disabled={updating || Number(item.quantity) <= 1}
+                          onClick={() =>
+                            updateCart(item.plan_id, Number(item.quantity) - 1)
+                          }
+                          className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
+                        >
+                          -
+                        </button>
+
+                        {/* Quantity / Spinner */}
+                        <span className="flex h-8 w-8 items-center justify-center">
+                          {updating ? (
+                            <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#d9232e] border-t-transparent" />
+                          ) : (
+                            <span className="font-medium">{item.quantity}</span>
+                          )}
+                        </span>
+
+                        <button
+                          type="button"
+                          disabled={updating}
+                          onClick={() =>
+                            updateCart(item.plan_id, Number(item.quantity) + 1)
+                          }
+                          className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
+                        >
+                          +
+                        </button>
+
+                        <p className="min-w-[90px] text-right font-semibold">
+                          ₹
+                          {(item.price * item.quantity).toLocaleString("en-IN")}
                         </p>
                       </div>
                     </div>
-
-                    <div className="flex items-center gap-3">
-                      <button
-                        type="button"
-                        disabled={updating || Number(item.quantity) <= 1}
-                        onClick={() =>
-                          updateCart(item.plan_id, Number(item.quantity) - 1)
-                        }
-                        className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
-                      >
-                        -
-                      </button>
-
-                      {/* Quantity / Spinner */}
-                      <span className="flex h-8 w-8 items-center justify-center">
-                        {updating ? (
-                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#d9232e] border-t-transparent" />
-                        ) : (
-                          <span className="font-medium">{item.quantity}</span>
-                        )}
-                      </span>
-
-                      <button
-                        type="button"
-                        disabled={updating}
-                        onClick={() =>
-                          updateCart(item.plan_id, Number(item.quantity) + 1)
-                        }
-                        className="flex h-8 w-8 items-center justify-center rounded border border-gray-300 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
-                      >
-                        +
-                      </button>
-
-                      <p className="min-w-[90px] text-right font-semibold">
-                        ₹{(item.price * item.quantity).toLocaleString("en-IN")}
-                      </p>
-                    </div>
+                  ))
+                ) : (
+                  <div className="px-4 py-4 text-sm text-gray-500">
+                    Your cart is empty.
                   </div>
-                ))
-              ) : (
-                <div className="px-4 py-4 text-sm text-gray-500">
-                  Your cart is empty.
-                </div>
-              )}
-            </div>
+                )}
+              </div>
 
-            <CouponSection
-              isOpen={couponOpen}
-              onToggle={toggleCoupon}
-              couponCode={cart?.coupon?.code ?? null}
-              updating={couponUpdating}
-              error={couponError}
-              onApply={applyCoupon}
-              onRemove={removeCoupon}
-            />
-
-            <h2 className="mb-[23px] text-[20px] font-bold uppercase text-[#d9232e]">
-              BILLING DETAILS
-            </h2>
-
-            <BillingDetails
-              onSubmit={handleOrder}
-              loading={paymentProcessing}
-            />
-
-            <AssistanceSection />
-          </section>
-
-          <aside className="self-start lg:sticky lg:top-[100px]">
-            {cart && (
-              <OrderSummary
-                subtotal={cart.subtotal}
-                gstPercent={cart.gst_percent}
-                gstAmount={cart.gst_amount}
-                total={cart.total}
-                discount={cart.discount}
-                coupon={cart.coupon}
-                items={cart.items}
-                paymentProcessing={paymentProcessing}
+              <CouponSection
+                isOpen={couponOpen}
+                onToggle={toggleCoupon}
+                couponCode={cart?.coupon?.code ?? null}
+                updating={couponUpdating}
+                error={couponError}
+                onApply={applyCoupon}
+                onRemove={removeCoupon}
               />
-            )}
-          </aside>
+
+              <h2 className="mb-[23px] text-[20px] font-bold uppercase text-[#d9232e]">
+                BILLING DETAILS
+              </h2>
+
+              <BillingDetails
+                onSubmit={handleOrder}
+                loading={paymentProcessing}
+              />
+
+              <AssistanceSection />
+            </section>
+
+            <aside className="self-start lg:sticky lg:top-[100px]">
+              {cart && (
+                <OrderSummary
+                  subtotal={cart.subtotal}
+                  gstPercent={cart.gst_percent}
+                  gstAmount={cart.gst_amount}
+                  total={cart.total}
+                  discount={cart.discount}
+                  coupon={cart.coupon}
+                  items={cart.items}
+                  paymentProcessing={paymentProcessing}
+                />
+              )}
+            </aside>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
