@@ -117,7 +117,7 @@ export default function ContactUs() {
           ×
         </span>
 
-        <div className="relative z-[5] mx-auto flex min-h-[500px] w-full max-w-[1130px] flex-col items-center px-4 pb-[115px] pt-[135px] sm:px-0 max-md:pb-[80px] max-md:pt-[80px] max-sm:min-h-0 max-sm:px-[15px] max-sm:pb-[55px] max-sm:pt-[60px]">
+        <div className="relative z-[5] mx-auto flex min-h-[500px] w-full max-w-[1170px] flex-col items-center px-4 pb-[115px] pt-[135px] sm:px-0 max-md:pb-[80px] max-md:pt-[80px] max-sm:min-h-0 max-sm:px-[15px] max-sm:pb-[55px] max-sm:pt-[60px]">
           <div className="relative z-[5] mb-[28px] text-center sm:mb-[32px] max-sm:mb-[25px]">
             <h2
               className="pointer-events-none absolute left-1/2 top-[85%] z-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[48px] font-extrabold leading-[1.15] text-[#fff] sm:text-[158px] max-sm:text-[38px]"
