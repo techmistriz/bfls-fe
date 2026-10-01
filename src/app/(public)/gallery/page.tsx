@@ -100,6 +100,12 @@ export default function GalleryBanner() {
             </div>
           )}
 
+          {!loading && galleryImages.length === 0 && (
+            <div className="py-20 text-center text-sm text-gray-500">
+              No gallery images available.
+            </div>
+          )}
+
           {!loading && galleryImages.length > 0 && (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 max-sm:gap-3">
               {galleryImages.map((image, index) => (
