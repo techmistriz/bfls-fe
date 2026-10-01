@@ -4,8 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { RegistrationIcon } from "@/src/components/icons/RegistrationIcon";
-import { useRegistrationPlans } from "@/src/hooks/useRegistrationPlans";
 import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
+import { useEvents } from "@/src/hooks/useEvents";
+import { useRegistrationPlans } from "@/src/hooks/useRegistrationPlans";
 import { addToCart } from "@/src/services/cart.service";
 
 const PLAN_BACKGROUNDS = ["#b9e3df", "#ebc9ec", "#ffc79f", "#ffe6a8"];
@@ -16,17 +17,21 @@ const formatPrice = (price: string) => {
 
 export default function Registration() {
   const { plans, loading, error } = useRegistrationPlans();
-
+  const { events } = useEvents();
   const router = useRouter();
+
+  const eventId = events[0]?.id;
   const [addingPlanId, setAddingPlanId] = useState<number | null>(null);
 
   const handleBookNow = async (planId: number) => {
+    if (!eventId) return;
+
     try {
       setAddingPlanId(planId);
 
       await addToCart({
         event_type_id: APP_EVENT_TYPE,
-        event_id: APP_EVENT_TYPE,
+        event_id: eventId,
         plan_id: planId,
         quantity: 1,
       });
@@ -81,7 +86,7 @@ export default function Registration() {
                 }}
               >
                 {plan.tag && (
-                  <div className="absolute top-[-11px] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-[5px] bg-[#d71920] px-[11px] py-[4px] text-[14px] font-normal leading-[18px] text-white">
+                  <div className="absolute left-1/2 top-[-11px] -translate-x-1/2 whitespace-nowrap rounded-[5px] bg-[#d71920] px-[11px] py-[4px] text-[14px] font-normal leading-[18px] text-white">
                     {plan.tag.toUpperCase()}
                   </div>
                 )}
@@ -115,7 +120,7 @@ export default function Registration() {
                     type="button"
                     onClick={() => handleBookNow(plan.id)}
                     disabled={addingPlanId === plan.id}
-                    className="min-w-[129px] rounded-[4px] border border-[#ed1c24] bg-transparent px-5 py-[13px] text-center text-[14px] font-bold text-[#ed1c24] transition-all duration-300 hover:bg-[#ed1c24] hover:text-white disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
+                    className="min-w-[129px] cursor-pointer rounded-[4px] border border-[#ed1c24] bg-transparent px-5 py-[13px] text-center text-[14px] font-bold text-[#ed1c24] transition-all duration-300 hover:bg-[#ed1c24] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {addingPlanId === plan.id ? "Adding..." : "Book Now"}
                   </button>
