@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { addToCart } from "../services/cart.service";
 
-interface AddToCartData {
+export interface AddToCartData {
   event_type_id: number;
   event_id: number;
   plan_id: number;
@@ -24,9 +24,6 @@ export function useAddToCart() {
       }
 
       return response;
-    } catch (error) {
-      console.error("Add to cart failed:", error);
-      throw error;
     } finally {
       setLoading(false);
     }

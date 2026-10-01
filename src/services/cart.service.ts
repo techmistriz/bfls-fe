@@ -1,13 +1,16 @@
-import type { CartResponse } from "@/src/types/cart";
-import api from "../network/axios";
 import axios from "axios";
 
-export const addToCart = async (data: {
+import type { CartResponse } from "@/src/types/cart";
+import api from "../network/axios";
+
+interface AddToCartData {
   event_type_id: number;
   event_id: number;
   plan_id: number;
   quantity: number;
-}) => {
+}
+
+export const addToCart = async (data: AddToCartData) => {
   const res = await api.post("/cart/add", data);
   return res.data;
 };
@@ -71,12 +74,6 @@ export const removeCoupon = async (
 };
 
 export const undoRemoveItem = async () => {
-  try {
-    const res = await api.post("/cart/undo");
-
-    return res.data;
-  } catch (error) {
-    console.error("[UNDO API] Error:", error);
-    throw error;
-  }
+  const res = await api.post("/cart/undo");
+  return res.data;
 };
