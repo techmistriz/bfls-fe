@@ -55,7 +55,7 @@ export default function Speakers() {
       <div className="speaker-dot-animation pointer-events-none absolute left-[8%] top-[300px] hidden h-[8px] w-[8px] rounded-full bg-[#e8edf2] lg:block" />
       <div className="speaker-dot-animation-2 pointer-events-none absolute right-[9%] top-[300px] hidden h-[8px] w-[8px] rounded-full bg-[#e8edf2] lg:block" />
 
-      <div className="relative mx-auto max-w-[2000px] px-5 sm:px-8 lg:px-10">
+      <div className="relative mx-auto max-w-[1170px] px-4 sm:px-6">
         <div className="text-center">
           <p className="mb-[8px] text-[25px] font-bold leading-tight text-[#f58216] sm:text-[27px]">
             Confirmed Speakers

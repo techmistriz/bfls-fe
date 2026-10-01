@@ -20,7 +20,7 @@ export default function SummitSecretriatClient() {
       {/* ---------- SUMMIT SECRETARIAT CONTENT ---------- */}
 
       <section className="w-full bg-white">
-        <div className="mx-auto max-w-[1130px] px-6 py-[55px] lg:px-0 lg:py-[60px] max-md:py-[45px] max-sm:px-[20px] max-sm:py-[35px]">
+        <div className="mx-auto max-w-[1170px] px-6 py-[55px] lg:px-0 lg:py-[60px] max-md:py-[45px] max-sm:px-[20px] max-sm:py-[35px]">
           <div className="grid grid-cols-[1fr_320px] gap-[40px] max-lg:grid-cols-[1fr_300px] max-md:grid-cols-1 max-md:gap-[45px]">
             {/* ---------- LEFT CONTENT ---------- */}
 
