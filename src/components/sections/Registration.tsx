@@ -115,7 +115,7 @@ export default function Registration() {
                     type="button"
                     onClick={() => handleBookNow(plan.id)}
                     disabled={addingPlanId === plan.id}
-                    className="min-w-[129px] rounded-[4px] border border-[#ed1c24] bg-transparent px-5 py-[13px] text-center text-[14px] font-bold text-[#ed1c24] transition-all duration-300 hover:bg-[#ed1c24] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                    className="min-w-[129px] rounded-[4px] border border-[#ed1c24] bg-transparent px-5 py-[13px] text-center text-[14px] font-bold text-[#ed1c24] transition-all duration-300 hover:bg-[#ed1c24] hover:text-white disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
                   >
                     {addingPlanId === plan.id ? "Adding..." : "Book Now"}
                   </button>

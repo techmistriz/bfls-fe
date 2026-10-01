@@ -18,8 +18,6 @@ export const useEvents = () => {
 
         const response: EventsResponse = await getEvents();
 
-        console.log(response);
-
         setEvents(response.data?.events ?? []);
       } catch (err: unknown) {
         console.error("Failed to fetch events:", err);

@@ -1,3 +1,5 @@
+"use client";
+
 import Banner from "@/src/components/sections/Banner";
 import AboutSummit from "@/src/components/sections/AboutSummit";
 import Agenda from "@/src/components/sections/Agenda";
@@ -12,9 +14,13 @@ import VenueSection from "@/src/components/sections/VenueSection";
 import VenueGallery from "@/src/components/sections/VenueGallery";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 import Registration from "../components/sections/Registration";
-// import Registration from "@/src/components/sections/Registration";
+import { useEvents } from "@/src/hooks/useEvents";
 
 export default function Home() {
+  const { events } = useEvents();
+
+  const eventId = events[0]?.id;
+
   return (
     <>
       <Banner />
@@ -27,12 +33,10 @@ export default function Home() {
       <Sponsors />
       <SponsorshipForm />
       <AudienceProfile />
-      <GallerySection />
+      <GallerySection eventId={eventId} />
       <VenueSection />
       <VenueGallery />
       <SubscribeSection />
-
-      {/* Baaki homepage sections yahan aayenge */}
     </>
   );
 }

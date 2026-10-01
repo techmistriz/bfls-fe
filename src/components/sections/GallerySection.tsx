@@ -8,8 +8,12 @@ import { useHomeGallery } from "@/src/hooks/useHomeGallery";
 import { useLightbox } from "@/src/hooks/useLightbox";
 import { getGalleryImageUrl } from "@/src/utils/image";
 
-export default function GallerySection() {
-  const { gallery, loading } = useHomeGallery();
+interface GallerySectionProps {
+  eventId?: number;
+}
+
+export default function GallerySection({ eventId }: GallerySectionProps) {
+  const { gallery, loading } = useHomeGallery(eventId);
 
   const galleryImages = gallery.map((item) => ({
     src: getGalleryImageUrl(item.image),
@@ -19,7 +23,6 @@ export default function GallerySection() {
   const { selectedIndex, open, close, next, previous } = useLightbox(
     galleryImages.length,
   );
-
   return (
     <>
       <section

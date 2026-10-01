@@ -10,8 +10,6 @@ export default function RecaptchaProvider({
 }) {
   const siteKey = RECAPTCHA_SITE_KEYS.v3;
 
-  console.log("reCAPTCHA site key exists:", Boolean(siteKey));
-
   return (
     <GoogleReCaptchaProvider
       reCaptchaKey={siteKey || ""}

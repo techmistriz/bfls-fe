@@ -6,6 +6,7 @@ import { useEffect, useState, useCallback } from "react";
 import { PageBanner } from "@/src/components/layout/PageBanner";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 import { useGallery } from "@/src/hooks/useGallery";
+import { useEvents } from "@/src/hooks/useEvents";
 
 interface GalleryImage {
   src: string;
@@ -13,13 +14,18 @@ interface GalleryImage {
 }
 
 export default function GalleryBanner() {
-  const { gallery, loading } = useGallery();
+  const { events } = useEvents();
+  const eventId = events[0]?.id;
+
+  const { gallery, loading } = useGallery(eventId);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const galleryImages: GalleryImage[] = gallery.map((item, index) => ({
-    src: item.image,
+  const galleryImages: GalleryImage[] = gallery.map((image, index) => ({
+    src: image,
     alt: `BFLS Gallery ${index + 1}`,
   }));
+
+  console.log("galleryImages", galleryImages);
 
   const openPopup = (index: number) => {
     setSelectedImage(index);
@@ -94,12 +100,6 @@ export default function GalleryBanner() {
             </div>
           )}
 
-          {!loading && galleryImages.length === 0 && (
-            <div className="py-20 text-center text-sm text-gray-500">
-              No gallery images found.
-            </div>
-          )}
-
           {!loading && galleryImages.length > 0 && (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 max-sm:gap-3">
               {galleryImages.map((image, index) => (
@@ -107,7 +107,7 @@ export default function GalleryBanner() {
                   key={`${image.src}-${index}`}
                   type="button"
                   onClick={() => openPopup(index)}
-                  className="group relative aspect-[1.55/1] w-full overflow-hidden bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#f58220] focus:ring-offset-2"
+                  className="group relative aspect-[1.55/1] w-full cursor-pointer overflow-hidden bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#f58220] focus:ring-offset-2"
                   aria-label={`Open ${image.alt}`}
                 >
                   <Image
@@ -115,24 +115,10 @@ export default function GalleryBanner() {
                     alt={image.alt}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover "
                   />
 
-                  <div className="absolute inset-0 flex items-center justify-center bg-[#12264f]/0 transition-all duration-300 group-hover:bg-[#12264f]/75">
-                    <span className="flex h-0 w-0 items-center justify-center rounded-full bg-[#f58220] text-white opacity-0 transition-all duration-300 group-hover:h-12 group-hover:w-12 group-hover:opacity-100 max-sm:group-active:h-12 max-sm:group-active:w-12 max-sm:group-active:opacity-100">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        className="h-6 w-6"
-                      >
-                        <path d="M12 5v14" />
-                        <path d="M5 12h14" />
-                      </svg>
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-white/30" />
                 </button>
               ))}
             </div>
@@ -144,80 +130,87 @@ export default function GalleryBanner() {
 
       {selectedImage !== null && galleryImages[selectedImage] && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-3 sm:p-5"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 sm:p-8"
           onClick={closePopup}
         >
+          {/* Top-Left Image Counter */}
+          <div className="absolute left-6 top-6 z-30 text-sm font-medium text-white/90">
+            {selectedImage + 1} / {galleryImages.length}
+          </div>
+
+          {/* Close Button (Top-Right) */}
+          <button
+            type="button"
+            onClick={closePopup}
+            aria-label="Close gallery"
+            className="absolute right-6 top-6 z-30 text-2xl text-white/80 transition hover:text-white cursor-pointer"
+          >
+            ✕
+          </button>
+
+          {/* Navigation: Previous Button (Left Edge) */}
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              previousImage();
+            }}
+            aria-label="Previous image"
+            className="absolute left-4 top-1/2 z-30 -translate-y-1/2 p-2 text-white/70 transition hover:text-white sm:left-8 cursor-pointer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-8 w-8 sm:h-10 sm:w-10"
+            >
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+
+          {/* Image Container (Main Center Display) */}
           <div
-            className="relative flex h-[75vh] w-full max-w-[1100px] items-center justify-center sm:h-[82vh] md:h-[88vh] max-sm:h-[78vh]"
+            className="relative flex h-full max-h-[85vh] w-full max-w-[85vw] items-center justify-center"
             onClick={(event) => event.stopPropagation()}
           >
-            <button
-              type="button"
-              onClick={closePopup}
-              aria-label="Close gallery"
-              className="absolute right-1 top-1 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[24px] font-light leading-none text-[#222] shadow-lg transition hover:bg-[#f58220] hover:text-white sm:-right-2 sm:-top-2 sm:h-10 sm:w-10 max-sm:right-0 max-sm:top-0"
-            >
-              ×
-            </button>
-
-            <button
-              type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                previousImage();
-              }}
-              aria-label="Previous image"
-              className="absolute left-1 top-1/2 z-30 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#f58220] text-white shadow-lg transition hover:bg-[#df7014] sm:left-2 sm:h-12 sm:w-12 md:-left-6 max-sm:left-1 max-sm:h-9 max-sm:w-9"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="h-5 w-5 sm:h-6 sm:w-6"
-              >
-                <path d="m15 18-6-6 6-6" />
-              </svg>
-            </button>
-
-            <div className="relative h-full w-full overflow-hidden">
-              <Image
-                key={galleryImages[selectedImage].src}
-                src={galleryImages[selectedImage].src}
-                alt={galleryImages[selectedImage].alt}
-                fill
-                sizes="100vw"
-                className="object-contain"
-                priority
-              />
-            </div>
-
-            <button
-              type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                nextImage();
-              }}
-              aria-label="Next image"
-              className="absolute right-1 top-1/2 z-30 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#f58220] text-white shadow-lg transition hover:bg-[#df7014] sm:right-2 sm:h-12 sm:w-12 md:-right-6 max-sm:right-1 max-sm:h-9 max-sm:w-9"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="h-5 w-5 sm:h-6 sm:w-6"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </button>
-
-            <div className="absolute bottom-2 left-1/2 z-30 -translate-x-1/2 rounded-full bg-black/60 px-4 py-1.5 text-xs font-medium text-white sm:bottom-4 sm:text-sm max-sm:px-3 max-sm:py-1 max-sm:text-[11px]">
-              {selectedImage + 1} / {galleryImages.length}
-            </div>
+            <Image
+              key={galleryImages[selectedImage].src}
+              src={galleryImages[selectedImage].src}
+              alt={galleryImages[selectedImage].alt}
+              fill
+              sizes="100vw"
+              className="object-contain"
+              priority
+            />
           </div>
+
+          {/* Navigation: Next Button (Right Edge) */}
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              nextImage();
+            }}
+            aria-label="Next image"
+            className="absolute right-4 top-1/2 z-30 -translate-y-1/2 p-2 text-white/70 transition hover:text-white sm:right-8 cursor-pointer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-8 w-8 sm:h-10 sm:w-10"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
         </div>
       )}
     </div>
