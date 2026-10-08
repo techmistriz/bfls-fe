@@ -140,7 +140,7 @@ export default function LexWitnessSummits() {
                           >
                             {/* ---------- IMAGE ---------- */}
 
-                            <div className="flex min-h-[215px] items-center justify-center bg-[#f5f5f5] p-[10px] max-sm:min-h-0">
+                            <div className="flex min-h-[215px] items-start justify-center bg-[#f5f5f5] p-[4px] max-sm:min-h-0">
                               <div className="relative w-full max-w-[230px]">
                                 <Image
                                   src={item.image}

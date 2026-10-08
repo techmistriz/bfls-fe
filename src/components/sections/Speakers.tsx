@@ -57,11 +57,11 @@ export default function Speakers() {
 
       <div className="relative mx-auto max-w-[1170px] px-4 sm:px-6">
         <div className="text-center">
-          <p className="mb-[8px] text-[25px] font-bold leading-tight text-[#f58216] sm:text-[27px]">
+          <p className="mb-[8px] text-[25px] font-semibold leading-tight text-[#f58216] sm:text-[32px]">
             Confirmed Speakers
           </p>
 
-          <h2 className="text-[34px] font-extrabold leading-[1.15] text-[#566e99] sm:text-[40px] lg:text-[38px] font-poppins">
+          <h2 className="text-[34px] font-extrabold leading-[1.15] text-[#566e99] sm:text-[40px] lg:text-[45px] font-poppins">
             Meet Our Mighty Speakers
           </h2>
 
@@ -103,11 +103,11 @@ export default function Speakers() {
                   </div>
                 </div>
 
-                <h3 className="mt-[20px] text-[22px] font-bold leading-[1.2] text-[#f58216] font-poppins">
+                <h3 className="mt-[20px] text-[24px] font-medium leading-[1.2] text-[#f58216] font-poppins">
                   {speaker.name}
                 </h3>
 
-                <p className="mt-[7px] max-w-[360px] text-[14px] font-medium leading-[1.55] text-[#4b4b4b] sm:text-[16px]">
+                <p className="mt-[7px] max-w-[360px] text-[14px] font-medium leading-[1.55] text-[#4b4b4b] sm:text-[15px]">
                   {speaker.designation}
                 </p>
               </div>

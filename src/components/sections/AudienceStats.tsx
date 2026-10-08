@@ -40,11 +40,11 @@ export default function AudienceStats() {
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[560px] w-full max-w-[1200px] flex-col items-center px-5 pb-[50px] pt-[42px] sm:min-h-[580px] sm:px-6 sm:pb-0 sm:pt-[46px]">
-        <p className="text-center text-[21px] font-bold leading-tight text-[#f58216] sm:text-[30px] font-archivo">
+        <p className="text-center text-[21px] font-semibold leading-tight text-[#f58216] sm:text-[32px] font-archivo">
           Explore More #BFLS2025
         </p>
 
-        <h2 className="mt-3 w-full max-w-[760px] text-center text-[28px] font-extrabold leading-[1.2] text-[#566e99] sm:text-[37px] sm:leading-[1.15] lg:text-[44px] font-poppins">
+        <h2 className="mt-3 w-full max-w-[760px] text-center text-[28px] font-extrabold leading-[1.2] text-[#566e99] sm:text-[37px] sm:leading-[1.15] lg:text-[45px] font-poppins">
           Varied Industry Audience
           <br />
           with Even More Intense
@@ -61,7 +61,7 @@ export default function AudienceStats() {
               className="flex min-w-0 flex-col items-center justify-center text-center"
             >
               <div className="flex items-baseline font-archivo">
-                <span className="text-[36px] font-bold leading-none text-[#082568] sm:text-[42px] lg:text-[44px]">
+                <span className="text-[36px] font-bold leading-none text-[#082568] sm:text-[42px] lg:text-[45px]">
                   {counts[index]}
                 </span>
                 <span
@@ -72,7 +72,7 @@ export default function AudienceStats() {
                 </span>
               </div>
 
-              <p className="mt-2 max-w-[140px] text-[14px] font-bold leading-[1.25] text-[#082568] sm:max-w-none sm:text-[18px]">
+              <p className="mt-2 max-w-[140px] text-[14px] font-medium leading-[1.25] text-[#082568] sm:max-w-none sm:text-[19px]">
                 {stat.label}
               </p>
             </div>
@@ -84,7 +84,9 @@ export default function AudienceStats() {
           className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] text-[15px] font-bold text-white font-archivo transition-all duration-300 hover:bg-transparent hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
         >
           <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
-          <span>Sponsorship Opportunities</span>
+          <span className="font-medium text-[14px] uppercase">
+            Sponsorship Opportunities
+          </span>
         </a>
       </div>
     </section>

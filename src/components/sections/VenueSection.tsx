@@ -62,11 +62,11 @@ export default function VenueSection() {
       <div className="relative mx-auto w-full max-w-[1170px] px-5 sm:px-6 lg:px-5">
         <div className="grid grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-[370px_minmax(0,1fr)] lg:gap-[25px]">
           <div className="flex flex-col items-center text-center lg:items-start lg:pt-2 lg:text-left">
-            <p className="mb-1 text-[23px] font-bold leading-tight text-[#f58220] sm:text-[27px] lg:text-[30px]">
+            <p className="mb-1 text-[23px] font-semibold leading-tight text-[#f58220] sm:text-[27px] lg:text-[32px]">
               Been there?
             </p>
 
-            <h2 className="max-w-[500px] text-[30px] font-extrabold leading-[1.2] tracking-[-1px] text-[#58709b] sm:text-[36px] md:text-[40px] lg:text-[43px] lg:tracking-[-1.5px] font-poppins">
+            <h2 className="max-w-[500px] text-[30px] font-bold leading-[1.2] tracking-tighter text-[#58709b] sm:text-[36px] md:text-[40px] lg:text-[45px] md:tracking-tighter font-poppins">
               Directions to the Venue
             </h2>
 
@@ -76,10 +76,10 @@ export default function VenueSection() {
                   •
                 </span>
                 <div className="min-w-0">
-                  <h3 className="text-[20px] font-bold leading-6 text-[#f58220] sm:text-[22px]">
+                  <h3 className="text-[20px] font-semibold leading-6 text-[#f58220] sm:text-[23px]">
                     Venue
                   </h3>
-                  <p className="mt-1 text-[15px] leading-5 text-[#555] sm:text-[16px]">
+                  <p className="mt-1 text-[16px] font-normal leading-5 text-[#555] sm:text-[16px]">
                     {venueInfo.name}
                   </p>
                 </div>
@@ -90,10 +90,10 @@ export default function VenueSection() {
                   •
                 </span>
                 <div className="min-w-0">
-                  <h3 className="text-[20px] font-bold leading-6 text-[#f58220] sm:text-[22px]">
+                  <h3 className="text-[20px] font-semibold leading-6 text-[#f58220] sm:text-[23px]">
                     Address
                   </h3>
-                  <p className="mt-1 break-words text-[15px] leading-5 text-[#555] sm:text-[16px]">
+                  <p className="mt-1 break-words text-[15px] font-normal leading-5 text-[#555] sm:text-[16px]">
                     {venueInfo.address}
                   </p>
                 </div>
@@ -104,7 +104,7 @@ export default function VenueSection() {
               href={venueInfo.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] text-[15px] font-bold text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
+              className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] text-[14px] font-medium uppercase text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
             >
               <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
               <span>Get Directions</span>

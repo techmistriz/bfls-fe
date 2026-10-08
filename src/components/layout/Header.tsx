@@ -5,6 +5,7 @@ import Link from "next/link";
 import { navItems } from "@/src/data/menu.data";
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
 import Image from "next/image";
+import { EVENT_CONFIG } from "@/src/config/event";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,6 +13,16 @@ export default function Header() {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  const actionButton = EVENT_CONFIG.registrationOpen
+    ? {
+        label: "REGISTER NOW",
+        href: "/#register",
+      }
+    : {
+        label: "SUMMIT GALLERY",
+        href: "/gallery",
+      };
 
   return (
     <>
@@ -37,7 +48,7 @@ export default function Header() {
                   </span>
                   <Link
                     href={item.href}
-                    className="whitespace-nowrap text-[14px] font-semibold text-[#333333] transition-colors hover:text-[#ef7614] xl:text-[15px]"
+                    className="whitespace-nowrap text-[14px] font-medium text-[#333333] transition-colors hover:text-[#ef7614] xl:text-[16px]"
                   >
                     {item.label}
                   </Link>
@@ -47,11 +58,14 @@ export default function Header() {
           </nav>
 
           <Link
-            href="/#gallery"
-            className="group ml-4 hidden h-[64px] shrink-0 items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f57c16] px-5 text-[14px] font-semibold text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-transparent hover:text-[#EF7F1B] xl:ml-5 xl:px-6 xl:text-[14px] lg:flex"
+            href={actionButton.href}
+            className="group ml-4 hidden h-[64px] shrink-0 items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f57c16] px-5 text-[14px] font-medium text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-transparent hover:text-[#EF7F1B] xl:ml-5 xl:px-6 xl:text-[14px] lg:flex"
           >
-            <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
-            <span>SUMMIT GALLERY</span>
+            {!EVENT_CONFIG.registrationOpen && (
+              <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
+            )}
+
+            <span>{actionButton.label}</span>
           </Link>
 
           <button
@@ -118,26 +132,29 @@ export default function Header() {
           </ul>
 
           <Link
-            href="/gallery"
+            href={actionButton.href}
             onClick={closeMenu}
             className="mt-5 flex h-[58px] w-full items-center justify-center gap-2 rounded-[6px] bg-[#f57c16] px-4 text-[14px] font-semibold text-white transition-all duration-300 hover:bg-[#ef7f1b] sm:text-[15px]"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect x="3" y="4" width="18" height="16" rx="2" />
-              <circle cx="8.5" cy="9" r="1.5" />
-              <path d="M4 17L9 12L12.5 15.5L15 13L20 18" />
-            </svg>
-            <span>SUMMIT GALLERY</span>
+            {!EVENT_CONFIG.registrationOpen && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <circle cx="8.5" cy="9" r="1.5" />
+                <path d="M4 17L9 12L12.5 15.5L15 13L20 18" />
+              </svg>
+            )}
+
+            <span>{actionButton.label}</span>
           </Link>
         </nav>
       </div>

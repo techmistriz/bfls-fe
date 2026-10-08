@@ -34,7 +34,7 @@ export default function Agenda() {
 
   return (
     <section
-      className="relative overflow-hidden bg-white py-[50px] sm:py-[70px] lg:py-[50px]"
+      className="relative overflow-hidden bg-[#FBFBFB] py-[50px] sm:py-[70px] lg:py-[50px]"
       id="agenda"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -79,11 +79,11 @@ export default function Agenda() {
       <div className="relative mx-auto w-full max-w-[1190px] px-4 sm:px-6 lg:px-5">
         {/* Static Heading */}
         <div className="mb-[35px] text-center sm:mb-[45px]">
-          <p className="mb-3 font-archivo text-[21px] font-bold leading-tight text-[#EF7F1B] sm:text-[30px]">
+          <p className="mb-3 font-archivo text-[21px] font-semibold leading-tight text-[#EF7F1B] sm:text-[32px]">
             {agendaContent.subtitle}
           </p>
 
-          <h2 className="mx-auto max-w-[850px] font-poppins text-[27px] font-extrabold leading-[1.2] text-[#566A8F] sm:text-[42px] lg:text-[42px]">
+          <h2 className="mx-auto max-w-[850px] font-poppins text-[27px] font-extrabold leading-[1.2] text-[#566A8F] sm:text-[45px] lg:text-[42px]">
             {agendaContent.title}
             <br className="hidden sm:block" />
             {agendaContent.titleSecondLine}
@@ -95,7 +95,7 @@ export default function Agenda() {
         <div className="relative w-full">
           {/* Dynamic Event Title */}
           <div className="relative z-10 mx-auto flex min-h-[70px] w-full max-w-[610px] items-center justify-center bg-[#566e99] px-4 py-4 text-center shadow-sm sm:min-h-[80px] sm:px-5">
-            <p className="font-archivo text-[14px] font-semibold leading-[1.4] text-white sm:text-[17px]">
+            <p className="font-archivo text-[14px] font-medium leading-[1.4] text-white sm:text-[18px]">
               {event?.title || agendaContent.fallbackEventTitle}
             </p>
           </div>
@@ -115,17 +115,18 @@ export default function Agenda() {
                     onClick={() => toggleItem(index)}
                     className="group flex w-full cursor-pointer items-start gap-3 px-4 py-[17px] text-left transition-colors duration-200 hover:bg-gray-100 sm:gap-6 sm:px-8 sm:py-[19px] lg:gap-13 lg:px-12"
                   >
-                    <span className="w-[92px] shrink-0 font-poppins text-[15px] font-bold leading-[1.4] text-[#f58216] sm:w-[125px] sm:text-[20px] lg:w-[165px] lg:text-[24px]">
+                    <span className="w-[92px] shrink-0 font-poppins text-[15px] font-semibold leading-[1.4] text-[#f58216] sm:w-[125px] sm:text-[20px] lg:w-[165px] lg:text-[23px]">
                       {item.agenda_time}
                     </span>
 
                     <div className="min-w-0 flex-1 pr-1">
-                      <span className="block font-poppins text-[14px] font-bold leading-[1.4] text-[#526b97] sm:pr-3 sm:text-[18px] lg:text-[20px]">
-                        {item.agenda_title}
-                      </span>
+                      <h3
+                        className="block font-poppins text-[14px] font-semibold leading-[1.4] text-[#526b97] sm:pr-3 sm:text-[18px] lg:text-[23px] [&_span]:text-[#D0252D]"
+                        dangerouslySetInnerHTML={{ __html: item.agenda_title }}
+                      />
 
                       {!isOpen && item.agenda_short_description && (
-                        <p className="mt-2 font-archivo text-[12px] font-medium leading-[1.5] text-[#555] sm:text-[14px] lg:text-[15px]">
+                        <p className="mt-2 font-archivo text-[12px] font-normal leading-[1.5] text-[#555] sm:text-[14px] lg:text-[16px]">
                           {item.agenda_short_description}
                         </p>
                       )}
@@ -170,11 +171,11 @@ export default function Agenda() {
                                     />
                                   </div>
 
-                                  <h4 className="font-poppins text-[12px] font-bold uppercase leading-[1.3] text-[#526b97] sm:text-[14px] lg:text-[15px]">
+                                  <h4 className="font-poppins text-[12px] font-semibold uppercase leading-[1.3] text-[#526b97] sm:text-[14px] lg:text-[15px]">
                                     {speaker.name}
                                   </h4>
 
-                                  <p className="mt-2 font-archivo text-[11px] font-medium leading-[1.45] text-[#333] sm:text-[12px] lg:text-[14px] lg:leading-[1.6]">
+                                  <p className="mt-2 font-archivo text-[11px] font-normal leading-[1.45] text-[#333] sm:text-[12px] lg:text-[13px] lg:leading-[1.6]">
                                     {speaker.designation}
                                   </p>
                                 </div>
@@ -186,7 +187,7 @@ export default function Agenda() {
                         {/* Description */}
                         {item.agenda_description && (
                           <div
-                            className="w-full font-archivo text-[13px] font-medium leading-[1.6] text-[#333]
+                            className="w-full font-archivo text-[13px] font-normal leading-[1.6] text-[#333]
                               sm:text-[15px] lg:text-[16px] lg:leading-[1.65]
                               [&_ul]:list-disc [&_ul]:pl-5
                               [&_ol]:list-decimal [&_ol]:pl-5
