@@ -14,10 +14,10 @@ export default function AudienceProfile() {
       id="audience-profile"
     >
       <div className="relative z-10 mx-auto px-5 text-center">
-        <p className="mb-[8px] text-[23px] font-bold leading-tight text-[#f58216] sm:text-[25px]">
+        <p className="mb-[8px] text-[18px] font-semibold leading-tight text-[#f58216] sm:text-[32px]">
           Network with a perfect blend of legal professionals.
         </p>
-        <h2 className="text-[34px] font-extrabold leading-[1.15] text-[#566e99] sm:text-[40px] font-poppins">
+        <h2 className="text-[30px] font-bold leading-[1.15] text-[#566e99] sm:text-[45px] font-poppins">
           Audience Profile
         </h2>
         <div className="mx-auto mt-[15px] h-[3px] w-[95px] bg-[#f58216]" />
@@ -59,7 +59,7 @@ export default function AudienceProfile() {
               </div>
 
               <h3
-                className={`relative z-10 mt-[25px] text-[24px] font-poppins font-bold leading-[1.25] transition-colors duration-300 ${
+                className={`relative z-10 mt-[25px] text-[20px] font-poppins font-semibold leading-[1.25] transition-colors duration-300 ${
                   isActive ? "text-white" : "text-[#566e99]"
                 }`}
               >
@@ -67,7 +67,7 @@ export default function AudienceProfile() {
               </h3>
 
               <div
-                className={`relative z-10 mt-[20px] max-h-[105px] overflow-y-auto pr-2 text-[16px] font-medium leading-[1.65] transition-colors duration-300 ${
+                className={`relative z-10 mt-[20px] max-h-[105px] overflow-y-auto pr-2 text-[18px] font-normal leading-[1.65] transition-colors duration-300 ${
                   isActive ? "text-white" : "text-[#666666]"
                 }`}
               >

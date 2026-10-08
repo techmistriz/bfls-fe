@@ -69,11 +69,11 @@ export default function Sponsors() {
 
       <div className="relative z-10 mx-auto max-w-[1200px] px-5">
         <div className="text-center">
-          <p className="mb-[8px] text-[25px] font-bold leading-tight text-[#f58216] sm:text-[27px]">
+          <p className="mb-[8px] text-[18px] font-semibold leading-tight text-[#f58216] sm:text-[32px]">
             Welcome Aboard
           </p>
 
-          <h2 className="font-poppins text-[34px] font-extrabold leading-[1.15] text-[#566e99] sm:text-[40px]">
+          <h2 className="font-poppins text-[30px] font-bold leading-[1.15] text-[#566e99] sm:text-[45px]">
             Sponsors &amp; Partners
           </h2>
 

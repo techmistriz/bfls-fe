@@ -4,6 +4,7 @@ import Image from "next/image";
 import { DotsRow } from "@/src/components/ui/DotsRow";
 import MouseParallax from "../ui/MouseParallax";
 import { useEvents } from "@/src/hooks/useEvents";
+import { formatDateWithOrdinal } from "@/src/utils/date";
 
 const FALLBACK_BANNER_IMAGE = "/images/pexels-ravi-roshan-14907339-scaled.jpeg";
 
@@ -57,13 +58,7 @@ export default function Banner() {
 
       <MouseParallax
         strength={30}
-        className="
-          absolute left-[13.4%] top-[38%]
-          z-[2] text-[48px] font-light text-white/20
-          max-lg:left-[8%] max-lg:top-[45%]
-          max-md:left-[5%] max-md:top-[42%] max-md:text-[30px]
-          max-sm:left-[4%] max-sm:top-[39%] max-sm:text-[26px]
-        "
+        className=" absolute left-[13.4%] top-[38%] z-[2] text-[48px] font-light text-white/20 max-lg:left-[8%] max-lg:top-[45%] max-md:left-[5%] max-md:top-[42%] max-md:text-[30px] max-sm:left-[4%] max-sm:top-[39%] max-sm:text-[26px] "
       >
         ×
       </MouseParallax>
@@ -90,28 +85,16 @@ export default function Banner() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto mt-[32px] flex w-full max-w-[1170px] flex-col items-center px-2 pt-2 text-center max-md:px-3 max-sm:px-3">
+      <div className="relative z-10 mx-auto mt-[32px] md:mt-14 flex w-full max-w-[1170px] flex-col items-center px-2 pt-2 text-center max-md:px-3 max-sm:px-3">
         {/* Logo - fixed position */}
-        <div
-          className="
-      mb-8 flex h-[160px] w-full shrink-0 items-center justify-center
-      max-lg:mb-7 max-lg:h-[145px]
-      max-md:mb-6 max-md:h-[125px]
-      max-sm:mb-5 max-sm:h-[105px]
-    "
-        >
+        <div className=" mb-8 -mt-6 flex h-[160px] w-full shrink-0 items-center justify-center max-lg:mb-7 max-lg:h-[145px] max-md:mb-6 max-md:h-[125px] max-sm:mb-5 max-sm:h-[105px] ">
           <Image
             src={FALLBACK_LOGO}
             alt={event?.event_type?.name || "Lex Witness"}
             width={435}
             height={160}
             priority
-            className="
-        h-auto w-[435px] max-w-full
-        max-lg:w-[390px]
-        max-md:w-[330px]
-        max-sm:w-[280px]
-      "
+            className=" h-auto w-[435px] max-w-full max-lg:w-[390px] max-md:w-[330px] max-sm:w-[280px] "
           />
         </div>
 
@@ -123,20 +106,9 @@ export default function Banner() {
     "
         >
           {/* Title */}
-          <div className="flex h-[106px] w-full shrink-0 items-center justify-center">
+          <div className="flex h-[106px] sm:mt-4 w-full shrink-0 items-center justify-center">
             {!loading && event && (
-              <h1
-                className="
-            max-w-[1180px]
-            font-poppins text-[45px] font-extrabold
-            leading-[1.18] tracking-[-1px] text-white
-            max-lg:text-[42px]
-            max-md:max-w-[700px] max-md:text-[36px]
-            max-md:leading-[1.2] max-md:tracking-[-0.5px]
-            max-sm:max-w-[100%] max-sm:text-[28px]
-            max-sm:leading-[1.25] max-sm:tracking-[-0.3px]
-          "
-              >
+              <h1 className=" max-w-295 font-poppins text-[48px] font-extrabold leading-[1.18] tracking-[-1px] text-white max-lg:text-[42px] max-md:max-w-175 max-md:text-[36px] max-md:leading-[1.2] max-md:tracking-[-0.5px] max-sm:max-w-full max-sm:text-[28px] max-sm:leading-tight max-sm:tracking-[-0.3px] ">
                 {event.title}
               </h1>
             )}
@@ -145,19 +117,9 @@ export default function Banner() {
           {/* Date + Venue */}
           <div className="flex h-[62px] w-full shrink-0 items-center justify-center">
             {!loading && event && (
-              <p
-                className="
-            mt-8 font-poppins text-[24px] font-bold
-            uppercase leading-none text-white
-            max-lg:mt-7 max-lg:text-[21px]
-            max-md:mt-6 max-md:max-w-[650px]
-            max-md:text-[19px] max-md:leading-[1.35]
-            max-sm:mt-5 max-sm:max-w-[330px]
-            max-sm:text-[16px] max-sm:leading-[1.4]
-          "
-              >
-                {event.date || ""}
-                {location && `, ${location}`}
+              <p className=" mt-8 font-poppins text-[24px] font-medium uppercase leading-[39px] text-white max-lg:mt-7 max-lg:text-[21px] max-md:mt-6 max-md:max-w-[650px] max-md:text-[19px] max-md:leading-[1.35] max-sm:mt-5 max-sm:max-w-[330px] max-sm:text-[16px] max-sm:leading-[1.4] ">
+                {event.date ? formatDateWithOrdinal(event.date) : ""},{" "}
+                {location}
               </p>
             )}
           </div>
@@ -165,52 +127,24 @@ export default function Banner() {
           {/* Description */}
           <div className="flex h-[100px] w-full shrink-0 items-center justify-center">
             {!loading && event && (
-              <p
-                className="
-            mt-12 max-w-[720px]
-            font-archivo text-[16px] font-bold
-            leading-[1.65] text-white
-            max-lg:mt-10
-            max-md:mt-8 max-md:max-w-[650px]
-            max-md:text-[15px]
-            max-sm:mt-7 max-sm:max-w-[340px]
-            max-sm:text-[14px] max-sm:leading-[1.6]
-          "
-              >
+              <p className=" mt-12 max-w-[720px] font-archivo text-[16px] font-normal leading-[1.65] text-white max-lg:mt-10 max-md:mt-8 max-md:max-w-[650px] max-md:text-[15px] max-sm:mt-7 max-sm:max-w-[340px] max-sm:text-[14px] max-sm:leading-[1.6] ">
                 The {event.year || "current"} edition was a massive success and
-                we now look forward to the next edition. In case you wish to
-                participate in future editions, please get in touch with us.
+                we now look forward to the next edition. In case you <br /> wish
+                to participate in future editions, please get in touch with us.
               </p>
             )}
           </div>
 
           {/* CTA */}
-          <div className="flex h-[66px] w-full shrink-0 items-center justify-center">
+          <div className="flex h-[66px] w-full shrink-0 items-center justify-center mt-6">
             {!loading && event && (
               <a
                 href="/contact"
-                className="
-            group mt-11 inline-flex h-[66px] min-w-[178px]
-            items-center justify-center gap-2 rounded-[6px]
-            border border-transparent bg-[#f58216] px-7
-            font-archivo text-[16px] font-bold uppercase text-white
-            shadow-sm transition-all duration-300
-            hover:border-[#EF7F1B] hover:bg-white
-            hover:text-[#EF7F1B] hover:shadow-lg
-            max-lg:mt-9
-            max-md:mt-8 max-md:h-[58px]
-            max-md:min-w-[165px] max-md:px-6 max-md:text-[15px]
-            max-sm:mt-7 max-sm:h-[54px]
-            max-sm:min-w-[155px] max-sm:px-5 max-sm:text-[14px]
-          "
+                className=" group mt-11 inline-flex h-[66px] min-w-[178px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-5 font-archivo text-[16px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg max-lg:mt-9 max-md:mt-8 max-md:h-[58px] max-md:min-w-[165px] max-md:px-6 max-md:text-[15px] max-sm:mt-7 max-sm:h-[54px] max-sm:min-w-[155px] max-sm:px-5 max-sm:text-[14px] "
               >
                 <i
                   aria-hidden="true"
-                  className="
-              fas fa-download text-[20px] text-white
-              transition-colors duration-300
-              group-hover:text-[#EF7F1B]
-            "
+                  className=" fas fa-download text-[20px] text-white transition-colors duration-300 group-hover:text-[#EF7F1B] "
                 />
                 <span>CONTACT US</span>
               </a>
@@ -218,7 +152,7 @@ export default function Banner() {
           </div>
 
           {/* Dots */}
-          <div className="dots-group mt-4 translate-x-[8px] sm:translate-x-[12px] md:translate-x-[55px]">
+          <div className="dots-group mt-4 hidden translate-x-[8px] sm:translate-x-[12px] md:block md:translate-x-[55px]">
             <DotsRow className="mt-4 max-md:mt-3 max-sm:mt-6" />
             <DotsRow className="mt-3 max-sm:mt-2" />
           </div>

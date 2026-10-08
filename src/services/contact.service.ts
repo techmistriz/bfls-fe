@@ -12,5 +12,6 @@ export interface ContactUsPayload {
 
 export const submitContactUs = async (payload: ContactUsPayload) => {
   const { data } = await api.post("/contact-us", payload);
+  console.log(data);
   return data;
 };

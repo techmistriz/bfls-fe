@@ -52,7 +52,11 @@ export default function Footer() {
 
           {/* Social Icons */}
           <div className="mt-3 flex gap-1.5">
-            <Link href="#" aria-label="LinkedIn" className={socialClass}>
+            <Link
+              href="https://www.linkedin.com/company/389718/admin/"
+              aria-label="LinkedIn"
+              className={socialClass}
+            >
               <svg
                 viewBox="0 0 24 24"
                 className="size-[18px] fill-current"
@@ -62,7 +66,11 @@ export default function Footer() {
               </svg>
             </Link>
 
-            <Link href="#" aria-label="YouTube" className={socialClass}>
+            <Link
+              href="https://www.youtube.com/channel/UCKIRmg38oGa-y26ThnSoWcA"
+              aria-label="YouTube"
+              className={socialClass}
+            >
               <svg
                 viewBox="0 0 24 24"
                 className="size-[19px] fill-current"
@@ -72,7 +80,11 @@ export default function Footer() {
               </svg>
             </Link>
 
-            <Link href="#" aria-label="Message" className={socialClass}>
+            <Link
+              href="https://wa.link/zy0a8a"
+              aria-label="Message"
+              className={socialClass}
+            >
               <svg
                 viewBox="0 0 24 24"
                 className="size-[18px] fill-none stroke-current"
@@ -174,7 +186,10 @@ export default function Footer() {
               <span className="text-[#ddd] font-normal">
                 A Unit of SriGro Interactive Pvt Ltd. | Image Courtesy:{" "}
               </span>
-              <a href="#" className="text-[#777] hover:text-[#f58220]">
+              <a
+                href="https://pexels.com/"
+                className="text-[#777] hover:text-[#f58220]"
+              >
                 pexels.com
               </a>
             </div>

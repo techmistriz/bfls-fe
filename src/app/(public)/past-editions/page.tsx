@@ -53,11 +53,11 @@ export default function PastEditionsBanner() {
           {/* Heading */}
 
           <div className="mb-15 text-center">
-            <p className="mb-1 font-poppins text-[21px] font-semibold leading-tight text-[#EF7F1B] md:text-[32px]">
+            <p className="mb-1 font-poppins text-[32px] font-semibold leading-tight text-[#EF7F1B] md:text-[32px]">
               Banking &amp; Finance Legal Summit
             </p>
 
-            <h2 className="mx-auto  font-poppins text-[50px] font-bold leading-[53.1px] tracking-[-1px] text-[#566a8f]">
+            <h2 className="mx-auto  font-poppins text-[30px] font-bold leading-[53.1px] tracking-[-1px] text-[#566a8f]">
               Here&apos;s a quick look at
               <br />
               our previous editions.

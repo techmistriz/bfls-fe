@@ -69,11 +69,11 @@ export default function ShowCaseForm() {
 
       <div className="relative z-10 flex min-h-[460px] items-start justify-center px-5 py-[130px]">
         <div className="w-full max-w-[1000px] text-center">
-          <p className="mb-[10px] text-[23px] font-bold leading-tight text-[#f58216] sm:text-[30px]">
+          <p className="mb-[10px] text-[18px] font-semibold leading-tight text-[#f58216] sm:text-[32px]">
             Showcase Yourself
           </p>
 
-          <h2 className="mx-auto max-w-[600px] font-poppins text-[34px] font-extrabold leading-[1.12] text-white sm:text-[42px] lg:text-[56px]">
+          <h2 className="mx-auto max-w-[600px] font-poppins text-[30px] font-bold leading-[1.12] text-white sm:text-[42px] lg:text-[56px]">
             Curate Your Own
             <br />
             Sponsorship Wish
@@ -91,7 +91,7 @@ export default function ShowCaseForm() {
                 {...register("name", {
                   required: "Name is required",
                 })}
-                className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[12px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60"
+                className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[16px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60 max-sm:max-w-none"
               />
 
               <input
@@ -101,7 +101,7 @@ export default function ShowCaseForm() {
                 {...register("email", {
                   required: "Email is required",
                 })}
-                className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[12px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60"
+                className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[16px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60 max-sm:max-w-none"
               />
 
               <input
@@ -111,14 +111,14 @@ export default function ShowCaseForm() {
                 {...register("contact", {
                   required: "Contact number is required",
                 })}
-                className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[12px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60"
+                className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[16px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60 max-sm:max-w-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="group mt-15 inline-flex h-[64px] cursor-pointer items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[15px] font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
+              className="group mt-15 inline-flex h-[64px] cursor-pointer items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[16px] font-medium text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[48px] max-sm:w-auto max-sm:px-8 max-sm:text-[13px]"
             >
               {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
             </button>

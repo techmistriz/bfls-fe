@@ -30,11 +30,11 @@ export default function GallerySection({ eventId }: GallerySectionProps) {
         className="relative w-full scroll-mt-[88px] overflow-hidden bg-white py-12 sm:py-16 md:py-20"
       >
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6">
-          <p className="mb-2 text-[20px] font-bold text-[#f58220] sm:text-[24px] md:text-[26px]">
+          <p className="mb-2 text-[18px] font-semibold text-[#f58220] sm:text-[24px] md:text-[32px]">
             Visual Delight
           </p>
 
-          <h2 className="font-poppins text-[42px] font-extrabold leading-tight text-[#58709b] sm:text-[32px] md:text-[36px]">
+          <h2 className="font-poppins text-[30px] font-bold leading-tight text-[#58709b] sm:text-[32px] md:text-[45px]">
             Quick Glimpse @ BFLS 2025
           </h2>
 
@@ -99,7 +99,7 @@ export default function GallerySection({ eventId }: GallerySectionProps) {
         <div className="mt-8 flex justify-center sm:mt-10">
           <a
             href="/gallery"
-            className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[15px] font-bold text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
+            className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[14px] font-medium uppercase text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[48px] max-sm:w-auto max-sm:px-6 max-sm:text-[13px]"
           >
             <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
             <span>View More</span>

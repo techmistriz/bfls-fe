@@ -28,7 +28,7 @@ export const contactPeople: ContactPerson[] = [
   {
     name: "Neelima Maheshwari",
     role: "Sr. Manager – Brand Innovation",
-    email: "neelima_maheshwari@witnsslive.in",
+    email: "neelima.maheshwari@witnsslive.in",
     phone: "+91-8800841600",
   },
 ];
@@ -38,22 +38,22 @@ export const summitShowcase: SummitShowcase[] = [
     title: "The 8th Annual Banking & Finance Legal Summit 2025",
     description: "Banking / Crypto / Fintech & More",
     location: "21st November 2025, Taj Santacruz, Mumbai",
-    linkLabel: "www.bfils.in",
-    linkHref: "#",
+    linkLabel: "www.bfls.in",
+    linkHref: "https://bfls.in/",
   },
   {
     title: "The 11th Annual Grand Masters 2025 – Pune Edition",
     description: "A 6-city pan-India General Counsel, multi-industry format",
     location: "New Delhi, Mumbai, Bengaluru, Hyderabad, Pune, Chennai",
     linkLabel: "www.grandmasters.in",
-    linkHref: "#",
+    linkHref: "https://www.grandmasters.in/",
   },
   {
     title: "The 11th Annual Grand Masters 2025 – Chennai Edition",
     description: "A 6-city pan-India General Counsel, multi-industry format",
     location: "New Delhi, Mumbai, Bengaluru, Hyderabad, Pune, Chennai",
     linkLabel: "www.grandmasters.in",
-    linkHref: "#",
+    linkHref: "https://www.grandmasters.in/",
   },
 ];
 
