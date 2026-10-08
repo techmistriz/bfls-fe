@@ -12,15 +12,15 @@ export default function ContactCTA() {
 
       <div className="relative z-10 flex min-h-[440px] items-center justify-center px-5 py-[100px]">
         <div className="mx-auto w-full max-w-[1050px] text-center text-white">
-          <p className="mb-[8px] text-[22px] font-semibold leading-[1.3] sm:text-[25px] lg:text-[32px]">
+          <p className="mb-[8px] text-[18px] font-semibold leading-[1.3] sm:text-[25px] lg:text-[32px]">
             Time&apos;s Ticking &amp; Discounts Drying Up
           </p>
 
-          <h2 className="text-[32px] font-bold leading-[1.15] sm:text-[40px] lg:text-[56px] font-poppins">
+          <h2 className="text-[26px] font-bold leading-[1.15] sm:text-[40px] lg:text-[56px] font-poppins">
             Get in Touch to Avail the Best Deal.
           </h2>
 
-          <p className="mx-auto mt-[35px] max-w-[1100px] text-[15px] font-medium leading-[1.65] text-white sm:text-[16px] lg:text-[20px]">
+          <p className="mx-auto mt-[35px] max-w-[1100px] text-[20px] font-medium leading-[1.65] text-white sm:text-[16px] lg:text-[20px]">
             Whether you&apos;re a legal advisor specializing in the nuances of
             BFSI regulations, or you&apos;re at the helm of legal, risk,
             compliance, and data privacy for corporations within banking,

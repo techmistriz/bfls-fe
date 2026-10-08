@@ -26,23 +26,24 @@ export function PageBanner({
 
       <div className="relative z-10 mx-auto flex h-full max-w-[1130px] items-center px-6 lg:px-0">
         <div>
-          <h1 className="font-poppins text-[38px] font-bold leading-tight text-white md:text-[52px]">
+          <h1 className="font-poppins text-[25px] font-bold leading-tight text-white md:text-[52px]">
             {title}
           </h1>
 
           {subtitle && (
-            <p className="mt-1 font-archivo text-[16px] font-medium text-white md:text-[17px]">
+            <p className="mt-1 font-archivo text-[18px] font-medium text-white md:text-[17px]">
               {subtitle}
             </p>
           )}
         </div>
       </div>
 
-      <div className="absolute bottom-0 right-[7%] z-20 md:right-[12%]">
+      <div className="absolute bottom-0 left-1/2 z-20 -translate-x-1/2 md:left-auto md:right-[12%] md:translate-x-0">
         <div className="flex h-[56px] w-[235px] items-center justify-center gap-3 bg-white font-archivo shadow-sm">
           {breadcrumbs.map((crumb, index) => (
             <span key={crumb.label} className="flex items-center gap-3">
               {index > 0 && <span className="text-[13px] text-[#999]">/</span>}
+
               {crumb.href ? (
                 <a
                   href={crumb.href}

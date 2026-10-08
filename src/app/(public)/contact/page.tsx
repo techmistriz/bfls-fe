@@ -107,20 +107,20 @@ export default function ContactUs() {
           }}
         />
 
-        <span className="absolute left-[15%] top-[100px] z-[2] h-[4px] w-[4px] rounded-full bg-[#f58220] sm:left-[28%] max-sm:left-[12%] max-sm:top-[70px]" />
+        <span className="absolute left-[15%] top-[100px] z-[2] hidden h-[4px] w-[4px] rounded-full bg-[#f58220] sm:left-[28%] sm:block" />
 
-        <span className="absolute right-[10%] top-[57%] z-[2] text-[18px] font-bold text-[#f58220] sm:right-[22%] sm:text-[20px] max-sm:right-[8%] max-sm:top-[50%]">
+        <span className="absolute right-[10%] top-[57%] z-[2] hidden text-[18px] font-bold text-[#f58220] sm:right-[22%] sm:block sm:text-[20px]">
           ▪
         </span>
 
-        <span className="absolute bottom-[30px] left-[10%] z-[2] text-[20px] font-bold text-[#f58220] sm:bottom-[38px] sm:left-[20%] sm:text-[22px] max-sm:bottom-[20px] max-sm:left-[8%] max-sm:text-[18px]">
+        <span className="absolute bottom-[30px] left-[10%] z-[2] hidden text-[20px] font-bold text-[#f58220] sm:bottom-[38px] sm:left-[20%] sm:block sm:text-[22px]">
           ×
         </span>
 
         <div className="relative z-[5] mx-auto flex min-h-[500px] w-full max-w-[1170px] flex-col items-center px-4 pb-[115px] pt-[135px] sm:px-0 max-md:pb-[80px] max-md:pt-[80px] max-sm:min-h-0 max-sm:px-[15px] max-sm:pb-[55px] max-sm:pt-[60px]">
           <div className="relative z-[5] mb-[28px] text-center sm:mb-[32px] max-sm:mb-[25px]">
             <h2
-              className="pointer-events-none absolute left-1/2 top-[85%] z-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[48px] font-extrabold leading-[1.15] text-[#fff] sm:text-[158px] max-sm:text-[38px]"
+              className="pointer-events-none absolute left-1/2 top-[85%] z-0 hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[48px] font-extrabold leading-[1.15] text-[#fff] sm:block sm:text-[158px]"
               style={{
                 transform: `translate(0%, calc(-50% - ${scrollY * 0.03}px))`,
                 transition: "transform 0.2s ease-out",
@@ -141,14 +141,15 @@ export default function ContactUs() {
             </div>
           </div>
 
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row sm:gap-[20px] max-md:gap-[25px]">
-            <div className="w-full rounded-[4px] bg-white px-5 py-6 shadow-[0_5px_25px_rgba(0,0,0,0.05)] sm:w-[900px] sm:px-[40px] sm:py-[40px] max-sm:px-[16px] max-sm:py-[22px]">
-              <h3 className="mb-[10px] text-[30px] font-bold leading-[1.2] text-[#111] max-sm:text-[24px] max-sm:leading-[1.3]">
+          <div className="flex w-full flex-col items-stretch justify-center gap-6 lg:flex-row lg:items-start lg:gap-6">
+            {/* Left side Form Card */}
+            <div className="w-full rounded-sm  bg-white px-5 py-6 shadow-[0_5px_25px_rgba(0,0,0,0.05)] sm:px-[40px] sm:py-[40px] lg:w-[65%] max-sm:px-[16px] max-sm:py-[22px]">
+              <h3 className="mb-[20px] text-[28px] font-bold leading-[1.2] text-[#111] max-sm:text-[24px] max-sm:leading-[1.3]">
                 Your <span className="text-[#f58220]">Witness</span> Please!
               </h3>
 
               <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-                <div className="mb-[10px] grid grid-cols-1 gap-[10px] sm:grid-cols-2 sm:gap-[15px]">
+                <div className="mb-[15px] grid grid-cols-1 gap-[10px] sm:grid-cols-2 sm:gap-[15px]">
                   <input
                     type="text"
                     placeholder="Your Name*"
@@ -168,7 +169,7 @@ export default function ContactUs() {
                   />
                 </div>
 
-                <div className="mb-[10px] grid grid-cols-1 gap-[10px] sm:grid-cols-2 sm:gap-[15px]">
+                <div className="mb-[15px] grid grid-cols-1 gap-[10px] sm:grid-cols-2 sm:gap-[15px]">
                   <input
                     type="tel"
                     placeholder="Phone Number*"
@@ -190,7 +191,7 @@ export default function ContactUs() {
 
                 <textarea
                   placeholder="Please place your query here"
-                  className="mb-[10px] h-[150px] w-full resize-none border border-[#dedede] bg-[#f8f8f8] px-[12px] py-[10px] text-[16px] text-[#555] outline-none placeholder:text-[#777] focus:border-[#f58220] max-sm:h-[120px] max-sm:text-[15px]"
+                  className="mb-[20px] h-[150px] w-full resize-none border border-[#dedede] bg-[#f8f8f8] px-[12px] py-[10px] text-[16px] text-[#555] outline-none placeholder:text-[#777] focus:border-[#f58220] max-sm:h-[120px] max-sm:text-[15px]"
                   {...register("message", {
                     required: "Message is required",
                   })}
@@ -220,7 +221,114 @@ export default function ContactUs() {
               </form>
             </div>
 
-            {/* Keep your existing contact information section here */}
+            {/* Right side Dark Contact Info Card */}
+            <div className="flex w-full flex-col justify-between rounded-sm bg-[#4a5f87] px-8 text-white shadow-[0_5px_25px_rgba(0,0,0,0.05)] sm:p-2 lg:min-h-[600px] lg:w-[28%]">
+              {/* Contact 1 */}
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-2 text-white/90">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-7 w-7"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.8}
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                </div>
+                <h4 className="text-[17px] sm:text-[18px] font-bold tracking-wide">
+                  Bhupinder Kaur
+                </h4>
+                <p className="mt-1 text-[13px] sm:text-[15px] text-white/90">
+                  E:{" "}
+                  <a
+                    href="mailto:bhupinder@witnesslive.in"
+                    className="hover:underline"
+                  >
+                    bhupinder@witnesslive.in
+                  </a>
+                </p>
+                <p className="text-[13px] text-white/90 sm:text-[15px]">
+                  T: +91-9654155065
+                </p>
+              </div>
+
+              <hr className="my-6 border-t border-white" />
+
+              {/* Contact 2 */}
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-2 text-white/90">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-7 w-7"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.8}
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                </div>
+                <h4 className="text-[18px] font-bold tracking-wide">
+                  Neelima Maheshwari
+                </h4>
+                <p className="mt-1 text-[13px] sm:text-[15px] text-white/90">
+                  E:{" "}
+                  <a
+                    href="mailto:neelima.maheshwari@witnesslive.in"
+                    className="hover:underline"
+                  >
+                    neelima.maheshwari@witnesslive.in
+                  </a>
+                </p>
+                <p className="text-[13px] text-white/90 sm:text-[15px]">
+                  T: +91-8800841600
+                </p>
+              </div>
+
+              <hr className="my-6 border-t border-white" />
+
+              {/* Secretariat Office */}
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-2 text-white/90">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-7 w-7"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.8}
+                      d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                    />
+                  </svg>
+                </div>
+                <h4 className="text-[18px] font-bold tracking-wide">
+                  Secretariat Office
+                </h4>
+                <p className="mt-1 text-[13px] font-semibold text-white/90 sm:text-[15px]">
+                  Lex Witness
+                </p>
+                <p className="mt-0.5 text-[12px] leading-snug text-white/80 sm:text-[15px]">
+                  Suite 1/6, Lower Ground Floor, Block B,
+                  <br />
+                  Hauz Khas, New Delhi - 110016
+                </p>
+              </div>
+              <hr className="my-6 border-t border-white" />
+            </div>
           </div>
         </div>
       </section>

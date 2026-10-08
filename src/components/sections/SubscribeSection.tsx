@@ -50,11 +50,11 @@ export default function SubscribeSection() {
       <div className="absolute bottom-0 left-0 right-0 z-[1] h-[75px] bg-gradient-to-b from-transparent to-white" />
 
       <div className="relative z-[2] mx-auto w-full max-w-[1000px] text-center">
-        <p className="mb-[6px] text-[32px] font-semibold leading-[1.25] text-[#F57C16] max-md:text-[19px]">
+        <p className="mb-[6px] text-[18px] font-semibold leading-[1.25] text-[#F57C16] max-md:text-[19px]">
           Curate Your Own Sponsorship Wish
         </p>
 
-        <h2 className="mb-[19px] text-[56px] font-bold leading-[1.1] text-[#536B98] max-md:text-[32px] max-sm:text-[29px] font-poppins">
+        <h2 className="mb-[19px] text-[30px] font-bold leading-[1.1] text-[#536B98] max-md:text-[32px] max-sm:text-[29px] font-poppins">
           Showcase Yourself
         </h2>
 
@@ -74,11 +74,10 @@ export default function SubscribeSection() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="group mt-5 inline-flex h-[60px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[16px] font-medium text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px] cursor-pointer"
+            className="group mt-5 inline-flex h-[60px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[16px] font-medium text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 max-md:mt-6 max-md:h-[48px] max-md:w-auto max-md:px-6 max-md:text-[13px] cursor-pointer"
           >
             {isSubmitting ? "SUBSCRIBING..." : "SUBSCRIBE"}
           </button>
-
           {status === "success" && (
             <p className="mt-3 text-[14px] font-semibold text-green-600">
               Thanks for subscribing!
