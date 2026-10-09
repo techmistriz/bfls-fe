@@ -1,31 +1,61 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-// import { subscribeToNewsletter } from "@/src/services/newsletter.service";
+import { type FormEvent, useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
+import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
+import { subscribeToNewsletter } from "@/src/services/newsletter.service";
 
 export default function SubscribeSection() {
-  const [isSubmitting] = useState(false);
-  const [status] = useState<"idle" | "success" | "error">("idle");
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // const formData = new FormData(e.currentTarget);
-    // const email = String(formData.get("email") ?? "");
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const email = String(formData.get("email") ?? "").trim();
 
-    // setIsSubmitting(true);
-    // setStatus("idle");
+    if (!executeRecaptcha) {
+      setStatus("error");
+      setStatusMessage("reCAPTCHA is not ready. Please try again.");
+      return;
+    }
 
-    // try {
-    //   await subscribeToNewsletter({ email });
-    //   setStatus("success");
-    //   e.currentTarget.reset();
-    // } catch (error) {
-    //   console.error("Newsletter subscription failed:", error);
-    //   setStatus("error");
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
+    setIsSubmitting(true);
+    setStatus("idle");
+    setStatusMessage("");
+
+    try {
+      const captcha = await executeRecaptcha("newsletter");
+
+      const response = await subscribeToNewsletter({
+        event_type_id: String(APP_EVENT_TYPE),
+        email,
+        captcha,
+      });
+
+      if (response.status) {
+        setStatus("success");
+        setStatusMessage(response.message || "Thanks for subscribing!");
+        form.reset();
+      } else {
+        setStatus("error");
+        setStatusMessage(
+          response.message || "Something went wrong. Please try again.",
+        );
+      }
+    } catch (error) {
+      console.error("Newsletter subscription failed:", error);
+      setStatus("error");
+      setStatusMessage("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -54,7 +84,7 @@ export default function SubscribeSection() {
           Curate Your Own Sponsorship Wish
         </p>
 
-        <h2 className="mb-[19px] text-[30px] font-bold leading-[1.1] text-[#536B98] max-md:text-[32px] max-sm:text-[29px] font-poppins">
+        <h2 className="mb-[19px] font-poppins text-[30px] font-bold leading-[1.1] text-[#536B98] max-md:text-[32px] max-sm:text-[29px]">
           Showcase Yourself
         </h2>
 
@@ -74,19 +104,19 @@ export default function SubscribeSection() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="group mt-5 inline-flex h-[60px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] text-[16px] font-medium text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 max-md:mt-6 max-md:h-[48px] max-md:w-auto max-md:px-6 max-md:text-[13px] cursor-pointer"
+            className="group mt-5 inline-flex h-[60px] cursor-pointer items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[40px] font-archivo text-[16px] font-medium text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 max-md:mt-6 max-md:h-[48px] max-md:w-auto max-md:px-6 max-md:text-[13px]"
           >
             {isSubmitting ? "SUBSCRIBING..." : "SUBSCRIBE"}
           </button>
-          {status === "success" && (
-            <p className="mt-3 text-[14px] font-semibold text-green-600">
-              Thanks for subscribing!
-            </p>
-          )}
 
-          {status === "error" && (
-            <p className="mt-3 text-[14px] font-semibold text-red-600">
-              Something went wrong. Please try again.
+          {status !== "idle" && (
+            <p
+              role={status === "error" ? "alert" : "status"}
+              className={`mt-3 text-[14px] font-semibold ${
+                status === "success" ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {statusMessage}
             </p>
           )}
         </form>
