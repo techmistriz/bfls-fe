@@ -106,7 +106,7 @@ export default function Banner() {
     "
         >
           {/* Title */}
-       <div className="flex h-[106px] w-full shrink-0 items-center justify-center sm:mt-4 max-md:mt-8 max-sm:mb-8">
+          <div className="flex h-[106px] w-full shrink-0 items-center justify-center sm:mt-4 max-md:mt-8 max-sm:mb-8">
             {!loading && event && (
               <h1 className=" max-w-295 font-poppins text-[48px] font-extrabold leading-[1.18] tracking-[-1px] text-white max-lg:text-[42px] max-md:max-w-175 max-md:text-[36px] max-md:leading-[1.2] max-md:tracking-[-0.5px] max-sm:max-w-full max-sm:text-[36px] max-sm:leading-[1.2] max-sm:tracking-[-0.3px] ">
                 {event.title}
@@ -115,7 +115,7 @@ export default function Banner() {
           </div>
 
           {/* Date + Venue */}
-       <div className="flex h-auto min-h-[62px] w-full shrink-0 items-center justify-center max-sm:mb-4">
+          <div className="flex h-auto min-h-[62px] w-full shrink-0 items-center justify-center max-sm:mb-4">
             {!loading && event && (
               <p className=" mt-8 font-poppins text-[24px] font-medium uppercase leading-[39px] text-white max-lg:mt-7 max-lg:text-[21px] max-md:mt-6 max-md:max-w-[650px] max-md:text-[19px] max-md:leading-[1.35] max-sm:mt-5 max-sm:max-w-[330px] max-sm:text-[18px] max-sm:leading-[1.5] ">
                 {event.date ? formatDateWithOrdinal(event.date) : ""},{" "}
@@ -125,18 +125,18 @@ export default function Banner() {
           </div>
 
           {/* Description */}
-          <div className="flex h-[100px] w-full shrink-0 items-center justify-center">
+          <div className="flex h-auto min-h-[100px] w-full shrink-0 items-center justify-center max-sm:mb-4">
             {!loading && event && (
-              <p className=" mt-12 max-w-[720px] font-archivo text-[16px] font-normal leading-[1.65] text-white max-lg:mt-10 max-md:mt-8 max-md:max-w-[650px] max-md:text-[15px] max-sm:mt-7 max-sm:max-w-[340px] max-sm:text-[16px] max-sm:leading-[1.7] ">
+              <p className="mt-12 max-w-[720px] font-archivo text-[16px] font-normal leading-[1.65] text-white max-lg:mt-10 max-md:mt-8 max-md:max-w-[650px] max-md:text-[15px] max-sm:mt-7 max-sm:max-w-[340px] max-sm:text-[16px] max-sm:leading-[1.7]">
                 The {event.year || "current"} edition was a massive success and
-                we now look forward to the next edition. In case you <br /> wish
-                to participate in future editions, please get in touch with us.
+                we now look forward to the next edition. In case you wish to
+                participate in future editions, please get in touch with us.
               </p>
             )}
           </div>
 
           {/* CTA */}
-          <div className="flex h-[66px] w-full shrink-0 items-center justify-center mt-6">
+          <div className="mt-2 flex h-[66px] w-full shrink-0 items-center justify-center max-sm:mt-4">
             {!loading && event && (
               <a
                 href="/contact"
