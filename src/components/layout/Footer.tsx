@@ -222,7 +222,7 @@ export default function Footer() {
       </div>
 
       {/* WhatsApp Button */}
-      <div className="fixed bottom-8 right-4 md:bottom-24 md:right-6 z-50 group">
+     <div className="fixed bottom-22 right-4 md:bottom-24 md:right-6 z-50 group">
         {/* Tooltip */}
         <a
           href="https://api.whatsapp.com/send?phone=919899332111&text=Hi%2C%20I%27d%20Like%20to%20Know%20More%20About%20The%20Lex%20Witness%208th%20Annual%20Banking%20%26%20Finance%20Legal%20Summit%202025"
