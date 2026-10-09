@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: false,
 
+  experimental: {
+    cpus: Number(process.env.NEXT_BUILD_CPUS) || undefined,
+  },
+
   images: {
     // Disables local server image proxy during dev mode so localhost/http image loading works without canvas errors
     unoptimized: process.env.NODE_ENV === "development",
