@@ -35,7 +35,7 @@ export default function GallerySection({ eventId }: GallerySectionProps) {
           </p>
 
           <h2 className="font-poppins text-[30px] font-bold leading-tight text-[#58709b] sm:text-[32px] md:text-[45px]">
-            Quick Glimpse @ BFLS 2025
+            Quick Glimpse @ BFLS 2026
           </h2>
 
           <div className="mx-auto mt-4 h-[2px] w-20 bg-[#f58220] sm:w-24" />

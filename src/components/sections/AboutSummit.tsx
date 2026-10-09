@@ -24,7 +24,7 @@ export default function AboutSummit() {
             <div className="relative aspect-[0.76] w-full overflow-hidden max-md:aspect-[1/0.85] max-sm:aspect-[1/0.95] lg:aspect-auto lg:h-full">
               <Image
                 src="/images/section-2-bfls.png"
-                alt="BFSI Legal Landscape 2025"
+                alt="BFSI Legal Landscape 2026"
                 fill
                 priority
                 className="object-cover object-center"
@@ -38,7 +38,7 @@ export default function AboutSummit() {
 
             <div className="relative rounded-[7px] bg-white px-4 py-9 shadow-[30px_10px_90px_0px_rgba(0,0,0,0.1)] max-md:px-7 max-md:py-8 max-sm:px-2 max-sm:py-7 sm:px-10 lg:px-[40px] lg:py-[28px]">
               <h2 className="max-w-[430px] font-archivo text-[27px] font-bold leading-[1.28] text-[#EF7F1B] max-md:max-w-full max-md:text-[24px] max-sm:text-[22px]">
-                BFSI Legal Landscape 2025:
+                BFSI Legal Landscape 2026:
                 <br />
                 Navigating Reform, Innovation &amp;
                 <br className="hidden sm:block" />
@@ -49,7 +49,7 @@ export default function AboutSummit() {
 
               <div className="max-w-[490px] font-archivo text-[18px] font-medium leading-[1.58] text-[#4a4a4a] max-md:max-w-full max-md:text-[16px] max-sm:text-[15px]">
                 <p>
-                  The Banking &amp; Finance Legal Summit 2025 brings together{" "}
+                  The Banking &amp; Finance Legal Summit 2026 brings together{" "}
                   <strong>
                     leaders from banking, financial services, insurance, and
                     fintech
