@@ -44,7 +44,7 @@ export default function AudienceStats() {
       <div className="relative z-10 mx-auto flex min-h-[560px] w-full max-w-[1200px] flex-col items-center px-4 pb-[40px] pt-[38px] sm:min-h-[580px] sm:px-6 sm:pb-0 sm:pt-[46px]">
         {/* Subtitle */}
         <p className="text-center font-archivo text-[19px] font-semibold leading-tight text-[#f58216] sm:text-[32px]">
-          Explore More #BFLS2025
+          Explore More #BFLS2026
         </p>
 
         {/* Heading */}

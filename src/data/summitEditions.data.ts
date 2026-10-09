@@ -85,7 +85,7 @@ export const summitEditions: SummitEdition[] = [
           "/images/summit-secretriat/RCLS-2019-Logo-720x386-Pixels-1-300x161-1.jpg",
         title: "The 8th Real Estate & Construction Legal Summit 2019",
         description:
-          "Real estate sector in India is expected to reach a market size of US$ 1 trillion by 2030 from US$ 120 billion in 2017 and contribute 13 percent of the country’s GDP by 2025. Retail, hospitality and commercial real estate are also growing significantly, providing the much-needed infrastructure for India’s growing needs. Amidst a mix of positives and negatives. The Lex Witness’ 8th Annual Edition of The Real Estate & Construction Legal Summit 2019 scheduled for 17th May 2018, Le Meridien, New Delhi brought together various stakeholders of the governance and legal machinery of the country to see how best the existing challenges can be tackled with and foster the growth within the sector.",
+          "Real estate sector in India is expected to reach a market size of US$ 1 trillion by 2030 from US$ 120 billion in 2017 and contribute 13 percent of the country’s GDP by 2026. Retail, hospitality and commercial real estate are also growing significantly, providing the much-needed infrastructure for India’s growing needs. Amidst a mix of positives and negatives. The Lex Witness’ 8th Annual Edition of The Real Estate & Construction Legal Summit 2019 scheduled for 17th May 2018, Le Meridien, New Delhi brought together various stakeholders of the governance and legal machinery of the country to see how best the existing challenges can be tackled with and foster the growth within the sector.",
       },
       {
         image:

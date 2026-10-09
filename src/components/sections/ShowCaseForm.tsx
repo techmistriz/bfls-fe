@@ -9,8 +9,11 @@ import type {
   ShowcasePayload,
 } from "@/src/types/showcase.type";
 import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
+import { useState } from "react";
 
 export default function ShowCaseForm() {
+  const [status, setStatus] = useState<"success" | "error" | null>(null);
+
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const {
@@ -22,15 +25,17 @@ export default function ShowCaseForm() {
 
   const onSubmit = async (data: ShowcaseFormValues) => {
     if (!executeRecaptcha) {
-      console.error(" reCAPTCHA is not ready");
+      setStatus("error");
       return;
     }
+
+    setStatus(null);
 
     try {
       const captchaToken = await executeRecaptcha("showcase");
 
       if (!captchaToken) {
-        console.error(" reCAPTCHA token is empty");
+        setStatus("error");
         return;
       }
 
@@ -45,8 +50,10 @@ export default function ShowCaseForm() {
       await submitShowcaseForm(payload);
 
       reset();
+      setStatus("success");
     } catch (error) {
-      console.error(" Showcase submission failed:", error);
+      console.error("Showcase submission failed:", error);
+      setStatus("error");
     }
   };
 
@@ -131,6 +138,18 @@ export default function ShowCaseForm() {
             >
               {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
             </button>
+            {status && (
+              <p
+                role={status === "success" ? "status" : "alert"}
+                className={`mt-4 text-sm font-semibold ${
+                  status === "success" ? "text-[#f58216]" : "text-red-400"
+                }`}
+              >
+                {status === "success"
+                  ? "Thank you! Your showcase form has been submitted successfully."
+                  : "Something went wrong. Please try again."}
+              </p>
+            )}
           </form>
         </div>
       </div>

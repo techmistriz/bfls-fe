@@ -231,7 +231,7 @@ export default function Footer() {
       <div className="fixed bottom-22 right-4 md:bottom-24 md:right-6 z-50 group">
         {/* Tooltip */}
         <a
-          href="https://api.whatsapp.com/send?phone=919899332111&text=Hi%2C%20I%27d%20Like%20to%20Know%20More%20About%20The%20Lex%20Witness%208th%20Annual%20Banking%20%26%20Finance%20Legal%20Summit%202025"
+          href="https://api.whatsapp.com/send?phone=919899332111&text=Hi%2C%20I%27d%20Like%20to%20Know%20More%20About%20The%20Lex%20Witness%209th%20Annual%20Banking%20%26%20Finance%20Legal%20Summit%202026"
           target="_blank"
           rel="noopener noreferrer"
           className="font-roboto absolute right-16 top-1/2 -translate-y-1/2 bg-[#25D366] text-white text-[15px] font-normal leading-6 px-3 py- rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-2 transition-all duration-200 whitespace-nowrap cursor-pointer"
@@ -241,7 +241,7 @@ export default function Footer() {
 
         {/* Button */}
         <a
-          href="https://api.whatsapp.com/send?phone=919899332111&text=Hi%2C%20I%27d%20Like%20to%20Know%20More%20About%20The%20Lex%20Witness%208th%20Annual%20Banking%20%26%20Finance%20Legal%20Summit%202025"
+          href="https://api.whatsapp.com/send?phone=919899332111&text=Hi%2C%20I%27d%20Like%20to%20Know%20More%20About%20The%20Lex%20Witness%209th%20Annual%20Banking%20%26%20Finance%20Legal%20Summit%202026"
           target="_blank"
           rel="noopener noreferrer"
           className="
