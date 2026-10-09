@@ -173,7 +173,7 @@ export default function Header() {
           <Link
             href={actionButton.href}
             onClick={closeMenu}
-            className="mt-5 flex h-[58px] w-full items-center justify-center gap-2 rounded-[6px] bg-[#f57c16] px-4 text-[14px] font-semibold text-white transition-all duration-300 hover:bg-[#ef7f1b] sm:text-[15px]"
+            className="mx-auto mt-5 flex h-[58px] w-[75%] items-center justify-center gap-2 rounded-[6px] bg-[#f57c16] px-4 text-[14px] font-semibold text-white transition-all duration-300 hover:bg-[#ef7f1b] sm:text-[15px]"
           >
             {!EVENT_CONFIG.registrationOpen && (
               <GalleryIcon className="shrink-0 text-white" />

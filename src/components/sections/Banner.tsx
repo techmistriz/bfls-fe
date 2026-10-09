@@ -8,7 +8,7 @@ import { formatDateWithOrdinal } from "@/src/utils/date";
 
 const FALLBACK_BANNER_IMAGE = "/images/pexels-ravi-roshan-14907339-scaled.jpeg";
 
-const FALLBACK_LOGO = "/images/BFLS_LOGO_IMAGE.png";
+const FALLBACK_LOGO = "/images/BFLS_logo_26.webp";
 
 export default function Banner() {
   const { events, loading } = useEvents();

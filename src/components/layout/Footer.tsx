@@ -176,14 +176,16 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="mt-12 w-full border-t-2 border-[#777]">
-        <div className="mx-auto flex min-h-21.75 w-292.5 max-w-[calc(100%-40px)] items-center px-6 max-lg:h-auto max-lg:min-h-0 max-lg:flex-col max-lg:items-start max-lg:gap-4 max-lg:py-6 max-sm:w-[calc(100%-30px)]">
-          <div className="flex flex-1 flex-col leading-relaxed ">
+        <div className="mx-auto flex min-h-21.75 w-292.5 max-w-[calc(100%-40px)] flex-col items-center gap-4 py-6 text-center lg:flex-row lg:items-center lg:gap-0 lg:py-0 max-sm:w-[calc(100%-30px)]">
+          {/* Copyright */}
+          <div className="flex w-full flex-1 flex-col text-center leading-relaxed">
             <strong className="font-medium">
               Lex Witness – India’s 1st Magazine on Legal &amp; Corporate
               Affairs
             </strong>
+
             <div>
-              <span className="text-[#ddd] font-normal">
+              <span className="font-normal text-[#ddd]">
                 A Unit of SriGro Interactive Pvt Ltd. | Image Courtesy:{" "}
               </span>
               <a
@@ -195,25 +197,29 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mx-7 h-[37px] w-[1px] shrink-0 bg-[#edebeb] max-lg:mx-0 max-lg:h-px max-lg:w-full" />
+          {/* Separator */}
+          <div className="hidden mx-7 h-[37px] w-px shrink-0 bg-[#edebeb] lg:block" />
 
-          <div className="flex w-[200px] shrink-0 items-center justify-center font-medium">
+          {/* Admission Rights */}
+          <div className="flex w-full shrink-0 items-center justify-center text-center font-medium lg:w-[200px]">
             Rights of Admission Reserved
           </div>
 
-          <div className="mx-7 h-[37px] w-[2px] shrink-0 bg-[#edebeb] max-lg:mx-0 max-lg:h-px max-lg:w-full" />
+          {/* Separator */}
+          <div className="hidden mx-7 h-[37px] w-[2px] shrink-0 bg-[#edebeb] lg:block" />
 
-          <div className="flex flex-1 justify-center gap-[18px] whitespace-nowrap max-lg:flex-wrap max-lg:gap-2 max-lg:whitespace-normal">
+          {/* Footer Links */}
+          <div className="grid w-full grid-cols-2 justify-items-center gap-3 text-center lg:flex lg:flex-1 lg:justify-center lg:gap-[18px]">
             <Link
               href="/about-witness"
-              className="hover:text-[#f58220] font-medium"
+              className="font-medium hover:text-[#f58220]"
             >
               About Lex Witness
             </Link>
 
             <Link
               href="/summit-secretariat"
-              className="hover:text-[#f58220] font-medium"
+              className="font-medium hover:text-[#f58220]"
             >
               Summit Secretariat
             </Link>

@@ -29,7 +29,7 @@ export default function ContactCTA() {
           </p>
           <a
             href="#gallery"
-            className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] text-[14px] font-medium text-white font-archivo transition-all duration-300 hover:bg-[#fff] hover:text-[#EF7F1B] hover:border-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mt-6 max-sm:h-[54px] max-sm:w-full max-sm:px-5 max-sm:text-[14px]"
+            className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[14px] font-medium text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-[#fff] hover:text-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mx-auto max-sm:mt-6 max-sm:flex max-sm:h-[54px] max-sm:w-[65%] max-sm:justify-center max-sm:px-5 max-sm:text-[14px]"
           >
             <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
             <span>SUMMIT GALLERY</span>

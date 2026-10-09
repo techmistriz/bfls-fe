@@ -123,7 +123,7 @@ export default function Agenda() {
                     {/* Title + Short Description */}
                     <div className="min-w-0 flex-1 pr-0.5 sm:pr-3">
                       <h3
-                        className="block font-poppins text-[13px] font-semibold leading-[1.4] text-[#526b97] sm:text-[18px] lg:text-[23px] [&_span]:text-[#D0252D]"
+                        className="block font-poppins text-[13px] font-semibold leading-[1.4] text-[#526b97] sm:text-[18px] lg:text-[23px] [&_span]:text-[#EF7F1B]"
                         dangerouslySetInnerHTML={{
                           __html: item.agenda_title,
                         }}

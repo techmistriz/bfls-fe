@@ -22,7 +22,7 @@ export default function ShowCaseForm() {
 
   const onSubmit = async (data: ShowcaseFormValues) => {
     if (!executeRecaptcha) {
-      console.error("❌ reCAPTCHA is not ready");
+      console.error(" reCAPTCHA is not ready");
       return;
     }
 
@@ -30,7 +30,7 @@ export default function ShowCaseForm() {
       const captchaToken = await executeRecaptcha("showcase");
 
       if (!captchaToken) {
-        console.error("❌ reCAPTCHA token is empty");
+        console.error(" reCAPTCHA token is empty");
         return;
       }
 
@@ -46,7 +46,7 @@ export default function ShowCaseForm() {
 
       reset();
     } catch (error) {
-      console.error("❌ Showcase submission failed:", error);
+      console.error(" Showcase submission failed:", error);
     }
   };
 
@@ -93,7 +93,6 @@ export default function ShowCaseForm() {
                 })}
                 className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[16px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60 max-sm:max-w-none"
               />
-
               <input
                 type="email"
                 placeholder="Your Email Address"
@@ -103,13 +102,23 @@ export default function ShowCaseForm() {
                 })}
                 className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[16px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60 max-sm:max-w-none"
               />
-
               <input
                 type="tel"
+                inputMode="numeric"
+                maxLength={10}
                 placeholder="Your Contact Number"
                 disabled={isSubmitting}
                 {...register("contact", {
                   required: "Contact number is required",
+                  pattern: {
+                    value: /^[0-9]{10}$/,
+                    message: "Contact number must be exactly 10 digits",
+                  },
+                  onChange: (e) => {
+                    e.target.value = e.target.value
+                      .replace(/\D/g, "")
+                      .slice(0, 10);
+                  },
                 })}
                 className="h-[50px] w-full max-w-[250px] border border-[#f58216] bg-white px-[22px] text-[16px] text-[#333] outline-none placeholder:text-[#777] focus:border-[#f58216] disabled:opacity-60 max-sm:max-w-none"
               />

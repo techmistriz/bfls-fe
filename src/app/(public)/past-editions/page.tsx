@@ -18,7 +18,7 @@ export default function PastEditionsBanner() {
       {/* --------- BANNER --------- */}
 
       <PageBanner
-        backgroundImage="/images/bg_banner.png"
+        backgroundImage="/images/bg_banner_mew.jpg"
         title="Past Editions"
         subtitle="A sneak peek into our past success stories"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Past Editions" }]}
