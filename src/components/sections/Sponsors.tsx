@@ -9,8 +9,8 @@ export default function Sponsors() {
   const { sponsors, loading, error } = useSponsors();
   return (
     <section
-      className="relative w-full overflow-hidden bg-white py-[60px] sm:py-[75px] lg:py-[80px]"
       id="sponsors"
+      className="relative w-full scroll-mt-20 overflow-hidden bg-white py-[60px] sm:py-[75px] lg:py-[80px]"
     >
       <div className="sponsor-lightning pointer-events-none absolute left-[12%] top-[105px] hidden lg:block">
         <svg

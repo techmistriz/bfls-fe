@@ -15,7 +15,7 @@ export default function Speakers() {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-white py-[65px] sm:py-[75px] lg:py-[85px]"
+      className="relative scroll-mt-20 w-full overflow-hidden bg-white py-[65px] sm:py-[75px] lg:py-[85px]"
       id="speakers"
     >
       <div className="speaker-lightning speaker-lightning-left pointer-events-none absolute left-[12%] top-[125px] hidden lg:block">

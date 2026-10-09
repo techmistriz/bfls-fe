@@ -35,7 +35,7 @@ export default function Agenda() {
   return (
     <section
       id="agenda"
-      className="relative overflow-hidden bg-[#FBFBFB] py-[40px] sm:py-[70px] lg:py-[50px]"
+      className="relative scroll-mt-20 overflow-hidden bg-[#FBFBFB] py-[40px] sm:py-[70px] lg:py-[50px]"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
