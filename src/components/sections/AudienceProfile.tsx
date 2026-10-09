@@ -10,7 +10,7 @@ export default function AudienceProfile() {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-white py-[65px] sm:py-[75px] lg:py-[80px]"
+      className="relative scroll-mt-20 w-full overflow-hidden bg-white py-[65px] sm:py-[75px] lg:py-[80px]"
       id="audience-profile"
     >
       <div className="relative z-10 mx-auto px-5 text-center">
