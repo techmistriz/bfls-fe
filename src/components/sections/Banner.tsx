@@ -6,6 +6,7 @@ import MouseParallax from "../ui/MouseParallax";
 import { useEvents } from "@/src/hooks/useEvents";
 import { formatDateWithOrdinal } from "@/src/utils/date";
 import { EVENT_CONFIG } from "@/src/config/event";
+import Link from "next/link";
 
 const FALLBACK_BANNER_IMAGE = "/images/pexels-ravi-roshan-14907339-scaled.jpeg";
 
@@ -166,7 +167,7 @@ export default function Banner() {
                     </a>
 
                     {/* Past Editions */}
-                    <a
+                    <Link
                       href="/past-editions"
                       className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
                     >
@@ -195,12 +196,12 @@ export default function Banner() {
                         />
                       </svg>
                       <span>Past Editions</span>
-                    </a>
+                    </Link>
                   </>
                 )}
 
                 {/* Contact Us: always visible */}
-                <a
+                <Link
                   href="/contact"
                   className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
                 >
@@ -209,7 +210,7 @@ export default function Banner() {
                     className="fas fa-download text-[20px] transition-colors duration-300 group-hover:text-[#EF7F1B]"
                   />
                   <span>Contact Us</span>
-                </a>
+                </Link>
               </>
             )}
           </div>
