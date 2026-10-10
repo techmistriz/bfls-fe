@@ -4,15 +4,22 @@ import { useState } from "react";
 import Image from "next/image";
 import { useEvents } from "@/src/hooks/useEvents";
 import { getSpeakerImageUrl } from "@/src/utils/image";
+import type { Event } from "@/src/types/event.type";
 import { agendaContent, agendaDecorations } from "@/src/data/agenda.data";
 
-export default function Agenda() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+export default function Agenda({
+  previewEvent,
+  defaultOpenIndex = null,
+}: {
+  previewEvent?: Event;
+  defaultOpenIndex?: number | null;
+} = {}) {
+  const [openIndex, setOpenIndex] = useState<number | null>(defaultOpenIndex);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
   const { events } = useEvents();
 
-  const event = events?.[0];
+  const event = previewEvent ?? events?.[0];
   const agendaItems = event?.agendas ?? [];
 
   const toggleItem = (index: number) => {
@@ -84,8 +91,7 @@ export default function Agenda() {
           </p>
 
           <h2 className="mx-auto max-w-[850px] font-poppins text-[24px] font-extrabold leading-[1.25] text-[#566A8F] sm:text-[45px] sm:leading-[1.2] lg:text-[42px]">
-            {agendaContent.title}
-            <br className="hidden sm:block" />
+            {agendaContent.title} <br className="hidden sm:block" />
             {agendaContent.titleSecondLine}
           </h2>
 
@@ -94,111 +100,136 @@ export default function Agenda() {
 
         <div className="relative w-full">
           {/* Dynamic Event Title */}
-          <div className="relative z-10 mx-auto flex min-h-[65px] w-full max-w-[610px] items-center justify-center bg-[#566e99] px-4 py-3 text-center shadow-sm sm:min-h-[80px] sm:px-5 sm:py-4">
+          <div className="relative z-10 mx-auto flex min-h-[65px] w-full max-w-[610px] items-center justify-center rounded-[12px] bg-[#566e99] px-4 py-3 text-center shadow-sm sm:min-h-[80px] sm:px-5 sm:py-4">
             <p className="font-archivo text-[13px] font-medium leading-[1.4] text-white sm:text-[18px]">
               {event?.title || agendaContent.fallbackEventTitle}
             </p>
           </div>
 
           {/* Dynamic Agenda */}
-          <div className="w-full border border-[#e1e7f0] bg-white">
+          <div className="mt-5 flex w-full flex-col gap-4 sm:mt-7 sm:gap-5">
             {agendaItems.map((item, index) => {
               const isOpen = openIndex === index;
+              const speakers = (item.agenda_speakers ?? [])
+                .filter((agendaSpeaker) => agendaSpeaker.speaker)
+                .sort((a, b) => a.ordering - b.ordering);
 
               return (
                 <div
                   key={item.id}
-                  className="border-b border-[#e1e7f0] last:border-b-0"
+                  className={`relative overflow-hidden rounded-[14px] border bg-white transition-shadow duration-300 ${
+                    isOpen
+                      ? "border-[#f5c18f] shadow-[0_14px_40px_-18px_rgba(86,110,153,0.45)]"
+                      : "border-[#e1e7f0] shadow-[0_4px_18px_-12px_rgba(86,110,153,0.35)] hover:shadow-[0_10px_30px_-16px_rgba(86,110,153,0.45)]"
+                  }`}
                 >
+                  {/* Accent bar */}
+                  <span
+                    className={`absolute left-0 top-0 h-full w-[4px] transition-colors duration-300 ${
+                      isOpen ? "bg-[#f58216]" : "bg-[#566e99]/25"
+                    }`}
+                  />
+
                   <button
                     type="button"
                     onClick={() => toggleItem(index)}
-                    className="group flex w-full cursor-pointer items-start gap-2.5 px-3 py-[15px] text-left transition-colors duration-200 hover:bg-gray-100 sm:gap-6 sm:px-8 sm:py-[19px] lg:gap-13 lg:px-12"
+                    aria-expanded={isOpen}
+                    className="flex w-full cursor-pointer flex-col gap-3 px-4 pb-5 pt-4 text-left sm:px-7 sm:pb-6 sm:pt-6 lg:flex-row lg:gap-8 lg:px-9"
                   >
                     {/* Time */}
-                    <span className="w-[68px] shrink-0 pt-0.5 font-poppins text-[12px] font-semibold leading-[1.4] text-[#f58216] sm:w-[125px] sm:text-[20px] lg:w-[165px] lg:text-[23px]">
-                      {item.agenda_time}
-                    </span>
+                    <div className="flex items-center justify-between lg:block lg:w-[150px] lg:shrink-0">
+                      <span className="inline-flex items-center rounded-full bg-[#fff3e8] px-3 py-1 font-poppins text-[12px] font-semibold text-[#f58216] sm:text-[14px] lg:px-0 lg:py-0 lg:bg-transparent lg:text-[20px] lg:leading-[1.4]">
+                        {item.agenda_time}
+                      </span>
 
-                    {/* Title + Short Description */}
-                    <div className="min-w-0 flex-1 pr-0.5 sm:pr-3">
+                      <ToggleIcon isOpen={isOpen} className="lg:hidden" />
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      {/* Heading */}
                       <h3
-                        className="block font-poppins text-[13px] font-semibold leading-[1.4] text-[#526b97] sm:text-[18px] lg:text-[23px] [&_span]:text-[#EF7F1B]"
-                        dangerouslySetInnerHTML={{
-                          __html: item.agenda_title,
-                        }}
+                        className="font-poppins text-[16px] font-semibold leading-[1.35] text-[#526b97] sm:text-[20px] lg:text-[23px] [&_span]:text-[#EF7F1B]"
+                        dangerouslySetInnerHTML={{ __html: item.agenda_title }}
                       />
 
-                      {!isOpen && item.agenda_short_description && (
-                        <p className="mt-1.5 font-archivo text-[11px] font-normal leading-[1.5] text-[#555] sm:mt-2 sm:text-[14px] lg:text-[16px]">
+                      {/* Short intro */}
+                      {item.agenda_short_description && (
+                        <p className="mt-2 font-archivo text-[13px] leading-[1.6] text-[#555] sm:text-[15px] lg:text-[16px]">
                           {item.agenda_short_description}
                         </p>
                       )}
+
+                      {/* Speakers */}
+                      {speakers.length > 0 && (
+                        <div className="mt-4 grid grid-cols-2 gap-x-3 gap-y-4 sm:mt-5 sm:grid-cols-3 lg:grid-cols-4 lg:gap-x-4 lg:gap-y-5">
+                          {speakers.map(({ id, speaker }) => (
+                            <div
+                              key={id}
+                              className="flex items-center gap-2 sm:gap-2.5"
+                            >
+                              <div className="relative h-[40px] w-[40px] shrink-0 overflow-hidden rounded-full ring-2 ring-[#f58216]/30 ring-offset-2 sm:h-[54px] sm:w-[54px]">
+                                <Image
+                                  src={getSpeakerImageUrl(speaker.image)}
+                                  alt={speaker.name}
+                                  fill
+                                  sizes="54px"
+                                  className="object-cover"
+                                />
+                              </div>
+
+                              <div className="min-w-0">
+                                <p className="font-poppins text-[12px] font-semibold leading-[1.3] text-[#526b97] sm:text-[14px]">
+                                  {speaker.name}
+                                </p>
+                                <p className="mt-0.5 line-clamp-2 font-archivo text-[11px] leading-[1.35] text-[#777] sm:text-[12px]">
+                                  {speaker.designation}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Read more */}
+                      {item.agenda_description && (
+                        <span className="mt-4 inline-flex items-center gap-1.5 font-archivo text-[13px] font-semibold text-[#f58216] sm:text-[14px]">
+                          {isOpen
+                            ? "Hide session details"
+                            : "Read full session details"}
+                          <span
+                            className={`inline-block transition-transform duration-300 ${
+                              isOpen ? "rotate-180" : ""
+                            }`}
+                          >
+                            ▾
+                          </span>
+                        </span>
+                      )}
                     </div>
 
-                    {/* Toggle */}
-                    <span
-                      className={`mt-0.5 flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full font-poppins text-[20px] font-light leading-none text-white transition-colors duration-200 sm:h-[31px] sm:w-[31px] sm:text-[25px] ${
-                        isOpen ? "bg-[#f58216]" : "bg-[#566e99]"
-                      }`}
-                    >
-                      {isOpen ? "−" : "+"}
-                    </span>
+                    <ToggleIcon isOpen={isOpen} className="hidden lg:flex" />
                   </button>
 
-                  {/* Accordion Content */}
+                  {/* Full description */}
                   <div
-                    className={`grid transition-[grid-template-rows] duration-300 ease-in-out hover:bg-gray-100 ${
+                    className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
                       isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <div className="w-full px-3 pb-7 pt-1 sm:px-8 sm:pb-10 lg:ml-[265px] lg:w-[750px] lg:px-0">
-                        {/* Speakers */}
-                        {item.agenda_speakers?.length > 0 && (
-                          <div className="mb-7 grid w-full grid-cols-2 gap-x-3 gap-y-7 sm:grid-cols-3 sm:gap-x-5 lg:flex lg:flex-wrap lg:gap-x-0 lg:gap-y-7">
-                            {item.agenda_speakers.map((agendaSpeaker) => {
-                              const speaker = agendaSpeaker.speaker;
-
-                              if (!speaker) return null;
-
-                              return (
-                                <div
-                                  key={agendaSpeaker.id}
-                                  className="w-full text-center sm:w-auto lg:mr-0 lg:w-[150px]"
-                                >
-                                  <div className="relative mx-auto mb-2 h-[75px] w-[75px] overflow-hidden rounded-full sm:h-[105px] sm:w-[105px] lg:h-[115px] lg:w-[115px]">
-                                    <Image
-                                      src={getSpeakerImageUrl(speaker.image)}
-                                      alt={speaker.name}
-                                      fill
-                                      className="object-cover"
-                                    />
-                                  </div>
-
-                                  <h4 className="font-poppins text-[11px] font-semibold uppercase leading-[1.3] text-[#526b97] sm:text-[14px] lg:text-[15px]">
-                                    {speaker.name}
-                                  </h4>
-
-                                  <p className="mt-1.5 font-archivo text-[10px] font-normal leading-[1.45] text-[#333] sm:mt-2 sm:text-[12px] lg:text-[13px] lg:leading-[1.6]">
-                                    {speaker.designation}
-                                  </p>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        )}
-
-                        {/* Description */}
-                        {item.agenda_description && (
+                      {item.agenda_description && (
+                        <div className="mx-4 mb-6 rounded-[10px] bg-[#f6f8fb] px-4 py-5 sm:mx-7 sm:px-6 lg:mb-8 lg:ml-[221px] lg:mr-9 lg:px-7 lg:py-6">
+                          <p className="mb-2.5 font-poppins text-[12px] font-semibold uppercase tracking-[0.12em] text-[#f58216] sm:text-[13px]">
+                            About this session
+                          </p>
                           <div
-                            className="w-full font-archivo text-[12px] font-normal leading-[1.6] text-[#333] sm:text-[15px] lg:text-[16px] lg:leading-[1.65] [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:mb-1"
+                            className="font-archivo text-[13px] leading-[1.7] text-[#333] sm:text-[15px] lg:text-[16px] [&_li]:mb-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-3 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5"
                             dangerouslySetInnerHTML={{
                               __html: item.agenda_description,
                             }}
                           />
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -208,5 +239,23 @@ export default function Agenda() {
         </div>
       </div>
     </section>
+  );
+}
+
+function ToggleIcon({
+  isOpen,
+  className = "",
+}: {
+  isOpen: boolean;
+  className?: string;
+}) {
+  return (
+    <span
+      className={`flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full font-poppins text-[22px] font-light leading-none text-white transition-colors duration-200 sm:h-[34px] sm:w-[34px] ${
+        isOpen ? "bg-[#f58216]" : "bg-[#566e99]"
+      } ${className}`}
+    >
+      {isOpen ? "−" : "+"}
+    </span>
   );
 }
