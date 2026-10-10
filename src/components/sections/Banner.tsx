@@ -5,6 +5,7 @@ import { DotsRow } from "@/src/components/ui/DotsRow";
 import MouseParallax from "../ui/MouseParallax";
 import { useEvents } from "@/src/hooks/useEvents";
 import { formatDateWithOrdinal } from "@/src/utils/date";
+import { EVENT_CONFIG } from "@/src/config/event";
 
 const FALLBACK_BANNER_IMAGE = "/images/pexels-ravi-roshan-14907339-scaled.jpeg";
 
@@ -125,29 +126,91 @@ export default function Banner() {
           </div>
 
           {/* Description */}
-          <div className="flex h-auto min-h-[100px] w-full shrink-0 items-center justify-center max-sm:mb-4">
-            {!loading && event && (
-              <p className="mt-12 max-w-[720px] font-archivo text-[16px] font-normal leading-[1.65] text-white max-lg:mt-10 max-md:mt-8 max-md:max-w-[650px] max-md:text-[15px] max-sm:mt-7 max-sm:max-w-[340px] max-sm:text-[16px] max-sm:leading-[1.7]">
-                The {event.year || "current"} edition was a massive success and
-                we now look forward to the next edition. In case you wish to
-                participate in future editions, please get in touch with us.
-              </p>
-            )}
-          </div>
+          {!EVENT_CONFIG.registrationOpen && (
+            <div className="flex h-auto min-h-[100px] w-full shrink-0 items-center justify-center max-sm:mb-4">
+              {!loading && event && (
+                <p className="mt-12 max-w-[720px] font-archivo text-[16px] font-normal leading-[1.65] text-white max-lg:mt-10 max-md:mt-8 max-md:max-w-[650px] max-md:text-[15px] max-sm:mt-7 max-sm:max-w-[340px] max-sm:text-[16px] max-sm:leading-[1.7]">
+                  The {event.year || "current"} edition was a massive success
+                  and we now look forward to the next edition. In case you wish
+                  to participate in future editions, please get in touch with
+                  us.
+                </p>
+              )}
+            </div>
+          )}
 
-          {/* CTA */}
-          <div className="mt-2 flex h-[66px] w-full shrink-0 items-center justify-center max-sm:mt-4">
+          {/* CTA Buttons */}
+          <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 px-2 max-sm:mt-6 sm:flex-row sm:flex-wrap sm:gap-4 sm:px-0">
             {!loading && event && (
-              <a
-                href="/contact"
-                className=" group mt-11 inline-flex h-[66px] min-w-[178px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-5 font-archivo text-[16px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg max-lg:mt-9 max-md:mt-8 max-md:h-[58px] max-md:min-w-[165px] max-md:px-6 max-md:text-[15px] max-sm:mt-7 max-sm:h-[54px] max-sm:min-w-[155px] max-sm:px-5 max-sm:text-[14px] "
-              >
-                <i
-                  aria-hidden="true"
-                  className=" fas fa-download text-[20px] text-white transition-colors duration-300 group-hover:text-[#EF7F1B] "
-                />
-                <span>CONTACT US</span>
-              </a>
+              <>
+                {/* Register + Past Editions: show when registration is open */}
+                {EVENT_CONFIG.registrationOpen && (
+                  <>
+                    {/* Register */}
+                    <a
+                      href="/register"
+                      className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="shrink-0"
+                      >
+                        <path d="M6 2h12v5H6V2Zm-2 7h16a2 2 0 0 1 2 2v8h-4v3H6v-3H2v-8a2 2 0 0 1 2-2Zm4 11h8v-5H8v5Zm10-8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
+                      </svg>
+                      <span>Register Now</span>
+                    </a>
+
+                    {/* Past Editions */}
+                    <a
+                      href="/past-editions"
+                      className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="shrink-0"
+                      >
+                        <path
+                          d="M14 4h6v6M20 4 10 14"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <span>Past Editions</span>
+                    </a>
+                  </>
+                )}
+
+                {/* Contact Us: always visible */}
+                <a
+                  href="/contact"
+                  className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="fas fa-download text-[20px] transition-colors duration-300 group-hover:text-[#EF7F1B]"
+                  />
+                  <span>Contact Us</span>
+                </a>
+              </>
             )}
           </div>
 
