@@ -1,3 +1,3 @@
 export const EVENT_CONFIG = {
-  registrationOpen: false,
+  registrationOpen: true,
 } as const;

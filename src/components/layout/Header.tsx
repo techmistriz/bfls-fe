@@ -65,9 +65,7 @@ export default function Header() {
             href={actionButton.href}
             className="group ml-4 hidden h-[64px] shrink-0 items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f57c16] px-5 text-[14px] font-medium text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-transparent hover:text-[#EF7F1B] xl:ml-5 xl:px-6 xl:text-[14px] lg:flex"
           >
-            {!EVENT_CONFIG.registrationOpen && (
-              <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
-            )}
+            <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
 
             <span>{actionButton.label}</span>
           </Link>
@@ -175,9 +173,7 @@ export default function Header() {
             onClick={closeMenu}
             className="mx-auto mt-5 flex h-[58px] w-[75%] items-center justify-center gap-2 rounded-[6px] bg-[#f57c16] px-4 text-[14px] font-semibold text-white transition-all duration-300 hover:bg-[#ef7f1b] sm:text-[15px]"
           >
-            {!EVENT_CONFIG.registrationOpen && (
-              <GalleryIcon className="shrink-0 text-white" />
-            )}
+            <GalleryIcon className="shrink-0 text-white" />
 
             <span>{actionButton.label}</span>
           </Link>
