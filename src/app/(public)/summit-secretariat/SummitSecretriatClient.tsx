@@ -1,9 +1,24 @@
+"use client";
+
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+
 import LexWitnessSummits from "./components/LexWitnessSummits";
 import SummitSecretariatSidebar from "./components/SummitSecretariatSidebar";
 import SubscribeSection from "@/src/components/sections/SubscribeSection";
 import { PageBanner } from "@/src/components/layout/PageBanner";
 
 export default function SummitSecretriatClient() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
+
   return (
     <div className="w-full">
       {/* ---------- BANNER ---------- */}

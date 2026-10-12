@@ -15,7 +15,7 @@ export function PageBanner({
   breadcrumbs,
 }: PageBannerProps) {
   return (
-    <section className="relative mt-[88px] h-[398px] w-full overflow-hidden">
+    <section className="relative mt-[88px] h-[200px] w-full overflow-hidden">
       <Image
         src={backgroundImage}
         alt={title}

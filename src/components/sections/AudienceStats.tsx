@@ -4,6 +4,7 @@ import Image from "next/image";
 import { stats } from "@/src/data/audienceStats.data";
 import { useCountUp } from "@/src/hooks/useCountUp";
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
+import Link from "next/link";
 
 export default function AudienceStats() {
   const { sectionRef, counts } = useCountUp(stats.map((s) => s.value));
@@ -87,8 +88,8 @@ export default function AudienceStats() {
         </div>
 
         {/* Button */}
-        <a
-          href="#gallery"
+        <Link
+          href="/contact"
           className="group mt-10 inline-flex h-[54px] w-full max-w-[300px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-5 font-archivo text-[14px] font-bold text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-transparent hover:text-[#EF7F1B] hover:shadow-lg sm:mt-15 sm:h-[64px] sm:w-auto sm:max-w-none sm:px-[27px] sm:text-[15px]"
         >
           <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
@@ -96,7 +97,7 @@ export default function AudienceStats() {
           <span className="text-[13px] font-medium uppercase sm:text-[14px]">
             Sponsorship Opportunities
           </span>
-        </a>
+        </Link>
       </div>
     </section>
   );

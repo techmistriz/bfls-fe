@@ -3,8 +3,19 @@ import Image from "next/image";
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
 import { DotsRow } from "@/src/components/ui/DotsRow";
 import MouseParallax from "../ui/MouseParallax";
+import { EVENT_CONFIG } from "@/src/config/event";
 
 export default function AboutSummit() {
+  const actionButton = EVENT_CONFIG.registrationOpen
+    ? {
+        label: "REGISTER NOW",
+        href: "/#register",
+      }
+    : {
+        label: "SUMMIT GALLERY",
+        href: "/gallery",
+      };
+
   return (
     <section className="relative w-full overflow-hidden bg-white py-[70px] lg:py-[50px] max-md:py-[50px] max-sm:py-[40px]">
       <div className="absolute left-0 top-0 w-full">
@@ -90,11 +101,11 @@ export default function AboutSummit() {
               </div>
 
               <a
-                href="#gallery"
+                href={actionButton.href}
                 className="group mt-7 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[15px] font-bold text-white transition-all duration-300 hover:bg-transparent hover:text-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mx-auto max-sm:flex max-sm:h-[54px] max-sm:w-[65%] max-sm:justify-center max-sm:px-5"
               >
                 <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
-                <span>SUMMIT GALLERY</span>
+                <span>{actionButton.label}</span>
               </a>
             </div>
           </div>
