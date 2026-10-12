@@ -71,9 +71,9 @@ export default function AboutSummit() {
           {/* Image */}
           <div className="relative">
             <div className="absolute -bottom-[18px] -left-[18px] hidden h-[85%] w-[85%] rounded-[10px] bg-[#dfe1e6] md:block" />
-            <div className="relative aspect-[0.82] w-full overflow-hidden rounded-[10px] shadow-[30px_10px_90px_0px_rgba(0,0,0,0.12)] max-lg:aspect-[16/11]">
+            <div className="relative aspect-square w-full overflow-hidden rounded-[10px] shadow-[30px_10px_90px_0px_rgba(0,0,0,0.12)] max-lg:aspect-[16/11]">
               <Image
-                src="/images/section-2-bfls.png"
+                src="/images/bfsi-landscape-2026.webp"
                 alt="BFSI Legal Landscape 2026"
                 fill
                 priority
