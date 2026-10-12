@@ -1,9 +1,9 @@
 import Image from "next/image";
 import {
+  BriefcaseBusiness,
   Cpu,
+  Gavel,
   Landmark,
-  Leaf,
-  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 
@@ -14,24 +14,24 @@ import { EVENT_CONFIG } from "@/src/config/event";
 
 const focusAreas: { icon: LucideIcon; title: string; text: string }[] = [
   {
+    icon: BriefcaseBusiness,
+    title: "CAPITAL & DEALMAKING",
+    text: "M&A, investments, financial-group structures, governance and GST",
+  },
+  {
     icon: Landmark,
-    title: "Regulatory Reform",
-    text: "RBI's latest frameworks and IBC amendments",
+    title: "REGULATION & ACCOUNTABILITY",
+    text: "RBI, SEBI, IRDAI, conduct, customer protection and DPDPA",
   },
   {
     icon: Cpu,
-    title: "Digital Lending & Tech",
-    text: "AI-driven lending, CBDCs and the digital credit stack",
+    title: "FINTECH, AI & DATA",
+    text: "Digital lending, payments, InsurTech, consent, AI and cyber risk",
   },
   {
-    icon: ShieldCheck,
-    title: "Data Privacy",
-    text: "DPDPA enforcement and privacy mandates",
-  },
-  {
-    icon: Leaf,
-    title: "Sustainable Finance & ADR",
-    text: "ESG finance and dispute resolution innovations",
+    icon: Gavel,
+    title: "IBC, RECOVERIES & DISPUTES",
+    text: "Insolvency, enforcement, SARFAESI, arbitration and judicial developments",
   },
 ];
 
@@ -100,18 +100,19 @@ export default function AboutSummit() {
 
             <h2 className="mt-4 font-archivo text-[34px] font-bold leading-[1.2] text-[#1d1d1f] max-md:text-[28px] max-sm:text-[24px]">
               BFSI Legal Landscape 2026:{" "}
-              <span className="text-[#EF7F1B]">
-                Navigating Reform, Innovation &amp; Resilience
+              <span className="block text-[#EF7F1B]">
+                Capital, Regulation, Technology &amp; Resolution
               </span>
             </h2>
 
             <p className="mt-5 font-archivo text-[18px] font-medium leading-[1.6] text-[#4a4a4a] max-sm:text-[16px]">
               The Banking &amp; Finance Legal Summit 2026 brings together{" "}
               <strong className="text-[#1d1d1f]">
-                leaders from banking, financial services, insurance, and fintech
+                leaders from banking, financial services, insurance, fintech and
+                India Inc.
               </strong>{" "}
-              to address the sector&apos;s most urgent challenges and
-              transformative opportunities.
+              to examine the legal and regulatory forces reshaping financial
+              markets.
             </p>
 
             <div className="mt-7 grid gap-4 sm:grid-cols-2">
@@ -124,7 +125,7 @@ export default function AboutSummit() {
                     <Icon size={22} strokeWidth={2} />
                   </span>
                   <div>
-                    <h3 className="font-archivo text-[16px] font-bold leading-tight text-[#1d1d1f]">
+                    <h3 className="font-archivo text-[15px] font-bold leading-tight tracking-[0.02em] text-[#1d1d1f]">
                       {title}
                     </h3>
                     <p className="mt-1 font-archivo text-[14px] leading-[1.45] text-[#6b6b6b]">
@@ -136,10 +137,10 @@ export default function AboutSummit() {
             </div>
 
             <p className="mt-7 border-l-[3px] border-[#EF7F1B] pl-5 font-archivo text-[16px] italic leading-[1.6] text-[#4a4a4a]">
-              As compliance converges with growth strategy, the summit is a
-              pivotal platform for industry leaders, policymakers and legal
-              experts to shape the future of BFSI, where innovation thrives
-              under robust governance.
+              As regulation, technology and capital increasingly converge, the
+              Summit provides a high-level platform to navigate change,
+              strengthen governance and shape the next phase of India&rsquo;s
+              BFSI growth story.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4 max-sm:justify-center">
