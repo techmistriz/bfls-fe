@@ -14,7 +14,7 @@ const PLAN_COLORS = ["#b9e3df", "#ebc9ec", "#9bc9fc", "#aaef92"];
 
 const TAG_COLORS: Record<string, string> = {
   TRENDING: "#ff7a00",
-  RECOMMENDED: "#2e9b22",
+  "MOST PREFERRED": "#2e9b22",
 };
 const DEFAULT_TAG_COLOR = "#f57c16";
 
