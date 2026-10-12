@@ -103,7 +103,7 @@ export default function Speakers() {
                   </div>
                 </div>
 
-                <h3 className="mt-[20px] text-[24px] font-medium leading-[1.2] text-[#f58216] font-poppins">
+                <h3 className="mt-5 text-[24px] font-semibold leading-[1.2] text-[#f58216] font-poppins">
                   {speaker.name}
                 </h3>
 

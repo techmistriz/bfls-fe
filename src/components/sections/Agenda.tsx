@@ -105,6 +105,10 @@ export default function Agenda() {
             {agendaItems.map((item, index) => {
               const isOpen = openIndex === index;
 
+              const hasExpandableContent =
+                (item.agenda_speakers?.length ?? 0) > 0 ||
+                Boolean(item.agenda_description?.trim());
+
               return (
                 <div
                   key={item.id}
@@ -112,7 +116,11 @@ export default function Agenda() {
                 >
                   <button
                     type="button"
-                    onClick={() => toggleItem(index)}
+                    onClick={() => {
+                      if (hasExpandableContent) {
+                        toggleItem(index);
+                      }
+                    }}
                     className="group flex w-full cursor-pointer items-start gap-2.5 px-3 py-[15px] text-left transition-colors duration-200 hover:bg-gray-100 sm:gap-6 sm:px-8 sm:py-[19px] lg:gap-13 lg:px-12"
                   >
                     {/* Time */}
@@ -137,70 +145,74 @@ export default function Agenda() {
                     </div>
 
                     {/* Toggle */}
-                    <span
-                      className={`mt-0.5 flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full font-poppins text-[20px] font-light leading-none text-white transition-colors duration-200 sm:h-[31px] sm:w-[31px] sm:text-[25px] ${
-                        isOpen ? "bg-[#f58216]" : "bg-[#566e99]"
-                      }`}
-                    >
-                      {isOpen ? "−" : "+"}
-                    </span>
+                    {hasExpandableContent && (
+                      <span
+                        className={`mt-0.5 flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full font-poppins text-[20px] font-light leading-none text-white transition-colors duration-200 sm:h-[31px] sm:w-[31px] sm:text-[25px] ${
+                          isOpen ? "bg-[#f58216]" : "bg-[#566e99]"
+                        }`}
+                      >
+                        {isOpen ? "−" : "+"}
+                      </span>
+                    )}
                   </button>
 
                   {/* Accordion Content */}
-                  <div
-                    className={`grid transition-[grid-template-rows] duration-300 ease-in-out hover:bg-gray-100 ${
-                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <div className="w-full px-3 pb-7 pt-1 sm:px-8 sm:pb-10 lg:ml-[265px] lg:w-[750px] lg:px-0">
-                        {/* Speakers */}
-                        {item.agenda_speakers?.length > 0 && (
-                          <div className="mb-7 grid w-full grid-cols-2 gap-x-3 gap-y-7 sm:grid-cols-3 sm:gap-x-5 lg:flex lg:flex-wrap lg:gap-x-0 lg:gap-y-7">
-                            {item.agenda_speakers.map((agendaSpeaker) => {
-                              const speaker = agendaSpeaker.speaker;
+                  {hasExpandableContent && (
+                    <div
+                      className={`grid transition-[grid-template-rows] duration-300 ease-in-out hover:bg-gray-100 ${
+                        isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="w-full px-3 pb-7 pt-1 sm:px-8 sm:pb-10 lg:ml-[265px] lg:w-[750px] lg:px-0">
+                          {/* Speakers */}
+                          {item.agenda_speakers?.length > 0 && (
+                            <div className="mb-7 grid w-full grid-cols-2 gap-x-3 gap-y-7 sm:grid-cols-3 sm:gap-x-5 lg:flex lg:flex-wrap lg:gap-x-0 lg:gap-y-7">
+                              {item.agenda_speakers.map((agendaSpeaker) => {
+                                const speaker = agendaSpeaker.speaker;
 
-                              if (!speaker) return null;
+                                if (!speaker) return null;
 
-                              return (
-                                <div
-                                  key={agendaSpeaker.id}
-                                  className="w-full text-center sm:w-auto lg:mr-0 lg:w-[150px]"
-                                >
-                                  <div className="relative mx-auto mb-2 h-[75px] w-[75px] overflow-hidden rounded-full sm:h-[105px] sm:w-[105px] lg:h-[115px] lg:w-[115px]">
-                                    <Image
-                                      src={getSpeakerImageUrl(speaker.image)}
-                                      alt={speaker.name}
-                                      fill
-                                      className="object-cover"
-                                    />
+                                return (
+                                  <div
+                                    key={agendaSpeaker.id}
+                                    className="w-full text-center sm:w-auto lg:mr-0 lg:w-[150px]"
+                                  >
+                                    <div className="relative mx-auto mb-2 h-[75px] w-[75px] overflow-hidden rounded-full sm:h-[105px] sm:w-[105px] lg:h-[115px] lg:w-[115px]">
+                                      <Image
+                                        src={getSpeakerImageUrl(speaker.image)}
+                                        alt={speaker.name}
+                                        fill
+                                        className="object-cover"
+                                      />
+                                    </div>
+
+                                    <h4 className="font-poppins text-[11px] font-semibold uppercase leading-[1.3] text-[#526b97] sm:text-[14px] lg:text-[15px]">
+                                      {speaker.name}
+                                    </h4>
+
+                                    <p className="mt-1.5 font-archivo text-[10px] font-normal leading-[1.45] text-[#333] sm:mt-2 sm:text-[12px] lg:text-[13px] lg:leading-[1.6]">
+                                      {speaker.designation}
+                                    </p>
                                   </div>
+                                );
+                              })}
+                            </div>
+                          )}
 
-                                  <h4 className="font-poppins text-[11px] font-semibold uppercase leading-[1.3] text-[#526b97] sm:text-[14px] lg:text-[15px]">
-                                    {speaker.name}
-                                  </h4>
-
-                                  <p className="mt-1.5 font-archivo text-[10px] font-normal leading-[1.45] text-[#333] sm:mt-2 sm:text-[12px] lg:text-[13px] lg:leading-[1.6]">
-                                    {speaker.designation}
-                                  </p>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        )}
-
-                        {/* Description */}
-                        {item.agenda_description && (
-                          <div
-                            className="w-full font-archivo text-[12px] font-normal leading-[1.6] text-[#333] sm:text-[15px] lg:text-[16px] lg:leading-[1.65] [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:mb-1"
-                            dangerouslySetInnerHTML={{
-                              __html: item.agenda_description,
-                            }}
-                          />
-                        )}
+                          {/* Description */}
+                          {item.agenda_description && (
+                            <div
+                              className="w-full font-archivo text-[12px] font-normal leading-[1.6] text-[#333] sm:text-[15px] lg:text-[16px] lg:leading-[1.65] [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:mb-1"
+                              dangerouslySetInnerHTML={{
+                                __html: item.agenda_description,
+                              }}
+                            />
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               );
             })}
