@@ -203,7 +203,7 @@ export default function Agenda() {
                           {/* Description */}
                           {item.agenda_description && (
                             <div
-                              className="w-full font-archivo text-[12px] font-normal leading-[1.6] text-[#333] sm:text-[15px] lg:text-[16px] lg:leading-[1.65] [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:mb-1"
+                              className="w-full font-archivo text-[12px] font-normal leading-[1.6] text-[#333] sm:text-[15px] lg:text-[16px] lg:leading-[1.65] [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:mb-1 [&_p>i]:mb-[15px] [&_p>i]:inline-block [&_ul>li>p]:mb-4"
                               dangerouslySetInnerHTML={{
                                 __html: item.agenda_description,
                               }}
