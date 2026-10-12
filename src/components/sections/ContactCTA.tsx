@@ -1,6 +1,17 @@
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
+import { EVENT_CONFIG } from "@/src/config/event";
 
 export default function ContactCTA() {
+  const actionButton = EVENT_CONFIG.registrationOpen
+    ? {
+        label: "REGISTER NOW",
+        href: "/#register",
+      }
+    : {
+        label: "SUMMIT GALLERY",
+        href: "/gallery",
+      };
+
   return (
     <section className="relative min-h-[440px] w-full overflow-hidden">
       <div
@@ -28,11 +39,11 @@ export default function ContactCTA() {
             invaluable insights and networking opportunities.
           </p>
           <a
-            href="#gallery"
+            href={actionButton.href}
             className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[14px] font-medium text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-[#fff] hover:text-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mx-auto max-sm:mt-6 max-sm:flex max-sm:h-[54px] max-sm:w-[65%] max-sm:justify-center max-sm:px-5 max-sm:text-[14px]"
           >
             <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
-            <span>SUMMIT GALLERY</span>
+            <span>{actionButton.label}</span>
           </a>
         </div>
       </div>

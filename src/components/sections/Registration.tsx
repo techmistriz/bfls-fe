@@ -49,7 +49,7 @@ export default function Registration() {
     EVENT_CONFIG.registrationOpen && (
       <section
         id="register"
-        className="w-full bg-[#f7f7f7] px-4 py-12 sm:px-6 lg:px-10"
+        className="w-full scroll-mt-10 bg-[#f7f7f7] px-4 py-12 sm:px-6 lg:px-10"
       >
         <div className="mx-auto max-w-[1110px]">
           <div className="mb-8 text-center">
@@ -103,7 +103,7 @@ export default function Registration() {
 
                     <h4 className="mt-3 whitespace-nowrap text-[29px] font-bold leading-[34px] tracking-[-1.2px] text-[#222]">
                       {formatPrice(plan.starting_price)}{" "}
-                      <span className="text-[25px]">Onwards</span>
+                      <span className="text-[17px]">Onwards</span>
                     </h4>
 
                     <div className="mt-4 space-y-2">

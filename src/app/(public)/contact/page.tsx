@@ -222,7 +222,7 @@ export default function ContactUs() {
             </div>
 
             {/* Right side Dark Contact Info Card */}
-            <div className="flex w-full flex-col justify-between rounded-sm bg-[#4a5f87] px-8 text-white shadow-[0_5px_25px_rgba(0,0,0,0.05)] sm:p-2 lg:min-h-[600px] lg:w-[28%]">
+            <div className="flex w-full flex-col justify-between sm:py-6 rounded-sm bg-[#4a5f87] px-8 text-white shadow-[0_5px_25px_rgba(0,0,0,0.05)] sm:p-2 lg:min-h-[600px] lg:w-[28%]">
               {/* Contact 1 */}
               <div className="flex flex-col items-center text-center">
                 <div className="mb-2 text-white/90">
@@ -327,7 +327,6 @@ export default function ContactUs() {
                   Hauz Khas, New Delhi - 110016
                 </p>
               </div>
-              <hr className="my-6 border-t border-white" />
             </div>
           </div>
         </div>
