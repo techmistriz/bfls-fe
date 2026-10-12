@@ -3,32 +3,44 @@ import { useEffect, useRef, useState } from "react";
 interface UseCountUpOptions {
   duration?: number;
   threshold?: number;
+  // How long the element must stay in view before counting starts, so
+  // scrolling past it (e.g. a nav link jumping further down) doesn't trigger it.
+  delay?: number;
 }
 
 export function useCountUp(
   targets: number[],
-  { duration = 1800, threshold = 0.35 }: UseCountUpOptions = {},
+  { duration = 1800, threshold = 0.6, delay = 200 }: UseCountUpOptions = {},
 ) {
-  const sectionRef = useRef<HTMLElement | null>(null);
+  // Attach to the element holding the numbers, not the whole section, so the
+  // count starts when the numbers themselves are on screen.
+  const ref = useRef<HTMLDivElement | null>(null);
   const [counts, setCounts] = useState<number[]>(targets.map(() => 0));
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    const element = ref.current;
+    if (!element || started) return;
+
+    let timer: ReturnType<typeof setTimeout> | undefined;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !started) {
-          setStarted(true);
+        clearTimeout(timer);
+
+        if (entry.isIntersecting) {
+          timer = setTimeout(() => setStarted(true), delay);
         }
       },
       { threshold },
     );
 
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, [started, threshold]);
+    observer.observe(element);
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [started, threshold, delay]);
 
   useEffect(() => {
     if (!started) return;
@@ -52,5 +64,5 @@ export function useCountUp(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [started, duration]);
 
-  return { sectionRef, counts };
+  return { ref, counts };
 }

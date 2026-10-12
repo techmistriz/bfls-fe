@@ -7,13 +7,10 @@ import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
 import Link from "next/link";
 
 export default function AudienceStats() {
-  const { sectionRef, counts } = useCountUp(stats.map((s) => s.value));
+  const { ref: statsRef, counts } = useCountUp(stats.map((s) => s.value));
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-[560px] w-full overflow-hidden bg-white sm:min-h-[580px]"
-    >
+    <section className="relative min-h-[560px] w-full overflow-hidden bg-white sm:min-h-[580px]">
       <div className="absolute left-0 top-0 w-full">
         <Image
           src="/images/gallery_and_funfact_bg.png"
@@ -61,7 +58,10 @@ export default function AudienceStats() {
         <div className="mt-[15px] h-[3px] w-[90px] bg-[#f58216] sm:mt-[22px] sm:w-[120px]" />
 
         {/* Stats */}
-        <div className="mt-[42px] grid w-full max-w-[820px] grid-cols-2 gap-x-3 gap-y-8 sm:mt-[76px] sm:grid-cols-4 sm:gap-x-0 sm:gap-y-0">
+        <div
+          ref={statsRef}
+          className="mt-[42px] grid w-full max-w-[820px] grid-cols-2 gap-x-3 gap-y-8 sm:mt-[76px] sm:grid-cols-4 sm:gap-x-0 sm:gap-y-0"
+        >
           {stats.map((stat, index) => (
             <div
               key={stat.label}
