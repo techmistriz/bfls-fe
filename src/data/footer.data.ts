@@ -35,25 +35,48 @@ export const contactPeople: ContactPerson[] = [
 
 export const summitShowcase: SummitShowcase[] = [
   {
-    title: "The 8th Annual Banking & Finance Legal Summit 2025",
+    title: "The 9th Annual Banking & Finance Legal Summit 2026",
     description: "Banking / Crypto / Fintech & More",
-    location: "21st November 2025, Taj Santacruz, Mumbai",
+    location: "",
     linkLabel: "www.bfls.in",
     linkHref: "https://bfls.in/",
   },
   {
-    title: "The 11th Annual Grand Masters 2025 – Pune Edition",
-    description: "A 6-city pan-India General Counsel, multi-industry format",
-    location: "New Delhi, Mumbai, Bengaluru, Hyderabad, Pune, Chennai",
+    title: "The 12th Annual Grand Masters 2026 – 7 City Series",
+    description: "A pan-India General Counsel, multi-industry format",
+    location:
+      "New Delhi, Mumbai, Pune, Bengaluru, Hyderabad, Chennai & Ahmedabad",
     linkLabel: "www.grandmasters.in",
     linkHref: "https://www.grandmasters.in/",
   },
   {
-    title: "The 11th Annual Grand Masters 2025 – Chennai Edition",
-    description: "A 6-city pan-India General Counsel, multi-industry format",
-    location: "New Delhi, Mumbai, Bengaluru, Hyderabad, Pune, Chennai",
-    linkLabel: "www.grandmasters.in",
-    linkHref: "https://www.grandmasters.in/",
+    title: "The 13th Annual Real Estate & Construction Legal Summit 2027",
+    description: "Real Estate / Infra / Construction & More",
+    location: "",
+    linkLabel: "www.rcls.in",
+    linkHref: "https://www.rcls.in/",
+  },
+  {
+    title: "The 12th Annual IT Legal Summit 2027",
+    description: "IT / ITeS / e-Commerce / Gaming & More",
+    location: "",
+    linkLabel: "www.itlegalsummit.com",
+    linkHref: "https://www.itlegalsummit.com/",
+  },
+  {
+    title:
+      "The 12th Annual Media, Advertising & Entertainment Legal Summit 2027",
+    description: "A Cross-Sectional Legal Dig on M&E Sector & More",
+    location: "",
+    linkLabel: "www.maels.in",
+    linkHref: "https://www.maels.in/",
+  },
+  {
+    title: "The 13th Annual Pharma Legal & Compliance Summit 2027",
+    description: "Pharma / Healthcare / Medical Devices & More",
+    location: "",
+    linkLabel: "www.plcs.co.in",
+    linkHref: "https://www.plcs.co.in/",
   },
 ];
 

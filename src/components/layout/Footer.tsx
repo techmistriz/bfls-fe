@@ -109,7 +109,7 @@ export default function Footer() {
         {/* Summit Showcase */}
         <div>
           <h3 className="mb-4 text-lg font-bold text-[#f58220]">
-            LEX WITNESS SUMMITS SHOWCASE
+            Lex Witness Summits Showcase
           </h3>
 
           {summitShowcase.map((summit, i) => (

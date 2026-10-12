@@ -183,6 +183,9 @@ export default function CheckoutClient() {
     );
   }
 
+  const attendeeCount =
+    cart?.items.reduce((total, item) => total + Number(item.quantity), 0) ?? 0;
+
   return (
     <>
       {paymentVerifying && (
@@ -323,11 +326,8 @@ export default function CheckoutClient() {
                 onRemove={removeCoupon}
               />
 
-              <h2 className="mb-[23px] text-[20px] font-bold uppercase text-[#d9232e]">
-                BILLING DETAILS
-              </h2>
-
               <BillingDetails
+                attendeeCount={attendeeCount}
                 onSubmit={handleOrder}
                 loading={paymentProcessing}
               />

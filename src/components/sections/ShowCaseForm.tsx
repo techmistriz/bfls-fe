@@ -142,7 +142,7 @@ export default function ShowCaseForm() {
               <p
                 role={status === "success" ? "status" : "alert"}
                 className={`mt-4 text-sm font-semibold ${
-                  status === "success" ? "text-[#f58216]" : "text-red-400"
+                  status === "success" ? "text-[#fff]" : "text-red-400"
                 }`}
               >
                 {status === "success"

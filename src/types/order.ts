@@ -1,16 +1,25 @@
+export interface AttendeePayload {
+  attendee_name: string;
+  attendee_email: string;
+  attendee_phone: string;
+  attendee_company: string;
+  attendee_designation: string;
+}
+
 export interface RegisterOrderPayload {
-  first_name: string;
-  last_name: string;
+  full_name: string;
   email: string;
   phone: string;
-  designation: string;
+  firm_name: string;
   company_name: string;
-  address: string;
-  country_id: number;
-  state_id: number;
-  city_id: number;
-  pincode: string;
   gst_number?: string;
+  message?: string;
+  address: string;
+  city_id: number;
+  state_id: number;
+  country_id: number;
+  pincode: string;
+  attendees: AttendeePayload[];
 }
 
 export interface OrderUser {
