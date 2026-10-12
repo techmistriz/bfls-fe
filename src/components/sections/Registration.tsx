@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 
 // import { RegistrationIcon } from "@/src/components/icons/RegistrationIcon";
@@ -10,7 +10,13 @@ import { useRegistrationPlans } from "@/src/hooks/useRegistrationPlans";
 import { addToCart } from "@/src/services/cart.service";
 import { EVENT_CONFIG } from "@/src/config/event";
 
-const PLAN_BACKGROUNDS = ["#b9e3df", "#ebc9ec", "#ffc79f", "#ffe6a8"];
+const PLAN_COLORS = ["#b9e3df", "#ebc9ec", "#9bc9fc", "#aaef92"];
+
+const TAG_COLORS: Record<string, string> = {
+  TRENDING: "#ff7a00",
+  RECOMMENDED: "#2e9b22",
+};
+const DEFAULT_TAG_COLOR = "#f57c16";
 
 const formatPrice = (price: string) => {
   return `₹${Number(price).toLocaleString("en-IN")}`;
@@ -86,14 +92,22 @@ export default function Registration() {
                 <div
                   key={plan.id}
                   // Registration card
-                  className="relative flex min-h-[350px] flex-col rounded-[9px]  pb-4 pt-6 shadow-[0_7px_10px_rgba(0,0,0,0.25)] transition-transform duration-300 hover:-translate-y-1"
-                  style={{
-                    backgroundColor:
-                      PLAN_BACKGROUNDS[index % PLAN_BACKGROUNDS.length],
-                  }}
+                  className="relative flex min-h-[350px] flex-col rounded-[9px] border-[5px] border-[var(--plan-color)] bg-white pb-4 pt-6 transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--plan-color)]"
+                  style={
+                    {
+                      "--plan-color": PLAN_COLORS[index % PLAN_COLORS.length],
+                    } as CSSProperties
+                  }
                 >
                   {plan.tag && (
-                    <div className="absolute left-1/2 top-[-16px] -translate-x-1/2 whitespace-nowrap rounded-[5px] bg-[#f57c16] px-[11px] py-[4px] text-[14px] font-normal leading-[25px] text-white">
+                    <div
+                      className="absolute left-1/2 top-[-16px] -translate-x-1/2 whitespace-nowrap rounded-[5px] px-[11px] py-[4px] text-[14px] font-normal leading-[25px] text-white"
+                      style={{
+                        backgroundColor:
+                          TAG_COLORS[plan.tag.trim().toUpperCase()] ??
+                          DEFAULT_TAG_COLOR,
+                      }}
+                    >
                       {plan.tag.toUpperCase()}
                     </div>
                   )}
