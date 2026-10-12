@@ -222,7 +222,7 @@ export default function ContactUs() {
             </div>
 
             {/* Right side Dark Contact Info Card */}
-            <div className="flex w-full flex-col justify-between sm:py-6 rounded-sm bg-[#4a5f87] px-8 text-white shadow-[0_5px_25px_rgba(0,0,0,0.05)] sm:p-2 lg:min-h-[600px] lg:w-[28%]">
+            <div className="flex w-full flex-col justify-evenly rounded-sm bg-[#4a5f87] px-4 py-4 text-white shadow-[0_5px_25px_rgba(0,0,0,0.05)] sm:px-2 lg:min-h-[600px] lg:w-[28%]">
               {/* Contact 1 */}
               <div className="flex flex-col items-center text-center">
                 <div className="mb-2 text-white/90">
@@ -258,7 +258,7 @@ export default function ContactUs() {
                 </p>
               </div>
 
-              <hr className="my-6 border-t border-white" />
+              <hr className="my-0 w-full border-t border-white/70" />
 
               {/* Contact 2 */}
               <div className="flex flex-col items-center text-center">
@@ -295,7 +295,7 @@ export default function ContactUs() {
                 </p>
               </div>
 
-              <hr className="my-6 border-t border-white" />
+              <hr className="my-0 w-full border-t border-white/70" />
 
               {/* Secretariat Office */}
               <div className="flex flex-col items-center text-center">
