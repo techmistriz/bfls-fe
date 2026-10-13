@@ -10,13 +10,14 @@ import type { Metadata } from "next";
 
 const summitTitle =
   "The Lex Witness 9th Annual Banking & Finance Legal Summit 2026";
+const summitDescription = "20TH NOVEMBER 2026, TAJ SANTACRUZ, MUMBAI";
 
 export const metadata: Metadata = {
   title: summitTitle,
-  description: summitTitle,
+  description: summitDescription,
   openGraph: {
     title: summitTitle,
-    description: summitTitle,
+    description: summitDescription,
     type: "website",
     url: "https://bfls.in/",
     siteName: "The Lex Witness",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: summitTitle,
-    description: summitTitle,
+    description: summitDescription,
   },
 };
 
