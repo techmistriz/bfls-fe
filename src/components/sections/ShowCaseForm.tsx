@@ -6,11 +6,14 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 import { submitShowcaseForm } from "@/src/services/showcase.service";
 import type { ShowcaseFormValues } from "@/src/types/showcase.type";
+import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
+import { FORM_TYPES } from "@/src/config/showcase.config";
+import { isAxiosError } from "axios";
 
 // The showcase API stores every site form in one table, keyed by form_type.
 // BFLS is event type 3 there (per the backend team).
-const SHOWCASE_EVENT_TYPE_ID = "3";
-const FORM_TYPE = "Showcase";
+const SHOWCASE_EVENT_TYPE_ID = APP_EVENT_TYPE;
+const FORM_TYPE = FORM_TYPES.SHOWCASE;
 
 const INPUT_CLASS =
   "h-[54px] w-full rounded-[8px] border border-[#d6dbe3] bg-white px-5 text-[16px] text-[#1e293b] outline-none transition-colors placeholder:text-[#6b7280] focus:border-[#f58216] disabled:opacity-60 font-poppins";
@@ -60,10 +63,20 @@ export default function ShowCaseForm() {
           response.message || "Something went wrong. Please try again.",
         );
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Showcase submission failed:", error);
+
       setStatus("error");
-      setStatusMessage("Something went wrong. Please try again.");
+
+      if (isAxiosError<{ status: boolean; message: string }>(error)) {
+        const backendMessage = error.response?.data?.message;
+
+        setStatusMessage(
+          backendMessage || "Something went wrong. Please try again.",
+        );
+      } else {
+        setStatusMessage("Something went wrong. Please try again.");
+      }
     }
   };
 
@@ -190,17 +203,24 @@ export default function ShowCaseForm() {
               {isSubmitting ? "Submitting..." : "Submit Interest"}
             </button>
 
-            {(fieldError || status !== "idle") && (
+            {status !== "idle" ? (
               <p
                 role={status === "success" ? "status" : "alert"}
                 className={`text-center text-[14px] font-semibold ${
-                  !fieldError && status === "success"
-                    ? "text-green-600"
-                    : "text-red-600"
+                  status === "success" ? "text-green-600" : "text-red-600"
                 }`}
               >
-                {fieldError || statusMessage}
+                {statusMessage}
               </p>
+            ) : (
+              fieldError && (
+                <p
+                  role="alert"
+                  className="text-center text-[14px] font-semibold text-red-600"
+                >
+                  {fieldError}
+                </p>
+              )
             )}
           </form>
         </div>

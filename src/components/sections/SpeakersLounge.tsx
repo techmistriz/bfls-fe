@@ -5,11 +5,14 @@ import { ArrowRight, Handshake, Mic, Users } from "lucide-react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 import { submitShowcaseForm } from "@/src/services/showcase.service";
+import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
+import { FORM_TYPES } from "@/src/config/showcase.config";
+import { isAxiosError } from "axios";
 
 // The showcase API stores every site form in one table, keyed by form_type.
 // BFLS is event type 3 there (per the backend team).
-const SHOWCASE_EVENT_TYPE_ID = "3";
-const FORM_TYPE = "Speaker Lounge";
+const SHOWCASE_EVENT_TYPE_ID = APP_EVENT_TYPE;
+const FORM_TYPE = FORM_TYPES.SPEAKER_LOUNGE;
 
 const FIELDS = [
   {
@@ -172,10 +175,45 @@ export default function SpeakersLounge() {
           response.message || "Something went wrong. Please try again.",
         );
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Speaker interest failed:", error);
+
       setStatus("error");
-      setStatusMessage("Something went wrong. Please try again.");
+
+      if (isAxiosError(error)) {
+        const responseData: unknown = error.response?.data;
+
+        if (
+          typeof responseData === "object" &&
+          responseData !== null &&
+          "message" in responseData &&
+          typeof responseData.message === "string"
+        ) {
+          setStatusMessage(responseData.message);
+        } else if (
+          typeof responseData === "object" &&
+          responseData !== null &&
+          "errors" in responseData &&
+          typeof responseData.errors === "object" &&
+          responseData.errors !== null
+        ) {
+          const firstError = Object.values(responseData.errors).flat()[0];
+
+          setStatusMessage(
+            typeof firstError === "string"
+              ? firstError
+              : "Please check your input and try again.",
+          );
+        } else {
+          setStatusMessage("Something went wrong. Please try again.");
+        }
+      } else {
+        setStatusMessage(
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again.",
+        );
+      }
     } finally {
       setIsSubmitting(false);
     }

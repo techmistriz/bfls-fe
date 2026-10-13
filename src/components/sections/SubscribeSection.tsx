@@ -4,10 +4,11 @@ import { type FormEvent, useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 import { subscribeToNewsletter } from "@/src/services/newsletter.service";
+import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
 
 // The lead-form APIs use BFLS event type 3 (per the backend team), not the
 // APP_EVENT_TYPE used for fetching events.
-const BFLS_EVENT_TYPE_ID = "3";
+const BFLS_EVENT_TYPE_ID = APP_EVENT_TYPE;
 
 export default function SubscribeSection() {
   const { executeRecaptcha } = useGoogleReCaptcha();

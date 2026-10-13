@@ -86,7 +86,7 @@ export default function AboutSummit() {
                 2026
               </p>
               <p className="mt-1 font-archivo text-[12px] font-semibold uppercase tracking-[0.12em]">
-                BFSI Legal Summit
+                BFLS Legal Summit
               </p>
             </div>
           </div>
