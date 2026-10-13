@@ -5,7 +5,7 @@ export interface ShowcaseFormValues {
 }
 
 export interface ShowcasePayload {
-  event_type_id: string;
+  event_type_id: number;
   form_type?: string;
   name: string;
   email: string;
