@@ -7,9 +7,19 @@ import Image from "next/image";
 import { usePastEditions } from "@/src/hooks/usePastEditions";
 import { getPastEditionImageUrl } from "@/src/utils/image";
 import { PageBanner } from "@/src/components/layout/PageBanner";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export default function PastEditionsBanner() {
   const { editions: yearGroups, loading } = usePastEditions();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
 
   const editions = yearGroups.flatMap((yearGroup) => yearGroup.events);
 

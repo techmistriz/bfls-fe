@@ -1,8 +1,42 @@
-import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
-import { EVENT_CONFIG } from "@/src/config/event";
+"use client";
+
+import type { MouseEvent } from "react";
 import Link from "next/link";
 
+import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
+import { EVENT_CONFIG } from "@/src/config/event";
+
+const HEADER_HEIGHT = 88;
+
 export default function ContactCTA() {
+  const handleNavigationClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (!href.startsWith("/#") || window.location.pathname !== "/") {
+      return;
+    }
+
+    const sectionId = href.split("#")[1];
+    const target = document.getElementById(sectionId);
+
+    if (!target) return;
+
+    event.preventDefault();
+
+    if (window.location.hash !== `#${sectionId}`) {
+      window.history.pushState(null, "", href);
+    }
+
+    const targetPosition =
+      target.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+
+    window.scrollTo({
+      top: Math.max(0, targetPosition),
+      behavior: "smooth",
+    });
+  };
+
   const actionButton = EVENT_CONFIG.registrationOpen
     ? {
         label: "REGISTER NOW",
@@ -43,6 +77,9 @@ export default function ContactCTA() {
             {/* Register / Summit Gallery */}
             <a
               href={actionButton.href}
+              onClick={(event) =>
+                handleNavigationClick(event, actionButton.href)
+              }
               className="group inline-flex h-[64px] w-full max-w-[260px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[16px] font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:w-auto sm:min-w-[220px]"
             >
               <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
@@ -52,6 +89,7 @@ export default function ContactCTA() {
             {/* Agenda */}
             <Link
               href="/#agenda"
+              onClick={(event) => handleNavigationClick(event, "/#agenda")}
               className="group inline-flex h-[64px] w-full max-w-[260px] items-center justify-center gap-2 rounded-[6px]  border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[16px] font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:w-auto sm:min-w-[220px]"
             >
               <svg
@@ -84,6 +122,7 @@ export default function ContactCTA() {
             {/* Speakers */}
             <Link
               href="/#speakers"
+              onClick={(event) => handleNavigationClick(event, "/#speakers")}
               className="group inline-flex h-[64px] w-full max-w-[260px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[16px] font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:w-auto sm:min-w-[220px]"
             >
               <i
