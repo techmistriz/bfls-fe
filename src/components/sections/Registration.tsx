@@ -57,7 +57,7 @@ export default function Registration() {
     EVENT_CONFIG.registrationOpen && (
       <section
         id="register"
-        className="w-full scroll-mt-15 bg-[#f7f7f7] px-4 py-12 sm:px-6 lg:px-10"
+        className="w-full scroll-mt-[88px] bg-[#f7f7f7] px-4 py-12 sm:px-6 lg:px-10"
       >
         <div className="mx-auto max-w-[1110px]">
           <div className="mb-20 text-center">

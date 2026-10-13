@@ -24,6 +24,34 @@ export default function Banner() {
 
   const location = [venue, city].filter(Boolean).join(", ").toUpperCase();
 
+  const handleNavigationClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (!href.startsWith("/#") || window.location.pathname !== "/") {
+      return;
+    }
+
+    const sectionId = href.split("#")[1];
+    const target = document.getElementById(sectionId);
+
+    if (!target) return;
+
+    event.preventDefault();
+
+    if (window.location.hash !== `#${sectionId}`) {
+      window.history.pushState(null, "", href);
+    }
+
+    const targetPosition =
+      target.getBoundingClientRect().top + window.scrollY - 88;
+
+    window.scrollTo({
+      top: Math.max(0, targetPosition),
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="relative mt-[88px] flex min-h-[664px] w-full items-center justify-center overflow-hidden max-lg:min-h-[620px] max-md:min-h-[680px] max-md:py-[60px] max-sm:min-h-[700px] max-sm:py-[50px]">
       {/* Background - loads immediately */}
@@ -148,8 +176,11 @@ export default function Banner() {
                 {EVENT_CONFIG.registrationOpen && (
                   <>
                     {/* Register */}
-                    <a
-                      href="#register"
+                    <Link
+                      href="/#register"
+                      onClick={(event) =>
+                        handleNavigationClick(event, "/#register")
+                      }
                       className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
                     >
                       <svg
@@ -164,11 +195,14 @@ export default function Banner() {
                         <path d="M6 2h12v5H6V2Zm-2 7h16a2 2 0 0 1 2 2v8h-4v3H6v-3H2v-8a2 2 0 0 1 2-2Zm4 11h8v-5H8v5Zm10-8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
                       </svg>
                       <span>Register Now</span>
-                    </a>
+                    </Link>
 
                     {/* Agenda */}
                     <Link
-                      href="#agenda"
+                      href="/#agenda"
+                      onClick={(event) =>
+                        handleNavigationClick(event, "/#agenda")
+                      }
                       className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
                     >
                       <svg
@@ -202,7 +236,10 @@ export default function Banner() {
 
                 {/* Speakers: always visible */}
                 <Link
-                  href="#speakers"
+                  href="/#speakers"
+                  onClick={(event) =>
+                    handleNavigationClick(event, "/#speakers")
+                  }
                   className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
                 >
                   <i
