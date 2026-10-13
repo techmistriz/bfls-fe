@@ -7,6 +7,7 @@ import AboutSummit from "@/src/components/sections/AboutSummit";
 import Agenda from "@/src/components/sections/Agenda";
 import Registration from "../components/sections/Registration";
 import AudienceStats from "@/src/components/sections/AudienceStats";
+import SpeakersLounge from "@/src/components/sections/SpeakersLounge";
 import Speakers from "@/src/components/sections/Speakers";
 import ContactCTA from "@/src/components/sections/ContactCTA";
 import Sponsors from "@/src/components/sections/Sponsors";
@@ -117,6 +118,7 @@ export default function Home() {
       <Agenda />
       <Registration />
       <AudienceStats />
+      <SpeakersLounge />
       <Speakers />
       <ContactCTA />
       <Sponsors />
