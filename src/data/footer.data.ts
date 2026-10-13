@@ -22,13 +22,13 @@ export const contactPeople: ContactPerson[] = [
   {
     name: "Bhupinder Kaur",
     role: "Sr. Manager – Brand Innovation",
-    email: "bhupinder@witnsslive.in",
+    email: "bhupinder@witnesslive.in",
     phone: "+91-9654155065",
   },
   {
     name: "Neelima Maheshwari",
     role: "Sr. Manager – Brand Innovation",
-    email: "neelima.maheshwari@witnsslive.in",
+    email: "neelima.maheshwari@witnesslive.in",
     phone: "+91-8800841600",
   },
 ];
