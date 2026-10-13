@@ -73,9 +73,7 @@ export default function EarlyBirdInterest() {
 
       if (response.status) {
         setStatus("success");
-        setStatusMessage(
-          response.message || "Thank you! We'll be in touch shortly.",
-        );
+        setStatusMessage("Thank you for your interest");
         form.reset();
       } else {
         setStatus("error");
