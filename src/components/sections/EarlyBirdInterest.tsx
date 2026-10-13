@@ -5,8 +5,11 @@ import Image from "next/image";
 import { ArrowRight, Mail, Phone, User } from "lucide-react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
-import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
-import { registerInterest } from "@/src/services/interest.service";
+import { submitShowcaseForm } from "@/src/services/showcase.service";
+
+// Lead forms share the /showcase endpoint; form_type tells them apart.
+const SHOWCASE_EVENT_TYPE_ID = "3";
+const FORM_TYPE = "Registration";
 
 const FIELDS = [
   {
@@ -59,8 +62,9 @@ export default function EarlyBirdInterest() {
     try {
       const captcha = await executeRecaptcha("register_interest");
 
-      const response = await registerInterest({
-        event_type_id: String(APP_EVENT_TYPE),
+      const response = await submitShowcaseForm({
+        event_type_id: SHOWCASE_EVENT_TYPE_ID,
+        form_type: FORM_TYPE,
         name: value("name"),
         email: value("email"),
         phone: value("phone"),
