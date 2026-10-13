@@ -1,5 +1,6 @@
 import { GalleryIcon } from "@/src/components/icons/GalleryIcon";
 import { EVENT_CONFIG } from "@/src/config/event";
+import Link from "next/link";
 
 export default function ContactCTA() {
   const actionButton = EVENT_CONFIG.registrationOpen
@@ -38,13 +39,60 @@ export default function ContactCTA() {
             financial services, insurance, or fintech, this summit promises
             invaluable insights and networking opportunities.
           </p>
-          <a
-            href={actionButton.href}
-            className="group mt-15 inline-flex h-[64px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[14px] font-medium text-white transition-all duration-300 hover:border-[#EF7F1B] hover:bg-[#fff] hover:text-[#EF7F1B] hover:shadow-lg max-md:mt-6 max-md:h-[58px] max-md:px-6 max-md:text-[14px] max-sm:mx-auto max-sm:mt-6 max-sm:flex max-sm:h-[54px] max-sm:w-[65%] max-sm:justify-center max-sm:px-5 max-sm:text-[14px]"
-          >
-            <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
-            <span>{actionButton.label}</span>
-          </a>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5 uppercase">
+            {/* Register / Summit Gallery */}
+            <a
+              href={actionButton.href}
+              className="group inline-flex h-[64px] w-full max-w-[260px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[16px] font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:w-auto sm:min-w-[220px]"
+            >
+              <GalleryIcon className="shrink-0 text-white transition-colors duration-300 group-hover:text-[#EF7F1B]" />
+              <span>{actionButton.label}</span>
+            </a>
+
+            {/* Agenda */}
+            <Link
+              href="/#agenda"
+              className="group inline-flex h-[64px] w-full max-w-[260px] items-center justify-center gap-2 rounded-[6px]  border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[16px] font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:w-auto sm:min-w-[220px]"
+            >
+              <svg
+                aria-hidden="true"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="shrink-0"
+              >
+                <path
+                  d="M8 2v4M16 2v4M3.5 9h17M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M8 13h2M8 17h6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>Agenda</span>
+            </Link>
+
+            {/* Speakers */}
+            <Link
+              href="/#speakers"
+              className="group inline-flex h-[64px] w-full max-w-[260px] items-center justify-center gap-2 rounded-[6px] border-2 border-[#EF7F1B] bg-[#EF7F1B] px-[27px] font-archivo text-[16px] font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:w-auto sm:min-w-[220px]"
+            >
+              <i
+                aria-hidden="true"
+                className="fas fa-microphone shrink-0 text-[20px]"
+              />
+              <span>Speakers</span>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

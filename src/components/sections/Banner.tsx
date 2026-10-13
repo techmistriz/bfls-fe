@@ -166,9 +166,9 @@ export default function Banner() {
                       <span>Register Now</span>
                     </a>
 
-                    {/* Past Editions */}
+                    {/* Agenda */}
                     <Link
-                      href="/past-editions"
+                      href="#agenda"
                       className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
                     >
                       <svg
@@ -181,35 +181,35 @@ export default function Banner() {
                         className="shrink-0"
                       >
                         <path
-                          d="M14 4h6v6M20 4 10 14"
+                          d="M8 2v4M16 2v4M3.5 9h17M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"
                           stroke="currentColor"
-                          strokeWidth="3"
+                          strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
                         <path
-                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                          d="M8 13h2M8 17h6"
                           stroke="currentColor"
-                          strokeWidth="3"
+                          strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
                       </svg>
-                      <span>Past Editions</span>
+                      <span>Agenda</span>
                     </Link>
                   </>
                 )}
 
-                {/* Contact Us: always visible */}
+                {/* Speakers: always visible */}
                 <Link
-                  href="/contact"
+                  href="#speakers"
                   className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
                 >
                   <i
                     aria-hidden="true"
-                    className="fas fa-download text-[20px] transition-colors duration-300 group-hover:text-[#EF7F1B]"
+                    className="fas fa-microphone shrink-0 text-[20px]"
                   />
-                  <span>Contact Us</span>
+                  <span>Speakers</span>
                 </Link>
               </>
             )}
