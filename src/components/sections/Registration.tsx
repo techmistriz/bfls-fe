@@ -9,6 +9,7 @@ import { useEvents } from "@/src/hooks/useEvents";
 import { useRegistrationPlans } from "@/src/hooks/useRegistrationPlans";
 import { addToCart } from "@/src/services/cart.service";
 import { EVENT_CONFIG } from "@/src/config/event";
+import EarlyBirdInterest from "@/src/components/sections/EarlyBirdInterest";
 
 const PLAN_COLORS = ["#b9e3df", "#ebc9ec", "#9bc9fc", "#aaef92"];
 
@@ -73,6 +74,8 @@ export default function Registration() {
 
             <div className="mx-auto mt-[18px] h-[3px] w-[100px] bg-[#EF7F1B] sm:mt-[22px] sm:mb-[6px] sm:w-[120px]" />
           </div>
+
+          <EarlyBirdInterest />
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {loading ? (
