@@ -5,7 +5,7 @@ import { ArrowRight, Handshake, Mic, Users } from "lucide-react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
-import { registerSpeakerInterest } from "@/src/services/speakerInterest.service";
+import { submitShowcaseForm } from "@/src/services/showcase.service";
 
 const FIELDS = [
   {
@@ -149,7 +149,7 @@ export default function SpeakersLounge() {
     try {
       const captcha = await executeRecaptcha("speaker_interest");
 
-      const response = await registerSpeakerInterest({
+      const response = await submitShowcaseForm({
         event_type_id: String(APP_EVENT_TYPE),
         name: value("name"),
         email: value("email"),
