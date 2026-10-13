@@ -73,10 +73,10 @@ export default function ShowCaseForm() {
   return (
     <section className="relative w-full overflow-hidden bg-[#0b1430]">
       <div
-        className="absolute inset-0 scale-110 bg-cover bg-center bg-no-repeat blur-[6px]"
-        style={{ backgroundImage: "url('/images/65-scaled.jpg')" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/showcase_bg.webp')" }}
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,14,38,0.82)_0%,rgba(10,18,48,0.6)_55%,rgba(10,18,48,0.4)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,14,38,0.6)_0%,rgba(10,18,48,0.3)_55%,rgba(10,18,48,0.1)_100%)]" />
 
       <div className="pointer-events-none absolute left-0 top-[18%] hidden h-[200px] w-[150px] opacity-60 sm:block">
         <div className="dot-pattern" />
