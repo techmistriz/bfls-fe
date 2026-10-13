@@ -4,8 +4,12 @@ import { type FormEvent, useState } from "react";
 import { ArrowRight, Handshake, Mic, Users } from "lucide-react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
-import { APP_EVENT_TYPE } from "@/src/config/eventType.config";
 import { submitShowcaseForm } from "@/src/services/showcase.service";
+
+// The showcase API stores every site form in one table, keyed by form_type.
+// BFLS is event type 3 there (per the backend team).
+const SHOWCASE_EVENT_TYPE_ID = "3";
+const FORM_TYPE = "Speaker Lounge";
 
 const FIELDS = [
   {
@@ -150,7 +154,8 @@ export default function SpeakersLounge() {
       const captcha = await executeRecaptcha("speaker_interest");
 
       const response = await submitShowcaseForm({
-        event_type_id: String(APP_EVENT_TYPE),
+        event_type_id: SHOWCASE_EVENT_TYPE_ID,
+        form_type: FORM_TYPE,
         name: value("name"),
         email: value("email"),
         phone: value("phone"),
