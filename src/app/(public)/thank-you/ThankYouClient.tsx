@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ThankYouData {
   order: {
@@ -17,6 +17,14 @@ interface ThankYouData {
 }
 
 export default function ThankYouClient() {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, []);
+
   const [data] = useState<ThankYouData | null>(() => {
     if (typeof window === "undefined") {
       return null;
