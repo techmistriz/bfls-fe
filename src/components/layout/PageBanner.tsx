@@ -31,7 +31,7 @@ export function PageBanner({
           </h1>
 
           {subtitle && (
-            <p className="mt-1 font-archivo text-[18px] font-medium text-white md:text-[17px]">
+            <p className="mt-1 font-archivo text-[18px] font-medium leading-5 text-white md:text-[17px]">
               {subtitle}
             </p>
           )}

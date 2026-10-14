@@ -109,7 +109,7 @@ export default function SubscribeSection() {
           Get Involved
         </p>
 
-        <h2 className="mb-[10px] font-poppins text-[38px] font-bold leading-[1.15] text-[#14245c] max-md:text-[30px] max-sm:text-[26px]">
+        <h2 className="mb-[10px] font-poppins text-[38px] font-bold leading-[1.15] text-[#566a8f] max-md:text-[30px] max-sm:text-[26px]">
           As a Speaker, Sponsor or a Delegate
         </h2>
 

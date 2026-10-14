@@ -36,7 +36,7 @@ export default function PastEditionsBanner() {
 
       {/* --------- PREVIOUS EDITIONS --------- */}
 
-      <section className="relative overflow-hidden bg-white py-[80px] md:py-[75px]">
+      <section className="relative overflow-hidden bg-white sm:py-[80px] py-[40px] md:py-[75px]">
         {/* Left Circle */}
 
         <div className="absolute left-[0px] top-[65px] hidden md:block">
@@ -63,14 +63,12 @@ export default function PastEditionsBanner() {
           {/* Heading */}
 
           <div className="mb-15 text-center">
-            <p className="mb-1 font-poppins text-[32px] font-semibold leading-tight text-[#EF7F1B] md:text-[32px]">
-              Banking &amp; Finance Legal Summit
+            <p className="mb-4 font-poppins text-[32px] font-semibold leading-tight text-[#EF7F1B] md:text-[32px]">
+              The Lexwitness Banking &amp; Finance Legal Summit
             </p>
 
-            <h2 className="mx-auto  font-poppins text-[30px] font-bold leading-[53.1px] tracking-[-1px] text-[#566a8f]">
-              Here&apos;s a quick look at
-              <br />
-              our previous editions.
+            <h2 className="mx-auto  font-poppins text-[22px] sm:text[30px] font-bold sm:leading-[53.1px] tracking-[-1px] text-[#566a8f]">
+              Here&apos;s a quick look at our previous editions.
             </h2>
           </div>
 
