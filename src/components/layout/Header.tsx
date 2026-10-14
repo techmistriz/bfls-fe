@@ -22,6 +22,23 @@ export default function Header() {
   ) => {
     closeMenu();
 
+    // Logo: scroll fully to the top on the homepage.
+    if (href === "/" && window.location.pathname === "/") {
+      event.preventDefault();
+
+      if (window.location.hash) {
+        window.history.replaceState(null, "", "/");
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
+      return;
+    }
+
+    // Handle homepage section navigation.
     if (!href.startsWith("/#") || window.location.pathname !== "/") {
       return;
     }

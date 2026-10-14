@@ -89,41 +89,88 @@ export default function Sponsors() {
         )}
 
         {!loading && !error && sponsors.length > 0 && (
-          <div className="mx-auto mt-[55px] grid max-w-[1130px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {sponsors.map((item, index) => {
-              const sponsor = item.sponsor;
-              return (
-                <div
-                  key={item.id}
-                  className="group relative flex h-[156px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10"
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                >
-                  <p className="absolute left-0 right-0 top-[11px] text-center text-[16px] font-semibold text-[#777]">
-                    {sponsor.sponsor_type}
-                  </p>
+          <div className="mx-auto mt-[55px] max-w-[1130px]">
+            {/* First Sponsor - Centered Full Row */}
+            {sponsors.length > 0 && (
+              <div className="mb-0 flex justify-center">
+                {(() => {
+                  const item = sponsors[0];
+                  const sponsor = item.sponsor;
 
-                  <div className="relative mt-[12px] h-[75px] w-[180px]">
-                    {sponsor.image && (
-                      <a
-                        href={sponsor.website_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Visit ${sponsor.title} website`}
-                        className="block h-full w-full"
-                      >
-                        <Image
-                          src={getSponsorImageUrl(sponsor.image)}
-                          alt={sponsor.title}
-                          fill
-                          sizes="170px"
-                          className="cursor-pointer object-contain "
-                        />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+                  return (
+                    <div
+                      key={item.id}
+                      className="group relative flex h-[175px] w-full max-w-[420px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10"
+                    >
+                      <p className="absolute left-0 right-0 top-[11px] text-center text-[16px] font-semibold text-[#777]">
+                        {sponsor.sponsor_type}
+                      </p>
+
+                      <div className="relative mt-[12px] h-[126px] w-[279px]">
+                        {sponsor.image && (
+                          <a
+                            href={sponsor.website_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Visit ${sponsor.title} website`}
+                            className="block h-full w-full"
+                          >
+                            <Image
+                              src={getSponsorImageUrl(sponsor.image)}
+                              alt={sponsor.title}
+                              fill
+                              sizes="220px"
+                              className="cursor-pointer object-contain"
+                            />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+            )}
+
+            {/* Remaining Sponsors - Existing Grid */}
+            {sponsors.length > 1 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                {sponsors.slice(1).map((item, index) => {
+                  const sponsor = item.sponsor;
+
+                  return (
+                    <div
+                      key={item.id}
+                      className="group relative flex h-[156px] flex-col items-center justify-center border border-[#e1e8f1] bg-white px-4 transition-all duration-300 hover:z-10"
+                      style={{ animationDelay: `${(index + 1) * 0.15}s` }}
+                    >
+                      <p className="absolute left-0 right-0 top-[11px] text-center text-[16px] font-semibold text-[#777]">
+                        {sponsor.sponsor_type}
+                      </p>
+
+                      <div className="relative mt-[12px] h-[75px] w-[180px]">
+                        {sponsor.image && (
+                          <a
+                            href={sponsor.website_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Visit ${sponsor.title} website`}
+                            className="block h-full w-full"
+                          >
+                            <Image
+                              src={getSponsorImageUrl(sponsor.image)}
+                              alt={sponsor.title}
+                              fill
+                              sizes="170px"
+                              className="cursor-pointer object-contain"
+                            />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
 
