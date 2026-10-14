@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FormProvider, useForm, useWatch } from "react-hook-form";
+import { Controller, FormProvider, useForm, useWatch } from "react-hook-form";
 
 import { AttendeeDetails, type CheckoutFormData } from "./AttendeeDetails";
 
@@ -96,7 +96,27 @@ export function BillingDetails({
         setLoadingCountries(true);
 
         const response = await getCountries();
-        setCountries(response.data);
+        const countryList = response.data;
+
+        setCountries(countryList);
+
+        const india = response.data.find(
+          (country: LocationItem) =>
+            country.name.trim().toLowerCase() === "india",
+        );
+
+        if (india) {
+          setValue("country", String(india.id), {
+            shouldValidate: true,
+            shouldDirty: false,
+          });
+        }
+
+        if (india) {
+          setValue("country", String(india.id), {
+            shouldValidate: true,
+          });
+        }
       } catch (error) {
         console.error("Failed to fetch countries:", error);
         setCountries([]);
@@ -105,8 +125,8 @@ export function BillingDetails({
       }
     };
 
-    fetchCountries();
-  }, []);
+    void fetchCountries();
+  }, [setValue]);
 
   useEffect(() => {
     if (!selectedCountry) {
@@ -267,11 +287,11 @@ export function BillingDetails({
         </div>
 
         <FormField
-          label="Firm Name"
+          label="Organization Name"
           required
-          placeholder="Enter firm name"
+          placeholder="Enter Organization name"
           {...register("firm_name", {
-            required: "Firm name is required",
+            required: "Organization name is required",
           })}
           error={errors.firm_name?.message}
         />
@@ -303,21 +323,30 @@ export function BillingDetails({
           )}
         </div>
 
-        <SelectField
-          label="Country / Region"
-          required
-          {...register("country", {
-            required: "Country is required",
-            onChange: () => {
-              setValue("state", "");
-              setValue("city", "");
-              setStates([]);
-              setCities([]);
-            },
-          })}
-          options={countryOptions}
-          error={errors.country?.message}
-          disabled={loadingCountries || loading}
+        <Controller
+          name="country"
+          control={control}
+          rules={{ required: "Country is required" }}
+          render={({ field }) => (
+            <SelectField
+              label="Country / Region"
+              required
+              name={field.name}
+              ref={field.ref}
+              value={field.value}
+              onBlur={field.onBlur}
+              onChange={(event) => {
+                field.onChange(event);
+                setValue("state", "");
+                setValue("city", "");
+                setStates([]);
+                setCities([]);
+              }}
+              options={countryOptions}
+              error={errors.country?.message}
+              disabled={loadingCountries || loading}
+            />
+          )}
         />
 
         <div className="grid grid-cols-1 gap-[16px] sm:grid-cols-3 sm:gap-[12px]">
