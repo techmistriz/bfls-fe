@@ -36,8 +36,6 @@ export default function ThankYouClient() {
     }
   });
 
-
-
   if (!data) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#f7f8fa] px-4">
