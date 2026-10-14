@@ -1,6 +1,5 @@
 "use client";
 
-import jsPDF from "jspdf";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -37,86 +36,7 @@ export default function ThankYouClient() {
     }
   });
 
-  const handleDownloadBill = () => {
-    if (!data) {
-      return;
-    }
 
-    const doc = new jsPDF();
-
-    const pageWidth = doc.internal.pageSize.getWidth();
-
-    doc.setFontSize(20);
-    doc.setFont("helvetica", "bold");
-    doc.text("BANKING & FINANCE LEGAL SUMMIT", pageWidth / 2, 25, {
-      align: "center",
-    });
-
-    doc.setFontSize(16);
-    doc.text("PAYMENT RECEIPT", pageWidth / 2, 38, {
-      align: "center",
-    });
-
-    doc.setLineWidth(0.5);
-    doc.line(20, 45, pageWidth - 20, 45);
-
-    doc.setFontSize(11);
-    doc.setFont("helvetica", "normal");
-
-    let y = 60;
-
-    const addRow = (label: string, value: string) => {
-      doc.setFont("helvetica", "bold");
-      doc.text(label, 25, y);
-
-      doc.setFont("helvetica", "normal");
-      doc.text(value, 75, y);
-
-      y += 10;
-    };
-
-    addRow("Order Number", data.order.orderNumber);
-    addRow("Payment ID", data.order.orderId);
-    addRow("Payment Status", "Paid");
-    addRow(
-      "Amount",
-      `${data.order.currency} ${data.order.amount.toLocaleString("en-IN")}`,
-    );
-
-    y += 8;
-
-    doc.setLineWidth(0.3);
-    doc.line(20, y, pageWidth - 20, y);
-
-    y += 15;
-
-    doc.setFontSize(14);
-    doc.setFont("helvetica", "bold");
-    doc.text("Customer Details", 25, y);
-
-    y += 12;
-
-    doc.setFontSize(11);
-    doc.setFont("helvetica", "normal");
-
-    addRow("Name", data.user.name);
-    addRow("Email", data.user.email);
-
-    y += 15;
-
-    doc.setLineWidth(0.3);
-    doc.line(20, y, pageWidth - 20, y);
-
-    y += 15;
-
-    doc.setFontSize(10);
-    doc.setFont("helvetica", "normal");
-    doc.text("Thank you for your registration.", pageWidth / 2, y, {
-      align: "center",
-    });
-
-    doc.save(`${data.order.orderNumber}-bill.pdf`);
-  };
 
   if (!data) {
     return (
@@ -176,14 +96,6 @@ export default function ThankYouClient() {
           </div>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <button
-              type="button"
-              onClick={handleDownloadBill}
-              className="inline-flex h-[42px] items-center justify-center rounded-[4px] border border-[#d9232e] px-6 text-sm font-semibold text-[#d9232e] transition-colors hover:bg-[#d9232e] hover:text-white"
-            >
-              Download Bill
-            </button>
-
             <Link
               href="/"
               className="inline-flex h-[42px] items-center justify-center rounded-[4px] bg-[#d9232e] px-6 text-sm font-semibold text-white transition-opacity hover:opacity-90"
