@@ -64,7 +64,7 @@ export default function PastEditionsBanner() {
 
           <div className="mb-15 text-center">
             <p className="mb-4 font-poppins text-[32px] font-semibold leading-tight text-[#EF7F1B] md:text-[32px]">
-              The Lexwitness Banking &amp; Finance Legal Summit
+              The Lex Witness Banking &amp; Finance Legal Summit
             </p>
 
             <h2 className="mx-auto  font-poppins text-[22px] sm:text[30px] font-bold sm:leading-[53.1px] tracking-[-1px] text-[#566a8f]">
