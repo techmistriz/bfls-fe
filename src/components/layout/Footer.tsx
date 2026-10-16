@@ -157,7 +157,7 @@ export default function Footer() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="flex min-h-10 w-[180px] items-center justify-center rounded border border-[#f4f4f4] px-3 text-sm font-bold hover:border-[#f58220] hover:bg-[#f58220] hover:text-white max-sm:w-full max-sm:max-w-[250px]"
+                className="flex min-h-10 w-[200px] shrink-0 items-center justify-center rounded border border-[#f4f4f4] px-3 text-sm font-bold hover:border-[#f58220] hover:bg-[#f58220] hover:text-white"
               >
                 {item.label}
               </Link>
