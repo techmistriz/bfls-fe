@@ -1,6 +1,6 @@
 export const agendaContent = {
   subtitle: "Power Packed & Scintillating Discussions.",
-  title: "Panel Discussions, Focussed",
+  title: "Panel Discussions, Focussed ",
   titleSecondLine: "Presentation, Veteran Talks & More",
   fallbackEventTitle: "Banking & Finance Legal Summit",
 };
