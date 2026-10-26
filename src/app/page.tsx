@@ -6,6 +6,7 @@ import Banner from "@/src/components/sections/Banner";
 import AboutSummit from "@/src/components/sections/AboutSummit";
 import Agenda from "@/src/components/sections/Agenda";
 import Registration from "../components/sections/Registration";
+import SpecialDiscounts from "@/src/components/sections/SpecialDiscounts";
 import AudienceStats from "@/src/components/sections/AudienceStats";
 import SpeakersLounge from "@/src/components/sections/SpeakersLounge";
 import Speakers from "@/src/components/sections/Speakers";
@@ -117,6 +118,7 @@ export default function Home() {
       <AboutSummit />
       <Agenda />
       <Registration />
+      <SpecialDiscounts />
       <AudienceStats />
       <SpeakersLounge />
       <Speakers />
