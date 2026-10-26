@@ -81,7 +81,7 @@ export default function Footer() {
             </Link>
 
             <a
-              href="https://wa.link/zy0a8a"
+              href="https://api.whatsapp.com/send?phone=919899332111&text=Hi%2C%20I%27d%20Like%20to%20Know%20More%20About%20The%20Lex%20Witness%209th%20Annual%20Banking%20%26%20Finance%20Legal%20Summit%202026"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
