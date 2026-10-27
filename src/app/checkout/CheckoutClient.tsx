@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import axios from "axios";
 import { toast } from "react-hot-toast";
 
 import { useCart } from "@/src/hooks/useCart";
@@ -129,7 +130,11 @@ export default function CheckoutClient() {
               router.push("/thank-you");
             } catch (error) {
               console.error("Payment verification failed:", error);
-              toast.error("Payment verification failed.");
+              const apiMessage = axios.isAxiosError(error)
+                ? (error.response?.data as { message?: string } | undefined)
+                    ?.message
+                : undefined;
+              toast.error(apiMessage || "Payment verification failed.");
             } finally {
               setPaymentVerifying(false);
               setPaymentProcessing(false);
