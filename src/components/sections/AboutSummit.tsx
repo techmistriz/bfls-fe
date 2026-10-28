@@ -46,7 +46,7 @@ export default function AboutSummit() {
   // follows; otherwise the agenda leads and the gallery link follows.
   const [primaryAction, secondaryAction] = EVENT_CONFIG.registrationOpen
     ? [
-        { label: "REGISTER NOW", href: "/#register", showIcon: true },
+        { label: "REGISTER NOW", href: "/#delegate-plans", showIcon: true },
         agendaAction,
       ]
     : [
