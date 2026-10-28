@@ -28,8 +28,12 @@ export default function ContactCTA() {
       window.history.pushState(null, "", href);
     }
 
+    // Honour the target's own scroll-margin-top so it can clear the header
+    // plus anything that pokes out above it (e.g. plan tags).
+    const offset =
+      parseFloat(getComputedStyle(target).scrollMarginTop) || HEADER_HEIGHT;
     const targetPosition =
-      target.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+      target.getBoundingClientRect().top + window.scrollY - offset;
 
     window.scrollTo({
       top: Math.max(0, targetPosition),
@@ -40,7 +44,7 @@ export default function ContactCTA() {
   const actionButton = EVENT_CONFIG.registrationOpen
     ? {
         label: "REGISTER NOW",
-        href: "/#register",
+        href: "/#delegate-plans",
       }
     : {
         label: "SUMMIT GALLERY",

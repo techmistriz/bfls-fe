@@ -77,7 +77,12 @@ export default function Registration() {
 
           <EarlyBirdInterest />
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {/* "Register Now" buttons land here, on the plan boxes. The extra
+              margin over the 88px header keeps the plan tags in view. */}
+          <div
+            id="delegate-plans"
+            className="grid scroll-mt-[120px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          >
             {loading ? (
               [1, 2, 3, 4].map((item) => (
                 <div

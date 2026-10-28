@@ -43,8 +43,11 @@ export default function Banner() {
       window.history.pushState(null, "", href);
     }
 
+    // Honour the target's own scroll-margin-top so it can clear the header
+    // plus anything that pokes out above it (e.g. plan tags).
+    const offset = parseFloat(getComputedStyle(target).scrollMarginTop) || 88;
     const targetPosition =
-      target.getBoundingClientRect().top + window.scrollY - 88;
+      target.getBoundingClientRect().top + window.scrollY - offset;
 
     window.scrollTo({
       top: Math.max(0, targetPosition),
@@ -177,9 +180,9 @@ export default function Banner() {
                   <>
                     {/* Register */}
                     <Link
-                      href="/#register"
+                      href="/#delegate-plans"
                       onClick={(event) =>
-                        handleNavigationClick(event, "/#register")
+                        handleNavigationClick(event, "/#delegate-plans")
                       }
                       className="group inline-flex h-[54px] w-full max-w-[200px] items-center justify-center gap-2 rounded-[6px] border border-transparent bg-[#f58216] px-3 font-archivo text-[14px] font-bold uppercase text-white shadow-sm transition-all duration-300 hover:border-[#EF7F1B] hover:bg-white hover:text-[#EF7F1B] hover:shadow-lg sm:h-[60px] sm:w-auto sm:max-w-none sm:min-w-[178px] sm:px-6 sm:text-[16px]"
                     >
