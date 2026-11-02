@@ -35,10 +35,12 @@ export default function SpecialDiscounts() {
           <div className="mx-auto mt-[18px] h-[3px] w-[100px] bg-[#EF7F1B] sm:mt-[22px] sm:w-[120px]" />
 
           <ul className="mt-8 space-y-3">
-            {discounts.map((text) => (
+            {discounts.map((text, index) => (
               <li
                 key={text}
-                className="text-[15px] font-bold leading-[24px] text-[#222] sm:text-[17px]"
+                className={`text-[15px] font-bold leading-[24px] text-[#222] sm:text-[17px] ${
+                  index === 0 ? "line-through" : ""
+                }`}
               >
                 {text}
               </li>
