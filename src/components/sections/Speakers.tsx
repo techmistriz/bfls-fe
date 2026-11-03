@@ -68,50 +68,94 @@ export default function Speakers() {
           <div className="mx-auto mt-[17px] h-[3px] w-[96px] bg-[#f58216]" />
         </div>
 
-        <div className="mt-[60px] grid grid-cols-1 gap-y-[55px] sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-[45px] lg:gap-y-[62px]">
+        <div className="mt-[60px]">
           {loading ? (
             <SpeakersSkeleton />
           ) : error ? (
-            <p className="col-span-full text-center">{error}</p>
+            <p className="text-center">{error}</p>
           ) : speakers.length === 0 ? (
-            <p className="col-span-full text-center">No speakers available.</p>
+            <p className="text-center">No speakers available.</p>
           ) : (
-            speakers.map((speaker) => (
-              <div
-                key={speaker.id}
-                className="flex flex-col items-center text-center"
-              >
-                <div className="group relative h-[158px] w-[158px] overflow-hidden rounded-full sm:h-[160px] sm:w-[160px] lg:h-[200px] lg:w-[200px]">
-                  <Image
-                    src={getSpeakerImageUrl(speaker.image)}
-                    alt={speaker.name}
-                    fill
-                    sizes="160px"
-                    className="object-cover"
-                  />
+            <>
+              {/* First Speaker - Centered */}
+              <div className="mb-[55px] flex justify-center">
+                <div className="flex flex-col items-center text-center">
+                  <div className="group relative h-[158px] w-[158px] overflow-hidden rounded-full sm:h-[160px] sm:w-[160px] lg:h-[200px] lg:w-[200px]">
+                    <Image
+                      src={getSpeakerImageUrl(speakers[0].image)}
+                      alt={speakers[0].name}
+                      fill
+                      sizes="200px"
+                      className="object-cover"
+                    />
 
-                  <div className="absolute inset-0 flex items-center justify-center rounded-full bg-[#5dbf7c]/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <a
-                      href={speaker.linkedin_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${speaker.name} LinkedIn`}
-                      className="text-white transition-transform duration-300 group-hover:scale-110"
-                    >
-                      <i className="fa-brands fa-linkedin-in text-[32px]" />
-                    </a>
+                    <div className="absolute inset-0 flex items-center justify-center rounded-full bg-[#5dbf7c]/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <a
+                        href={speakers[0].linkedin_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${speakers[0].name} LinkedIn`}
+                        className="text-white transition-transform duration-300 group-hover:scale-110"
+                      >
+                        <i className="fa-brands fa-linkedin-in text-[32px]" />
+                      </a>
+                    </div>
                   </div>
+
+                  <h3 className="mt-5 font-poppins text-[20px] font-semibold leading-[1.2] text-[#f58216]">
+                    {speakers[0].name}
+                  </h3>
+                  <p
+                    className="mt-[7px] max-w-[360px] text-[14px] font-semibold leading-[1.55] text-[#4b4b4b] sm:text-[15px] [&_span]:block [&_span]:text-[#f58216] "
+                    dangerouslySetInnerHTML={{
+                      __html: speakers[0].designation,
+                    }}
+                  />
                 </div>
-
-                <h3 className="mt-5 text-[20px] font-semibold leading-[1.2] text-[#f58216] font-poppins">
-                  {speaker.name}
-                </h3>
-
-                <p className="mt-[7px] max-w-[360px] text-[14px] font-medium leading-[1.55] text-[#4b4b4b] sm:text-[15px]">
-                  {speaker.designation}
-                </p>
               </div>
-            ))
+
+              {/* Remaining Speakers - Existing Grid */}
+              {speakers.length > 1 && (
+                <div className="grid grid-cols-1 gap-y-[55px] sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-[45px] lg:gap-y-[62px]">
+                  {speakers.slice(1).map((speaker) => (
+                    <div
+                      key={speaker.id}
+                      className="flex flex-col items-center text-center"
+                    >
+                      <div className="group relative h-[158px] w-[158px] overflow-hidden rounded-full sm:h-[160px] sm:w-[160px] lg:h-[200px] lg:w-[200px]">
+                        <Image
+                          src={getSpeakerImageUrl(speaker.image)}
+                          alt={speaker.name}
+                          fill
+                          sizes="160px"
+                          className="object-cover"
+                        />
+
+                        <div className="absolute inset-0 flex items-center justify-center rounded-full bg-[#5dbf7c]/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                          <a
+                            href={speaker.linkedin_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${speaker.name} LinkedIn`}
+                            className="text-white transition-transform duration-300 group-hover:scale-110"
+                          >
+                            <i className="fa-brands fa-linkedin-in text-[32px]" />
+                          </a>
+                        </div>
+                      </div>
+
+                      <h3 className="mt-5 font-poppins text-[20px] font-semibold leading-[1.2] text-[#f58216]">
+                        {speaker.name}
+                      </h3>
+
+                      <p className="mt-[7px] max-w-[360px] text-[14px] font-medium leading-[1.55] text-[#4b4b4b] sm:text-[15px]">
+                        {speaker.designation}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>
