@@ -58,7 +58,7 @@ export default function Speakers() {
       <div className="relative mx-auto max-w-[1170px] px-4 sm:px-6">
         <div className="text-center">
           <p className="mb-[8px] text-[25px] font-semibold leading-tight text-[#f58216] sm:text-[32px]">
-            <span className="text-black">Invited &amp;</span> Confirmed Speakers
+            Confirmed Speakers
           </p>
 
           <h2 className="text-[34px] font-extrabold leading-[1.15] text-[#566e99] sm:text-[40px] lg:text-[45px] font-poppins">
@@ -148,9 +148,12 @@ export default function Speakers() {
                         {speaker.name}
                       </h3>
 
-                      <p className="mt-[7px] max-w-[360px] text-[14px] font-medium leading-[1.55] text-[#4b4b4b] sm:text-[15px]">
-                        {speaker.designation}
-                      </p>
+                      <p
+                        className="mt-[7px] max-w-[360px] text-[14px] font-medium leading-[1.55] text-[#4b4b4b] sm:text-[15px] [&_span]:block [&_span]:text-[#f58216]"
+                        dangerouslySetInnerHTML={{
+                          __html: speaker.designation,
+                        }}
+                      />
                     </div>
                   ))}
                 </div>
